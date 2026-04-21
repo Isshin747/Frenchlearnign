@@ -86,7 +86,7 @@ p{
   width: 100%;
   height: 100%;
 
-  background-image: url(images/S__11165702.jpg);
+  background-image: url("./images/S__11165702.jpg");
   background-size: cover;
   background-position: center;
 
