@@ -1,28 +1,57 @@
 <!DOCTYPE html>
 <html lang="ja">
-     <head>
-        <meta charset="utf-8">
-        <title>Lingua Note</title>
-        <meta name="description" content="言語学習をサポートします">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7032470395981540"
-     crossorigin="anonymous"></script>
+    <head>
+  <meta charset="utf-8">
+  <title>Lingua Note</title>
 
-        <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+  <meta name="description" content="言語学習をサポートします">
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css?family=philosopher&display=swap" rel="stylesheet">
+  <!-- ① Supabase本体を読み込む -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
-        <link rel="stylesheet" href="ofurannsu.css">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+  const supabaseUrl = "https://uqjoueguoltccufjcxko.supabase.co";
+  const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVxam91ZWd1b2x0Y2N1ZmpjeGtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3NDgzODIsImV4cCI6MjA5MjMyNDM4Mn0.fsxGWxWXYrTceQtdpsG9ICFYGTu5SNIxKMKJoSfR59g";
+
+  const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+  async function updateCount() {
+    const { data, error } = await supabaseClient
+      .from("visits")
+      .select("count")
+      .eq("id", 1)
+      .single();
+
+    if (error) {
+      console.log("エラー:", error);
+      return;
+    }
+
+    const newCount = data.count + 1;
+
+    await supabaseClient
+      .from("visits")
+      .update({ count: newCount })
+      .eq("id", 1);
+
+    document.getElementById("count").innerText = newCount;
+  }
+
+  updateCount();
+</script>
+
+  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
     <body class="desain">
         <main class="toppage">
             <h2>ようこそLingua Noteへ</h2>
             <p>Lingua Noteは、参考書なしで言語を学べるオンライン学習サイトです。</p>
              <p>文法・発音・会話表現を一つにまとめ、検索しやすい構造で「意味・使い方・例文」をすぐに理解できます。</p>
-            <p>初心者でも効率よく、実際に使える語学力を身につけられるのが特徴です。</p>
-</p>
+            <p>初心者でも効率よく、実際に使える語学力を身につけられます。</p>
         <section>
             <a href="pruvacy.html" style="color:yellow;">プライバシーポリシー</a>
         </section>
@@ -33,9 +62,9 @@
         <section class="target">
             <h3>こんな人にお勧め</h3>
             <ul>
-            <li>語学を始めたいけど何からやればいいかわからない</li>
-            <li>参考書だと続かない</li>
-            <li>すぐ使えるフレーズを知りたい<li>
+            <li><strong>語学を始めたいけど何からやればいいかわからない</strong></li>
+            <li><strong>参考書だと続かない</strong></li>
+            <li><strong>すぐ使えるフレーズを知りたい</strong><li>
             </ul>
      </section>
 
@@ -63,13 +92,6 @@
         </div>
         <h3>閲覧回数：<span id="count">0</span></h3>
 
-<script>
-fetch('https://isshin747.github.io/Frenchlearnign/')
-  .then(res => res.json())
-  .then(data => {
-    document.getElementById('count').innerText = data.value;
-  });
-</script>
 
 
         
