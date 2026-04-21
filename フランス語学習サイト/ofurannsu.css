@@ -1,0 +1,228 @@
+@charset"UTF-8";
+
+html{
+    font-size:100%;
+}
+h2{
+    border:none;
+    font-size:2rem;
+    margin-bottom:20px;
+}
+.note{
+    color:#0055A4;
+}
+.note::after{
+    background:#0055A4;
+}
+h1{
+    font-size:2rem;
+    margin-bottom:20px;
+    line-height:1.4;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #ffd700;
+  margin: 10px auto;
+}
+.sabu{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    padding:40px 20px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    background:#f5f7fa
+}
+main{
+    width:700px;
+
+}
+aside{
+    width:300px;
+    background:rgba(0,0,0,0.5);
+    color:#fff;
+    padding:20px;
+    border-radius:10px;
+    height:fit-content;
+    
+}
+aside a:hover{
+   color:#2f80ed;
+}
+aside a{
+    color:#0055A4;
+}
+section{
+    margin-bottom: 3rem;
+}
+p{
+    padding:5px;
+}
+.attention{
+    color:tomato
+}
+.iine{
+    margin-top: 1rem;
+}
+.desain{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; /* ← 中央配置 */
+    background-attachment: fixed;       /* ← スクロールしても固定 */
+    height: 100vh;
+    
+  position: relative;
+}
+
+/* 背景画像（ぼかし用） */
+.desain::before {
+  content: "";
+  position: fixed; /* 画面全体に固定 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-image: url(S__11165702.jpg);
+  background-size: cover;
+  background-position: center;
+
+  filter: blur(2px); /* ← ぼかし */
+  z-index: -1; /* 後ろに配置 */
+}
+
+.toppage {
+aspect-ratio: 16 / 9;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.45);
+    width:100%;
+    height:100vh;
+    /* 半透明の黒 */
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+
+}
+.toppage p{
+    max-width:700px;
+    line-height:1.8;
+}
+.mokuji{
+    text-align: center;
+    padding:80px;
+    background:rgba(0,0,0,0.4);
+    border-radius:10px;
+}
+.mokuji a{
+    display:inline-block;
+    padding:8px 12px;
+    border-radius:6px;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    background:rgba(0,85,164,0.1);
+}
+.mokuji a:hover{
+    background:#0055A4;
+    color:white;
+    
+    transform:translateX(5px);
+    transition:0.2s;
+
+}
+
+.mokuji li{
+    padding:10px;
+    margin:10px 0;
+    text-shadow:1px 1px 5px rgba(0,0,0,0.8);
+}
+.misesu{
+    color:#fdbf64;
+
+}
+
+
+.copyright{
+    background-color:#0bd;
+    text-align:center;
+    padding:2rem 0;
+    margin-top:6rem;
+    color:#fff;
+}
+.target{
+    max-width:700px;
+    margin:60px auto;
+    padding:30px;
+
+    background:rgba(0,0,0,0.5);
+    color:#fff;
+
+    border-radius:10px;
+    text-align:center
+}
+.text h3{
+    margin-bottom:20px;
+    font-size:1.5rem;
+}
+.target ul{
+    list-style:none;
+    font-size:1.5rem
+}
+.target li{
+    margin:10px 0;
+    font-size:1.1rem;
+}
+.asa{
+    background:rgba(255,255,255,0.9);
+    color:#222;
+    padding:30px;
+    border-radius:10px;
+}
+.bonjour{
+    margin-bottom:40px;
+    padding-bottom:20px;
+    border-bottom:1px solid #eee;
+}
+.phrase{
+    margin-bottom:20px;
+}
+.phrase strong{
+    font-size:1.2rem;
+}
+.sub{
+    color:#666;
+    font-size:0.9rem;
+}
+.grammar-table{
+    width:100%;
+    border-collapse:collapse;
+    margin:20px 0;
+}
+.grammar-table th
+.grammar-table td{
+    border:1px solid #ddd;
+    padding:10px;
+    text-align:left;
+}
+.grammar-table th{
+    background:#f5f7fa;
+}
+.grammar-table td strong{
+    color:#0055A4
+}
+.logo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  filter: brightness(1.5);
+
+}
