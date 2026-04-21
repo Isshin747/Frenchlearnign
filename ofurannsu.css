@@ -229,6 +229,9 @@ aspect-ratio: 16 / 9;
   filter: brightness(1.5);
 
 }
+.miru{
+    color:aliceblue
+}
 /* ===== スマホ対応 ===== */
 @media screen and (max-width: 768px) {
 
