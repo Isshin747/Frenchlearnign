@@ -226,3 +226,58 @@ aspect-ratio: 16 / 9;
   filter: brightness(1.5);
 
 }
+/* ===== スマホ対応 ===== */
+@media screen and (max-width: 768px) {
+
+  .sabu {
+    flex-direction: column;
+    padding: 20px 10px;
+    gap: 20px;
+  }
+
+  main {
+    width: 100%;
+  }
+
+  aside {
+    width: 100%;
+    order: -1; /* 目次を上にしたい場合 */
+  }
+
+  .toppage {
+    height: auto;
+    aspect-ratio: auto;
+    padding: 40px 15px;
+  }
+
+  .toppage p {
+    max-width: 100%;
+    font-size: 0.95rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .mokuji {
+    padding: 30px 15px;
+  }
+
+  .target {
+    margin: 30px 10px;
+    padding: 20px 15px;
+  }
+
+  aside {
+    font-size: 0.9rem;
+  }
+
+  .phrase strong {
+    font-size: 1rem;
+  }
+
+}
