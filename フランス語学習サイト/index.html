@@ -56,6 +56,15 @@
         <div class="copyright">
             <small>&copy; 2026 Lingua Note</small>
         </div>
+        <h3>閲覧回数：<span id="count">0</span></h3>
+
+<script>
+fetch('https://api.countapi.xyz/hit/my-unique-site-123/visits')
+  .then(res => res.json())
+  .then(data => {
+    document.getElementById('count').innerText = data.value;
+  });
+</script>
 
         
         
