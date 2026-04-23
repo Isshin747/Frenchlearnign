@@ -86,9 +86,13 @@ p{
   width: 100%;
   height: 100%;
 
-  background-image: url("./images/S__11165702.jpg");
+  background-image: url("./images/gengolab.jpg");
   background-size: cover;
   background-position: center;
+   background-size: contain;   /* ← ここを変更 */
+  background-repeat: no-repeat; 
+
+background-color: #000;
 
   filter: blur(2px); /* ← ぼかし */
   z-index: -1; /* 後ろに配置 */
