@@ -9,10 +9,10 @@ h2{
     margin-bottom:20px;
 }
 .note{
-    color:#0055A4;
+    color:#2E7D32
 }
 .note::after{
-    background:#0055A4;
+    background:#2E7D32
 }
 h1{
     font-size:2rem;
@@ -50,10 +50,10 @@ aside{
     
 }
 aside a:hover{
-   color:#2f80ed;
+   color:#E8F5E9;
 }
 aside a{
-    color:#0055A4;
+    color:#a2e083;
 }
 section{
     margin-bottom: 3rem;
@@ -133,24 +133,14 @@ aspect-ratio: 16 / 9;
     font-weight:bold;
     background:rgba(0,85,164,0.1);
 }
-.furench a:hover{
-    background:#0055A4;
+.mokuji a:hover{
+    background:#2E7D32;
     color:white;
     
     transform:translateX(5px);
     transition:0.2s;
 
 }
-.amerika a:hover{
-    background:#03521b;
-    color:white;
-    
-    transform:translateX(5px);
-    transition:0.2s;
-
-}
-
-
 
 .mokuji li{
     padding:10px;
@@ -232,7 +222,7 @@ aspect-ratio: 16 / 9;
     background:#f5f7fa;
 }
 .grammar-table td strong{
-    color:#0055A4
+    color:#2E7D32;
 }
 .logo img {
   width: 100%;
@@ -245,9 +235,6 @@ aspect-ratio: 16 / 9;
 }
 .miru{
     color:aliceblue
-}
-.igirisugo{
-    color:aquamarine
 }
 /* ===== スマホ対応 ===== */
 @media screen and (max-width: 768px) {
@@ -303,7 +290,4 @@ aspect-ratio: 16 / 9;
     font-size: 1rem;
   }
 
-}
-.hrannsugo{
-    color:#97c6e0
 }
