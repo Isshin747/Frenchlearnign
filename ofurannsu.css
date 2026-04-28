@@ -3,10 +3,39 @@
 html{
     font-size:100%;
 }
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px 20px;
+  background: #000; /* ロゴに合わせて黒 */
+  padding: 80px 20px 40px;
+  text-align: center;
+}
+
+.hero img {
+  max-width: 420px;
+  width: 100%;
+}
+
+.hero img {
+  max-width: 400px;
+  width: 100%;
+}
 h2{
     border:none;
-    font-size:2rem;
-    margin-bottom:20px;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: #111;
+}
+
+h2::after {
+  content: "";
+  width: 40px;
+  height: 3px;
+  background: var(--main-color);
+  display: block;
+  margin-top: 8px;
 }
 .note{
     color:#0055A4;
@@ -18,15 +47,6 @@ h1{
     font-size:2rem;
     margin-bottom:20px;
     line-height:1.4;
-}
-
-h2::after {
-  content: "";
-  display: block;
-  width: 50px;
-  height: 3px;
-  background: #ffd700;
-  margin: 10px auto;
 }
 .sabu{
     display:flex;
@@ -73,8 +93,20 @@ p{
     background-position: center center; /* ← 中央配置 */
     background-attachment: fixed;       /* ← スクロールしても固定 */
     height: 100vh;
+    background:#f5f7fa;
     
   position: relative;
+  
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+
+}
+:root {
+  --main-color: #0055A4;
+  --accent-color: #00A8A8;
+  --bg-color: #f5f7fa;
+  --text-color: #222;
 }
 
 /* 背景画像（ぼかし用） */
@@ -86,17 +118,31 @@ p{
   width: 100%;
   height: 100%;
 
-  background-image: url("./images/gengolab.jpg");
-  background-size: cover;
+
+  background-size: contain;
   background-position: center;
    background-size: contain;   /* ← ここを変更 */
   background-repeat: no-repeat; 
 
-background-color: #000;
 
-  filter: blur(2px); /* ← ぼかし */
+
+  filter: blur(4px) brightness(1.6);
+   opacity:0.25;
   z-index: -1; /* 後ろに配置 */
 }
+.mokuji, .target ,.saiden{
+    background:#fff;
+    color:#222;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 40px;
+
+
+  border-radius: 12px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
 
 .toppage {
 aspect-ratio: 16 / 9;
@@ -105,13 +151,19 @@ aspect-ratio: 16 / 9;
     justify-content:center;
     align-items:center;
     text-align: center;
-    background: rgba(0, 0, 0, 0.45);
+    
     width:100%;
-    height:100vh;
+
     /* 半透明の黒 */
-  color: #fff;
-  padding: 20px;
+  
+  
   border-radius: 8px;
+
+  background: transparent;
+  color: #222;
+  height: auto;
+  padding: 40px 20px;
+
 
 }
 .toppage p{
@@ -121,33 +173,57 @@ aspect-ratio: 16 / 9;
 .mokuji{
     text-align: center;
     padding:80px;
-    background:rgba(0,0,0,0.4);
+
     border-radius:10px;
+    list-style: none;
 }
-.mokuji a{
-    display:inline-block;
-    padding:8px 12px;
-    border-radius:6px;
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-    background:rgba(0,85,164,0.1);
+
+.no-list{
+    list-style: none;
+}
+.mokuji a {
+  display: inline-block;
+  padding: 10px 16px;
+  margin: 6px;
+  border-radius: 8px;
+
+  background: var(--main-color);
+  color: #fff;
+  text-decoration: none;
+
+  transition: 0.2s;
+}
+
+.mokuji a:hover {
+  background:#003f7a;
+  transform: translateY(-2px);
+}
+.furench a{
+    background: linear-gradient(135deg, #3498db, #0055A4);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 .furench a:hover{
-    background:#0055A4;
+    
+    background: linear-gradient(135deg, #0055A4, #003f7a);
+  transform: translateY(-2px);
+box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.amerika a:hover{
+    
     color:white;
     
-    transform:translateX(5px);
-    transition:0.2s;
+    
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    background: linear-gradient(135deg, #27ae60, #145a32);
+  transform: translateY(-2px);
 
 }
-.amerika a:hover{
-    background:#03521b;
-    color:white;
-    
-    transform:translateX(5px);
-    transition:0.2s;
-
+.amerika a {
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 
@@ -170,19 +246,16 @@ aspect-ratio: 16 / 9;
     margin-top:6rem;
     color:#fff;
 }
-.target{
-    max-width:700px;
-    margin:60px auto;
-    padding:30px;
 
-    background:rgba(0,0,0,0.5);
-    color:#fff;
-
-    border-radius:10px;
-    text-align:center
+.target {
+  text-align: center;
 }
-.target li{
-    color:tomato;
+
+.target li {
+  margin: 10px 0;
+  font-size: 1.05rem;
+
+    
 }
 .text h3{
     margin-bottom:20px;
@@ -249,6 +322,7 @@ aspect-ratio: 16 / 9;
 .igirisugo{
     color:aquamarine
 }
+
 /* ===== スマホ対応 ===== */
 @media screen and (max-width: 768px) {
 
