@@ -322,8 +322,63 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 .igirisugo{
     color:aquamarine
 }
+.contact {
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 20px;
+  background: #111;
+  color: #fff;
+  border-radius: 10px;
+}
 
-/* ===== スマホ対応 ===== */
+.contact input,
+.contact textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 5px;
+}
+
+.contact button {
+  background: #0a7d3b;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.contact input,
+.contact textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 5px;
+
+  background: #222;
+  color: #fff;
+}
+
+.contact input::placeholder,
+.contact textarea::placeholder {
+  color: #aaa;
+}
+
+.contact button {
+  background: #0a7d3b;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.contact button:hover {
+  background: #0c9e4a;
+}
+
 @media screen and (max-width: 768px) {
 
   .sabu {
@@ -338,7 +393,7 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 
   aside {
     width: 100%;
-    order: -1; /* 目次を上にしたい場合 */
+    order: -1; 
   }
 
   .toppage {
