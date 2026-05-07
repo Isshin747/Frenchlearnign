@@ -226,6 +226,21 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.2);
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
+.inndonesia a:hover{
+    
+    color:white;
+    
+    
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    background: linear-gradient(135deg, #d98b53, #f07a3f);
+  transform: translateY(-2px);
+
+}
+.inndonesia a {
+  background: linear-gradient(135deg, #df8e0b, #de7e5c);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
 
 
 .mokuji li{
@@ -324,6 +339,9 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 .hrannsugo{
   color:#003f7a;
+}
+.inndonesiagonn{
+   color:rgb(247, 91, 30)
 }
 .contact {
   max-width: 600px;

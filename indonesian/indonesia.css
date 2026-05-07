@@ -9,10 +9,10 @@ h2{
     margin-bottom:20px;
 }
 .note{
-    color:#2E7D32
+    color:#E15A28
 }
 .note::after{
-    background:#2E7D32
+    background:#E15A28
 }
 h1{
     font-size:2rem;
@@ -20,7 +20,7 @@ h1{
     line-height:1.4;
 }
 .pron {
-  color: #1e88e5;
+  color: #ad6211;
   font-weight: bold;
   margin: 4px 0;
 }
@@ -58,7 +58,7 @@ aside a:hover{
    color:#E8F5E9;
 }
 aside a{
-    color:#a2e083;
+    color:#a32f0f;
 }
 section{
     margin-bottom: 3rem;
@@ -139,7 +139,7 @@ aspect-ratio: 16 / 9;
     background:rgba(0,85,164,0.1);
 }
 .mokuji a:hover{
-    background:#2E7D32;
+    background:#E15A28;
     color:white;
     
     transform:translateX(5px);
@@ -227,7 +227,7 @@ aspect-ratio: 16 / 9;
     background:#f5f7fa;
 }
 .grammar-table td strong{
-    color:#2E7D32;
+    color:#E15A28;
 }
 .logo img {
   width: 100%;
