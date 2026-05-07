@@ -53,9 +53,31 @@ aside{
     border-radius:10px;
     height:fit-content;
     
+   
+    position:sticky;
+    top:20px;
+
+    
+   
+
+
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+}
+aside::-webkit-scrollbar{
+    width:8px;
+}
+
+aside::-webkit-scrollbar-thumb{
+    background:#888;
+    border-radius:10px;
+}
+
+aside::-webkit-scrollbar-track{
+    background:transparent;
 }
 aside a:hover{
-   color:#E8F5E9;
+   color:#f12a0c;
 }
 aside a{
     color:#a32f0f;
@@ -277,8 +299,10 @@ aspect-ratio: 16 / 9;
 
   aside {
     width: 100%;
-    order: -1; /* 目次を上にしたい場合 */
+    order: -1; 
+    position:static/* 目次を上にしたい場合 */
   }
+
 
   .toppage {
     height: auto;
