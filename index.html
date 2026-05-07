@@ -30,7 +30,7 @@
 
   const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
-  //async function updateCount() {
+async function updateCount() {
     const { data, error } = await supabaseClient
       .from("visits")
       .select("count")
