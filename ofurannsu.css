@@ -263,7 +263,21 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.2);
   color: #fff;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
+.kotoba a:hover{
+    
+    color:white;
+    
+    
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    background: linear-gradient(135deg, #de1b79, #da061b);
+  transform: translateY(-2px);
 
+}
+.kotoba a {
+  background: linear-gradient(135deg, #e00e27, #f00d4e);
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
 
 .mokuji li{
     padding:10px;
