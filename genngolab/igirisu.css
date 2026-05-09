@@ -1,0 +1,275 @@
+@charset "UTF-8";
+
+/* ==========================
+   共通
+========================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+    background: #f8f8f6;
+    color: #333;
+    line-height: 1.9;
+}
+
+/* 背景 */
+
+.sabu {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 40px 30px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* ==========================
+   メイン記事
+========================== */
+
+.asa {
+    width: 75%;
+    max-width: 900px;
+}
+
+/* 記事セクション */
+
+.bonjour {
+    background: #fff;
+    padding: 50px;
+    margin-bottom: 40px;
+    border-radius: 24px;
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* タイトル */
+
+h1 {
+    font-size: 2.3rem;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    color: #1d3557;
+    font-weight: bold;
+}
+
+/* 見出し */
+
+.note {
+    font-size: 1.7rem;
+    border-left: 8px solid #457b9d;
+    padding-left: 18px;
+    margin-bottom: 30px;
+    color: #1d3557;
+}
+
+/* 本文 */
+
+.iine {
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+}
+
+/* 説明ボックス */
+
+.phrase {
+    background: #f9fbfc;
+    border-left: 5px solid #a8dadc;
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 18px;
+    transition: 0.3s;
+}
+
+.phrase:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+}
+
+/* 小見出し */
+
+.phrase strong {
+    font-size: 1.1rem;
+    color: #1d3557;
+}
+
+/* 補足部分 */
+
+.sub {
+    background: #eef6f8;
+    padding: 18px;
+    border-radius: 14px;
+    margin: 15px 0;
+    color: #444;
+}
+
+/* ==========================
+   画像
+========================== */
+
+.article-image {
+    width: 100%;
+    border-radius: 24px;
+    margin: 30px 0 50px;
+    object-fit: cover;
+    max-height: 520px;
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.12);
+}
+
+/* ==========================
+   Aside（固定目次）
+========================== */
+
+aside {
+    width: 280px;
+    min-width: 280px;
+
+    position: sticky;
+    top: 20px;
+
+    align-self: flex-start;
+
+    background: white;
+    border-radius: 28px;
+    padding: 30px;
+    height: fit-content;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* ロゴ */
+
+.logo {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.logo img {
+    width: 120px;
+    border-radius: 50%;
+    box-shadow:
+        0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* aside見出し */
+
+aside h3 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: #1d3557;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* リスト */
+
+aside ul {
+    list-style: none;
+}
+
+aside li {
+    margin-bottom: 15px;
+}
+
+/* リンク */
+
+aside a {
+    text-decoration: none;
+    color: #444;
+    font-size: 1rem;
+    display: block;
+    padding: 14px 18px;
+    border-radius: 14px;
+    transition: 0.3s;
+}
+
+aside a:hover {
+    background: #457b9d;
+    color: white;
+    transform: translateX(4px);
+}
+
+/* ==========================
+   テーブル風表示
+========================== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 14px;
+    text-align: center;
+}
+
+table th {
+    background: #457b9d;
+    color: white;
+}
+
+/* ==========================
+   スマホ対応
+========================== */
+
+@media (max-width: 1100px) {
+
+    .sabu {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .asa {
+        width: 100%;
+    }
+
+    aside {
+        position: static;
+        width: 100%;
+        min-width: auto;
+        order: -1;
+        margin-bottom: 30px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .note {
+        font-size: 1.4rem;
+    }
+
+    .bonjour {
+        padding: 30px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 1.55rem;
+    }
+
+    .note {
+        font-size: 1.2rem;
+    }
+
+    .bonjour {
+        padding: 25px;
+        border-radius: 20px;
+    }
+
+    .phrase {
+        padding: 20px;
+    }
+
+}
