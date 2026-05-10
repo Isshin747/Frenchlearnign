@@ -1,0 +1,3401 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>仏検2級単語</title>
+<link rel="stylesheet" href="gaga.css">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#eef4ff,#dfe9ff);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.quiz-container{
+    background:white;
+    width:100%;
+    max-width:700px;
+    border-radius:25px;
+    padding:40px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.12);
+}
+
+h1{
+    text-align:center;
+    color:#2c3e50;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:30px;
+}
+
+.score{
+    text-align:right;
+    font-weight:bold;
+    margin-bottom:20px;
+    color:#444;
+}
+
+.question-number{
+    color:#4b6fff;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.question{
+    font-size:1.5rem;
+    font-weight:bold;
+    margin-bottom:30px;
+    color:#222;
+}
+
+.answers{
+    display:grid;
+    gap:15px;
+}
+
+.answer-btn{
+    border:none;
+    background:#f3f6ff;
+    padding:18px;
+    border-radius:15px;
+    cursor:pointer;
+    font-size:1rem;
+    transition:0.2s;
+    text-align:left;
+}
+
+.answer-btn:hover{
+    background:#dfe8ff;
+    transform:translateY(-2px);
+}
+
+.correct{
+    background:#8ee4af !important;
+    color:#14532d;
+}
+
+.wrong{
+    background:#ffb3b3 !important;
+    color:#7f1d1d;
+}
+
+#result{
+    text-align:center;
+    margin-top:20px;
+    font-size:1.2rem;
+    font-weight:bold;
+}
+
+.next-btn{
+    display:none;
+    width:100%;
+    margin-top:25px;
+    border:none;
+    background:#4b6fff;
+    color:white;
+    padding:18px;
+    border-radius:15px;
+    cursor:pointer;
+    font-size:1rem;
+    transition:0.2s;
+}
+
+.next-btn:hover{
+    background:#3457d5;
+}
+
+.restart-btn{
+    background:#16a34a;
+}
+
+@media(max-width:600px){
+    .quiz-container{
+        padding:25px;
+    }
+
+    .question{
+        font-size:1.2rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+
+    <h1>🌍 Language Quiz</h1>
+    <p class="subtitle">
+        フランス語検定２級レベル単語
+    </p>
+
+    <div class="category-select">
+
+    <button onclick="selectCategory('noun')">
+        📚 レベル１
+    </button>
+
+    <button onclick="selectCategory('verb')">
+        🏃 レベル２
+    </button>
+
+    <button onclick="selectCategory('adjective')">
+        ⌛ レベル３
+    </button>
+
+    <button onclick="selectCategory('expression')">
+        💬 レベル４
+    </button>
+
+    <button onclick="selectCategory('all')">
+        ✨ 全部
+    </button>
+    <button onclick="location.href='../index.html'">
+        トップページへ
+</button>
+
+</div>
+
+    <div class="score">
+        Score: <span id="score">0</span>
+    </div>
+
+    <div class="question-number" id="questionNumber">
+        Question 1 / 80
+    </div>
+
+    <div class="question" id="question">
+        問題が表示されます
+    </div>
+
+    <div class="answers" id="answers"></div>
+
+    <div id="result"></div>
+
+    <button class="next-btn" id="nextBtn">
+        次の問題 →
+    </button>
+
+</div>
+
+<script>
+
+let quizData = [];
+let currentQuestion = 0;
+let score = 0;
+function selectCategory(category){
+
+   
+    if(category === "noun"){
+        quizData = [...nouns];
+    }
+
+    else if(category === "verb"){
+        quizData = [...verbs];
+    }
+
+    else if(category === "adjective"){
+        quizData = [...adjective];
+    }
+
+    else if(category === "expression"){
+        quizData = [...expressions];
+    }
+
+    else{
+        quizData = [
+            ...nouns,
+            ...verbs,
+            ...adjective,
+            ...expressions
+        ];
+    }
+
+    
+    currentQuestion = 0;
+    score = 0;
+
+    document.getElementById("score")
+    .textContent = score;
+
+    // ←超重要
+    loadQuestion();
+}
+
+    
+
+   
+
+const nouns = [
+    {
+question:"『éviter』の意味は？",
+answers:["許可する","避ける","増える","隠す"],
+correct:1
+},
+
+{
+question:"『s’inquiéter』の意味は？",
+answers:["喜ぶ","謝る","心配する","招待する"],
+correct:2
+},
+
+{
+question:"『réussir』の意味は？",
+answers:["成功する","諦める","拒否する","延期する"],
+correct:0
+},
+
+{
+question:"『échouer』の意味は？",
+answers:["成長する","失敗する","続ける","共有する"],
+correct:1
+},
+
+{
+question:"『proposer』の意味は？",
+answers:["疑う","壊す","提案する","逃げる"],
+correct:2
+},
+
+{
+question:"『permettre』の意味は？",
+answers:["禁止する","数える","許可する","閉める"],
+correct:2
+},
+
+{
+question:"『empêcher』の意味は？",
+answers:["助ける","妨げる","理解する","褒める"],
+correct:1
+},
+
+{
+question:"『convaincre』の意味は？",
+answers:["納得させる","修理する","訪れる","選択する"],
+correct:0
+},
+
+{
+question:"『partager』の意味は？",
+answers:["隠す","共有する","投げる","洗う"],
+correct:1
+},
+
+{
+question:"『améliorer』の意味は？",
+answers:["改善する","減少する","汚染する","諦める"],
+correct:0
+},
+
+{
+question:"『augmenter』の意味は？",
+answers:["延期する","減らす","増える・増やす","失う"],
+correct:2
+},
+
+{
+question:"『diminuer』の意味は？",
+answers:["交換する","減る・減らす","準備する","説明する"],
+correct:1
+},
+
+{
+question:"『refuser』の意味は？",
+answers:["拒否する","期待する","調べる","選ぶ"],
+correct:0
+},
+
+{
+question:"『reconnaître』の意味は？",
+answers:["忘れる","破壊する","認める","逃げる"],
+correct:2
+},
+
+{
+question:"『développer』の意味は？",
+answers:["発展させる","閉じる","混乱する","計算する"],
+correct:0
+},
+
+{
+question:"『profiter de』の意味は？",
+answers:["〜を疑う","〜を活用する","〜を禁止する","〜を修理する"],
+correct:1
+},
+
+{
+question:"『se rendre compte de』の意味は？",
+answers:["〜を探す","〜に到着する","〜に気づく","〜を壊す"],
+correct:2
+},
+
+{
+question:"『supporter』の意味は？",
+answers:["耐える","数える","消す","引っ越す"],
+correct:0
+},
+
+{
+question:"『exprimer』の意味は？",
+answers:["修正する","表現する","交換する","隠れる"],
+correct:1
+},
+
+{
+question:"『dépendre de』の意味は？",
+answers:["〜を避ける","〜を発見する","〜次第である","〜を閉める"],
+correct:2
+},
+
+{
+question:"『la société』の意味は？",
+answers:["文化","社会","政治","経済"],
+correct:1
+},
+
+{
+question:"『l’environnement』の意味は？",
+answers:["環境","政府","景色","経験"],
+correct:0
+},
+
+{
+question:"『la pollution』の意味は？",
+answers:["発展","汚染","革命","人口"],
+correct:1
+},
+
+{
+question:"『l’éducation』の意味は？",
+answers:["交通","教育","法律","制度"],
+correct:1
+},
+
+{
+question:"『l’économie』の意味は？",
+answers:["教育","文学","経済","芸術"],
+correct:2
+},
+
+{
+question:"『le chômage』の意味は？",
+answers:["雇用","税金","失業","給料"],
+correct:2
+},
+
+{
+question:"『les médias』の意味は？",
+answers:["市場","メディア","科学","病院"],
+correct:1
+},
+
+{
+question:"『la technologie』の意味は？",
+answers:["農業","技術","戦争","自然"],
+correct:1
+},
+
+{
+question:"『la mondialisation』の意味は？",
+answers:["国際化","地域化","工業化","近代化"],
+correct:0
+},
+
+{
+question:"『l’expérience』の意味は？",
+answers:["試験","説明","経験","発見"],
+correct:2
+},
+
+{
+question:"『le développement』の意味は？",
+answers:["汚染","発展","革命","制限"],
+correct:1
+},
+
+{
+question:"『la situation』の意味は？",
+answers:["結果","条件","状況","理由"],
+correct:2
+},
+
+{
+question:"『la solution』の意味は？",
+answers:["失敗","答え","解決策","問題"],
+correct:2
+},
+
+{
+question:"『la différence』の意味は？",
+answers:["共通点","違い","説明","比較"],
+correct:1
+},
+
+{
+question:"『la raison』の意味は？",
+answers:["結果","意見","理由","文化"],
+correct:2
+},
+
+{
+question:"『le comportement』の意味は？",
+answers:["行動","法律","経験","会話"],
+correct:0
+},
+
+{
+question:"『la connaissance』の意味は？",
+answers:["失敗","知識","計画","研究"],
+correct:1
+},
+
+{
+question:"『la liberté』の意味は？",
+answers:["自由","平等","責任","希望"],
+correct:0
+},
+
+{
+question:"『la sécurité』の意味は？",
+answers:["危険","安全","戦争","事故"],
+correct:1
+},
+
+{
+question:"『la communication』の意味は？",
+answers:["技術","交通","交流","工業"],
+correct:2
+},
+
+{
+question:"『la responsabilité』の意味は？",
+answers:["責任","自由","経験","希望"],
+correct:0
+},
+
+{
+question:"『la décision』の意味は？",
+answers:["提案","決定","説明","失敗"],
+correct:1
+},
+
+{
+question:"『le problème』の意味は？",
+answers:["解決","約束","問題","経験"],
+correct:2
+},
+
+{
+question:"『la possibilité』の意味は？",
+answers:["可能性","危険","理由","変化"],
+correct:0
+},
+
+{
+question:"『le changement』の意味は？",
+answers:["説明","変化","安全","努力"],
+correct:1
+},
+
+{
+question:"『l’avenir』の意味は？",
+answers:["現在","未来","過去","記憶"],
+correct:1
+},
+
+{
+question:"『le passé』の意味は？",
+answers:["将来","現在","過去","文化"],
+correct:2
+},
+
+{
+question:"『l’habitude』の意味は？",
+answers:["計画","習慣","挑戦","意見"],
+correct:1
+},
+
+{
+question:"『l’effort』の意味は？",
+answers:["危険","努力","技術","運"],
+correct:1
+},
+
+{
+question:"『le succès』の意味は？",
+answers:["成功","失敗","試験","経験"],
+correct:0
+},
+
+{
+question:"『l’échec』の意味は？",
+answers:["発展","失敗","改善","発見"],
+correct:1
+},
+
+{
+question:"『la peur』の意味は？",
+answers:["怒り","驚き","恐れ","期待"],
+correct:2
+},
+
+{
+question:"『la confiance』の意味は？",
+answers:["信頼","疑い","失望","責任"],
+correct:0
+},
+
+{
+question:"『la patience』の意味は？",
+answers:["希望","我慢","成功","約束"],
+correct:1
+},
+
+{
+question:"『le bonheur』の意味は？",
+answers:["幸福","悲しみ","疲れ","驚き"],
+correct:0
+},
+
+{
+question:"『la tristesse』の意味は？",
+answers:["喜び","悲しみ","怒り","安心"],
+correct:1
+},
+
+{
+question:"『la colère』の意味は？",
+answers:["幸福","期待","怒り","安心"],
+correct:2
+},
+
+{
+question:"『le courage』の意味は？",
+answers:["危険","勇気","知識","責任"],
+correct:1
+},
+
+{
+question:"『l’opinion』の意味は？",
+answers:["法律","経験","意見","変化"],
+correct:2
+},
+
+{
+question:"『le droit』の意味は？",
+answers:["法律・権利","約束","教育","交通"],
+correct:0
+},
+
+{
+question:"『cependant』の意味は？",
+answers:["つまり","しかしながら","その後","たとえば"],
+correct:1
+},
+
+{
+question:"『pourtant』の意味は？",
+answers:["それなのに","したがって","さらに","一方で"],
+correct:0
+},
+
+{
+question:"『par conséquent』の意味は？",
+answers:["例えば","しかし","その結果","突然"],
+correct:2
+},
+
+{
+question:"『désormais』の意味は？",
+answers:["今後は","昨日","頻繁に","おそらく"],
+correct:0
+},
+
+{
+question:"『probablement』の意味は？",
+answers:["突然","確実に","たぶん","特に"],
+correct:2
+},
+
+{
+question:"『certainement』の意味は？",
+answers:["確実に","ほとんど","突然","たまに"],
+correct:0
+},
+
+{
+question:"『surtout』の意味は？",
+answers:["全く","特に","ほとんど","まだ"],
+correct:1
+},
+
+{
+question:"『finalement』の意味は？",
+answers:["結局","例えば","当然","昨日"],
+correct:0
+},
+
+{
+question:"『important(e)』の意味は？",
+answers:["危険な","簡単な","重要な","一般的な"],
+correct:2
+},
+
+{
+question:"『dangereux / dangereuse』の意味は？",
+answers:["危険な","役に立つ","難しい","退屈な"],
+correct:0
+},
+
+{
+question:"『utile』の意味は？",
+answers:["役に立つ","珍しい","不可能な","高価な"],
+correct:0
+},
+
+{
+question:"『efficace』の意味は？",
+answers:["複雑な","効果的な","退屈な","珍しい"],
+correct:1
+},
+
+{
+question:"『difficile』の意味は？",
+answers:["危険な","重要な","難しい","静かな"],
+correct:2
+},
+
+{
+question:"『ennuyeux / ennuyeuse』の意味は？",
+answers:["面白い","退屈な","危険な","静かな"],
+correct:1
+},
+
+{
+question:"『nécessaire』の意味は？",
+answers:["必要な","自由な","特別な","有名な"],
+correct:0
+},
+
+{
+question:"『possible』の意味は？",
+answers:["高価な","可能な","有名な","珍しい"],
+correct:1
+},
+
+{
+question:"『impossible』の意味は？",
+answers:["必要な","危険な","不可能な","面白い"],
+correct:2
+},
+
+{
+question:"『différent(e)』の意味は？",
+answers:["同じ","複雑な","異なる","普通の"],
+correct:2
+},
+
+{
+question:"『pareil(le)』の意味は？",
+answers:["同じような","危険な","重要な","退屈な"],
+correct:0
+},
+
+{
+question:"『général(e)』の意味は？",
+answers:["特別な","一般的な","静かな","高価な"],
+correct:1
+},
+
+{
+question:"『avoir besoin de』の意味は？",
+answers:["〜が必要である","〜を避ける","〜に賛成する","〜を発見する"],
+correct:0
+},
+
+{
+question:"『avoir l’habitude de』の意味は？",
+answers:["〜を禁止する","〜する習慣がある","〜を拒否する","〜を比較する"],
+correct:1
+},
+
+{
+question:"『être d’accord avec』の意味は？",
+answers:["〜に反対する","〜を理解する","〜に賛成する","〜を説明する"],
+correct:2
+},
+
+{
+question:"『être contre』の意味は？",
+answers:["〜に反対する","〜を改善する","〜を招待する","〜を交換する"],
+correct:0
+},
+
+{
+question:"『avoir peur de』の意味は？",
+answers:["〜を楽しむ","〜を恐れる","〜を選ぶ","〜を準備する"],
+correct:1
+},
+
+{
+question:"『faire attention à』の意味は？",
+answers:["〜を忘れる","〜を延期する","〜に注意する","〜を壊す"],
+correct:2
+},
+
+{
+question:"『avoir envie de』の意味は？",
+answers:["〜したい","〜する必要がある","〜を避ける","〜を認める"],
+correct:0
+},
+
+{
+question:"『être capable de』の意味は？",
+answers:["〜に失敗する","〜できる","〜に気づく","〜を禁止する"],
+correct:1
+},
+
+{
+question:"『penser à』の意味は？",
+answers:["〜を共有する","〜を改善する","〜について考える","〜を数える"],
+correct:2
+},
+
+{
+question:"『penser de』の意味は？",
+answers:["〜についてどう思う","〜を避ける","〜に頼る","〜を説明する"],
+correct:0
+},
+
+{
+question:"『essayer de』の意味は？",
+answers:["〜を禁止する","〜しようとする","〜に賛成する","〜を忘れる"],
+correct:1
+},
+
+{
+question:"『arriver à』の意味は？",
+answers:["〜を理解する","〜に成功する","〜を比較する","〜を共有する"],
+correct:1
+},
+
+{
+question:"『continuer à』の意味は？",
+answers:["〜を終える","〜を始める","〜し続ける","〜を禁止する"],
+correct:2
+},
+
+{
+question:"『changer』の意味は？",
+answers:["変える・変わる","説明する","招待する","拒否する"],
+correct:0
+},
+
+{
+question:"『choisir』の意味は？",
+answers:["比較する","選ぶ","共有する","減少する"],
+correct:1
+},
+
+{
+question:"『comparer』の意味は？",
+answers:["許可する","隠す","比較する","失敗する"],
+correct:2
+},
+
+{
+question:"『découvrir』の意味は？",
+answers:["発見する","疑う","改善する","減らす"],
+correct:0
+},
+
+{
+question:"『expliquer』の意味は？",
+answers:["壊す","説明する","延期する","認める"],
+correct:1
+},
+
+{
+question:"『préparer』の意味は？",
+answers:["拒否する","共有する","準備する","比較する"],
+correct:2
+},
+
+{
+question:"『se souvenir de』の意味は？",
+answers:["〜を覚えている","〜を恐れる","〜に反対する","〜を禁止する"],
+correct:0
+},
+
+{
+question:"『la pauvreté』の意味は？",
+answers:["貧困","富","税金","人口"],
+correct:0
+},
+
+{
+question:"『la richesse』の意味は？",
+answers:["環境","努力","豊かさ","危険"],
+correct:2
+},
+
+{
+question:"『la guerre』の意味は？",
+answers:["平和","戦争","経済","教育"],
+correct:1
+},
+
+{
+question:"『la paix』の意味は？",
+answers:["安全","自由","平和","経験"],
+correct:2
+},
+
+{
+question:"『la violence』の意味は？",
+answers:["暴力","会話","教育","責任"],
+correct:0
+},
+
+{
+question:"『la justice』の意味は？",
+answers:["汚染","正義・司法","危険","発見"],
+correct:1
+},
+
+{
+question:"『l’égalité』の意味は？",
+answers:["自由","責任","平等","成長"],
+correct:2
+},
+
+{
+question:"『l’inégalité』の意味は？",
+answers:["不平等","幸福","技術","経験"],
+correct:0
+},
+
+{
+question:"『la loi』の意味は？",
+answers:["約束","法律","意見","市場"],
+correct:1
+},
+
+{
+question:"『le crime』の意味は？",
+answers:["発見","教育","犯罪","改善"],
+correct:2
+},
+
+{
+question:"『la population』の意味は？",
+answers:["人口","文化","研究","状況"],
+correct:0
+},
+
+{
+question:"『la culture』の意味は？",
+answers:["文化","戦争","環境","病気"],
+correct:0
+},
+
+{
+question:"『la santé』の意味は？",
+answers:["技術","健康","試験","経験"],
+correct:1
+},
+
+{
+question:"『la maladie』の意味は？",
+answers:["病気","成長","自由","説明"],
+correct:0
+},
+
+{
+question:"『l’énergie』の意味は？",
+answers:["環境","責任","エネルギー","危険"],
+correct:2
+},
+
+{
+question:"『le climat』の意味は？",
+answers:["気候","法律","交通","農業"],
+correct:0
+},
+
+{
+question:"『la nature』の意味は？",
+answers:["工業","自然","人口","説明"],
+correct:1
+},
+
+{
+question:"『le transport』の意味は？",
+answers:["輸送・交通","教育","自由","意見"],
+correct:0
+},
+
+{
+question:"『la circulation』の意味は？",
+answers:["経験","交通","汚染","技術"],
+correct:1
+},
+
+{
+question:"『la recherche』の意味は？",
+answers:["責任","安全","研究","法律"],
+correct:2
+},
+];
+
+const adjective=[
+    {
+question:"『le gouvernement』の意味は？",
+answers:["政府","環境","裁判","大学"],
+correct:0
+},
+
+{
+question:"『le président』の意味は？",
+answers:["教授","社長","大統領","記者"],
+correct:2
+},
+
+{
+question:"『la politique』の意味は？",
+answers:["政治","技術","農業","平和"],
+correct:0
+},
+
+{
+question:"『l’élection』の意味は？",
+answers:["革命","戦争","選挙","法律"],
+correct:2
+},
+
+{
+question:"『l’impôt』の意味は？",
+answers:["給料","税金","人口","経験"],
+correct:1
+},
+
+{
+question:"『le marché』の意味は？",
+answers:["文化","市場","健康","研究"],
+correct:1
+},
+
+{
+question:"『l’entreprise』の意味は？",
+answers:["企業","工場","学校","農業"],
+correct:0
+},
+
+{
+question:"『l’industrie』の意味は？",
+answers:["自由","産業","安全","交通"],
+correct:1
+},
+
+{
+question:"『le salaire』の意味は？",
+answers:["給料","税金","雇用","制度"],
+correct:0
+},
+
+{
+question:"『l’emploi』の意味は？",
+answers:["教育","雇用","平和","病気"],
+correct:1
+},
+
+{
+question:"『la publicité』の意味は？",
+answers:["研究","説明","広告","法律"],
+correct:2
+},
+
+{
+question:"『l’information』の意味は？",
+answers:["情報","経験","人口","意見"],
+correct:0
+},
+
+{
+question:"『la nouvelle』の意味は？",
+answers:["試験","ニュース","交通","選択"],
+correct:1
+},
+
+{
+question:"『la vérité』の意味は？",
+answers:["真実","危険","文化","理由"],
+correct:0
+},
+
+{
+question:"『le mensonge』の意味は？",
+answers:["責任","自由","嘘","経験"],
+correct:2
+},
+
+{
+question:"『le choix』の意味は？",
+answers:["状況","選択","安全","比較"],
+correct:1
+},
+
+{
+question:"『la comparaison』の意味は？",
+answers:["改善","比較","研究","発展"],
+correct:1
+},
+
+{
+question:"『la relation』の意味は？",
+answers:["法律","結果","関係","会議"],
+correct:2
+},
+
+{
+question:"『la discussion』の意味は？",
+answers:["議論","経験","危険","人口"],
+correct:0
+},
+
+{
+question:"『le débat』の意味は？",
+answers:["研究","討論","失敗","戦争"],
+correct:1
+},
+
+{
+question:"『l’amour』の意味は？",
+answers:["友情","愛","怒り","恐れ"],
+correct:1
+},
+
+{
+question:"『l’amitié』の意味は？",
+answers:["友情","責任","自由","経験"],
+correct:0
+},
+
+{
+question:"『la confiance en soi』の意味は？",
+answers:["自己批判","自己紹介","自信","自己犠牲"],
+correct:2
+},
+
+{
+question:"『la gentillesse』の意味は？",
+answers:["優しさ","厳しさ","危険","我慢"],
+correct:0
+},
+
+{
+question:"『la politesse』の意味は？",
+answers:["自由","礼儀正しさ","責任","勇気"],
+correct:1
+},
+
+{
+question:"『la timidité』の意味は？",
+answers:["積極性","勇気","内気さ","怒り"],
+correct:2
+},
+
+{
+question:"『la jalousie』の意味は？",
+answers:["嫉妬","幸福","安心","努力"],
+correct:0
+},
+
+{
+question:"『la honte』の意味は？",
+answers:["誇り","恥","希望","自由"],
+correct:1
+},
+
+{
+question:"『la surprise』の意味は？",
+answers:["努力","失望","驚き","危険"],
+correct:2
+},
+
+{
+question:"『la déception』の意味は？",
+answers:["失望","感謝","尊敬","平和"],
+correct:0
+},
+
+{
+question:"『le respect』の意味は？",
+answers:["批判","尊敬","議論","経験"],
+correct:1
+},
+
+{
+question:"『la confiance』の意味は？",
+answers:["不安","恐怖","信頼","怒り"],
+correct:2
+},
+
+{
+question:"『le caractère』の意味は？",
+answers:["性格","法律","文化","人口"],
+correct:0
+},
+
+{
+question:"『patient(e)』の意味は？",
+answers:["我慢強い","危険な","静かな","複雑な"],
+correct:0
+},
+
+{
+question:"『gentil / gentille』の意味は？",
+answers:["厳しい","優しい","退屈な","有名な"],
+correct:1
+},
+
+{
+question:"『sérieux / sérieuse』の意味は？",
+answers:["冗談好きな","危険な","真面目な","疲れた"],
+correct:2
+},
+
+{
+question:"『timide』の意味は？",
+answers:["内気な","元気な","退屈な","自由な"],
+correct:0
+},
+
+{
+question:"『heureux / heureuse』の意味は？",
+answers:["疲れた","幸せな","怒った","危険な"],
+correct:1
+},
+
+{
+question:"『triste』の意味は？",
+answers:["静かな","怖い","悲しい","有名な"],
+correct:2
+},
+
+{
+question:"『fatigué(e)』の意味は？",
+answers:["疲れた","元気な","自由な","成功した"],
+correct:0
+},
+
+{
+question:"『le voyage』の意味は？",
+answers:["勉強","旅行","会議","経験"],
+correct:1
+},
+
+{
+question:"『le séjour』の意味は？",
+answers:["滞在","空港","出発","文化"],
+correct:0
+},
+
+{
+question:"『le départ』の意味は？",
+answers:["到着","出発","案内","選択"],
+correct:1
+},
+
+{
+question:"『l’arrivée』の意味は？",
+answers:["帰国","出発","到着","観光"],
+correct:2
+},
+
+{
+question:"『la réservation』の意味は？",
+answers:["予約","遅刻","失敗","試験"],
+correct:0
+},
+
+{
+question:"『l’hébergement』の意味は？",
+answers:["宿泊","旅行","説明","景色"],
+correct:0
+},
+
+{
+question:"『le bagage』の意味は？",
+answers:["航空券","税金","荷物","制度"],
+correct:2
+},
+
+{
+question:"『le passeport』の意味は？",
+answers:["保険","地図","パスポート","自由"],
+correct:2
+},
+
+{
+question:"『la frontière』の意味は？",
+answers:["国境","人口","文化","産業"],
+correct:0
+},
+
+{
+question:"『le tourisme』の意味は？",
+answers:["工業","政治","観光","教育"],
+correct:2
+},
+
+{
+question:"『l’université』の意味は？",
+answers:["大学","政府","裁判所","市場"],
+correct:0
+},
+
+{
+question:"『les études』の意味は？",
+answers:["雇用","研究","勉強","旅行"],
+correct:2
+},
+
+{
+question:"『l’examen』の意味は？",
+answers:["試験","経験","宿題","予約"],
+correct:0
+},
+
+{
+question:"『la note』の意味は？",
+answers:["文化","成績","人口","会議"],
+correct:1
+},
+
+{
+question:"『le devoir』の意味は？",
+answers:["宿題","旅行","病気","観光"],
+correct:0
+},
+
+{
+question:"『la recherche』の意味は？",
+answers:["比較","研究","出発","法律"],
+correct:1
+},
+
+{
+question:"『la bibliothèque』の意味は？",
+answers:["病院","美術館","図書館","工場"],
+correct:2
+},
+
+{
+question:"『apprendre』の意味は？",
+answers:["学ぶ","忘れる","説明する","拒否する"],
+correct:0
+},
+
+{
+question:"『enseigner』の意味は？",
+answers:["共有する","教える","準備する","延期する"],
+correct:1
+},
+
+{
+question:"『réviser』の意味は？",
+answers:["失敗する","到着する","復習する","招待する"],
+correct:2
+},
+
+{
+question:"『discuter』の意味は？",
+answers:["比較する","議論する","延期する","拒否する"],
+correct:1
+},
+
+{
+question:"『décider』の意味は？",
+answers:["決める","逃げる","失敗する","共有する"],
+correct:0
+},
+
+{
+question:"『accepter』の意味は？",
+answers:["拒否する","説明する","受け入れる","比較する"],
+correct:2
+},
+
+{
+question:"『refuser』の意味は？",
+answers:["受け入れる","拒否する","改善する","修理する"],
+correct:1
+},
+
+{
+question:"『protéger』の意味は？",
+answers:["壊す","守る","延期する","隠す"],
+correct:1
+},
+
+{
+question:"『respecter』の意味は？",
+answers:["尊重する","疑う","失う","汚染する"],
+correct:0
+},
+
+{
+question:"『détruire』の意味は？",
+answers:["改善する","建設する","破壊する","共有する"],
+correct:2
+},
+
+{
+question:"『participer à』の意味は？",
+answers:["〜に参加する","〜を避ける","〜を禁止する","〜を壊す"],
+correct:0
+},
+
+{
+question:"『s’intéresser à』の意味は？",
+answers:["〜を諦める","〜に興味を持つ","〜を比較する","〜を隠す"],
+correct:1
+},
+
+{
+question:"『être en retard』の意味は？",
+answers:["成功している","疲れている","遅れている","安心している"],
+correct:2
+},
+
+{
+question:"『avoir lieu』の意味は？",
+answers:["開催される","延期される","失敗する","比較される"],
+correct:0
+},
+
+{
+question:"『faire des progrès』の意味は？",
+answers:["失敗する","進歩する","遅刻する","疑う"],
+correct:1
+},
+
+{
+question:"『prendre une décision』の意味は？",
+answers:["説明する","準備する","決断する","比較する"],
+correct:2
+},
+
+{
+question:"『avoir de la chance』の意味は？",
+answers:["運がいい","我慢する","参加する","怒る"],
+correct:0
+},
+
+{
+question:"『faire de son mieux』の意味は？",
+answers:["失敗する","最善を尽くす","諦める","逃げる"],
+correct:1
+},
+
+{
+question:"『la réussite』の意味は？",
+answers:["成功","戦争","責任","危険"],
+correct:0
+},
+
+{
+question:"『l’échec』の意味は？",
+answers:["発見","改善","失敗","進歩"],
+correct:2
+},
+
+{
+question:"『la responsabilité』の意味は？",
+answers:["責任","平和","観光","文化"],
+correct:0
+},
+
+{
+question:"『la solution』の意味は？",
+answers:["危険","解決策","税金","比較"],
+correct:1
+},
+
+{
+question:"『le défi』の意味は？",
+answers:["人口","宿題","挑戦","説明"],
+correct:2
+},
+
+{
+question:"『la crise』の意味は？",
+answers:["発展","危機","選挙","会議"],
+correct:1
+},
+
+{
+question:"『la catastrophe』の意味は？",
+answers:["成功","災害","責任","制度"],
+correct:1
+},
+
+{
+question:"『la catastrophe naturelle』の意味は？",
+answers:["経済危機","自然災害","交通事故","教育問題"],
+correct:1
+},
+
+{
+question:"『la sécheresse』の意味は？",
+answers:["洪水","干ばつ","地震","台風"],
+correct:1
+},
+
+{
+question:"『l’inondation』の意味は？",
+answers:["干ばつ","火事","洪水","嵐"],
+correct:2
+},
+
+{
+question:"『la pauvreté』の意味は？",
+answers:["豊かさ","貧困","教育","技術"],
+correct:1
+},
+
+{
+question:"『la faim』の意味は？",
+answers:["満足","空腹","健康","自由"],
+correct:1
+},
+
+{
+question:"『la consommation』の意味は？",
+answers:["消費","汚染","輸送","研究"],
+correct:0
+},
+
+{
+question:"『la production』の意味は？",
+answers:["輸入","生産","教育","選択"],
+correct:1
+},
+
+{
+question:"『l’importation』の意味は？",
+answers:["輸出","輸入","観光","交通"],
+correct:1
+},
+
+{
+question:"『l’exportation』の意味は？",
+answers:["輸出","汚染","比較","人口"],
+correct:0
+},
+
+{
+question:"『le réchauffement climatique』の意味は？",
+answers:["人口増加","地球温暖化","交通渋滞","経済危機"],
+correct:1
+},
+
+{
+question:"『l’immigration』の意味は？",
+answers:["失業","移民","観光","教育"],
+correct:1
+},
+
+{
+question:"『l’émigration』の意味は？",
+answers:["国外移住","留学","雇用","輸送"],
+correct:0
+},
+
+{
+question:"『la discrimination』の意味は？",
+answers:["平等","差別","研究","責任"],
+correct:1
+},
+
+{
+question:"『le racisme』の意味は？",
+answers:["平和","人種差別","環境保護","経済成長"],
+correct:1
+},
+
+{
+question:"『la tolérance』の意味は？",
+answers:["我慢・寛容","恐怖","怒り","挑戦"],
+correct:0
+},
+
+{
+question:"『la liberté d’expression』の意味は？",
+answers:["選挙権","移動の自由","表現の自由","教育制度"],
+correct:2
+},
+
+{
+question:"『l’influence』の意味は？",
+answers:["影響","説明","約束","文化"],
+correct:0
+},
+
+{
+question:"『la responsabilité』の意味は？",
+answers:["危険","責任","観光","税金"],
+correct:1
+},
+
+{
+question:"『augmenter』の意味は？",
+answers:["減少する","増える・増やす","比較する","延期する"],
+correct:1
+},
+
+{
+question:"『diminuer』の意味は？",
+answers:["改善する","参加する","減る・減らす","共有する"],
+correct:2
+},
+
+{
+question:"『améliorer』の意味は？",
+answers:["改善する","悪化する","隠す","逃げる"],
+correct:0
+},
+
+{
+question:"『aggraver』の意味は？",
+answers:["比較する","悪化させる","説明する","許可する"],
+correct:1
+},
+
+{
+question:"『protéger』の意味は？",
+answers:["破壊する","守る","延期する","疑う"],
+correct:1
+},
+
+{
+question:"『interdire』の意味は？",
+answers:["許可する","改善する","禁止する","選択する"],
+correct:2
+},
+
+{
+question:"『autoriser』の意味は？",
+answers:["禁止する","許可する","発見する","失敗する"],
+correct:1
+},
+
+{
+question:"『encourager』の意味は？",
+answers:["励ます","避ける","否定する","減らす"],
+correct:0
+},
+
+{
+question:"『empêcher』の意味は？",
+answers:["助ける","妨げる","説明する","到着する"],
+correct:1
+},
+
+{
+question:"『obliger』の意味は？",
+answers:["共有する","〜を強制する","疑う","比較する"],
+correct:1
+},
+
+{
+question:"『permettre』の意味は？",
+answers:["〜を可能にする","隠す","拒否する","悪化させる"],
+correct:0
+},
+
+{
+question:"『proposer』の意味は？",
+answers:["壊す","提案する","諦める","輸出する"],
+correct:1
+},
+
+{
+question:"『accepter』の意味は？",
+answers:["拒否する","改善する","受け入れる","禁止する"],
+correct:2
+},
+
+{
+question:"『refuser』の意味は？",
+answers:["受け入れる","拒否する","延期する","共有する"],
+correct:1
+},
+
+{
+question:"『développer』の意味は？",
+answers:["発展させる","減少させる","失敗する","逃げる"],
+correct:0
+},
+
+{
+question:"『créer』の意味は？",
+answers:["比較する","創造する","拒否する","疑う"],
+correct:1
+},
+
+{
+question:"『supprimer』の意味は？",
+answers:["追加する","修理する","削除する","招待する"],
+correct:2
+},
+
+{
+question:"『remplacer』の意味は？",
+answers:["置き換える","発見する","準備する","禁止する"],
+correct:0
+},
+
+{
+question:"『éviter』の意味は？",
+answers:["避ける","参加する","許可する","説明する"],
+correct:0
+},
+
+{
+question:"『influencer』の意味は？",
+answers:["影響を与える","比較する","移住する","改善する"],
+correct:0
+},
+
+
+
+];
+
+const verbs = [
+    // 動詞20問
+    {
+question:"『prendre soin de』の意味は？",
+answers:["〜を避ける","〜の世話をする","〜を比較する","〜を禁止する"],
+correct:1
+},
+
+{
+question:"『prendre du temps』の意味は？",
+answers:["時間がかかる","時間を節約する","遅刻する","成功する"],
+correct:0
+},
+
+{
+question:"『prendre une photo』の意味は？",
+answers:["写真を見る","写真を撮る","写真を消す","写真を送る"],
+correct:1
+},
+
+{
+question:"『prendre une décision』の意味は？",
+answers:["決断する","説明する","比較する","疑う"],
+correct:0
+},
+
+{
+question:"『mettre fin à』の意味は？",
+answers:["〜を始める","〜を改善する","〜を終わらせる","〜を避ける"],
+correct:2
+},
+
+{
+question:"『mettre en place』の意味は？",
+answers:["破壊する","導入する","逃げる","延期する"],
+correct:1
+},
+
+{
+question:"『mettre en danger』の意味は？",
+answers:["安全にする","改善する","危険にさらす","説明する"],
+correct:2
+},
+
+{
+question:"『tenir compte de』の意味は？",
+answers:["〜を考慮する","〜を禁止する","〜を疑う","〜を壊す"],
+correct:0
+},
+
+{
+question:"『tenir une promesse』の意味は？",
+answers:["約束を忘れる","約束を守る","約束を説明する","約束を比較する"],
+correct:1
+},
+
+{
+question:"『tenir à』の意味は？",
+answers:["〜を避ける","〜を大切に思う","〜を削除する","〜を延期する"],
+correct:1
+},
+
+{
+question:"『faire face à』の意味は？",
+answers:["〜を避ける","〜に直面する","〜を禁止する","〜を交換する"],
+correct:1
+},
+
+{
+question:"『faire attention à』の意味は？",
+answers:["〜を忘れる","〜に注意する","〜を壊す","〜を説明する"],
+correct:1
+},
+
+{
+question:"『faire des efforts』の意味は？",
+answers:["失敗する","努力する","遅刻する","拒否する"],
+correct:1
+},
+
+{
+question:"『avoir confiance en』の意味は？",
+answers:["〜を疑う","〜を恐れる","〜を信頼する","〜を避ける"],
+correct:2
+},
+
+{
+question:"『avoir honte de』の意味は？",
+answers:["〜を誇りに思う","〜を恥じる","〜を改善する","〜を許可する"],
+correct:1
+},
+
+{
+question:"『avoir raison』の意味は？",
+answers:["正しい","失敗する","怒る","比較する"],
+correct:0
+},
+
+{
+question:"『avoir tort』の意味は？",
+answers:["成功する","間違っている","共有する","説明する"],
+correct:1
+},
+
+{
+question:"『se moquer de』の意味は？",
+answers:["〜を助ける","〜をからかう","〜を招待する","〜を選ぶ"],
+correct:1
+},
+
+{
+question:"『se souvenir de』の意味は？",
+answers:["〜を忘れる","〜を覚えている","〜を削除する","〜を比較する"],
+correct:1
+},
+
+{
+question:"『avoir lieu』の意味は？",
+answers:["開催される","失敗する","輸入する","比較される"],
+correct:0
+},
+
+{
+question:"『prendre』の意味は？",
+answers:["取る・飲む・乗る","壊す","拒否する","延期する"],
+correct:0
+},
+
+{
+question:"『prendre le train』の意味は？",
+answers:["電車を見る","電車に乗る","電車を掃除する","電車を待つ"],
+correct:1
+},
+
+{
+question:"『prendre un café』の意味は？",
+answers:["コーヒーを買う","コーヒーを飲む","コーヒーを作る","コーヒーを捨てる"],
+correct:1
+},
+
+{
+question:"『prendre une photo』の意味は？",
+answers:["写真を送る","写真を撮る","写真を探す","写真を説明する"],
+correct:1
+},
+
+{
+question:"『passer』の意味は？",
+answers:["通る・過ごす・受ける","壊れる","隠れる","禁止する"],
+correct:0
+},
+
+{
+question:"『passer un examen』の意味は？",
+answers:["試験を作る","試験を受ける","試験を説明する","試験を延期する"],
+correct:1
+},
+
+{
+question:"『passer du temps』の意味は？",
+answers:["時間を失う","時間を過ごす","時間を止める","時間を比べる"],
+correct:1
+},
+
+{
+question:"『passer à Paris』の意味は？",
+answers:["パリに住む","パリに立ち寄る","パリを出発する","パリを壊す"],
+correct:1
+},
+
+{
+question:"『manquer』の意味は？",
+answers:["成功する","〜が足りない・逃す","改善する","共有する"],
+correct:1
+},
+
+{
+question:"『manquer le train』の意味は？",
+answers:["電車を修理する","電車に乗る","電車に遅れる","電車を止める"],
+correct:2
+},
+
+{
+question:"『manquer de confiance』の意味は？",
+answers:["自信がない","自信がある","信頼する","失敗する"],
+correct:0
+},
+
+{
+question:"『réaliser』の意味は？",
+answers:["気づく・実現する","説明する","延期する","比較する"],
+correct:0
+},
+
+{
+question:"『se rendre compte de』の意味は？",
+answers:["〜を忘れる","〜を改善する","〜に気づく","〜を壊す"],
+correct:2
+},
+
+{
+question:"『suivre』の意味は？",
+answers:["従う・受講する","壊す","拒否する","輸入する"],
+correct:0
+},
+
+{
+question:"『suivre un cours』の意味は？",
+answers:["授業を休む","授業を受ける","授業を説明する","授業を作る"],
+correct:1
+},
+
+{
+question:"『entendre』の意味は？",
+answers:["話す","聞こえる","説明する","改善する"],
+correct:1
+},
+
+{
+question:"『attendre』の意味は？",
+answers:["待つ","出発する","比較する","参加する"],
+correct:0
+},
+
+{
+question:"『apporter』の意味は？",
+answers:["持ってくる","持っていく","借りる","隠す"],
+correct:0
+},
+
+{
+question:"『emporter』の意味は？",
+answers:["返す","持っていく","選ぶ","延期する"],
+correct:1
+},
+
+{
+question:"『ramener』の意味は？",
+answers:["連れ戻す・持ち帰る","禁止する","共有する","失敗する"],
+correct:0
+},
+
+{
+question:"『le progrès』の意味は？",
+answers:["危険","進歩","失敗","環境"],
+correct:1
+},
+
+{
+question:"『la croissance』の意味は？",
+answers:["減少","成長","戦争","法律"],
+correct:1
+},
+
+{
+question:"『la baisse』の意味は？",
+answers:["増加","低下","自由","経験"],
+correct:1
+},
+
+{
+question:"『la hausse』の意味は？",
+answers:["低下","輸出","上昇","説明"],
+correct:2
+},
+
+{
+question:"『le taux』の意味は？",
+answers:["割合・率","文化","責任","研究"],
+correct:0
+},
+
+{
+question:"『la dette』の意味は？",
+answers:["借金","税金","雇用","人口"],
+correct:0
+},
+
+{
+question:"『la consommation』の意味は？",
+answers:["消費","研究","汚染","輸送"],
+correct:0
+},
+
+{
+question:"『la menace』の意味は？",
+answers:["機会","脅威","平等","会議"],
+correct:1
+},
+
+{
+question:"『le phénomène』の意味は？",
+answers:["現象","制度","選挙","輸出"],
+correct:0
+},
+
+{
+question:"『la conséquence』の意味は？",
+answers:["理由","原因","結果","状況"],
+correct:2
+},
+
+{
+question:"『la cause』の意味は？",
+answers:["原因","危険","説明","平和"],
+correct:0
+},
+
+{
+question:"『le but』の意味は？",
+answers:["目標","比較","責任","法律"],
+correct:0
+},
+
+{
+question:"『le moyen』の意味は？",
+answers:["意見","手段","教育","議論"],
+correct:1
+},
+
+{
+question:"『la méthode』の意味は？",
+answers:["制度","方法","人口","自由"],
+correct:1
+},
+
+{
+question:"『la difficulté』の意味は？",
+answers:["失敗","改善","困難","進歩"],
+correct:2
+},
+
+{
+question:"『la réussite』の意味は？",
+answers:["成功","減少","戦争","責任"],
+correct:0
+},
+
+{
+question:"『la concurrence』の意味は？",
+answers:["協力","競争","文化","差別"],
+correct:1
+},
+
+{
+question:"『l’avantage』の意味は？",
+answers:["欠点","危険","利点","経験"],
+correct:2
+},
+
+{
+question:"『l’inconvénient』の意味は？",
+answers:["利点","欠点","制度","輸送"],
+correct:1
+},
+
+{
+question:"『la priorité』の意味は？",
+answers:["義務","自由","優先事項","説明"],
+correct:2
+},
+
+{
+question:"『atteindre』の意味は？",
+answers:["到達する","避ける","説明する","拒否する"],
+correct:0
+},
+
+{
+question:"『gérer』の意味は？",
+answers:["管理する","比較する","延期する","疑う"],
+correct:0
+},
+
+{
+question:"『nier』の意味は？",
+answers:["認める","否定する","改善する","共有する"],
+correct:1
+},
+
+{
+question:"『soutenir』の意味は？",
+answers:["避ける","支持する・支える","輸出する","失敗する"],
+correct:1
+},
+
+{
+question:"『surmonter』の意味は？",
+answers:["乗り越える","疑う","延期する","説明する"],
+correct:0
+},
+
+{
+question:"『éviter』の意味は？",
+answers:["避ける","受け入れる","共有する","修理する"],
+correct:0
+},
+
+{
+question:"『convaincre』の意味は？",
+answers:["説得する","否定する","輸入する","削除する"],
+correct:0
+},
+
+{
+question:"『prouver』の意味は？",
+answers:["証明する","拒否する","逃げる","比較する"],
+correct:0
+},
+
+{
+question:"『affirmer』の意味は？",
+answers:["主張する","改善する","延期する","参加する"],
+correct:0
+},
+
+{
+question:"『exiger』の意味は？",
+answers:["要求する","招待する","交換する","共有する"],
+correct:0
+},
+
+{
+question:"『permettre』の意味は？",
+answers:["〜を可能にする","禁止する","失敗する","避ける"],
+correct:0
+},
+
+{
+question:"『interdire』の意味は？",
+answers:["改善する","禁止する","支持する","説明する"],
+correct:1
+},
+
+{
+question:"『prévenir』の意味は？",
+answers:["警告する・知らせる","比較する","逃げる","壊す"],
+correct:0
+},
+
+{
+question:"『menacer』の意味は？",
+answers:["招待する","脅かす","修理する","延期する"],
+correct:1
+},
+
+{
+question:"『souffrir』の意味は？",
+answers:["成功する","我慢する","苦しむ","共有する"],
+correct:2
+},
+
+{
+question:"『se plaindre』の意味は？",
+answers:["感謝する","不満を言う","説明する","疑う"],
+correct:1
+},
+
+{
+question:"『améliorer』の意味は？",
+answers:["悪化させる","改善する","削除する","否定する"],
+correct:1
+},
+
+{
+question:"『empirer』の意味は？",
+answers:["良くなる","悪化する","証明する","避ける"],
+correct:1
+},
+
+{
+question:"『dépendre de』の意味は？",
+answers:["〜を避ける","〜に依存する","〜を禁止する","〜を否定する"],
+correct:1
+},
+
+{
+question:"『contribuer à』の意味は？",
+answers:["〜に貢献する","〜を延期する","〜を疑う","〜を比較する"],
+correct:0
+},
+
+{
+question:"『l’enquête』の意味は？",
+answers:["戦争","調査","制度","議論"],
+correct:1
+},
+
+{
+question:"『la justice sociale』の意味は？",
+answers:["社会正義","社会保険","自由市場","社会制度"],
+correct:0
+},
+
+{
+question:"『la pauvreté extrême』の意味は？",
+answers:["環境問題","極度の貧困","人口増加","文化交流"],
+correct:1
+},
+
+{
+question:"『le chômage』の意味は？",
+answers:["雇用","失業","税金","研究"],
+correct:1
+},
+
+{
+question:"『le revenu』の意味は？",
+answers:["収入","人口","輸送","責任"],
+correct:0
+},
+
+{
+question:"『la dépense』の意味は？",
+answers:["収入","支出","投票","改善"],
+correct:1
+},
+
+{
+question:"『le développement』の意味は？",
+answers:["発展","災害","戦争","比較"],
+correct:0
+},
+
+{
+question:"『la croissance économique』の意味は？",
+answers:["経済危機","経済成長","物価上昇","輸出産業"],
+correct:1
+},
+
+{
+question:"『la mondialisation』の意味は？",
+answers:["地域化","国際化・グローバル化","輸送","植民地化"],
+correct:1
+},
+
+{
+question:"『la société』の意味は？",
+answers:["社会","企業","法律","責任"],
+correct:0
+},
+
+{
+question:"『la génération』の意味は？",
+answers:["経験","世代","投票","会議"],
+correct:1
+},
+
+{
+question:"『la jeunesse』の意味は？",
+answers:["老後","若者・青春","人口","危険"],
+correct:1
+},
+
+{
+question:"『la vieillesse』の意味は？",
+answers:["成長","高齢・老年","文化","自由"],
+correct:1
+},
+
+{
+question:"『l’habitude』の意味は？",
+answers:["経験","習慣","研究","比較"],
+correct:1
+},
+
+{
+question:"『la coutume』の意味は？",
+answers:["法律","伝統・習慣","危険","輸送"],
+correct:1
+},
+
+{
+question:"『le comportement』の意味は？",
+answers:["性格","行動","教育","選択"],
+correct:1
+},
+
+{
+question:"『la communication』の意味は？",
+answers:["戦争","意思疎通","研究","税金"],
+correct:1
+},
+
+{
+question:"『la technologie』の意味は？",
+answers:["環境","技術","人口","裁判"],
+correct:1
+},
+
+{
+question:"『l’accès』の意味は？",
+answers:["比較","アクセス・利用機会","失敗","影響"],
+correct:1
+},
+
+{
+question:"『la connaissance』の意味は？",
+answers:["知識","支出","失業","制度"],
+correct:0
+},
+
+{
+question:"『accomplir』の意味は？",
+answers:["避ける","達成する","疑う","延期する"],
+correct:1
+},
+
+{
+question:"『admettre』の意味は？",
+answers:["認める","拒否する","壊す","逃げる"],
+correct:0
+},
+
+{
+question:"『appartenir à』の意味は？",
+answers:["〜を避ける","〜に属する","〜を比較する","〜を延期する"],
+correct:1
+},
+
+{
+question:"『assurer』の意味は？",
+answers:["保証する","共有する","禁止する","減少する"],
+correct:0
+},
+
+{
+question:"『consommer』の意味は？",
+answers:["輸出する","消費する","延期する","疑う"],
+correct:1
+},
+
+{
+question:"『constater』の意味は？",
+answers:["拒否する","確認する・気づく","破壊する","招待する"],
+correct:1
+},
+
+{
+question:"『contenir』の意味は？",
+answers:["避ける","含む","比較する","否定する"],
+correct:1
+},
+
+{
+question:"『conserver』の意味は？",
+answers:["保存する","輸入する","失敗する","共有する"],
+correct:0
+},
+
+{
+question:"『considérer』の意味は？",
+answers:["考慮する","壊す","交換する","禁止する"],
+correct:0
+},
+
+{
+question:"『disparaître』の意味は？",
+answers:["到着する","現れる","消える","比較する"],
+correct:2
+},
+
+{
+question:"『échapper à』の意味は？",
+answers:["〜を説明する","〜を逃れる","〜を支持する","〜を延期する"],
+correct:1
+},
+
+{
+question:"『éprouver』の意味は？",
+answers:["感じる・経験する","共有する","禁止する","改善する"],
+correct:0
+},
+
+{
+question:"『exister』の意味は？",
+answers:["改善する","存在する","輸出する","逃げる"],
+correct:1
+},
+
+{
+question:"『favoriser』の意味は？",
+answers:["妨げる","促進する","削除する","拒否する"],
+correct:1
+},
+
+{
+question:"『fournir』の意味は？",
+answers:["比較する","提供する","避ける","疑う"],
+correct:1
+},
+
+{
+question:"『ignorer』の意味は？",
+answers:["無視する・知らない","理解する","説明する","守る"],
+correct:0
+},
+
+{
+question:"『insister sur』の意味は？",
+answers:["〜を避ける","〜を強調する","〜を延期する","〜を輸入する"],
+correct:1
+},
+
+{
+question:"『mériter』の意味は？",
+answers:["共有する","値する","失敗する","比較する"],
+correct:1
+},
+
+{
+question:"『préserver』の意味は？",
+answers:["保護する","壊す","逃げる","拒否する"],
+correct:0
+},
+
+{
+question:"『réduire』の意味は？",
+answers:["増やす","減らす","説明する","輸送する"],
+correct:1
+},
+];
+
+const expressions = [
+    // 表現20問
+   {
+question:"『actuel / actuelle』の意味は？",
+answers:["昔の","現在の","危険な","自由な"],
+correct:1
+},
+
+{
+question:"『ancien / ancienne』の意味は？",
+answers:["新しい","重要な","昔の・元〜","退屈な"],
+correct:2
+},
+
+{
+question:"『certain / certaine』の意味は？",
+answers:["確かな・ある","危険な","一般的な","静かな"],
+correct:0
+},
+
+{
+question:"『grave』の意味は？",
+answers:["簡単な","重大な","元気な","普通の"],
+correct:1
+},
+
+{
+question:"『principal(e)』の意味は？",
+answers:["副次的な","主な","国際的な","複雑な"],
+correct:1
+},
+
+{
+question:"『semblable』の意味は？",
+answers:["異なる","似ている","危険な","便利な"],
+correct:1
+},
+
+{
+question:"『divers(e)』の意味は？",
+answers:["単純な","多様な","有名な","複雑な"],
+correct:1
+},
+
+{
+question:"『suffisant(e)』の意味は？",
+answers:["不足した","十分な","複雑な","重要な"],
+correct:1
+},
+
+{
+question:"『insuffisant(e)』の意味は？",
+answers:["十分な","重大な","不足した","便利な"],
+correct:2
+},
+
+{
+question:"『nécessaire』の意味は？",
+answers:["危険な","必要な","珍しい","元気な"],
+correct:1
+},
+
+{
+question:"『possible』の意味は？",
+answers:["可能な","不可能な","便利な","複雑な"],
+correct:0
+},
+
+{
+question:"『impossible』の意味は？",
+answers:["重大な","危険な","不可能な","自然な"],
+correct:2
+},
+
+{
+question:"『probable』の意味は？",
+answers:["ありそうな","静かな","厳しい","退屈な"],
+correct:0
+},
+
+{
+question:"『rare』の意味は？",
+answers:["一般的な","珍しい","危険な","十分な"],
+correct:1
+},
+
+{
+question:"『cependant』の意味は？",
+answers:["例えば","それにもかかわらず","その結果","つまり"],
+correct:1
+},
+
+{
+question:"『en effet』の意味は？",
+answers:["実際に・なぜなら","突然","決して","一方で"],
+correct:0
+},
+
+{
+question:"『par conséquent』の意味は？",
+answers:["しかし","例えば","したがって","絶対に"],
+correct:2
+},
+
+{
+question:"『désormais』の意味は？",
+answers:["突然","今後は","昔","頻繁に"],
+correct:1
+},
+
+{
+question:"『auparavant』の意味は？",
+answers:["以前は","今後","したがって","つまり"],
+correct:0
+},
+
+{
+question:"『peu à peu』の意味は？",
+answers:["突然","少しずつ","絶対に","頻繁に"],
+correct:1
+},
+
+{
+question:"『à cause de』の意味は？",
+answers:["〜にもかかわらず","〜のせいで","〜のために","〜以前に"],
+correct:1
+},
+
+{
+question:"『grâce à』の意味は？",
+answers:["〜のおかげで","〜のせいで","〜について","〜以前に"],
+correct:0
+},
+
+{
+question:"『au lieu de』の意味は？",
+answers:["〜のおかげで","〜の代わりに","〜の間に","〜について"],
+correct:1
+},
+
+{
+question:"『afin de』の意味は？",
+answers:["〜のせいで","〜するために","〜にもかかわらず","〜以来"],
+correct:1
+},
+
+{
+question:"『afin que』の意味は？",
+answers:["〜なので","〜するために（接続法）","〜の前に","〜に対して"],
+correct:1
+},
+
+{
+question:"『bien que』の意味は？",
+answers:["〜だから","〜にもかかわらず","〜以来","〜の代わりに"],
+correct:1
+},
+
+{
+question:"『tandis que』の意味は？",
+answers:["〜なので","〜する前に","〜する一方で","〜の代わりに"],
+correct:2
+},
+
+{
+question:"『au cas où』の意味は？",
+answers:["〜の代わりに","〜の場合に備えて","〜のせいで","〜以来"],
+correct:1
+},
+
+{
+question:"『de plus』の意味は？",
+answers:["さらに","しかし","突然","つまり"],
+correct:0
+},
+
+{
+question:"『en outre』の意味は？",
+answers:["その結果","しかし","さらに","絶対に"],
+correct:2
+},
+
+{
+question:"『d’un côté ～ de l’autre côté』の意味は？",
+answers:["突然","一方では〜他方では","そのため","少しずつ"],
+correct:1
+},
+
+{
+question:"『en revanche』の意味は？",
+answers:["つまり","一方で・その代わり","絶対に","以前は"],
+correct:1
+},
+
+{
+question:"『c’est pourquoi』の意味は？",
+answers:["例えば","だからこそ","突然","一方で"],
+correct:1
+},
+
+{
+question:"『à mon avis』の意味は？",
+answers:["実際に","私の意見では","今後は","したがって"],
+correct:1
+},
+
+{
+question:"『selon moi』の意味は？",
+answers:["以前は","私によれば","絶対に","その代わり"],
+correct:1
+},
+
+{
+question:"『tout à fait』の意味は？",
+answers:["全く・その通り","突然","少しずつ","おそらく"],
+correct:0
+},
+
+{
+question:"『pas du tout』の意味は？",
+answers:["たぶん","突然","全く〜ない","したがって"],
+correct:2
+},
+
+{
+question:"『de temps en temps』の意味は？",
+answers:["頻繁に","時々","絶対に","今後は"],
+correct:1
+},
+
+{
+question:"『la plupart de』の意味は？",
+answers:["少数の","大部分の","突然の","以前の"],
+correct:1
+},
+
+{
+question:"『de moins en moins』の意味は？",
+answers:["ますます少なく","ますます多く","突然","少しずつ"],
+correct:0
+},
+
+{
+question:"『la responsabilité civile』の意味は？",
+answers:["市民権","民事責任","社会福祉","教育制度"],
+correct:1
+},
+
+{
+question:"『la solidarité』の意味は？",
+answers:["対立","連帯","差別","輸出"],
+correct:1
+},
+
+{
+question:"『l’indépendance』の意味は？",
+answers:["依存","独立","競争","貧困"],
+correct:1
+},
+
+{
+question:"『la dépendance』の意味は？",
+answers:["独立","成長","依存","平等"],
+correct:2
+},
+
+{
+question:"『la volonté』の意味は？",
+answers:["恐怖","意志","危険","制度"],
+correct:1
+},
+
+{
+question:"『la patience』の意味は？",
+answers:["勇気","忍耐","怒り","競争"],
+correct:1
+},
+
+{
+question:"『la conscience』の意味は？",
+answers:["知識","意識・良心","研究","比較"],
+correct:1
+},
+
+{
+question:"『la confiance mutuelle』の意味は？",
+answers:["相互信頼","社会問題","税制度","経済成長"],
+correct:0
+},
+
+{
+question:"『la liberté』の意味は？",
+answers:["自由","差別","収入","説明"],
+correct:0
+},
+
+{
+question:"『l’égalité des chances』の意味は？",
+answers:["文化交流","機会均等","環境保護","人口問題"],
+correct:1
+},
+
+{
+question:"『la responsabilité personnelle』の意味は？",
+answers:["個人責任","輸出入","教育制度","世代格差"],
+correct:0
+},
+
+{
+question:"『la diversité』の意味は？",
+answers:["平等","多様性","危険","収入"],
+correct:1
+},
+
+{
+question:"『l’injustice』の意味は？",
+answers:["平和","不正義","自由","輸送"],
+correct:1
+},
+
+{
+question:"『le respect de la loi』の意味は？",
+answers:["法律の尊重","文化交流","輸送費","人口増加"],
+correct:0
+},
+
+{
+question:"『la responsabilité sociale』の意味は？",
+answers:["社会的責任","社会運動","社会保障","社会問題"],
+correct:0
+},
+
+{
+question:"『la coopération』の意味は？",
+answers:["競争","協力","戦争","説明"],
+correct:1
+},
+
+{
+question:"『la concurrence économique』の意味は？",
+answers:["経済成長","経済競争","経済危機","経済政策"],
+correct:1
+},
+
+{
+question:"『la protection』の意味は？",
+answers:["差別","保護","比較","輸入"],
+correct:1
+},
+
+{
+question:"『la justice』の意味は？",
+answers:["汚染","正義・司法","危険","発見"],
+correct:1
+},
+
+{
+question:"『la sécurité』の意味は？",
+answers:["教育","安全","人口","研究"],
+correct:1
+},
+
+{
+question:"『évident(e)』の意味は？",
+answers:["曖昧な","明らかな","危険な","珍しい"],
+correct:1
+},
+
+{
+question:"『essentiel(le)』の意味は？",
+answers:["副次的な","重要な・不可欠な","危険な","一時的な"],
+correct:1
+},
+
+{
+question:"『utile』の意味は？",
+answers:["無意味な","便利な・役に立つ","危険な","珍しい"],
+correct:1
+},
+
+{
+question:"『inutile』の意味は？",
+answers:["必要な","危険な","役に立たない","有名な"],
+correct:2
+},
+
+{
+question:"『capable de』の意味は？",
+answers:["〜できる","〜に依存する","〜を避ける","〜に反対する"],
+correct:0
+},
+
+{
+question:"『incapable de』の意味は？",
+answers:["〜に成功する","〜できない","〜を改善する","〜を支持する"],
+correct:1
+},
+
+{
+question:"『responsable de』の意味は？",
+answers:["〜を恐れる","〜の責任がある","〜を比較する","〜を禁止する"],
+correct:1
+},
+
+{
+question:"『semblable à』の意味は？",
+answers:["〜と異なる","〜に似ている","〜を避ける","〜に反対する"],
+correct:1
+},
+
+{
+question:"『différent(e) de』の意味は？",
+answers:["〜と似ている","〜と異なる","〜に依存する","〜に成功する"],
+correct:1
+},
+
+{
+question:"『proche de』の意味は？",
+answers:["〜から遠い","〜に近い","〜に反対する","〜を説明する"],
+correct:1
+},
+
+{
+question:"『loin de』の意味は？",
+answers:["〜の近く","〜から遠い","〜に依存する","〜を支持する"],
+correct:1
+},
+
+{
+question:"『plein(e) de』の意味は？",
+answers:["〜が不足している","〜でいっぱいの","〜を比較する","〜に反対する"],
+correct:1
+},
+
+{
+question:"『vide de』の意味は？",
+answers:["〜で満ちた","〜が空の","〜を改善する","〜に成功する"],
+correct:1
+},
+
+{
+question:"『favorable à』の意味は？",
+answers:["〜に反対して","〜に賛成で","〜を恐れて","〜に依存して"],
+correct:1
+},
+
+{
+question:"『contraire à』の意味は？",
+answers:["〜に似ている","〜に反する","〜に成功する","〜を支持する"],
+correct:1
+},
+
+{
+question:"『courant(e)』の意味は？",
+answers:["珍しい","普通の・一般的な","危険な","突然の"],
+correct:1
+},
+
+{
+question:"『fréquent(e)』の意味は？",
+answers:["頻繁な","静かな","危険な","複雑な"],
+correct:0
+},
+
+{
+question:"『compliqué(e)』の意味は？",
+answers:["簡単な","複雑な","珍しい","普通の"],
+correct:1
+},
+
+{
+question:"『simple』の意味は？",
+answers:["危険な","単純な","複雑な","珍しい"],
+correct:1
+},
+
+{
+question:"『sérieux / sérieuse』の意味は？",
+answers:["重大な・真面目な","突然の","退屈な","便利な"],
+correct:0
+},
+
+{
+question:"『apercevoir』の意味は？",
+answers:["壊す","ちらっと見る","改善する","延期する"],
+correct:1
+},
+
+{
+question:"『s’apercevoir de』の意味は？",
+answers:["〜を忘れる","〜に気づく","〜を避ける","〜を比較する"],
+correct:1
+},
+
+{
+question:"『apercevoir』の意味は？",
+answers:["禁止する","気づく","ちらっと見る","共有する"],
+correct:2
+},
+
+{
+question:"『accueillir』の意味は？",
+answers:["歓迎する","拒否する","延期する","隠す"],
+correct:0
+},
+
+{
+question:"『cueillir』の意味は？",
+answers:["集める・摘む","比較する","避ける","輸送する"],
+correct:0
+},
+
+{
+question:"『faillir』の意味は？",
+answers:["成功する","〜しそうになる","共有する","改善する"],
+correct:1
+},
+
+{
+question:"『parvenir à』の意味は？",
+answers:["〜に成功する","〜を疑う","〜を延期する","〜を比較する"],
+correct:0
+},
+
+{
+question:"『survenir』の意味は？",
+answers:["突然起こる","支持する","修理する","輸出する"],
+correct:0
+},
+
+{
+question:"『s’enfuir』の意味は？",
+answers:["説明する","逃げる","参加する","改善する"],
+correct:1
+},
+
+{
+question:"『suffire』の意味は？",
+answers:["比較する","十分である","失敗する","輸送する"],
+correct:1
+},
+
+{
+question:"『surgir』の意味は？",
+answers:["突然現れる","避ける","改善する","輸入する"],
+correct:0
+},
+
+{
+question:"『craindre』の意味は？",
+answers:["信頼する","恐れる","比較する","延期する"],
+correct:1
+},
+
+{
+question:"『se méfier de』の意味は？",
+answers:["〜を信頼する","〜を警戒する","〜を支持する","〜を共有する"],
+correct:1
+},
+
+{
+question:"『oser』の意味は？",
+answers:["あえて〜する","説明する","禁止する","避ける"],
+correct:0
+},
+
+{
+question:"『reflechir』の意味は？",
+answers:["共有する","熟考する","輸送する","逃げる"],
+correct:1
+},
+
+{
+question:"『s’ennuyer』の意味は？",
+answers:["退屈する","驚く","改善する","比較する"],
+correct:0
+},
+
+{
+question:"『se débrouiller』の意味は？",
+answers:["なんとかやる","共有する","疑う","延期する"],
+correct:0
+},
+
+{
+question:"『se taire』の意味は？",
+answers:["説明する","黙る","支持する","改善する"],
+correct:1
+},
+
+{
+question:"『sourire』の意味は？",
+answers:["泣く","笑う（微笑む）","壊す","拒否する"],
+correct:1
+},
+
+{
+question:"『se méprendre』の意味は？",
+answers:["勘違いする","共有する","支持する","説明する"],
+correct:0
+},
+
+{
+question:"『retarder』の意味は？",
+answers:["遅らせる","到着する","改善する","説明する"],
+correct:0
+},
+
+{
+question:"『accélérer』の意味は？",
+answers:["遅くする","加速する","隠す","拒否する"],
+correct:1
+},
+
+{
+question:"『transmettre』の意味は？",
+answers:["破壊する","伝える","比較する","避ける"],
+correct:1
+},
+
+{
+question:"『renforcer』の意味は？",
+answers:["弱める","強化する","削除する","延期する"],
+correct:1
+},
+
+{
+question:"『affaiblir』の意味は？",
+answers:["強くする","弱める","改善する","共有する"],
+correct:1
+},
+
+{
+question:"『intervenir』の意味は？",
+answers:["介入する","逃げる","否定する","輸入する"],
+correct:0
+},
+
+{
+question:"『obéir à』の意味は？",
+answers:["〜に逆らう","〜に従う","〜を避ける","〜を説明する"],
+correct:1
+},
+
+{
+question:"『désobéir à』の意味は？",
+answers:["〜に従う","〜に逆らう","〜を改善する","〜を比較する"],
+correct:1
+},
+
+{
+question:"『résoudre』の意味は？",
+answers:["壊す","解決する","拒否する","延期する"],
+correct:1
+},
+
+{
+question:"『résister à』の意味は？",
+answers:["〜に従う","〜に抵抗する","〜を支持する","〜を説明する"],
+correct:1
+},
+
+{
+question:"『imposer』の意味は？",
+answers:["拒否する","押し付ける","避ける","改善する"],
+correct:1
+},
+
+{
+question:"『retirer』の意味は？",
+answers:["加える","取り除く","共有する","比較する"],
+correct:1
+},
+
+{
+question:"『insérer』の意味は？",
+answers:["取り除く","挿入する","逃げる","拒否する"],
+correct:1
+},
+
+{
+question:"『modifier』の意味は？",
+answers:["固定する","修正する","破壊する","輸送する"],
+correct:1
+},
+
+{
+question:"『réparer』の意味は？",
+answers:["壊す","修理する","比較する","延期する"],
+correct:1
+},
+
+{
+question:"『réagir』の意味は？",
+answers:["反応する","逃げる","説明する","拒否する"],
+correct:0
+},
+
+{
+question:"『détruire』の意味は？",
+answers:["守る","破壊する","改善する","共有する"],
+correct:1
+},
+
+{
+question:"『construire』の意味は？",
+answers:["壊す","建設する","避ける","比較する"],
+correct:1
+},
+
+{
+question:"『définir』の意味は？",
+answers:["説明する","定義する","拒否する","輸送する"],
+correct:1
+},
+
+{
+question:"『reconnaître』の意味は？",
+answers:["否定する","認識する","逃げる","改善する"],
+correct:1
+},
+
+{
+question:"『se produire』の意味は？",
+answers:["準備する","起こる・発生する","比較する","拒否する"],
+correct:1
+},
+
+{
+question:"『se dérouler』の意味は？",
+answers:["終了する","進行する・行われる","壊れる","逃げる"],
+correct:1
+},
+
+{
+question:"『se passer』の意味は？",
+answers:["起こる・経過する","隠れる","改善する","共有する"],
+correct:0
+},
+
+{
+question:"『se produire un accident』の意味は？",
+answers:["事故を防ぐ","事故が起こる","事故を説明する","事故を比較する"],
+correct:1
+},
+
+{
+question:"『mettre en œuvre』の意味は？",
+answers:["実行する","延期する","拒否する","比較する"],
+correct:0
+},
+
+{
+question:"『mettre au point』の意味は？",
+answers:["破壊する","完成させる・調整する","逃げる","否定する"],
+correct:1
+},
+
+{
+question:"『avoir besoin de』の意味は？",
+answers:["〜を避ける","〜を必要とする","〜を疑う","〜を比較する"],
+correct:1
+},
+
+{
+question:"『avoir envie de』の意味は？",
+answers:["〜したい気がする","〜を恐れる","〜を拒否する","〜を説明する"],
+correct:0
+},
+
+{
+question:"『avoir l’air de』の意味は？",
+answers:["〜のように見える","〜を隠す","〜を壊す","〜を延期する"],
+correct:0
+},
+
+{
+question:"『avoir l’habitude de』の意味は？",
+answers:["〜に慣れている","〜を避ける","〜を比較する","〜を拒否する"],
+correct:0
+},
+
+{
+question:"『venir de + inf』の意味は？",
+answers:["〜したばかりだ","〜する予定だ","〜を避ける","〜を説明する"],
+correct:0
+},
+
+{
+question:"『être en train de』の意味は？",
+answers:["〜し終わった","〜している最中だ","〜する前だ","〜する必要がある"],
+correct:1
+},
+
+{
+question:"『il s’agit de』の意味は？",
+answers:["〜の問題である","〜を避ける","〜を比較する","〜を拒否する"],
+correct:0
+},
+
+{
+question:"『il est question de』の意味は？",
+answers:["〜の話である","〜を隠す","〜を壊す","〜を延期する"],
+correct:0
+},
+
+{
+question:"『en train de + inf』の意味は？",
+answers:["〜しようとしている","〜している最中だ","〜し終わった","〜しない"],
+correct:1
+},
+
+{
+question:"『au fur et à mesure』の意味は？",
+answers:["一度に","少しずつ・進むにつれて","突然","絶対に"],
+correct:1
+},
+
+{
+question:"『de plus en plus』の意味は？",
+answers:["少しずつ減る","ますます多く","全くない","突然"],
+correct:1
+},
+
+{
+question:"『de moins en moins』の意味は？",
+answers:["ますます多く","ますます少なく","突然","一定"],
+correct:1
+},
+
+{
+question:"『tout à coup』の意味は？",
+answers:["少しずつ","突然","ずっと","結局"],
+correct:1
+},
+
+{
+question:"『finalement』の意味は？",
+answers:["最初に","最終的に・結局","途中で","一瞬で"],
+correct:1
+},
+];
+
+
+
+
+
+
+
+
+
+
+
+shuffleArray(quizData);
+
+function loadQuestion(){
+
+    if(quizData.length === 0){
+        return;
+    }
+
+    const q =
+    quizData[currentQuestion];
+
+    document.getElementById("question").textContent =
+        q.question;
+
+    document.getElementById("questionNumber")
+    .textContent =
+    `Question ${currentQuestion + 1} / ${quizData.length}`;
+
+    const answersEl =
+        document.getElementById("answers");
+
+    answersEl.innerHTML = "";
+
+    document.getElementById("result")
+    .textContent = "";
+
+    document.getElementById("nextBtn")
+    .style.display = "none";
+
+    q.answers.forEach((answer,index)=>{
+
+        const button =
+        document.createElement("button");
+
+        button.classList.add("answer-btn");
+
+        button.textContent = answer;
+
+        button.addEventListener("click",()=>{
+
+            const buttons =
+            document.querySelectorAll(".answer-btn");
+
+            buttons.forEach(btn =>
+                btn.disabled = true
+            );
+
+            if(index === q.correct){
+
+                button.classList.add("correct");
+
+                document.getElementById(
+                    "result"
+                ).textContent =
+                "⭕ 正解！";
+
+                score++;
+
+                document.getElementById(
+                    "score"
+                ).textContent = score;
+
+            }else{
+
+                button.classList.add("wrong");
+
+                buttons[q.correct]
+                .classList.add("correct");
+
+                document.getElementById(
+                    "result"
+                ).textContent =
+                "❌ 不正解";
+            }
+
+            document.getElementById(
+                "nextBtn"
+            ).style.display = "block";
+
+        });
+
+        answersEl.appendChild(button);
+    });
+}
+
+document.getElementById("nextBtn")
+.addEventListener("click",()=>{
+
+    currentQuestion++;
+
+    if(currentQuestion < quizData.length){
+
+        loadQuestion();
+
+    }else{
+
+        document.querySelector(
+            ".quiz-container"
+        ).innerHTML = `
+        <h1>🎉 Quiz Finished!</h1>
+        <p style="text-align:center;
+        margin-top:20px;
+        font-size:1.3rem;">
+        ${quizData.length}問中
+        <strong>${score}</strong>問正解！
+        </p>
+
+        <button
+        class="next-btn restart-btn"
+        onclick="location.reload()"
+        style="display:block;">
+        もう一回挑戦
+        </button>
+        `;
+    }
+});
+
+function shuffleArray(array){
+    for(let i=array.length-1;i>0;i--){
+        const j =
+        Math.floor(Math.random()*(i+1));
+
+        [array[i],array[j]] =
+        [array[j],array[i]];
+    }
+}
+
+document.getElementById("question")
+.textContent =
+"カテゴリーを選んでください！";
+
+</script>
+
+</body>
+</html>
