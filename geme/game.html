@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>仏検５級単語</title>
+<link rel="stylesheet" href="gaga.css">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#eef4ff,#dfe9ff);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.quiz-container{
+    background:white;
+    width:100%;
+    max-width:700px;
+    border-radius:25px;
+    padding:40px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.12);
+}
+
+h1{
+    text-align:center;
+    color:#2c3e50;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:30px;
+}
+
+.score{
+    text-align:right;
+    font-weight:bold;
+    margin-bottom:20px;
+    color:#444;
+}
+
+.question-number{
+    color:#4b6fff;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.question{
+    font-size:1.5rem;
+    font-weight:bold;
+    margin-bottom:30px;
+    color:#222;
+}
+
+.answers{
+    display:grid;
+    gap:15px;
+}
+
+.answer-btn{
+    border:none;
+    background:#f3f6ff;
+    padding:18px;
+    border-radius:15px;
+    cursor:pointer;
+    font-size:1rem;
+    transition:0.2s;
+    text-align:left;
+}
+
+.answer-btn:hover{
+    background:#dfe8ff;
+    transform:translateY(-2px);
+}
+
+.correct{
+    background:#8ee4af !important;
+    color:#14532d;
+}
+
+.wrong{
+    background:#ffb3b3 !important;
+    color:#7f1d1d;
+}
+
+#result{
+    text-align:center;
+    margin-top:20px;
+    font-size:1.2rem;
+    font-weight:bold;
+}
+
+.next-btn{
+    display:none;
+    width:100%;
+    margin-top:25px;
+    border:none;
+    background:#4b6fff;
+    color:white;
+    padding:18px;
+    border-radius:15px;
+    cursor:pointer;
+    font-size:1rem;
+    transition:0.2s;
+}
+
+.next-btn:hover{
+    background:#3457d5;
+}
+
+.restart-btn{
+    background:#16a34a;
+}
+
+@media(max-width:600px){
+    .quiz-container{
+        padding:25px;
+    }
+
+    .question{
+        font-size:1.2rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+
+    <h1>🌍 Language Quiz</h1>
+    <p class="subtitle">
+        フランス語検定５級レベル単語
+    </p>
+
+    <div class="category-select">
+
+    <button onclick="selectCategory('noun')">
+        📚 名詞
+    </button>
+
+    <button onclick="selectCategory('verb')">
+        🏃 動詞
+    </button>
+
+    <button onclick="selectCategory('adjective')">
+        ⌛ 形容詞
+    </button>
+
+    <button onclick="selectCategory('expression')">
+        💬 表現
+    </button>
+
+    <button onclick="selectCategory('all')">
+        ✨ 全部
+    </button>
+    <button onclick="location.href='../index.html'">
+        トップページへ
+</button>
+
+</div>
+
+    <div class="score">
+        Score: <span id="score">0</span>
+    </div>
+
+    <div class="question-number" id="questionNumber">
+        Question 1 / 80
+    </div>
+
+    <div class="question" id="question">
+        問題が表示されます
+    </div>
+
+    <div class="answers" id="answers"></div>
+
+    <div id="result"></div>
+
+    <button class="next-btn" id="nextBtn">
+        次の問題 →
+    </button>
+
+</div>
+
+<script>
+
+let quizData = [];
+let currentQuestion = 0;
+let score = 0;
+function selectCategory(category){
+
+   
+    if(category === "noun"){
+        quizData = [...nouns];
+    }
+
+    else if(category === "verb"){
+        quizData = [...verbs];
+    }
+
+    else if(category === "adjective"){
+        quizData = [...adjective];
+    }
+
+    else if(category === "expression"){
+        quizData = [...expressions];
+    }
+
+    else{
+        quizData = [
+            ...nouns,
+            ...verbs,
+            ...adjective,
+            ...expressions
+        ];
+    }
+
+    
+    currentQuestion = 0;
+    score = 0;
+
+    document.getElementById("score")
+    .textContent = score;
+
+    // ←超重要
+    loadQuestion();
+}
+
+    
+
+   
+
+const nouns = [
+    {
+question:"『la pomme』の意味は？",
+answers:["りんご","みかん","ぶどう","野菜"],
+correct:0
+},
+
+{
+question:"『le livre』の意味は？",
+answers:["机","本","鉛筆","学校"],
+correct:1
+},
+
+{
+question:"『la maison』の意味は？",
+answers:["学校","公園","家","病院"],
+correct:2
+},
+
+{
+question:"『le chat』の意味は？",
+answers:["犬","鳥","魚","猫"],
+correct:3
+},
+
+{
+question:"『le chien』の意味は？",
+answers:["犬","猫","馬","鳥"],
+correct:0
+},
+
+{
+question:"『la voiture』の意味は？",
+answers:["自転車","電車","車","飛行機"],
+correct:2
+},
+
+{
+question:"『l’école』の意味は？",
+answers:["学校","図書館","病院","会社"],
+correct:0
+},
+
+{
+question:"『la table』の意味は？",
+answers:["椅子","机","テーブル","窓"],
+correct:2
+},
+
+{
+question:"『la chaise』の意味は？",
+answers:["椅子","机","カバン","棚"],
+correct:0
+},
+
+{
+question:"『le pain』の意味は？",
+answers:["牛乳","パン","肉","魚"],
+correct:1
+},
+
+{
+question:"『le fromage』の意味は？",
+answers:["バター","チーズ","卵","米"],
+correct:1
+},
+
+{
+question:"『l’eau』の意味は？",
+answers:["ジュース","牛乳","水","コーヒー"],
+correct:2
+},
+
+{
+question:"『le père』の意味は？",
+answers:["母","兄","父","祖父"],
+correct:2
+},
+
+{
+question:"『la mère』の意味は？",
+answers:["姉","母","祖母","妹"],
+correct:1
+},
+
+{
+question:"『l’ami』の意味は？",
+answers:["先生","友達","学生","家族"],
+correct:1
+},
+
+{
+question:"『la porte』の意味は？",
+answers:["窓","床","ドア","壁"],
+correct:2
+},
+
+{
+question:"『la fenêtre』の意味は？",
+answers:["窓","ドア","机","天井"],
+correct:0
+},
+
+{
+question:"『le soleil』の意味は？",
+answers:["月","空","太陽","星"],
+correct:2
+},
+
+{
+question:"『la mer』の意味は？",
+answers:["山","川","森","海"],
+correct:3
+},
+
+{
+question:"『la ville』の意味は？",
+answers:["村","街","駅","国"],
+correct:1
+}
+    // 名詞20問
+];
+
+const adjective=[
+{
+question:"『grand』の意味は？",
+answers:["小さい","大きい","高い","短い"],
+correct:1
+},
+
+{
+question:"『petit』の意味は？",
+answers:["小さい","長い","新しい","広い"],
+correct:0
+},
+
+{
+question:"『bon』の意味は？",
+answers:["悪い","甘い","良い","辛い"],
+correct:2
+},
+
+{
+question:"『mauvais』の意味は？",
+answers:["難しい","悪い","高い","新しい"],
+correct:1
+},
+
+{
+question:"『jeune』の意味は？",
+answers:["若い","古い","静かな","忙しい"],
+correct:0
+},
+
+{
+question:"『vieux』の意味は？",
+answers:["若い","強い","古い・年を取った","速い"],
+correct:2
+},
+
+{
+question:"『nouveau』の意味は？",
+answers:["高い","古い","大きい","新しい"],
+correct:3
+},
+
+{
+question:"『chaud』の意味は？",
+answers:["寒い","熱い・暖かい","冷たい","暗い"],
+correct:1
+},
+
+{
+question:"『froid』の意味は？",
+answers:["暑い","暖かい","冷たい","静か"],
+correct:2
+},
+
+{
+question:"『heureux』の意味は？",
+answers:["幸せな","悲しい","怒った","疲れた"],
+correct:0
+},
+
+{
+question:"『triste』の意味は？",
+answers:["眠い","元気な","悲しい","危険な"],
+correct:2
+},
+
+{
+question:"『facile』の意味は？",
+answers:["簡単な","難しい","長い","忙しい"],
+correct:0
+},
+
+{
+question:"『difficile』の意味は？",
+answers:["危険な","簡単な","難しい","有名な"],
+correct:2
+},
+
+{
+question:"『rapide』の意味は？",
+answers:["遅い","速い","静かな","重い"],
+correct:1
+},
+
+{
+question:"『lent』の意味は？",
+answers:["軽い","速い","遅い","若い"],
+correct:2
+},
+
+{
+question:"『beau』の意味は？",
+answers:["美しい","醜い","面白い","悲しい"],
+correct:0
+},
+
+{
+question:"『joli』の意味は？",
+answers:["高価な","かわいい・きれいな","危険な","短い"],
+correct:1
+},
+
+{
+question:"『riche』の意味は？",
+answers:["貧しい","忙しい","裕福な","若い"],
+correct:2
+},
+
+{
+question:"『pauvre』の意味は？",
+answers:["裕福な","貧しい","親切な","強い"],
+correct:1
+},
+
+{
+question:"『gentil』の意味は？",
+answers:["意地悪な","疲れた","親切な","怖い"],
+correct:2
+}
+];
+
+const verbs = [
+    // 動詞20問
+    {
+question:"『être』の意味は？",
+answers:["持つ","行く","〜である","食べる"],
+correct:2
+},
+
+{
+question:"『avoir』の意味は？",
+answers:["見る","持っている","話す","寝る"],
+correct:1
+},
+
+{
+question:"『aller』の意味は？",
+answers:["来る","歩く","行く","帰る"],
+correct:2
+},
+
+{
+question:"『venir』の意味は？",
+answers:["来る","見る","飲む","聞く"],
+correct:0
+},
+
+{
+question:"『faire』の意味は？",
+answers:["作る・する","行く","買う","働く"],
+correct:0
+},
+
+{
+question:"『manger』の意味は？",
+answers:["飲む","食べる","話す","読む"],
+correct:1
+},
+
+{
+question:"『boire』の意味は？",
+answers:["寝る","買う","飲む","歩く"],
+correct:2
+},
+
+{
+question:"『parler』の意味は？",
+answers:["聞く","話す","考える","書く"],
+correct:1
+},
+
+{
+question:"『écouter』の意味は？",
+answers:["見る","聞く","歌う","歩く"],
+correct:1
+},
+
+{
+question:"『regarder』の意味は？",
+answers:["見る","持つ","読む","話す"],
+correct:0
+},
+
+{
+question:"『lire』の意味は？",
+answers:["書く","読む","話す","覚える"],
+correct:1
+},
+
+{
+question:"『écrire』の意味は？",
+answers:["聞く","作る","書く","飲む"],
+correct:2
+},
+
+{
+question:"『travailler』の意味は？",
+answers:["勉強する","休む","働く","遊ぶ"],
+correct:2
+},
+
+{
+question:"『étudier』の意味は？",
+answers:["勉強する","旅行する","教える","帰る"],
+correct:0
+},
+
+{
+question:"『habiter』の意味は？",
+answers:["旅行する","住む","待つ","働く"],
+correct:1
+},
+
+{
+question:"『aimer』の意味は？",
+answers:["嫌う","愛する・好き","探す","待つ"],
+correct:1
+},
+
+{
+question:"『acheter』の意味は？",
+answers:["売る","借りる","買う","送る"],
+correct:2
+},
+
+{
+question:"『attendre』の意味は？",
+answers:["待つ","急ぐ","帰る","考える"],
+correct:0
+},
+
+{
+question:"『jouer』の意味は？",
+answers:["勉強する","働く","遊ぶ・プレイする","旅行する"],
+correct:2
+},
+
+{
+question:"『dormir』の意味は？",
+answers:["起きる","寝る","食べる","話す"],
+correct:1
+}
+];
+
+const expressions = [
+    // 表現20問
+    {
+question:"『Bonjour』の意味は？",
+answers:["こんばんは","こんにちは","おやすみ","ありがとう"],
+correct:1
+},
+
+{
+question:"『Bonsoir』の意味は？",
+answers:["こんにちは","ありがとう","こんばんは","さようなら"],
+correct:2
+},
+
+{
+question:"『Salut』の意味は？",
+answers:["やあ・またね","すみません","ありがとう","おはよう"],
+correct:0
+},
+
+{
+question:"『Au revoir』の意味は？",
+answers:["またね","ありがとう","さようなら","はじめまして"],
+correct:2
+},
+
+{
+question:"『Merci』の意味は？",
+answers:["こんにちは","ありがとう","ごめんなさい","お願いします"],
+correct:1
+},
+
+{
+question:"『Merci beaucoup』の意味は？",
+answers:["どういたしまして","本当にありがとう","こんばんは","気をつけて"],
+correct:1
+},
+
+{
+question:"『De rien』の意味は？",
+answers:["すみません","どういたしまして","こんにちは","また会おう"],
+correct:1
+},
+
+{
+question:"『S’il vous plaît』の意味は？",
+answers:["お元気ですか？","お願いします","ありがとう","またね"],
+correct:1
+},
+
+{
+question:"『Excusez-moi』の意味は？",
+answers:["ありがとう","ごめんなさい・すみません","こんばんは","お元気ですか"],
+correct:1
+},
+
+{
+question:"『Pardon』の意味は？",
+answers:["失礼します・すみません","また明日","こんにちは","大丈夫"],
+correct:0
+},
+
+{
+question:"『Ça va ?』の意味は？",
+answers:["元気ですか？","何歳ですか？","どこですか？","大丈夫ですか？"],
+correct:0
+},
+
+{
+question:"『Ça va bien』の意味は？",
+answers:["難しいです","元気です","眠いです","お腹が空いた"],
+correct:1
+},
+
+{
+question:"『Comment vous appelez-vous ?』の意味は？",
+answers:["どこに住んでいますか？","何歳ですか？","お名前は何ですか？","好きな食べ物は？"],
+correct:2
+},
+
+{
+question:"『Je m’appelle ～』の意味は？",
+answers:["私は〜歳です","私は〜に住んでいます","私の名前は〜です","私は学生です"],
+correct:2
+},
+
+{
+question:"『Enchanté(e)』の意味は？",
+answers:["気をつけて","はじめまして","ありがとう","お疲れ様"],
+correct:1
+},
+
+{
+question:"『À bientôt』の意味は？",
+answers:["またすぐに","おやすみ","こんにちは","元気ですか"],
+correct:0
+},
+
+{
+question:"『Bonne nuit』の意味は？",
+answers:["良い一日を","おやすみなさい","また明日","こんばんは"],
+correct:1
+},
+
+{
+question:"『Bonne journée』の意味は？",
+answers:["良い一日を","こんばんは","また来週","ありがとう"],
+correct:0
+},
+
+{
+question:"『Je ne sais pas』の意味は？",
+answers:["分かりません","知っています","行きます","食べます"],
+correct:0
+},
+
+{
+question:"『Je comprends』の意味は？",
+answers:["忘れました","理解しました","疲れました","待っています"],
+correct:1
+}
+];
+
+
+
+
+
+
+
+
+
+
+
+shuffleArray(quizData);
+
+function loadQuestion(){
+
+    if(quizData.length === 0){
+        return;
+    }
+
+    const q =
+    quizData[currentQuestion];
+
+    document.getElementById("question").textContent =
+        q.question;
+
+    document.getElementById("questionNumber")
+    .textContent =
+    `Question ${currentQuestion + 1} / ${quizData.length}`;
+
+    const answersEl =
+        document.getElementById("answers");
+
+    answersEl.innerHTML = "";
+
+    document.getElementById("result")
+    .textContent = "";
+
+    document.getElementById("nextBtn")
+    .style.display = "none";
+
+    q.answers.forEach((answer,index)=>{
+
+        const button =
+        document.createElement("button");
+
+        button.classList.add("answer-btn");
+
+        button.textContent = answer;
+
+        button.addEventListener("click",()=>{
+
+            const buttons =
+            document.querySelectorAll(".answer-btn");
+
+            buttons.forEach(btn =>
+                btn.disabled = true
+            );
+
+            if(index === q.correct){
+
+                button.classList.add("correct");
+
+                document.getElementById(
+                    "result"
+                ).textContent =
+                "⭕ 正解！";
+
+                score++;
+
+                document.getElementById(
+                    "score"
+                ).textContent = score;
+
+            }else{
+
+                button.classList.add("wrong");
+
+                buttons[q.correct]
+                .classList.add("correct");
+
+                document.getElementById(
+                    "result"
+                ).textContent =
+                "❌ 不正解";
+            }
+
+            document.getElementById(
+                "nextBtn"
+            ).style.display = "block";
+
+        });
+
+        answersEl.appendChild(button);
+    });
+}
+
+document.getElementById("nextBtn")
+.addEventListener("click",()=>{
+
+    currentQuestion++;
+
+    if(currentQuestion < quizData.length){
+
+        loadQuestion();
+
+    }else{
+
+        document.querySelector(
+            ".quiz-container"
+        ).innerHTML = `
+        <h1>🎉 Quiz Finished!</h1>
+        <p style="text-align:center;
+        margin-top:20px;
+        font-size:1.3rem;">
+        ${quizData.length}問中
+        <strong>${score}</strong>問正解！
+        </p>
+
+        <button
+        class="next-btn restart-btn"
+        onclick="location.reload()"
+        style="display:block;">
+        もう一回挑戦
+        </button>
+        `;
+    }
+});
+
+function shuffleArray(array){
+    for(let i=array.length-1;i>0;i--){
+        const j =
+        Math.floor(Math.random()*(i+1));
+
+        [array[i],array[j]] =
+        [array[j],array[i]];
+    }
+}
+
+document.getElementById("question")
+.textContent =
+"カテゴリーを選んでください！";
+
+</script>
+
+</body>
+</html>

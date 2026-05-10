@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>尼語基本単語</title>
+<link rel="stylesheet" href="gaga.css">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#eef4ff,#dfe9ff);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.quiz-container{
+    background:white;
+    width:100%;
+    max-width:700px;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+h1{
+    text-align:center;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:20px;
+}
+
+.category-select{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.category-select button{
+    padding:10px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    background:#eef2ff;
+}
+
+.score{
+    text-align:right;
+    margin-bottom:10px;
+}
+
+.question{
+    font-size:1.3rem;
+    font-weight:bold;
+    margin:20px 0;
+}
+
+.answers{
+    display:grid;
+    gap:10px;
+}
+
+.answer-btn{
+    padding:15px;
+    border:none;
+    background:#f0f4ff;
+    border-radius:10px;
+    cursor:pointer;
+    text-align:left;
+}
+
+.answer-btn:hover{
+    background:#dbe6ff;
+}
+
+.correct{ background:#8ee4af !important; }
+.wrong{ background:#ffb3b3 !important; }
+
+.next-btn{
+    display:none;
+    margin-top:20px;
+    width:100%;
+    padding:15px;
+    border:none;
+    background:#4b6fff;
+    color:white;
+    border-radius:10px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+
+<h1>インドネシア語単語帳</h1>
+
+<p class="subtitle">ゲーム感覚で単語を覚えよう</p>
+
+<!-- カテゴリー -->
+<div class="category-select">
+
+    <button onclick="selectCategory('noun')">基本単語</button>
+    <button onclick="selectCategory('verb')">動詞</button>
+    <button onclick="selectCategory('adjective')">形容詞</button>
+    <button onclick="selectCategory('expression')">表現</button>
+    <button onclick="selectCategory('all')">全部</button>
+    <button onclick="location.href='../index.html'">トップページへ</button>
+
+</div>
+
+<div class="score">
+Score: <span id="score">0</span>
+</div>
+<div class="question-number" id="questionNumber">
+    
+</div>
+
+
+<div class="question" id="question">問題が表示されます</div>
+
+<div class="answers" id="answers"></div>
+
+<div id="result"></div>
+
+<button class="next-btn" id="nextBtn">次へ</button>
+
+</div>
+
+<script>
+
+/* =========================
+   ★ここだけ変える場所★
+========================= */
+
+
+        const quizDataSets = {
+
+    noun: [
+        
+    {
+        question:"『buku』の意味は？",
+        answers:["本","机","椅子","車"],
+        correct:0
+    },
+    {
+        question:"『rumah』の意味は？",
+        answers:["家","学校","病院","店"],
+        correct:0
+    },
+    {
+        question:"『kucing』の意味は？",
+        answers:["犬","猫","鳥","魚"],
+        correct:1
+    },
+    {
+        question:"『anjing』の意味は？",
+        answers:["猫","犬","馬","牛"],
+        correct:1
+    },
+    {
+        question:"『air』の意味は？",
+        answers:["火","水","土","空気"],
+        correct:1
+    },
+    {
+        question:"『meja』の意味は？",
+        answers:["机","椅子","窓","ドア"],
+        correct:0
+    },
+    {
+        question:"『kursi』の意味は？",
+        answers:["机","椅子","本","車"],
+        correct:1
+    },
+    {
+        question:"『sekolah』の意味は？",
+        answers:["学校","会社","駅","空港"],
+        correct:0
+    },
+    {
+        question:"『mobil』の意味は？",
+        answers:["車","自転車","電車","飛行機"],
+        correct:0
+    },
+    {
+        question:"『pintu』の意味は？",
+        answers:["窓","ドア","壁","床"],
+        correct:1
+    },
+    {
+        question:"『jendela』の意味は？",
+        answers:["窓","ドア","屋根","椅子"],
+        correct:0
+    },
+    {
+        question:"『teman』の意味は？",
+        answers:["先生","友達","家族","学生"],
+        correct:1
+    },
+    {
+        question:"『guru』の意味は？",
+        answers:["学生","先生","友達","店員"],
+        correct:1
+    },
+    {
+        question:"『rumah sakit』の意味は？",
+        answers:["学校","病院","駅","会社"],
+        correct:1
+    },
+    {
+        question:"『pasar』の意味は？",
+        answers:["公園","市場","学校","川"],
+        correct:1
+    },
+    {
+        question:"『buku tulis』の意味は？",
+        answers:["ノート","本棚","机","鉛筆"],
+        correct:0
+    },
+    {
+        question:"『pensil』の意味は？",
+        answers:["ペン","鉛筆","消しゴム","ノート"],
+        correct:1
+    },
+    {
+        question:"『tas』の意味は？",
+        answers:["靴","かばん","帽子","服"],
+        correct:1
+    },
+    {
+        question:"『sepatu』の意味は？",
+        answers:["靴","シャツ","帽子","ズボン"],
+        correct:0
+    },
+    {
+        question:"『uang』の意味は？",
+        answers:["本","お金","紙","水"],
+        correct:1
+    }
+
+    ],
+
+    verb: [
+    {
+        question:"『makan』の意味は？",
+        answers:["食べる","飲む","寝る","見る"],
+        correct:0
+    },
+    {
+        question:"『minum』の意味は？",
+        answers:["食べる","飲む","書く","走る"],
+        correct:1
+    },
+    {
+        question:"『pergi』の意味は？",
+        answers:["来る","行く","帰る","止まる"],
+        correct:1
+    },
+    {
+        question:"『datang』の意味は？",
+        answers:["行く","来る","見る","寝る"],
+        correct:1
+    },
+    {
+        question:"『berbicara』の意味は？",
+        answers:["話す","聞く","読む","書く"],
+        correct:0
+    },
+    {
+        question:"『membaca』の意味は？",
+        answers:["書く","読む","話す","見る"],
+        correct:1
+    },
+    {
+        question:"『menulis』の意味は？",
+        answers:["読む","書く","聞く","遊ぶ"],
+        correct:1
+    },
+    {
+        question:"『belajar』の意味は？",
+        answers:["遊ぶ","勉強する","寝る","食べる"],
+        correct:1
+    },
+    {
+        question:"『bekerja』の意味は？",
+        answers:["働く","遊ぶ","寝る","飲む"],
+        correct:0
+    },
+    {
+        question:"『tidur』の意味は？",
+        answers:["起きる","寝る","走る","食べる"],
+        correct:1
+    },
+    {
+        question:"『mendengar』の意味は？",
+        answers:["見る","聞く","話す","書く"],
+        correct:1
+    },
+    {
+        question:"『melihat』の意味は？",
+        answers:["聞く","見る","読む","寝る"],
+        correct:1
+    },
+    {
+        question:"『bermain』の意味は？",
+        answers:["勉強する","遊ぶ","働く","寝る"],
+        correct:1
+    },
+    {
+        question:"『membeli』の意味は？",
+        answers:["売る","買う","借りる","作る"],
+        correct:1
+    },
+    {
+        question:"『menjual』の意味は？",
+        answers:["買う","売る","持つ","探す"],
+        correct:1
+    },
+    {
+        question:"『membuka』の意味は？",
+        answers:["閉める","開ける","壊す","作る"],
+        correct:1
+    },
+    {
+        question:"『menutup』の意味は？",
+        answers:["開ける","閉める","読む","書く"],
+        correct:1
+    },
+    {
+        question:"『mengambil』の意味は？",
+        answers:["置く","取る","投げる","捨てる"],
+        correct:1
+    },
+    {
+        question:"『memberi』の意味は？",
+        answers:["もらう","与える","買う","見る"],
+        correct:1
+    },
+    {
+        question:"『mencari』の意味は？",
+        answers:["隠す","探す","捨てる","作る"],
+        correct:1
+    }
+],
+
+   adjective: [
+    {
+        question:"『besar』の意味は？",
+        answers:["小さい","大きい","速い","古い"],
+        correct:1
+    },
+    {
+        question:"『kecil』の意味は？",
+        answers:["大きい","小さい","長い","短い"],
+        correct:1
+    },
+    {
+        question:"『baik』の意味は？",
+        answers:["悪い","良い","速い","遅い"],
+        correct:1
+    },
+    {
+        question:"『buruk』の意味は？",
+        answers:["良い","悪い","新しい","古い"],
+        correct:1
+    },
+    {
+        question:"『baru』の意味は？",
+        answers:["古い","新しい","大きい","小さい"],
+        correct:1
+    },
+    {
+        question:"『lama』の意味は？",
+        answers:["新しい","古い","速い","若い"],
+        correct:1
+    },
+    {
+        question:"『cepat』の意味は？",
+        answers:["遅い","速い","重い","軽い"],
+        correct:1
+    },
+    {
+        question:"『lambat』の意味は？",
+        answers:["速い","遅い","明るい","暗い"],
+        correct:1
+    },
+    {
+        question:"『mudah』の意味は？",
+        answers:["難しい","簡単","危険","安全"],
+        correct:1
+    },
+    {
+        question:"『sulit』の意味は？",
+        answers:["簡単","難しい","良い","悪い"],
+        correct:1
+    },
+    {
+        question:"『panjang』の意味は？",
+        answers:["短い","長い","広い","狭い"],
+        correct:1
+    },
+    {
+        question:"『pendek』の意味は？",
+        answers:["長い","短い","高い","低い"],
+        correct:1
+    },
+    {
+        question:"『tinggi』の意味は？",
+        answers:["低い","高い","太い","細い"],
+        correct:1
+    },
+    {
+        question:"『rendah』の意味は？",
+        answers:["高い","低い","明るい","暗い"],
+        correct:1
+    },
+    {
+        question:"『panas』の意味は？",
+        answers:["寒い","暑い","冷たい","涼しい"],
+        correct:1
+    },
+    {
+        question:"『dingin』の意味は？",
+        answers:["暑い","寒い","熱い","暖かい"],
+        correct:1
+    },
+    {
+        question:"『senang』の意味は？",
+        answers:["悲しい","嬉しい","怒る","疲れる"],
+        correct:1
+    },
+    {
+        question:"『sedih』の意味は？",
+        answers:["嬉しい","悲しい","楽しい","元気"],
+        correct:1
+    },
+    {
+        question:"『bersih』の意味は？",
+        answers:["汚い","きれい","危険","安全"],
+        correct:1
+    },
+    {
+        question:"『kotor』の意味は？",
+        answers:["きれい","汚い","明るい","暗い"],
+        correct:1
+    }
+],
+
+   expression: [
+    {
+        question:"『Halo』の意味は？",
+        answers:["さようなら","こんにちは","ありがとう","ごめん"],
+        correct:1
+    },
+    {
+        question:"『Selamat pagi』の意味は？",
+        answers:["こんばんは","おはよう","こんにちは","ありがとう"],
+        correct:1
+    },
+    {
+        question:"『Selamat siang』の意味は？",
+        answers:["こんにちは（昼）","おはよう","こんばんは","さようなら"],
+        correct:0
+    },
+    {
+        question:"『Selamat malam』の意味は？",
+        answers:["おはよう","こんばんは","こんにちは","ありがとう"],
+        correct:1
+    },
+    {
+        question:"『Terima kasih』の意味は？",
+        answers:["ありがとう","ごめん","こんにちは","さようなら"],
+        correct:0
+    },
+    {
+        question:"『Sama-sama』の意味は？",
+        answers:["どういたしまして","ありがとう","こんにちは","さようなら"],
+        correct:0
+    },
+    {
+        question:"『Maaf』の意味は？",
+        answers:["ありがとう","ごめん","こんにちは","さようなら"],
+        correct:1
+    },
+    {
+        question:"『Permisi』の意味は？",
+        answers:["すみません（通ります）","ありがとう","おはよう","さようなら"],
+        correct:0
+    },
+    {
+        question:"『Apa kabar?』の意味は？",
+        answers:["元気ですか？","どこですか？","何ですか？","いつですか？"],
+        correct:0
+    },
+    {
+        question:"『Baik』の意味は？",
+        answers:["悪い","良い・元気","速い","遅い"],
+        correct:1
+    },
+    {
+        question:"『Sampai jumpa』の意味は？",
+        answers:["またね","ありがとう","こんにちは","ごめん"],
+        correct:0
+    },
+    {
+        question:"『Sampai nanti』の意味は？",
+        answers:["また後で","さようなら","おはよう","こんばんは"],
+        correct:0
+    },
+    {
+        question:"『Tolong』の意味は？",
+        answers:["ありがとう","助けて・お願い","ごめん","こんにちは"],
+        correct:1
+    },
+    {
+        question:"『Silakan』の意味は？",
+        answers:["どうぞ","ありがとう","すみません","さようなら"],
+        correct:0
+    },
+    {
+        question:"『Ya』の意味は？",
+        answers:["いいえ","はい","ありがとう","ごめん"],
+        correct:1
+    },
+    {
+        question:"『Tidak』の意味は？",
+        answers:["はい","いいえ","ありがとう","さようなら"],
+        correct:1
+    },
+    {
+        question:"『Saya tidak tahu』の意味は？",
+        answers:["知っています","分かりません","行きます","食べます"],
+        correct:1
+    },
+    {
+        question:"『Saya mengerti』の意味は？",
+        answers:["理解しました","分かりません","忘れました","疲れました"],
+        correct:0
+    },
+    {
+        question:"『Hati-hati』の意味は？",
+        answers:["気をつけて","頑張って","ありがとう","こんにちは"],
+        correct:0
+    },
+    {
+        question:"『Selamat tinggal』の意味は？",
+        answers:["さようなら（自分が去る時）","こんにちは","ありがとう","おはよう"],
+        correct:0
+    }
+] }
+    ;
+
+/* ↑ここに問題を入れるだけでOK */
+
+/* ========================= */
+
+let quizData = [];
+let currentQuestion = 0;
+let score = 0;
+
+/* カテゴリー選択 */
+function selectCategory(type){
+
+    if(type === "all"){
+        quizData = [
+            ...quizDataSets.noun,
+            ...quizDataSets.verb,
+            ...quizDataSets.adjective,
+            ...quizDataSets.expression
+        ];
+    }else{
+        quizData = quizDataSets[type];
+    }
+
+    shuffle(quizData);
+
+    currentQuestion = 0;
+    score = 0;
+
+    document.getElementById("score").textContent = 0;
+
+    loadQuestion();
+}
+
+/* シャッフル */
+function shuffle(array){
+    for(let i=array.length-1;i>0;i--){
+        const j=Math.floor(Math.random()*(i+1));
+        [array[i],array[j]]=[array[j],array[i]];
+    }
+}
+
+/* 問題表示 */
+function loadQuestion(){
+
+    const q = quizData[currentQuestion];
+
+    document.getElementById("question").textContent = q.question;
+
+    const answersEl = document.getElementById("answers");
+    answersEl.innerHTML = "";
+
+    document.getElementById("result").textContent = "";
+    document.getElementById("nextBtn").style.display = "none";
+
+    q.answers.forEach((a,i)=>{
+
+        const btn = document.createElement("button");
+        btn.className = "answer-btn";
+        btn.textContent = a;
+
+        btn.onclick = () => {
+
+            document.querySelectorAll(".answer-btn")
+            .forEach(b=>b.disabled=true);
+
+            if(i === q.correct){
+                btn.classList.add("correct");
+                document.getElementById("result").textContent = "⭕ 正解！";
+                score++;
+                document.getElementById("score").textContent = score;
+            }else{
+                btn.classList.add("wrong");
+                document.querySelectorAll(".answer-btn")[q.correct]
+                .classList.add("correct");
+                document.getElementById("result").textContent = "❌ 不正解";
+            }
+
+            document.getElementById("nextBtn").style.display = "block";
+        };
+
+        answersEl.appendChild(btn);
+    });
+}
+
+/* 次へ */
+document.getElementById("nextBtn").onclick = () => {
+
+    currentQuestion++;
+
+    if(currentQuestion < quizData.length){
+        loadQuestion();
+    }else{
+        document.querySelector(".quiz-container").innerHTML = `
+            <h1>終了！</h1>
+            <p style="text-align:center;">
+            ${quizData.length}問中 ${score}問正解
+            </p>
+            <button onclick="location.reload()"
+            style="width:100%;padding:15px;margin-top:20px;">
+            もう一回
+            </button>
+        `;
+    }
+};
+
+</script>
+
+</body>
+</html>

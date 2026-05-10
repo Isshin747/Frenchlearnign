@@ -1,0 +1,22 @@
+.category-select{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin-bottom:25px;
+}
+
+.category-select button{
+    border:none;
+    background:#eef3ff;
+    padding:15px;
+    border-radius:15px;
+    cursor:pointer;
+    font-size:1rem;
+    font-weight:bold;
+    transition:.2s;
+}
+
+.category-select button:hover{
+    background:#d9e4ff;
+    transform:translateY(-2px);
+}
