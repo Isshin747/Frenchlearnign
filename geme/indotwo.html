@@ -198,6 +198,7 @@ h1{
 let quizData = [];
 let currentQuestion = 0;
 let score = 0;
+let wrongQuestions = [];
 function selectCategory(category){
 
    
@@ -225,10 +226,11 @@ function selectCategory(category){
             ...expressions
         ];
     }
-
+    shuffleArray(quizData);
     
     currentQuestion = 0;
     score = 0;
+    wrongQuestions = [];
 
     document.getElementById("score")
     .textContent = score;
@@ -359,7 +361,7 @@ correct:0
 
 {
 question:"『lorong』の意味は？",
-answers:["道路","部屋","通路","橋"],
+answers:["廊下","部屋","通路","橋"],
 correct:2
 },
 
@@ -966,7 +968,7 @@ correct:1
 },
 
 {
-question:"『biadili』の意味は？",
+question:"『diadili』の意味は？",
 answers:["裁く","遊ぶ","話す","忘れる"],
 correct:0
 },
@@ -1362,6 +1364,7 @@ function loadQuestion(){
                     "result"
                 ).textContent =
                 "❌ 不正解";
+                 wrongQuestions.push(q);
             }
 
             document.getElementById(
@@ -1387,22 +1390,40 @@ document.getElementById("nextBtn")
 
         document.querySelector(
             ".quiz-container"
-        ).innerHTML = `
-        <h1>🎉 Quiz Finished!</h1>
-        <p style="text-align:center;
-        margin-top:20px;
-        font-size:1.3rem;">
-        ${quizData.length}問中
-        <strong>${score}</strong>問正解！
-        </p>
+        ).innerHTML = ` <h1>🎉 Quiz Finished!</h1>
 
-        <button
-        class="next-btn restart-btn"
-        onclick="location.reload()"
-        style="display:block;">
-        もう一回挑戦
-        </button>
-        `;
+<p style="text-align:center;
+margin-top:20px;
+font-size:1.3rem;">
+${quizData.length}問中
+<strong>${score}</strong>問正解！
+</p>
+
+<p style="text-align:center;
+margin-top:10px;">
+間違えた問題：${wrongQuestions.length}問
+</p>
+
+${
+wrongQuestions.length > 0
+? `
+<button
+class="next-btn"
+onclick="reviewWrongQuestions()"
+style="display:block;margin-top:15px;">
+❌ 間違えた問題を復習
+</button>
+`
+: ""
+}
+
+<button
+class="next-btn restart-btn"
+onclick="location.reload()"
+style="display:block;margin-top:15px;">
+もう一回挑戦
+</button>
+`;
     }
 });
 
@@ -1419,6 +1440,63 @@ function shuffleArray(array){
 document.getElementById("question")
 .textContent =
 "カテゴリーを選んでください！";
+function reviewWrongQuestions(){
+
+    quizData = [...wrongQuestions];
+
+    shuffleArray(quizData);
+
+    currentQuestion = 0;
+    score = 0;
+    wrongQuestions = [];
+
+    document.querySelector(
+        ".quiz-container"
+    ).innerHTML = `
+    <h1>🌍 Language Quiz</h1>
+
+    <div class="score">
+        Score:
+        <span id="score">0</span>
+    </div>
+
+    <div class="question-number"
+    id="questionNumber"></div>
+
+    <div class="question"
+    id="question"></div>
+
+    <div class="answers"
+    id="answers"></div>
+
+    <div id="result"></div>
+
+    <button
+    class="next-btn"
+    id="nextBtn">
+    次の問題 →
+    </button>
+    `;
+
+    document.getElementById(
+        "nextBtn"
+    ).addEventListener("click",()=>{
+
+        currentQuestion++;
+
+        if(currentQuestion < quizData.length){
+
+            loadQuestion();
+
+        }else{
+
+            alert("復習終了！");
+            location.reload();
+        }
+    });
+
+    loadQuestion();
+}
 
 </script>
 

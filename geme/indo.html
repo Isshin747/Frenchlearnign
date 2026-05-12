@@ -572,7 +572,7 @@ Score: <span id="score">0</span>
 let quizData = [];
 let currentQuestion = 0;
 let score = 0;
-
+let wrongQuestions = [];
 /* カテゴリー選択 */
 function selectCategory(type){
 
@@ -587,10 +587,11 @@ function selectCategory(type){
         quizData = quizDataSets[type];
     }
 
+    
     shuffle(quizData);
-
     currentQuestion = 0;
     score = 0;
+    wrongQuestions = [];
 
     document.getElementById("score").textContent = 0;
 
@@ -611,6 +612,63 @@ function loadQuestion(){
     const q = quizData[currentQuestion];
 
     document.getElementById("question").textContent = q.question;
+    function reviewWrongQuestions(){
+
+    quizData = [...wrongQuestions];
+
+    shuffleArray(quizData);
+
+    currentQuestion = 0;
+    score = 0;
+    wrongQuestions = [];
+
+    document.querySelector(
+        ".quiz-container"
+    ).innerHTML = `
+    <h1>🌍 Language Quiz</h1>
+
+    <div class="score">
+        Score:
+        <span id="score">0</span>
+    </div>
+
+    <div class="question-number"
+    id="questionNumber"></div>
+
+    <div class="question"
+    id="question"></div>
+
+    <div class="answers"
+    id="answers"></div>
+
+    <div id="result"></div>
+
+    <button
+    class="next-btn"
+    id="nextBtn">
+    次の問題 →
+    </button>
+    `;
+
+    document.getElementById(
+        "nextBtn"
+    ).addEventListener("click",()=>{
+
+        currentQuestion++;
+
+        if(currentQuestion < quizData.length){
+
+            loadQuestion();
+
+        }else{
+
+            alert("復習終了！");
+            location.reload();
+        }
+    });
+
+    loadQuestion();
+}
 
     const answersEl = document.getElementById("answers");
     answersEl.innerHTML = "";
@@ -639,6 +697,7 @@ function loadQuestion(){
                 document.querySelectorAll(".answer-btn")[q.correct]
                 .classList.add("correct");
                 document.getElementById("result").textContent = "❌ 不正解";
+                 wrongQuestions.push(q);
             }
 
             document.getElementById("nextBtn").style.display = "block";
@@ -656,16 +715,41 @@ document.getElementById("nextBtn").onclick = () => {
     if(currentQuestion < quizData.length){
         loadQuestion();
     }else{
-        document.querySelector(".quiz-container").innerHTML = `
-            <h1>終了！</h1>
-            <p style="text-align:center;">
-            ${quizData.length}問中 ${score}問正解
-            </p>
-            <button onclick="location.reload()"
-            style="width:100%;padding:15px;margin-top:20px;">
-            もう一回
-            </button>
-        `;
+        document.querySelector(".quiz-container").innerHTML =`
+<h1>🎉 Quiz Finished!</h1>
+
+<p style="text-align:center;
+margin-top:20px;
+font-size:1.3rem;">
+${quizData.length}問中
+<strong>${score}</strong>問正解！
+</p>
+
+<p style="text-align:center;
+margin-top:10px;">
+間違えた問題：${wrongQuestions.length}問
+</p>
+
+${
+wrongQuestions.length > 0
+? `
+<button
+class="next-btn"
+onclick="reviewWrongQuestions()"
+style="display:block;margin-top:15px;">
+❌ 間違えた問題を復習
+</button>
+`
+: ""
+}
+
+<button
+class="next-btn restart-btn"
+onclick="location.reload()"
+style="display:block;margin-top:15px;">
+もう一回挑戦
+</button>
+`;
     }
 };
 
