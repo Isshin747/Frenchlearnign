@@ -24,73 +24,9 @@
   
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<script>
-  const supabaseUrl = "https://uqjoueguoltccufjcxko.supabase.co";
-  const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVxam91ZWd1b2x0Y2N1ZmpjeGtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3NDgzODIsImV4cCI6MjA5MjMyNDM4Mn0.fsxGWxWXYrTceQtdpsG9ICFYGTu5SNIxKMKJoSfR59g";
 
-  const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
-async function updateCount() {
-    const { data, error } = await supabaseClient
-      .from("visits")
-      .select("count")
-      .eq("id", 1)
-      .single();
 
-    if (error) {
-      console.log("エラー:", error);
-      return;
-    }
-
-    const newCount = data.count + 1;
-
-    await supabaseClient
-      .from("visits")
-      .update({ count: newCount })
-      .eq("id", 1);
-
-    document.getElementById("count").innerText = newCount;
-  }
-
-  updateCount();
-</script>
-
-  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
-<script>
-function showTab(tabId){
-
-  // 全部消す
-  const contents =
-  document.querySelectorAll(
-  ".tab-content");
-
-  contents.forEach(content=>{
-    content.classList.remove(
-    "active");
-  });
-
-  // ボタンactive解除
-  const buttons =
-  document.querySelectorAll(
-  ".tab-btn");
-
-  buttons.forEach(button=>{
-    button.classList.remove(
-    "active");
-  });
-
-  // 選択されたタブ表示
-  document.getElementById(tabId)
-  .classList.add("active");
-
-  // 押したボタン光らせる
-  event.target.classList.add(
-  "active");
-}
 </script>
     <body class="desain">
 
@@ -134,20 +70,23 @@ class="hero-btn secondary">
 
 <div class="hero-cards">
 
-<div class="mini-card">
+<a  onclick="goToTab('french')" href="#french-section"
+class="mini-card">
 <h3>🇫🇷 フランス語</h3>
 <p>挨拶・文法・試験対策</p>
-</div>
+</a>
 
-<div class="mini-card">
+<a onclick="goToTab('english')" href="#english-section"
+class="mini-card">
 <h3>🇺🇸 英語</h3>
 <p>ネイティブ表現・TOEIC</p>
-</div>
+</a>
 
-<div class="mini-card">
+<a  onclick="goToTab('indo')" href="#indo-section"
+class="mini-card">
 <h3>🇮🇩 インドネシア語</h3>
 <p>基本文法・単語学習</p>
-</div>
+</a>
 
 </div>
 
@@ -333,7 +272,7 @@ Gengo Labは、
             
 
 
-        <section class="quiz-hero">
+        <section id="quiz" class="quiz-hero">
 
 <div class="quiz-badge">
 🎯 人気コンテンツ
@@ -386,28 +325,29 @@ class="quiz-card onepiece">
 
 
 
-        <article class="mokuji">
+        <article id="mokuji" class="mokuji">
 
 <h2 class="misesu">目次</h2>
 
 <div class="tab-buttons">
-  <button class="tab-btn active btc"
+  <button class="tab-btn active btc" data-tab="french"
   onclick="showTab('french')">
   🇫🇷 フランス語
   </button>
 
-  <button class="tab-btn bts "
+  <button class="tab-btn bts " data-tab="english"
   onclick="showTab('english')">
   🇺🇸 英語
   </button>
 
-  <button class="tab-btn bta"
+  <button class="tab-btn bta" data-tab="indo"
   onclick="showTab('indo')">
   🇮🇩 インドネシア語
   </button>
 </div>
 
 <!-- フランス語 -->
+ <section id="french-section">
 <div id="french"
 class="tab-content active">
 
@@ -427,8 +367,9 @@ class="tab-content active">
 
 </ul>
 </div>
-
+</section>
 <!-- 英語 -->
+ <section id="english-section">
 <div id="english"
 class="tab-content ">
 
@@ -447,8 +388,10 @@ class="tab-content ">
 
 </ul>
 </div>
+</section>
 
 <!-- インドネシア語 -->
+ <section id="indo-section">
 <div id="indo" class="tab-content ">
  <ul class="inndonesia no-list">
             <li><a href="indonesian/kihonnbunnpou.html">インドネシア語の基本文法まとめ</a></li>
@@ -460,6 +403,7 @@ class="tab-content ">
 
 </ul>
 </div>
+</section>
 
 </article>
 
@@ -529,7 +473,96 @@ class="lab-card relation-card">
         </div>
         <h3 class="miru"><span id="count">0</span></h3>
 
+<script>
+  const supabaseUrl = "https://uqjoueguoltccufjcxko.supabase.co";
+  const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVxam91ZWd1b2x0Y2N1ZmpjeGtvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3NDgzODIsImV4cCI6MjA5MjMyNDM4Mn0.fsxGWxWXYrTceQtdpsG9ICFYGTu5SNIxKMKJoSfR59g";
 
+  const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+async function updateCount() {
+    const { data, error } = await supabaseClient
+      .from("visits")
+      .select("count")
+      .eq("id", 1)
+      .single();
+
+    if (error) {
+      console.log("エラー:", error);
+      return;
+    }
+
+    const newCount = data.count + 1;
+
+    await supabaseClient
+      .from("visits")
+      .update({ count: newCount })
+      .eq("id", 1);
+
+    document.getElementById("count").innerText = newCount;
+  }
+
+  updateCount();
+</script>
+
+  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<script>
+
+function showTab(tabId){
+
+  // 全タブ非表示
+  document
+  .querySelectorAll(".tab-content")
+  .forEach(content=>{
+    content.classList.remove(
+      "active"
+    );
+  });
+
+  // 全ボタンactive解除
+  document
+  .querySelectorAll(".tab-btn")
+  .forEach(button=>{
+    button.classList.remove(
+      "active"
+    );
+  });
+
+  // タブ表示
+  document
+  .getElementById(tabId)
+  .classList.add("active");
+
+  // 対応ボタンだけactive
+  const activeBtn =
+  document.querySelector(
+  `[data-tab="${tabId}"]`
+  );
+
+  if(activeBtn){
+    activeBtn.classList.add(
+      "active"
+    );
+  }
+}
+
+
+// カードから移動
+function goToTab(tabId){
+
+  showTab(tabId);
+
+  document
+  .querySelector(".mokuji")
+  .scrollIntoView({
+    behavior:"smooth"
+  });
+
+}
+
+</script>
 
         
     </body>
