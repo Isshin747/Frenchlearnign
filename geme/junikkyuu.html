@@ -162,6 +162,10 @@ h1{
         ⌚ 名詞 4
     </button>
 
+    <button onclick="selectCategory('nounfive')">
+        ☀ 名詞 5 
+    </button>
+
     <button onclick="selectCategory('verb')">
         🏃 動詞
     </button>
@@ -225,6 +229,9 @@ function selectCategory(category){
     }
     else if(category ==="nounfour"){
         quizData = [...nounfours];
+    }
+    else if(category ==="nounfive"){
+        quizData = [...nounfives];
     }
 
     else if(category === "verb"){
@@ -1219,7 +1226,8 @@ correct:0},
 
 {question:"『le masque』の意味は？",
 answers:["仮面","帽子","靴","手袋"],
-correct:0},
+correct:0},];
+const nounfives=[
 
 {question:"『la marée』の意味は？",
 answers:["潮の満ち引き","風","雨","雪"],
