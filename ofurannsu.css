@@ -217,19 +217,9 @@ aspect-ratio: 16 / 9;
 .no-list{
     list-style: none;
 }
-.mokuji a {
-  display: inline-block;
-  padding: 10px 16px;
-  margin: 6px;
-  border-radius: 8px;
-
-  background: var(--main-color);
-  color: #fff;
-  text-decoration: none;
-
-  transition: 0.2s;
+.mokuji > a {
+  display:inline-block;
 }
-
 .mokuji a:hover {
   background:#003f7a;
   transform: translateY(-2px);
@@ -308,11 +298,7 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.2);
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-.mokuji li{
-    padding:10px;
-    margin:10px 0;
-    text-shadow:1px 1px 5px rgba(0,0,0,0.8);
-}
+
 .misesu{
     color:#fdbf64;
 
@@ -522,4 +508,814 @@ box-shadow: 0 6px 15px rgba(0,0,0,0.2);
 }
 .hrannsugo{
     color:#97c6e0
+}
+
+/* タブボタン */
+
+
+
+
+
+
+
+.btc{
+  background:#0055A4;
+  color:white;
+}
+.bts{
+  background:#145a32;
+  color:white
+
+}
+.bta{
+  background:rgb(247, 91, 30);
+  color:white
+}
+/* コンテンツ */
+
+
+/* ===== 一問一答ヒーロー ===== */
+
+.quiz-hero{
+  max-width:1100px;
+  margin:60px auto;
+  padding:70px 30px;
+  text-align:center;
+  border-radius:32px;
+
+  background:
+  linear-gradient(
+  135deg,
+  #0f172a,
+  #1e3a8a,
+  #0ea5e9
+  );
+
+  color:white;
+  box-shadow:
+  0 20px 40px rgba(0,0,0,.18);
+}
+
+.quiz-badge{
+  display:inline-block;
+  background:
+  rgba(255,255,255,.15);
+
+  padding:10px 18px;
+  border-radius:999px;
+  margin-bottom:20px;
+  backdrop-filter: blur(8px);
+}
+
+.quiz-hero h2{
+  color:white;
+  font-size:2.4rem;
+  margin-bottom:15px;
+}
+
+.quiz-text{
+  font-size:1.1rem;
+  color:rgba(255,255,255,.85);
+  margin-bottom:40px;
+  line-height:1.8;
+}
+
+/* カード */
+
+.quiz-grid{
+  display:grid;
+  grid-template-columns:
+  repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.quiz-card{
+  padding:28px 20px;
+  border-radius:24px;
+
+  text-decoration:none;
+  color:white;
+
+  transition:.25s;
+
+  backdrop-filter:blur(12px);
+
+  background:
+  rgba(255,255,255,.12);
+
+  border:
+  1px solid
+  rgba(255,255,255,.15);
+}
+
+.quiz-card:hover{
+  transform:
+  translateY(-8px)
+  scale(1.03);
+
+  box-shadow:
+  0 15px 30px
+  rgba(0,0,0,.2);
+}
+
+.quiz-card h3{
+  margin-bottom:10px;
+  font-size:1.2rem;
+}
+
+.quiz-card p{
+  color:
+  rgba(255,255,255,.85);
+}
+
+/* カード色 */
+
+.five{
+  background:
+  linear-gradient(
+  135deg,
+  #2563eb,
+  #1d4ed8
+  );
+}
+
+.two{
+  background:
+  linear-gradient(
+  135deg,
+  #0ea5e9,
+  #0284c7
+  );
+}
+
+.preone{
+  background:
+  linear-gradient(
+  135deg,
+  #7c3aed,
+  #5b21b6
+  );
+}
+
+.indo{
+  background:
+  linear-gradient(
+  135deg,
+  #f97316,
+  #ea580c
+  );
+}
+
+.onepiece{
+  background:
+  linear-gradient(
+  135deg,
+  #ef4444,
+  #b91c1c
+  );
+}
+
+/* ===== 目次エリア ===== */
+
+.mokuji{
+  max-width:1100px;
+  margin:60px auto;
+  padding:50px 30px;
+  border-radius:32px;
+
+  background:
+  rgba(255,255,255,.75);
+
+  backdrop-filter: blur(20px);
+
+  box-shadow:
+  0 20px 40px rgba(0,0,0,.08);
+
+  border:
+  1px solid
+  rgba(255,255,255,.3);
+}
+
+/* ===== タブボタン ===== */
+
+.tab-buttons{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+  margin:40px 0;
+}
+
+.tab-btn{
+  border:none;
+  padding:14px 24px;
+  border-radius:999px;
+
+  cursor:pointer;
+
+  font-size:1rem;
+  font-weight:700;
+
+  transition:.25s ease;
+
+  color:#444;
+
+  background:
+  rgba(255,255,255,.7);
+
+  backdrop-filter: blur(8px);
+
+  box-shadow:
+  0 6px 20px rgba(0,0,0,.08);
+}
+
+/* hover */
+
+.tab-btn:hover{
+  transform:
+  translateY(-3px);
+
+  box-shadow:
+  0 12px 25px
+  rgba(0,0,0,.12);
+}
+
+/* active */
+
+.tab-btn.active{
+  color:white;
+  transform:scale(1.05);
+}
+
+/* 国ごとの色 */
+
+.btc.active{
+  background:
+  linear-gradient(
+  135deg,
+  #2563eb,
+  #1d4ed8
+  );
+}
+
+.bts.active{
+  background:
+  linear-gradient(
+  135deg,
+  #16a34a,
+  #15803d
+  );
+}
+
+.bta.active{
+  background:
+  linear-gradient(
+  135deg,
+  #f97316,
+  #ea580c
+  );
+}
+
+/* ===== タブ内容 ===== */
+
+.tab-content{
+  display:none;
+  animation:
+  fadeIn .4s ease;
+}
+
+.tab-content.active{
+  display:block;
+}
+
+/* ふわっと表示 */
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:
+    translateY(10px);
+  }
+
+  to{
+    opacity:1;
+    transform:
+    translateY(0);
+  }
+}
+
+/* ===== 記事カード ===== */
+
+.tab-content ul{
+  display:grid;
+
+  grid-template-columns:
+  repeat(
+  auto-fit,
+  minmax(280px,1fr)
+  );
+
+  gap:18px;
+}
+
+.tab-content li{
+  list-style:none;
+}
+
+/* リンクカード化 */
+
+.tab-content a{
+  display:block;
+
+  height:100%;
+
+  padding:22px;
+
+  border-radius:24px;
+
+  text-decoration:none;
+
+  font-weight:600;
+
+  line-height:1.8;
+
+  transition:.25s;
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+/* hover */
+
+.tab-content a:hover{
+  transform:
+  translateY(-6px);
+
+  box-shadow:
+  0 15px 30px
+  rgba(0,0,0,.14);
+}
+
+/* ===== フランス語 ===== */
+
+.furench a{
+  background:
+  linear-gradient(
+  135deg,
+  #dbeafe,
+  #bfdbfe
+  );
+
+  color:#003f7a;
+}
+
+/* ===== 英語 ===== */
+
+.amerika a{
+  background:
+  linear-gradient(
+  135deg,
+  #dcfce7,
+  #bbf7d0
+  );
+
+  color:#145a32;
+}
+
+/* ===== インドネシア語 ===== */
+
+.inndonesia a{
+  background:
+  linear-gradient(
+  135deg,
+  #ffedd5,
+  #fed7aa
+  );
+
+  color:#c2410c;
+}
+/* ===== 言葉の研究室 ===== */
+
+.lab-section{
+  max-width:1100px;
+  margin:70px auto;
+  padding:60px 30px;
+  border-radius:32px;
+
+  background:
+  linear-gradient(
+  135deg,
+  #1e293b,
+  #0f172a
+  );
+
+  color:white;
+
+  box-shadow:
+  0 20px 50px
+  rgba(0,0,0,.18);
+}
+
+.lab-header{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.lab-badge{
+  display:inline-block;
+  padding:8px 16px;
+  border-radius:999px;
+
+  background:
+  rgba(255,255,255,.1);
+
+  backdrop-filter:blur(10px);
+
+  margin-bottom:20px;
+}
+
+.lab-header h2{
+  color:white;
+  font-size:2.2rem;
+}
+
+.lab-header p{
+  color:rgba(255,255,255,.75);
+}
+
+/* カード */
+
+.lab-grid{
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit,
+  minmax(280px,1fr));
+
+  gap:24px;
+}
+
+.lab-card{
+  background:
+  rgba(255,255,255,.08);
+
+  border:
+  1px solid
+  rgba(255,255,255,.1);
+
+  border-radius:28px;
+
+  padding:30px;
+
+  text-decoration:none;
+
+  color:white;
+
+  transition:.25s;
+
+  backdrop-filter:
+  blur(12px);
+}
+
+.lab-card:hover{
+  transform:
+  translateY(-8px);
+
+  box-shadow:
+  0 20px 30px
+  rgba(0,0,0,.2);
+}
+
+.lab-icon{
+  font-size:2rem;
+  margin-bottom:15px;
+}
+
+.lab-card h3{
+  font-size:1.4rem;
+  margin-bottom:15px;
+}
+
+.lab-card p{
+  color:
+  rgba(255,255,255,.8);
+
+  line-height:1.8;
+}
+
+.read-more{
+  display:inline-block;
+  margin-top:20px;
+  font-weight:bold;
+}
+
+/* 個別アクセント */
+
+.indo-card{
+  border-left:
+  5px solid #f97316;
+}
+
+.relation-card{
+  border-left:
+  5px solid #3b82f6;
+}
+
+
+/* ===== ヒーロー ===== */
+
+.hero-content{
+  max-width:1200px;
+  margin:50px auto;
+  padding:80px 30px;
+
+  display:grid;
+  grid-template-columns:
+  1.3fr 1fr;
+
+  gap:40px;
+  align-items:center;
+}
+
+/* 左 */
+
+.hero-badge{
+  display:inline-block;
+
+  background:
+  rgba(0,85,164,.12);
+
+  color:#0055A4;
+
+  padding:10px 18px;
+  border-radius:999px;
+
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+.hero-text h1{
+  font-size:4rem;
+  line-height:1.15;
+  margin-bottom:20px;
+
+  color:#111;
+}
+
+.hero-description{
+  font-size:1.15rem;
+  color:#555;
+  line-height:1.9;
+  max-width:600px;
+}
+
+/* ボタン */
+
+.hero-buttons{
+  display:flex;
+  gap:15px;
+  margin-top:35px;
+  flex-wrap:wrap;
+}
+
+.hero-btn{
+  padding:16px 24px;
+  border-radius:18px;
+
+  text-decoration:none;
+  font-weight:700;
+
+  transition:.25s;
+}
+
+.hero-btn:hover{
+  transform:translateY(-4px);
+}
+
+.primary{
+  background:
+  linear-gradient(
+  135deg,
+  #0055A4,
+  #00A8A8
+  );
+
+  color:white;
+}
+
+.secondary{
+  background:white;
+  color:#222;
+
+  box-shadow:
+  0 10px 20px
+  rgba(0,0,0,.08);
+}
+
+/* 右カード */
+
+.hero-cards{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.mini-card{
+  background:white;
+
+  padding:28px;
+  border-radius:28px;
+
+  box-shadow:
+  0 15px 30px
+  rgba(0,0,0,.08);
+
+  transition:.25s;
+}
+
+.mini-card:hover{
+  transform:
+  translateY(-5px);
+}
+
+.mini-card h3{
+  margin-bottom:10px;
+}
+
+/* スマホ */
+
+@media(max-width:768px){
+
+.hero-content{
+  grid-template-columns:1fr;
+  padding:50px 20px;
+}
+
+.hero-text h1{
+  font-size:2.5rem;
+}
+
+}
+
+.site-about{
+  max-width:900px;
+  margin:50px auto;
+  text-align:center;
+  padding:40px;
+
+  background:white;
+  border-radius:30px;
+
+  box-shadow:
+  0 15px 30px
+  rgba(0,0,0,.06);
+}
+
+.site-about p{
+  line-height:2;
+  color:#555;
+}
+
+/* ===== 共通 ===== */
+
+.section-title{
+  text-align:center;
+  font-size:2rem;
+  margin-bottom:40px;
+}
+
+.feature-section,
+.strength-section,
+.recommend-section{
+  max-width:1100px;
+  margin:70px auto;
+  padding:20px;
+}
+
+/* ===== 学べること ===== */
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:
+  repeat(auto-fit,minmax(230px,1fr));
+  gap:22px;
+}
+
+.feature-card{
+  padding:35px 25px;
+  border-radius:30px;
+  text-align:center;
+  color:white;
+
+  transition:.25s;
+
+  box-shadow:
+  0 12px 25px
+  rgba(0,0,0,.08);
+}
+
+.feature-card:hover{
+  transform:
+  translateY(-8px);
+}
+
+.icon{
+  font-size:2.5rem;
+  margin-bottom:15px;
+}
+
+.blue{
+  background:
+  linear-gradient(135deg,
+  #2563eb,#1d4ed8);
+}
+
+.green{
+  background:
+  linear-gradient(135deg,
+  #22c55e,#15803d);
+}
+
+.orange{
+  background:
+  linear-gradient(135deg,
+  #f97316,#ea580c);
+}
+
+.purple{
+  background:
+  linear-gradient(135deg,
+  #9333ea,#6d28d9);
+}
+
+/* ===== 特徴 ===== */
+
+.strength-grid{
+  display:grid;
+  grid-template-columns:
+  repeat(auto-fit,minmax(240px,1fr));
+  gap:20px;
+}
+
+.strength-card{
+  background:white;
+  padding:35px;
+  border-radius:28px;
+
+  box-shadow:
+  0 12px 30px
+  rgba(0,0,0,.08);
+
+  transition:.25s;
+}
+
+.strength-card:hover{
+  transform:
+  translateY(-6px);
+}
+
+/* ===== おすすめ ===== */
+
+.recommend-grid{
+  display:grid;
+  grid-template-columns:
+  repeat(auto-fit,minmax(230px,1fr));
+  gap:20px;
+}
+
+.recommend-card{
+  background:
+  linear-gradient(
+  135deg,
+  #0055A4,
+  #00A8A8
+  );
+
+  color:white;
+
+  padding:35px;
+  border-radius:28px;
+
+  text-align:center;
+  font-weight:600;
+
+  line-height:1.8;
+
+  transition:.25s;
+}
+
+.recommend-card:hover{
+  transform:
+  scale(1.04);
+}
+
+/* ===== スマホ ===== */
+
+@media(max-width:768px){
+
+.section-title{
+  font-size:1.5rem;
+}
+
 }
