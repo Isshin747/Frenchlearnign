@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    background: radial-gradient(circle at top, #1e293b, #0f172a);
+    color: #e5e7eb;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* メインコンテナ */
+.container {
+    width: 90%;
+    max-width: 750px;
+}
+
+/* タイトル */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* カード */
+.card {
+    background: rgba(30, 41, 59, 0.9);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+/* セレクト */
+select {
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: none;
+    background: #111827;
+    color: white;
+    margin: 5px;
+    outline: none;
+}
+
+/* ボタン */
+button {
+    padding: 10px 15px;
+    margin: 8px 5px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/* メインボタン */
+button:hover {
+    transform: scale(1.05);
+}
+
+/* スタートボタン */
+button:nth-of-type(1) {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+}
+
+/* ストップ・補助系 */
+button:nth-of-type(2) {
+    background: linear-gradient(135deg, #ef4444, #b91c1c);
+    color: white;
+}
+
+/* AIチェック */
+button:nth-of-type(3) {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+}
+
+/* 次の問題ボタン */
+button:nth-of-type(4) {
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    color: white;
+}
+
+/* 問題表示 */
+#question {
+    font-size: 1.2rem;
+    margin: 15px 0;
+    padding: 10px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+}
+
+/* 音声テキスト */
+#transcript {
+    margin-top: 15px;
+    padding: 15px;
+    min-height: 70px;
+    background: #0b1220;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    text-align: left;
+    color: #cbd5e1;
+}
+
+/* 結果 */
+.result {
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(16, 185, 129, 0.1);
+    border-left: 4px solid #10b981;
+    border-radius: 10px;
+    text-align: left;
+    white-space: pre-wrap;
+}
+
+/* レスポンシブ */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    button {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    select {
+        width: 100%;
+    }
+}
