@@ -608,67 +608,20 @@ function shuffle(array){
 
 /* 問題表示 */
 function loadQuestion(){
-
-    const q = quizData[currentQuestion];
-
-    document.getElementById("question").textContent = q.question;
-    function reviewWrongQuestions(){
-
-    quizData = [...wrongQuestions];
-
-    shuffleArray(quizData);
-
-    currentQuestion = 0;
-    score = 0;
-    wrongQuestions = [];
-
-    document.querySelector(
-        ".quiz-container"
-    ).innerHTML = `
-    <h1>🌍 Language Quiz</h1>
-
-    <div class="score">
-        Score:
-        <span id="score">0</span>
-    </div>
-
-    <div class="question-number"
-    id="questionNumber"></div>
-
-    <div class="question"
-    id="question"></div>
-
-    <div class="answers"
-    id="answers"></div>
-
-    <div id="result"></div>
-
-    <button
-    class="next-btn"
-    id="nextBtn">
-    次の問題 →
-    </button>
-    `;
-
     document.getElementById(
-        "nextBtn"
-    ).addEventListener("click",()=>{
+    "questionNumber"
+).textContent =
+`${currentQuestion + 1} / ${quizData.length}`;
+    const q = quizData[currentQuestion];
+    const shuffledAnswers =
+q.answers.map((answer,index)=>({
+    answer,
+    isCorrect:index === q.correct
+}));
 
-        currentQuestion++;
-
-        if(currentQuestion < quizData.length){
-
-            loadQuestion();
-
-        }else{
-
-            alert("復習終了！");
-            location.reload();
-        }
-    });
-
-    loadQuestion();
-}
+shuffle(shuffledAnswers);
+    document.getElementById("question").textContent = q.question;
+    
 
     const answersEl = document.getElementById("answers");
     answersEl.innerHTML = "";
@@ -676,26 +629,31 @@ function loadQuestion(){
     document.getElementById("result").textContent = "";
     document.getElementById("nextBtn").style.display = "none";
 
-    q.answers.forEach((a,i)=>{
+    shuffledAnswers.forEach((item)=>{
 
         const btn = document.createElement("button");
         btn.className = "answer-btn";
-        btn.textContent = a;
+        btn.textContent = item.answer;
 
         btn.onclick = () => {
 
             document.querySelectorAll(".answer-btn")
             .forEach(b=>b.disabled=true);
 
-            if(i === q.correct){
+            if(item.isCorrect){
                 btn.classList.add("correct");
                 document.getElementById("result").textContent = "⭕ 正解！";
                 score++;
                 document.getElementById("score").textContent = score;
             }else{
                 btn.classList.add("wrong");
-                document.querySelectorAll(".answer-btn")[q.correct]
-                .classList.add("correct");
+                document.querySelectorAll(".answer-btn")
+.forEach(button=>{
+
+    if(button.dataset.correct === "true"){
+        button.classList.add("correct");
+    }
+});
                 document.getElementById("result").textContent = "❌ 不正解";
                  wrongQuestions.push(q);
             }
@@ -706,7 +664,73 @@ function loadQuestion(){
         answersEl.appendChild(btn);
     });
 }
+function reviewWrongQuestions(){
 
+    // 間違いがない場合
+    if(wrongQuestions.length === 0){
+        alert("復習問題がありません！");
+        return;
+    }
+
+    // 間違えた問題だけセット
+    quizData = [...wrongQuestions];
+
+    // シャッフル
+    shuffle(quizData);
+
+    // 初期化
+    currentQuestion = 0;
+
+    // 復習用の間違いリスト
+    wrongQuestions = [];
+
+    // 画面を元に戻す
+    document.querySelector(".quiz-container")
+    .innerHTML = `
+        <h1>インドネシア語単語帳</h1>
+
+        <p class="subtitle">
+        ゲーム感覚で単語を覚えよう
+        </p>
+
+        <div class="score">
+            Score:
+            <span id="score">${score}</span>
+        </div>
+
+        <div class="question-number"
+        id="questionNumber"></div>
+
+        <div class="question"
+        id="question"></div>
+
+        <div class="answers"
+        id="answers"></div>
+
+        <div id="result"></div>
+
+        <button class="next-btn"
+        id="nextBtn">
+        次へ
+        </button>
+    `;
+
+    // 次へボタンを再設定
+    document.getElementById("nextBtn")
+    .onclick = () => {
+
+        currentQuestion++;
+
+        if(currentQuestion < quizData.length){
+            loadQuestion();
+        }else{
+            alert("復習終了！");
+            location.reload();
+        }
+    };
+
+    loadQuestion();
+}
 /* 次へ */
 document.getElementById("nextBtn").onclick = () => {
 
