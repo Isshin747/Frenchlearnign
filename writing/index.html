@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+/>
+
+<title>English Writing Practice</title>
+
+<link rel="stylesheet" href="style.css" />
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="background-glow"></div>
+
+<div class="container">
+
+<header>
+
+<h1>
+✍️ English Writing Practice
+</h1>
+
+<p class="subtitle">
+英検・大学入試・IELTS英作文添削
+</p>
+
+</header>
+
+<!-- Exam Select -->
+<section class="card">
+
+<h2>Select Exam</h2>
+
+<div class="exam-buttons">
+
+<button
+class="exam-btn active"
+data-exam="eiken2">
+英検2級
+</button>
+
+<button
+class="exam-btn"
+data-exam="eikenPre1">
+英検準1級
+</button>
+
+<button
+class="exam-btn"
+data-exam="university">
+大学入試
+</button>
+
+<button
+class="exam-btn"
+data-exam="ielts">
+IELTS
+</button>
+
+</div>
+
+<button id="generateBtn">
+🎲 Generate Topic
+</button>
+
+</section>
+
+<!-- Topic -->
+<section class="card">
+
+<h2>
+📝 Topic
+</h2>
+
+<div
+id="topicBox"
+class="topic-box">
+
+Click "Generate Topic"
+
+</div>
+
+<div
+id="topicHint"
+class="topic-hint">
+
+</div>
+
+</section>
+
+<!-- Essay -->
+<section class="card">
+
+<div class="top-bar">
+
+<div class="word-box">
+Words:
+<span id="wordCount">
+0
+</span>
+</div>
+
+<div
+id="minimumWarning"
+class="minimum-warning">
+
+Recommended:
+80–120 words
+
+</div>
+
+</div>
+
+<textarea
+id="essayInput"
+placeholder="Write your essay here..."
+></textarea>
+
+<button id="checkBtn">
+Check Essay
+</button>
+
+</section>
+
+<!-- Loading -->
+<div
+id="loading"
+class="loading hidden">
+
+<div class="loader"></div>
+
+Checking your essay...
+
+</div>
+
+<!-- Results -->
+<section
+id="resultSection"
+class="hidden">
+
+<!-- Scores -->
+<div class="score-grid">
+
+<div class="score-card">
+<h3>Content</h3>
+<p id="contentScore">
+0
+</p>
+</div>
+
+<div class="score-card">
+<h3>Grammar</h3>
+<p id="grammarScore">
+0
+</p>
+</div>
+
+<div class="score-card">
+<h3>Vocabulary</h3>
+<p id="vocabScore">
+0
+</p>
+</div>
+
+<div class="score-card total">
+<h3>Estimated</h3>
+<p id="overallScore">
+0
+</p>
+</div>
+
+</div>
+
+<!-- Topic Relevance -->
+<div class="card">
+
+<h2>
+🎯 Topic Relevance
+</h2>
+
+<div id="relevanceResult">
+Not checked yet
+</div>
+
+</div>
+
+<!-- Corrections -->
+<div class="card">
+
+<h2>
+❌ Corrections
+</h2>
+
+<div id="corrections">
+
+No corrections yet
+
+</div>
+
+</div>
+
+<!-- Weakness -->
+<div class="card">
+
+<h2>
+📊 Weakness Analysis
+</h2>
+
+<div class="analysis-grid">
+
+<div class="analysis-item">
+<span>
+Grammar Mistakes
+</span>
+
+<span
+id="grammarMistakes">
+0
+</span>
+</div>
+
+<div class="analysis-item">
+<span>
+Spelling Mistakes
+</span>
+
+<span
+id="spellingMistakes">
+0
+</span>
+</div>
+
+<div class="analysis-item">
+<span>
+Essay Words
+</span>
+
+<span id="essayWords">
+0
+</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- Advice -->
+<div class="card">
+
+<h2>
+💡 Advice
+</h2>
+
+<ul id="adviceList">
+
+<li>
+Write more details.
+</li>
+
+</ul>
+
+</div>
+
+<!-- Sample Answer -->
+<div class="card">
+
+<h2>
+📘 Sample Answer
+</h2>
+
+<div id="sampleAnswer">
+
+Generate a topic first.
+
+</div>
+
+</div>
+
+<!-- Useful Expressions -->
+<div class="card">
+
+<h2>
+🧠 Useful Expressions
+</h2>
+
+<ul id="usefulExpressions">
+
+<li>
+In my opinion
+</li>
+
+<li>
+One reason is that
+</li>
+
+<li>
+In addition
+</li>
+
+<li>
+For example
+</li>
+
+<li>
+In conclusion
+</li>
+
+</ul>
+
+</div>
+
+</section>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

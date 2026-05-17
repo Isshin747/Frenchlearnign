@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaking Roleplay Practice</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>🎭 Speaking Roleplay Practice</h1>
+
+    <p class="subtitle">
+        英語・フランス語・インドネシア語対応
+    </p>
+
+    <!-- 言語 -->
+    <div class="card">
+        <label>🌍 Language</label>
+
+        <select id="languageSelect">
+            <option value="en-US">English</option>
+            <option value="fr-FR">Français</option>
+            <option value="id-ID">Bahasa Indonesia</option>
+        </select>
+    </div>
+
+    <!-- シナリオ -->
+    <div class="card">
+        <label>🎭 Scenario</label>
+
+        <select id="scenarioSelect">
+
+    <optgroup label="💬 Daily Conversation">
+
+        <option value="restaurant">
+            Restaurant
+        </option>
+
+        <option value="airport">
+            Airport
+        </option>
+
+        <option value="friend">
+            Friend Conversation
+        </option>
+
+    </optgroup>
+
+
+    <optgroup label="🎓 Interview Practice">
+
+        <option value="basicInterview">
+            Basic Interview
+        </option>
+
+        <option value="partTimeInterview">
+            Part-time Job Interview
+        </option>
+
+        <option value="ieltsInterview">
+            IELTS Speaking Interview
+        </option>
+
+        <option value="studyAbroadInterview">
+            Study Abroad Interview
+        </option>
+
+        <option value="pressureInterview">
+            Pressure Interview
+        </option>
+
+    </optgroup>
+
+</select>
+    </div>
+
+    <!-- 会話 -->
+    <div class="conversation-box">
+
+
+        <div class="ai-message">
+            <h3>🤖 Roleplay Partner</h3>
+            <p id="aiText"></p>
+        </div>
+
+        <div class="user-message">
+            <h3>🗣 Your Speech</h3>
+            <p id="speechResult">
+                Press Start Recording
+            </p>
+        </div>
+
+    </div>
+    <!-- Restaurant Useful Phrases -->
+<div class="phrase-card" id="phraseCard">
+
+    <h2>🍽 Useful Restaurant Phrases</h2>
+
+    <p class="phrase-subtitle">
+        Try using these phrases in your conversation!
+    </p>
+
+    <div id="phraseList"></div>
+
+    <div class="phrase-progress">
+        Used:
+        <span id="phraseProgress">
+            0 / 0
+        </span>
+    </div>
+
+</div>
+    <!-- ボタン -->
+    <div class="button-group">
+
+        <button id="startBtn">
+            🎙 Start Recording
+        </button>
+
+        <button id="stopBtn">
+            ⏹ Stop
+        </button>
+
+        <button id="nextBtn">
+            ➡ Next
+        </button>
+
+        <button id="finishBtn">
+            ✅ Finish Roleplay
+        </button>
+
+    </div>
+
+    <!-- 添削 -->
+    <div class="feedback-card">
+
+        <h2>✅ Grammar Check</h2>
+
+        <div id="feedback">
+            Speak to see corrections.
+        </div>
+
+    </div>
+
+    <!-- 振り返り -->
+    <div class="summary-card" id="summaryCard">
+
+        <h2>📚 Roleplay Review</h2>
+
+        <div id="summaryContent">
+        </div>
+
+    </div>
+
+</div>
+
+<script src="roles.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

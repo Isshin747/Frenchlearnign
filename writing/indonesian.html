@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Indonesian Writing Practice</title>
+  <link rel="stylesheet" href="indonesian.css" />
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>✍️ Indonesian Writing Practice</h1>
+
+    <div class="card">
+      <h2>Pertanyaan</h2>
+      <p id="question">Jelaskan hari ideal Anda.</p>
+    </div>
+
+    <textarea id="answer" placeholder="Tulis dalam bahasa Indonesia di sini..."></textarea>
+
+    <div class="stats">
+      <p>Kata: <span id="count">0</span></p>
+    </div>
+
+    <div class="buttons">
+      <button onclick="checkGrammar()">Cek Tata Bahasa</button>
+      <button onclick="nextQuestion()">Pertanyaan Berikutnya</button>
+    </div>
+
+    <div id="result"></div>
+
+    <div class="card">
+      <h3>Contoh Jawaban</h3>
+      <p id="sampleText">
+        Hari ideal saya dimulai pagi hari dengan secangkir kopi.
+      </p>
+    </div>
+
+  </div>
+
+  <script src="indonesian.js"></script>
+</body>
+</html>

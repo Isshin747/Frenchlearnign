@@ -1,0 +1,210 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #eef5ff;
+    min-height: 100vh;
+    color: #1e293b;
+    padding: 20px;
+}
+
+.container {
+    max-width: 950px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.4rem;
+    margin-bottom: 10px;
+    color: #2563eb;
+}
+
+.subtitle {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 30px;
+    font-size: 1rem;
+}
+
+/* カード */
+.card,
+.feedback-card,
+.summary-card,
+.conversation-box {
+    background: white;
+    border-radius: 28px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow:
+        0 10px 25px
+        rgba(0,0,0,0.08);
+}
+
+/* ラベル */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Select */
+select {
+    width: 100%;
+    padding: 16px;
+    border-radius: 18px;
+    border: 2px solid #dbeafe;
+    background: #f8fbff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: .2s;
+}
+
+select:hover {
+    border-color: #60a5fa;
+}
+
+select:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+/* 会話 */
+.ai-message,
+.user-message {
+    border-radius: 22px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.ai-message {
+    background: #dbeafe;
+}
+
+.user-message {
+    background: #dcfce7;
+}
+
+.ai-message h3,
+.user-message h3 {
+    margin-bottom: 10px;
+}
+
+/* ボタン */
+.button-group {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+button {
+    flex: 1;
+    min-width: 180px;
+    border: none;
+    border-radius: 22px;
+    padding: 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 0 rgba(0,0,0,0.12);
+
+    transition:
+        transform .08s ease,
+        box-shadow .08s ease;
+}
+
+/* 押した感 */
+button:active {
+    transform: translateY(5px);
+
+    box-shadow:
+        0 3px 0 rgba(0,0,0,0.12);
+}
+
+/* Start */
+#startBtn {
+    background: #22c55e;
+    color: white;
+}
+
+/* Stop */
+#stopBtn {
+    background: #ef4444;
+    color: white;
+}
+
+/* Next */
+#nextBtn {
+    background: #3b82f6;
+    color: white;
+}
+
+/* Finish */
+#finishBtn {
+    background: #f59e0b;
+    color: white;
+}
+
+/* Hover */
+button:hover {
+    transform: translateY(-2px);
+}
+
+/* 録音中アニメ */
+.recording {
+    animation:
+        pulse 1s infinite;
+}
+
+@keyframes pulse {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.04);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+#feedback {
+    line-height: 1.9;
+}
+
+.summary-item {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 15px;
+}
+
+.summary-card {
+    display: none;
+}
+
+/* スマホ */
+@media (max-width: 768px) {
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+
+    button {
+        width: 100%;
+    }
+}

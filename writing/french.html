@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>French Writing Practice</title>
+  <link rel="stylesheet" href="french.css" />
+</head>
+<body>
+
+  <div class="container">
+
+    <h1>✍️ French Writing Practice</h1>
+
+    <div class="card">
+      <h2>Question</h2>
+      <p id="question">Décrivez votre journée idéale.</p>
+    </div>
+
+    <textarea id="answer" placeholder="Écrivez en français ici..."></textarea>
+
+    <div class="stats">
+      <p>Words: <span id="count">0</span></p>
+    </div>
+
+    <div class="buttons">
+      <button onclick="checkGrammar()">Check Grammar</button>
+      <button onclick="nextQuestion()">Next Question</button>
+    </div>
+
+    <div id="result"></div>
+
+    <div class="card">
+      <h3>Sample Answer</h3>
+      <p id="sampleText">
+        Ma journée idéale commence tôt le matin avec un café.
+      </p>
+    </div>
+
+  </div>
+
+  <script src="french.js"></script>
+</body>
+</html>
