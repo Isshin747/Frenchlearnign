@@ -920,3 +920,8 @@ function generateSummary() {
     .style.display =
     "block";
 }
+recognition.lang = "en-US";
+recognition.onerror = (event) => {
+    console.log("Speech error:", event.error);
+    alert("Mic error: " + event.error);
+};
