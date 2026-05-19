@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Reading</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>🌍 Global Reading</h1>
+    <p>Real Articles for Language Learning</p>
+</header>
+
+<main class="container">
+
+    <section class="selection-box">
+
+        <h2>Choose a Language</h2>
+
+        <div class="language-buttons">
+            <button class="lang-btn active" data-language="english">
+                🇬🇧 English
+            </button>
+
+            <button class="lang-btn" data-language="french">
+                🇫🇷 Français
+            </button>
+
+            <button class="lang-btn" data-language="indonesian">
+                🇮🇩 Bahasa Indonesia
+            </button>
+        </div>
+
+        <h2>Choose Level</h2>
+
+        <div class="level-buttons">
+            <button class="level-btn active" data-level="beginner">
+                Beginner
+            </button>
+
+            <button class="level-btn" data-level="intermediate">
+                Intermediate
+            </button>
+
+            <button class="level-btn" data-level="advanced">
+                Advanced
+            </button>
+        </div>
+
+        <h2>Choose Category</h2>
+
+        <div class="category-buttons">
+            <button class="category-btn active" data-category="news">
+                📰 News
+            </button>
+
+            <button class="category-btn" data-category="culture">
+                🎭 Culture
+            </button>
+
+            <button class="category-btn" data-category="travel">
+                ✈ Travel
+            </button>
+
+            <button class="category-btn" data-category="science">
+                🔬 Science
+            </button>
+
+            <button class="category-btn" data-category="lifestyle">
+                ☕ Lifestyle
+            </button>
+        </div>
+
+    </section>
+
+    <section class="articles-section">
+        <div class="article-header">
+            <h2>Recommended Articles</h2>
+            <button id="refresh-btn">
+                Refresh
+            </button>
+        </div>
+
+        <div id="articles-container">
+        </div>
+    </section>
+
+</main>
+
+<script src="articles.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

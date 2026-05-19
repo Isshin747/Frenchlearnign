@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Speaking Practice</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎤 AI Speaking Practice</h1>
+
+<div class="controls">
+
+<select id="lang">
+  <option value="en-US">English</option>
+  <option value="fr-FR">Français</option>
+  <option value="id-ID">Bahasa Indonesia</option>
+</select>
+
+<button onclick="newQuestion()">New Question</button>
+
+</div>
+
+<div class="card">
+  <h2 id="question"></h2>
+
+  <button onclick="startRec()">🎤 Start</button>
+  <button onclick="stopRec()">⏹ Stop</button>
+
+  <div id="transcript">Your speech will appear here...</div>
+
+  <button onclick="sendToAI()">🤖 Check Answer</button>
+
+  <div id="result"></div>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

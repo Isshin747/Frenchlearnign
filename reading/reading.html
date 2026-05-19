@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reading Article</title>
+
+<link rel="stylesheet" href="reading.css">
+</head>
+
+<body>
+
+<header class="top-bar">
+
+    <button class="back-btn" onclick="goBack()">
+        ← Back
+    </button>
+
+    <h1>📖 Reading Mode</h1>
+
+</header>
+
+<!-- Progress Bar -->
+
+<div class="progress-container">
+    <div id="progress-bar"></div>
+</div>
+
+<main class="reading-container">
+
+    <!-- Article Header -->
+
+    <section class="article-header">
+
+        <img id="article-image">
+
+        <div class="article-info">
+            <h2 id="article-title"></h2>
+
+            <p id="article-description"></p>
+        </div>
+
+    </section>
+
+    <!-- Buttons -->
+
+    <section class="tool-buttons">
+
+        <button id="listen-btn">
+            🔊 Listen
+        </button>
+
+        <button id="translate-btn">
+            🌐 Translation
+        </button>
+
+        <button id="save-btn">
+            ⭐ Save Words
+        </button>
+
+    </section>
+
+    <!-- Article Content -->
+
+    <article id="article-content">
+    </article>
+
+    <!-- Bottom Buttons -->
+
+    <section class="bottom-buttons">
+
+        <button id="quiz-btn">
+            📝 Take Quiz
+        </button>
+
+        <button onclick="goBack()">
+            🏠 Home
+        </button>
+
+    </section>
+
+</main>
+
+<script src="articles.js"></script>
+<script src="reading.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>英語表現</title>
+<link rel="stylesheet" href="gaga.css">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#eef4ff,#dfe9ff);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.quiz-container{
+    background:white;
+    width:100%;
+    max-width:700px;
+    border-radius:25px;
+    padding:40px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.12);
+}
+
+h1{
+    text-align:center;
+    color:#2c3e50;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:30px;
+}
+
+.score{
+    text-align:right;
+    font-weight:bold;
+    margin-bottom:20px;
+    color:#444;
+}
+
+.question-number{
+    color:#4b6fff;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.question{
+    font-size:1.5rem;
+    font-weight:bold;
+    margin-bottom:30px;
+    color:#222;
+}
+
+.answers{
+    display:grid;
+    gap:15px;
+}
+
+.answer-btn{
+    border:none;
+    background:#f3f6ff;
+    padding:18px;
+    border-radius:15px;
+    cursor:pointer;
+    font-size:1rem;
+    transition:0.2s;
+    text-align:left;
+}
+
+.answer-btn:hover{
+    background:#dfe8ff;
+    transform:translateY(-2px);
+}
+
+.correct{
+    background:#8ee4af !important;
+    color:#14532d;
+}
+
+.wrong{
+    background:#ffb3b3 !important;
+    color:#7f1d1d;
+}
+
+#result{
+    text-align:center;
+    margin-top:20px;
+    font-size:1.2rem;
+    font-weight:bold;
+}
+
+.next-btn{
+    display:none;
+    width:100%;
+    margin-top:25px;
+    border:none;
+    background:#4b6fff;
+    color:white;
+    padding:18px;
+    border-radius:15px;
+    cursor:pointer;
+    font-size:1rem;
+    transition:0.2s;
+}
+
+.next-btn:hover{
+    background:#3457d5;
+}
+
+.restart-btn{
+    background:#16a34a;
+}
+
+@media(max-width:600px){
+    .quiz-container{
+        padding:25px;
+    }
+
+    .question{
+        font-size:1.2rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+
+    <h1>🌍 Language Quiz</h1>
+    <p class="subtitle">
+        英語日常表現クイズ
+    </p>
+
+    <div class="category-select">
+
+    <button onclick="selectCategory('noun')">
+        📚 句動詞
+    </button>
+
+    <button onclick="selectCategory('verb')">
+        🏃 スラング
+    </button>
+
+    <button onclick="selectCategory('adjective')">
+        ⌛ ドラマ頻出英語
+    </button>
+
+    <button onclick="selectCategory('expression')">
+        💬 短縮形
+    </button>
+
+    <button onclick="selectCategory('all')">
+        ✨ 全部
+    </button>
+    <button onclick="location.href='../index.html'">
+        トップページへ
+</button>
+
+</div>
+
+    <div class="score">
+        Score: <span id="score">0</span>
+    </div>
+
+    <div class="question-number" id="questionNumber">
+        Question 1 / 80
+    </div>
+
+    <div class="question" id="question">
+        問題が表示されます
+    </div>
+
+    <div class="answers" id="answers"></div>
+
+    <div id="result"></div>
+
+    <button class="next-btn" id="nextBtn">
+        次の問題 →
+    </button>
+
+</div>
+
+<script>
+
+let quizData = [];
+let currentQuestion = 0;
+let score = 0;
+let wrongQuestions = [];
+function selectCategory(category){
+
+   
+    if(category === "noun"){
+        quizData = [...nouns];
+    }
+    
+
+    else if(category === "verb"){
+        quizData = [...verbs];
+    }
+
+    else if(category === "adjective"){
+        quizData = [...adjective];
+    }
+
+    else if(category === "expression"){
+        quizData = [...expressions];
+    }
+
+
+    else{
+        quizData = [
+            ...nouns,
+            ...verbs,
+            ...adjective,
+            ...expressions
+        ];
+    }
+        quizData = quizData.map(shuffleQuestion);
+
+    
+    shuffleArray(quizData);
+    
+    currentQuestion = 0;
+    score = 0;
+    wrongQuestions = [];
+
+    document.getElementById("score")
+    .textContent = score;
+
+    // ←超重要
+    loadQuestion();
+}
+
+function shuffleQuestion(q) {
+  const correctAnswer = q.answers[q.correct];
+
+  const shuffled = [...q.answers]
+    .sort(() => Math.random() - 0.5);
+
+  return {
+    question: q.question,
+    answers: shuffled,
+    correct: shuffled.indexOf(correctAnswer)
+  };
+}
+
+   
+
+const nouns = [
+    
+{question:"chill outの意味は？",answers:["緊張する","落ち着く","急ぐ","怒る"],correct:1},
+{question:"hang outの意味は？",answers:["勉強する","遊ぶ・過ごす","働く","寝る"],correct:1},
+{question:"hook upの意味は？",answers:["壊す","会う・つながる","忘れる","逃げる"],correct:1},
+{question:"hit upの意味は？",answers:["連絡する","捨てる","怒る","隠れる"],correct:0},
+{question:"drop byの意味は？",answers:["ちょっと寄る","走る","買う","壊す"],correct:0},
+{question:"swing byの意味は？",answers:["掃除する","ついでに寄る","食べる","読む"],correct:1},
+{question:"come overの意味は？",answers:["家に来る","帰る","飛ぶ","消える"],correct:0},
+{question:"head outの意味は？",answers:["出発する","寝る","話す","作る"],correct:0},
+{question:"run intoの意味は？",answers:["偶然会う","逃げる","壊す","忘れる"],correct:0},
+{question:"bump intoの意味は？",answers:["偶然会う","殴る","買う","捨てる"],correct:0},
+
+{question:"catch upの意味は？",answers:["遅れる","近況を話す","逃げる","壊れる"],correct:1},
+{question:"check inの意味は？",answers:["到着報告する","出発する","食べる","寝る"],correct:0},
+{question:"check outの意味は？",answers:["調べる・見る","壊す","走る","寝る"],correct:0},
+{question:"look intoの意味は？",answers:["調べる","捨てる","走る","寝る"],correct:0},
+{question:"figure outの意味は？",answers:["理解する","忘れる","投げる","壊す"],correct:0},
+{question:"work outの意味は？",answers:["運動する/うまくいく","寝る","捨てる","怒る"],correct:0},
+{question:"sort outの意味は？",answers:["整理・解決する","壊す","逃げる","食べる"],correct:0},
+{question:"deal withの意味は？",answers:["対処する","逃げる","笑う","寝る"],correct:0},
+{question:"mess upの意味は？",answers:["失敗する","成功する","寝る","作る"],correct:0},
+{question:"screw upの意味は？",answers:["やらかす","成功する","学ぶ","走る"],correct:0},
+
+{question:"pass outの意味は？",answers:["気絶する/寝落ち","起きる","走る","話す"],correct:0},
+{question:"freak outの意味は？",answers:["パニックになる","落ち着く","寝る","食べる"],correct:0},
+{question:"calm downの意味は？",answers:["落ち着く","怒る","走る","壊す"],correct:0},
+{question:"back offの意味は？",answers:["引く","進む","買う","笑う"],correct:0},
+{question:"shut upの意味は？",answers:["黙る","話す","走る","作る"],correct:0},
+{question:"speak upの意味は？",answers:["はっきり言う","黙る","寝る","逃げる"],correct:0},
+{question:"open upの意味は？",answers:["心を開く","閉じる","走る","捨てる"],correct:0},
+{question:"bottle upの意味は？",answers:["感情を溜め込む","吐き出す","走る","壊す"],correct:0},
+{question:"give upの意味は？",answers:["諦める","挑戦する","寝る","笑う"],correct:0},
+{question:"give inの意味は？",answers:["折れる","勝つ","走る","作る"],correct:0},
+
+{question:"turn upの意味は？",answers:["現れる","消える","寝る","壊す"],correct:0},
+{question:"show upの意味は？",answers:["来る・現れる","逃げる","食べる","壊す"],correct:0},
+{question:"show offの意味は？",answers:["見せびらかす","隠れる","寝る","走る"],correct:0},
+{question:"bring upの意味は？",answers:["話題に出す","捨てる","逃げる","壊す"],correct:0},
+{question:"bring inの意味は？",answers:["持ち込む","捨てる","走る","寝る"],correct:0},
+{question:"take offの意味は？",answers:["離陸する/急成長する","止まる","壊す","落ちる"],correct:0},
+{question:"take upの意味は？",answers:["始める","やめる","壊す","捨てる"],correct:0},
+{question:"pick upの意味は？",answers:["迎える/習得する","捨てる","壊す","寝る"],correct:0},
+{question:"drop offの意味は？",answers:["送る/寝落ちする","起きる","走る","食べる"],correct:0},
+{question:"wake upの意味は？",answers:["起きる","寝る","壊す","逃げる"],correct:0},
+
+{question:"get upの意味は？",answers:["起き上がる","寝る","壊す","食べる"],correct:0},
+{question:"go offの意味は？",answers:["鳴る/爆発する","止まる","寝る","消える"],correct:0},
+{question:"turn offの意味は？",answers:["消す","つける","走る","食べる"],correct:0},
+{question:"turn onの意味は？",answers:["つける","消す","逃げる","壊す"],correct:0},
+{question:"log inの意味は？",answers:["ログインする","ログアウトする","捨てる","寝る"],correct:0},
+{question:"log outの意味は？",answers:["ログアウトする","ログインする","走る","食べる"],correct:0},
+{question:"sign upの意味は？",answers:["登録する","削除する","壊す","逃げる"],correct:0},
+{question:"sign inの意味は？",answers:["ログインする","ログアウトする","寝る","走る"],correct:0},
+{question:"run out ofの意味は？",answers:["尽きる","増える","壊す","作る"],correct:0},
+{question:"use upの意味は？",answers:["使い切る","増やす","寝る","走る"],correct:0},
+
+{question:"throw awayの意味は？",answers:["捨てる","拾う","作る","買う"],correct:0},
+{question:"pick outの意味は？",answers:["選ぶ","捨てる","壊す","寝る"],correct:0},
+{question:"try onの意味は？",answers:["試着する","脱ぐ","捨てる","壊す"],correct:0},
+{question:"put onの意味は？",answers:["着る","脱ぐ","壊す","逃げる"],correct:0},
+{question:"wear outの意味は？",answers:["使い古す","新しくする","買う","走る"],correct:0},
+{question:"clean upの意味は？",answers:["掃除する","汚す","壊す","寝る"],correct:0},
+{question:"clear outの意味は？",answers:["片付ける","散らかす","走る","食べる"],correct:0},
+{question:"set upの意味は？",answers:["準備する","壊す","捨てる","寝る"],correct:0},
+{question:"fix upの意味は？",answers:["修理する","壊す","逃げる","食べる"],correct:0},
+{question:"build upの意味は？",answers:["積み上げる","壊す","捨てる","寝る"],correct:0},
+
+{question:"break downの意味は？",answers:["壊れる/説明する","直す","作る","走る"],correct:0},
+{question:"cut offの意味は？",answers:["遮断する","つなぐ","増やす","買う"],correct:0},
+{question:"cut outの意味は？",answers:["やめる","始める","走る","寝る"],correct:0},
+{question:"switch offの意味は？",answers:["集中をやめる","集中する","作る","壊す"],correct:0},
+{question:"zone outの意味は？",answers:["ぼーっとする","集中する","走る","学ぶ"],correct:0},
+{question:"space outの意味は？",answers:["ぼーっとする","怒る","食べる","作る"],correct:0},
+{question:"drift offの意味は？",answers:["寝落ちする","起きる","走る","壊す"],correct:0},
+{question:"fall asleepの意味は？",answers:["寝る","起きる","走る","食べる"],correct:0},
+{question:"get overの意味は？",answers:["乗り越える","負ける","逃げる","壊す"],correct:0},
+{question:"move onの意味は？",answers:["次に進む","止まる","戻る","寝る"],correct:0},
+
+{question:"let goの意味は？",answers:["手放す","掴む","作る","走る"],correct:0},
+{question:"hold onの意味は？",answers:["待つ","走る","壊す","捨てる"],correct:0},
+{question:"keep upの意味は？",answers:["ついていく","遅れる","止まる","寝る"],correct:0},
+{question:"catch onの意味は？",answers:["理解する/流行る","忘れる","壊す","逃げる"],correct:0},
+{question:"go throughの意味は？",answers:["経験する","避ける","作る","寝る"],correct:0},
+{question:"look upの意味は？",answers:["調べる/良くなる","壊す","捨てる","走る"],correct:0},
+{question:"look down onの意味は？",answers:["見下す","尊敬する","助ける","学ぶ"],correct:0},
+{question:"look forward toの意味は？",answers:["楽しみにする","嫌がる","壊す","寝る"],correct:0},
+{question:"get alongの意味は？",answers:["仲良くする","ケンカする","逃げる","壊す"],correct:0},
+{question:"fall outの意味は？",answers:["ケンカして離れる","仲直りする","作る","走る"],correct:0},
+
+{question:"make upの意味は？",answers:["仲直りする","壊す","逃げる","寝る"],correct:0},
+{question:"hook up withの意味は？",answers:["会う/関係を持つ","別れる","壊す","逃げる"],correct:0},
+{question:"hit onの意味は？",answers:["ナンパする","助ける","学ぶ","寝る"],correct:0},
+{question:"mess aroundの意味は？",answers:["ふざける","真面目にやる","働く","寝る"],correct:0},
+{question:"fool aroundの意味は？",answers:["遊びふざける","勉強する","壊す","逃げる"],correct:0},
+{question:"chill withの意味は？",answers:["ダラダラ過ごす","戦う","働く","走る"],correct:0},
+{question:"kick backの意味は？",answers:["くつろぐ","働く","壊す","走る"],correct:0},
+{question:"pig outの意味は？",answers:["食べまくる","食べない","寝る","走る"],correct:0},
+{question:"wolf downの意味は？",answers:["がっつく","少し食べる","捨てる","作る"],correct:0},
+{question:"run byの意味は？",answers:["相談する","隠す","壊す","逃げる"],correct:0},
+
+{question:"bounce backの意味は？",answers:["立ち直る","落ち込む","壊す","寝る"],correct:0},
+{question:"freak out overの意味は？",answers:["〜でパニックになる","落ち着く","学ぶ","作る"],correct:0},
+{question:"geek outの意味は？",answers:["オタク的に興奮する","冷める","壊す","逃げる"],correct:0},
+{question:"talk backの意味は？",answers:["口答えする","黙る","寝る","走る"],correct:0},
+{question:"zone inの意味は？",answers:["集中する","ぼーっとする","壊す","食べる"],correct:0}
+
+    // 名詞20問
+];
+
+const adjective=
+[
+{question:"chillの意味は？",ipa:"/tʃɪl/",answers:["落ち着く","怒る","逃げる","壊す"],correct:0},
+{question:"hang outの意味は？",ipa:"/hæŋ aʊt/",answers:["遊ぶ","働く","寝る","戦う"],correct:0},
+{question:"ghostの意味は？",ipa:"/ɡoʊst/",answers:["急に連絡を絶つ","会う","助ける","笑う"],correct:0},
+{question:"flakeの意味は？",ipa:"/fleɪk/",answers:["ドタキャンする","来る","学ぶ","食べる"],correct:0},
+{question:"bailの意味は？",ipa:"/beɪl/",answers:["抜ける","入る","作る","壊す"],correct:0},
+{question:"dipの意味は？",ipa:"/dɪp/",answers:["帰る","止まる","増える","話す"],correct:0},
+{question:"flexの意味は？",ipa:"/flɛks/",answers:["見せびらかす","隠す","学ぶ","寝る"],correct:0},
+{question:"roastの意味は？",ipa:"/roʊst/",answers:["いじる","助ける","走る","作る"],correct:0},
+{question:"vibeの意味は？",ipa:"/vaɪb/",answers:["雰囲気","食べ物","問題","速度"],correct:0},
+{question:"spill the teaの意味は？",ipa:"/spɪl ðə tiː/",answers:["ゴシップ","掃除","逃げる","寝る"],correct:0},
+
+{question:"simpの意味は？",ipa:"/sɪmp/",answers:["尽くしすぎる人","先生","友達","敵"],correct:0},
+{question:"stanの意味は？",ipa:"/stæn/",answers:["熱狂的ファン","警察","先生","店員"],correct:0},
+{question:"lowkeyの意味は？",ipa:"/ˌloʊ ˈkiː/",answers:["こっそり","大声で","速く","高く"],correct:0},
+{question:"highkeyの意味は？",ipa:"/ˌhaɪ ˈkiː/",answers:["はっきり","こっそり","弱く","遅く"],correct:0},
+{question:"susの意味は？",ipa:"/sʌs/",answers:["怪しい","安全","速い","楽しい"],correct:0},
+{question:"saltyの意味は？",ipa:"/ˈsɔːlti/",answers:["イラついてる","嬉しい","眠い","強い"],correct:0},
+{question:"extraの意味は？",ipa:"/ˈɛkstrə/",answers:["やりすぎ","普通","静か","弱い"],correct:0},
+{question:"cringeの意味は？",ipa:"/krɪndʒ/",answers:["恥ずかしい","かっこいい","速い","高い"],correct:0},
+{question:"go offの意味は？",ipa:"/ɡoʊ ɔf/",answers:["キレる/盛り上がる","寝る","止まる","隠れる"],correct:0},
+{question:"slayの意味は？",ipa:"/sleɪ/",answers:["最高にやる","失敗","逃げる","寝る"],correct:0},
+
+{question:"betの意味は？",ipa:"/bɛt/",answers:["OK","ダメ","怒る","帰る"],correct:0},
+{question:"capの意味は？",ipa:"/kæp/",answers:["嘘","真実","速さ","力"],correct:0},
+{question:"no capの意味は？",ipa:"/noʊ kæp/",answers:["マジで","冗談","たぶん","嫌"],correct:0},
+{question:"hit differentの意味は？",ipa:"/hɪt ˈdɪfərənt/",answers:["特別に感じる","痛い","遅い","小さい"],correct:0},
+{question:"fireの意味は？",ipa:"/ˈfaɪər/",answers:["最高","最悪","普通","弱い"],correct:0},
+{question:"litの意味は？",ipa:"/lɪt/",answers:["盛り上がってる","暗い","寒い","退屈"],correct:0},
+{question:"deadの意味は？",ipa:"/dɛd/",answers:["爆笑","眠い","怒る","走る"],correct:0},
+{question:"teaの意味は？",ipa:"/tiː/",answers:["ゴシップ","飲み物","仕事","学校"],correct:0},
+{question:"snatchedの意味は？",ipa:"/snætʃt/",answers:["完璧","失敗","遅い","汚い"],correct:0},
+{question:"dragの意味は？",ipa:"/dræɡ/",answers:["ディスる","褒める","助ける","作る"],correct:0},
+
+{question:"shadeの意味は？",ipa:"/ʃeɪd/",answers:["悪口","光","助け","友達"],correct:0},
+{question:"clap backの意味は？",ipa:"/klæp bæk/",answers:["言い返す","拍手","逃げる","寝る"],correct:0},
+{question:"throw shadeの意味は？",ipa:"/θroʊ ʃeɪd/",answers:["嫌味","笑う","走る","食べる"],correct:0},
+{question:"moodの意味は？",ipa:"/muːd/",answers:["共感状態","問題","敵","ルール"],correct:0},
+{question:"big moodの意味は？",ipa:"/bɪɡ muːd/",answers:["激しく共感","違う","怒り","失敗"],correct:0},
+{question:"deadassの意味は？",ipa:"/ˈdɛdæs/",answers:["マジで","冗談","適当","弱い"],correct:0},
+{question:"factsの意味は？",ipa:"/fækts/",answers:["その通り","嘘","質問","怒り"],correct:0},
+{question:"say lessの意味は？",ipa:"/seɪ lɛs/",answers:["了解","もっと話せ","無視","帰る"],correct:0},
+{question:"on pointの意味は？",ipa:"/ɑn pɔɪnt/",answers:["完璧","ズレ","遅い","弱い"],correct:0},
+{question:"no chillの意味は？",ipa:"/noʊ tʃɪl/",answers:["落ち着きない","冷静","静か","弱い"],correct:0},
+
+{question:"throw downの意味は？",ipa:"/θroʊ daʊn/",answers:["本気でやる","寝る","逃げる","笑う"],correct:0},
+{question:"pull upの意味は？",ipa:"/pʊl ʌp/",answers:["来る","逃げる","壊す","寝る"],correct:0},
+{question:"slide intoの意味は？",ipa:"/slaɪd ˈɪntuː/",answers:["DMする","走る","寝る","壊す"],correct:0},
+{question:"link upの意味は？",ipa:"/lɪŋk ʌp/",answers:["会う","別れる","壊す","逃げる"],correct:0},
+{question:"catch feelingsの意味は？",ipa:"/kætʃ ˈfiːlɪŋz/",answers:["好きになる","怒る","寝る","逃げる"],correct:0},
+{question:"go viralの意味は？",ipa:"/ɡoʊ ˈvaɪrəl/",answers:["バズる","消える","壊れる","落ちる"],correct:0},
+{question:"blow upの意味は？",ipa:"/bloʊ ʌp/",answers:["有名になる","静か","消える","遅い"],correct:0},
+{question:"glow upの意味は？",ipa:"/ɡloʊ ʌp/",answers:["垢抜ける","老ける","壊れる","逃げる"],correct:0},
+{question:"break the internetの意味は？",ipa:"/breɪk ði ˈɪntərnɛt/",answers:["バズる","壊す","消す","寝る"],correct:0},
+{question:"clout chaseの意味は？",ipa:"/klaʊt tʃeɪs/",answers:["有名狙い","隠れる","逃げる","勉強"],correct:0},
+
+{question:"ratioの意味は？",ipa:"/ˈreɪʃioʊ/",answers:["リプ負け","勝つ","学ぶ","走る"],correct:0},
+{question:"DMの意味は？",ipa:"/diː ɛm/",answers:["DM","公開投稿","電話","メール"],correct:0},
+{question:"left on readの意味は？",ipa:"/lɛft ɑn rɛd/",answers:["既読無視","返信","削除","送信"],correct:0},
+{question:"soft blockの意味は？",ipa:"/sɔft blɑk/",answers:["軽ブロック","友達","増やす","いいね"],correct:0},
+{question:"hard blockの意味は？",ipa:"/hɑrd blɑk/",answers:["完全ブロック","フォロー","いいね","検索"],correct:0},
+{question:"muteの意味は？",ipa:"/mjuːt/",answers:["非表示","フォロー","返信","送信"],correct:0},
+{question:"spamの意味は？",ipa:"/spæm/",answers:["連投","削除","学ぶ","寝る"],correct:0},
+{question:"ratioedの意味は？",ipa:"/ˈreɪʃioʊd/",answers:["反応悪い","人気","成功","有名"],correct:0},
+{question:"basedの意味は？",ipa:"/beɪst/",answers:["正直で良い","嘘","弱い","遅い"],correct:0},
+{question:"crackedの意味は？",ipa:"/krækt/",answers:["めっちゃ上手い","壊れる","遅い","弱い"],correct:0},
+
+{question:"no thoughts head emptyの意味は？",ipa:"/noʊ θɔts hɛd ˈɛmpti/",answers:["何も考えてない","集中","怒る","忙しい"],correct:0},
+{question:"big yikesの意味は？",ipa:"/bɪɡ jaɪks/",answers:["ドン引き","最高","楽しい","普通"],correct:0},
+{question:"this ain't itの意味は？",ipa:"/ðɪs eɪnt ɪt/",answers:["違う","最高","OK","正解"],correct:0},
+{question:"I'm weakの意味は？",ipa:"/aɪm wiːk/",answers:["爆笑","疲れ","怒り","寝る"],correct:0},
+{question:"sameの意味は？",ipa:"/seɪm/",answers:["同意","違う","質問","拒否"],correct:0},
+{question:"bet on itの意味は？",ipa:"/bɛt ɑn ɪt/",answers:["任せろ","無理","嫌","知らない"],correct:0},
+{question:"hit me upの意味は？",ipa:"/hɪt mi ʌp/",answers:["連絡して","帰って","寝て","黙る"],correct:0},
+{question:"I'm doneの意味は？",ipa:"/aɪm dʌn/",answers:["限界/爆笑","始める","走る","学ぶ"],correct:0},
+{question:"dead insideの意味は？",ipa:"/dɛd ɪnˈsaɪd/",answers:["疲れすぎ","元気","楽しい","強い"],correct:0},
+{question:"send itの意味は？",ipa:"/sɛnd ɪt/",answers:["やっちゃえ","やめる","逃げる","待つ"],correct:0}
+];
+
+
+const verbs = 
+   [
+{question:"What's going on?の意味は？",sentence:"A: You look upset. What's going on? / B: I just had a bad day.",answers:["どうしたの？","どこ行くの？","誰？","何時？"],correct:0},
+
+{question:"What's up?の意味は？",sentence:"A: Hey! What's up? / B: Not much, just relaxing.",answers:["元気？","どこ？","いつ？","何これ？"],correct:0},
+
+{question:"Are you kidding me?の意味は？",sentence:"A: I lost your phone. / B: Are you kidding me?",answers:["冗談でしょ？","ありがとう","いいよ","知らない"],correct:0},
+
+{question:"No way!の意味は？",sentence:"A: I won the lottery! / B: No way!",answers:["ありえない！","行くよ","いいね","静かに"],correct:0},
+
+{question:"Seriously?の意味は？",sentence:"A: He quit his job. / B: Seriously?",answers:["マジで？","やめて","行こう","寝る"],correct:0},
+
+{question:"I can't believe it.の意味は？",sentence:"A: She got married. / B: I can't believe it.",answers:["信じられない","わかった","いいよ","違う"],correct:0},
+
+{question:"That sucks.の意味は？",sentence:"A: I failed the test. / B: That sucks.",answers:["最悪だね","最高だね","普通だね","面白いね"],correct:0},
+
+{question:"I’m done.の意味は？",sentence:"A: This is too hard. / B: I'm done.",answers:["もう無理","始める","行く","食べる"],correct:0},
+
+{question:"I’m tired.の意味は？",sentence:"A: Long day, huh? / B: Yeah, I'm tired.",answers:["疲れた","怒ってる","嬉しい","元気"],correct:0},
+
+{question:"I’m good.の意味は？",sentence:"A: Do you need help? / B: I'm good, thanks.",answers:["大丈夫","ダメ","行く","寝る"],correct:0},
+
+{question:"I don’t care.の意味は？",sentence:"A: Which one do you want? / B: I don't care.",answers:["どうでもいい","気にする","好き","嫌い"],correct:0},
+
+{question:"I don't know.の意味は？",sentence:"A: Where is Tom? / B: I don't know.",answers:["知らない","わかる","行く","買う"],correct:0},
+
+{question:"It doesn't matter.の意味は？",sentence:"A: I was late. / B: It doesn't matter.",answers:["関係ない","大事","面白い","危ない"],correct:0},
+
+{question:"Hold on.の意味は？",sentence:"A: Can you help me? / B: Hold on a second.",answers:["ちょっと待って","行け","止まるな","逃げろ"],correct:0},
+
+{question:"Wait a second.の意味は？",sentence:"A: Are you ready? / B: Wait a second!",answers:["ちょっと待って","急いで","行こう","終わり"],correct:0},
+
+{question:"Come on.の意味は？",sentence:"A: We’re late! / B: Come on, hurry up!",answers:["頼むよ/早くして","帰る","寝る","怒る"],correct:0},
+
+{question:"Are you okay?の意味は？",sentence:"A: You look sick. / B: Are you okay?",answers:["大丈夫？","どこ？","誰？","いつ？"],correct:0},
+
+{question:"I'm fine.の意味は？",sentence:"A: What happened? / B: I'm fine, really.",answers:["大丈夫","最悪","怒ってる","眠い"],correct:0},
+
+{question:"I’m serious.の意味は？",sentence:"A: You’re joking, right? / B: No, I'm serious.",answers:["本気だよ","冗談","嘘","適当"],correct:0},
+
+{question:"No problem.の意味は？",sentence:"A: Thanks for helping me. / B: No problem!",answers:["問題ないよ","無理","嫌","知らない"],correct:0},
+
+{question:"You're kidding.の意味は？",sentence:"A: I passed the exam! / B: You're kidding!",answers:["冗談でしょ","ありがとう","行こう","寝る"],correct:0},
+
+{question:"What's wrong?の意味は？",sentence:"A: You look sad. What's wrong? / B: Nothing, I'm just tired.",answers:["どうしたの？","何食べる？","どこ行く？","誰？"],correct:0},
+
+{question:"What's the matter?の意味は？",sentence:"A: You don't look okay. What's the matter? / B: I'm fine.",answers:["どうしたの？","時間は？","どこ？","何これ？"],correct:0},
+
+{question:"Calm down.の意味は？",sentence:"A: I'm so angry! / B: Calm down.",answers:["落ち着いて","走れ","怒れ","逃げろ"],correct:0},
+
+{question:"Relax.の意味は？",sentence:"A: I'm stressed. / B: Just relax.",answers:["落ち着いて","急いで","戦え","行け"],correct:0},
+
+{question:"I’m in.の意味は？",sentence:"A: We're going out tonight. / B: I'm in!",answers:["参加する","帰る","やめる","寝る"],correct:0},
+
+{question:"I’m out.の意味は？",sentence:"A: Wanna join? / B: I'm out.",answers:["抜ける","入る","走る","食べる"],correct:0},
+
+{question:"Count me in.の意味は？",sentence:"A: We're starting a project. / B: Count me in.",answers:["参加する","やめる","知らない","帰る"],correct:0},
+
+{question:"Count me out.の意味は？",sentence:"A: Let's do something crazy. / B: Count me out.",answers:["不参加","参加","嬉しい","怒る"],correct:0},
+
+{question:"Let’s go.の意味は？",sentence:"A: Are you ready? / B: Let's go!",answers:["行こう","寝よう","止まろう","食べよう"],correct:0},
+
+{question:"Let's do it.の意味は？",sentence:"A: Should we start? / B: Let's do it!",answers:["やろう","やめよう","逃げよう","寝よう"],correct:0},
+
+{question:"I got it.の意味は？",sentence:"A: Do you understand? / B: Yeah, I got it.",answers:["わかった","知らない","無理","嫌"],correct:0},
+
+{question:"Got it.の意味は？",sentence:"A: Send me the file. / B: Got it.",answers:["了解","わからない","怒る","逃げる"],correct:0},
+
+{question:"No idea.の意味は？",sentence:"A: Where is she? / B: No idea.",answers:["全然わからない","知ってる","行く","買う"],correct:0},
+
+{question:"I'm not sure.の意味は？",sentence:"A: Is this correct? / B: I'm not sure.",answers:["よくわからない","確実","絶対","簡単"],correct:0},
+
+{question:"I guess so.の意味は？",sentence:"A: Is it okay? / B: I guess so.",answers:["たぶんね","絶対違う","無理","知らない"],correct:0},
+
+{question:"That's weird.の意味は？",sentence:"A: He didn't answer me. / B: That's weird.",answers:["変だね","普通","いいね","速い"],correct:0},
+
+{question:"That's crazy.の意味は？",sentence:"A: He ran 100km! / B: That's crazy!",answers:["やばい","普通","遅い","静か"],correct:0},
+
+
+{question:"I'm busy.の意味は？",sentence:"A: Can you talk now? / B: Sorry, I'm busy right now.",answers:["忙しい","暇","怒る","寝る"],correct:0},
+
+{question:"I'm late.の意味は？",sentence:"A: Where are you? / B: I'm late, I'm coming!",answers:["遅刻した","早い","正しい","暇"],correct:0},
+
+{question:"Hurry up.の意味は？",sentence:"A: We're leaving! / B: Hurry up!",answers:["急いで","止まって","寝て","待って"],correct:0},
+
+{question:"Take your time.の意味は？",sentence:"A: I need to think. / B: Take your time.",answers:["ゆっくりでいい","急いで","走って","終わって"],correct:0},
+
+{question:"I'm lost.の意味は？",sentence:"A: Where are you? / B: I'm lost.",answers:["迷った","勝った","見つけた","帰った"],correct:0},
+
+{question:"That makes sense.の意味は？",sentence:"A: So that's why. / B: Ah, that makes sense.",answers:["納得","意味不明","嫌","違う"],correct:0},
+
+{question:"It makes sense.の意味は？",sentence:"A: Your explanation is clear. / B: It makes sense now.",answers:["理解できる","わからない","怒る","眠い"],correct:0},
+
+{question:"What do you mean?の意味は？",sentence:"A: I quit. / B: What do you mean?",answers:["どういう意味？","どこ？","誰？","いつ？"],correct:0},
+
+{question:"Are you sure?の意味は？",sentence:"A: I think it's fine. / B: Are you sure?",answers:["本当に？","知らない","行こう","寝る"],correct:0},
+
+{question:"Of course.の意味は？",sentence:"A: Can you help me? / B: Of course.",answers:["もちろん","無理","嫌","違う"],correct:0},
+
+{question:"I’m on it.の意味は？",sentence:"A: We need this fixed. / B: I'm on it.",answers:["すぐやる","無視","逃げる","寝る"],correct:0},
+
+{question:"I’ll be there.の意味は？",sentence:"A: Don't be late. / B: I'll be there soon.",answers:["そこ行くよ","行かない","知らない","寝る"],correct:0},
+
+{question:"See you.の意味は？",sentence:"A: Bye! / B: See you tomorrow.",answers:["またね","さよなら永遠に","怒る","行く"],correct:0},
+
+{question:"Later.の意味は？",sentence:"A: Bye! / B: Later!",answers:["またね","今すぐ","昨日","ずっと"],correct:0},
+
+{question:"Whatever.の意味は？",sentence:"A: You don't care, do you? / B: Whatever.",answers:["どうでもいい","最高","嬉しい","正しい"],correct:0},
+
+{question:"I’m here.の意味は？",sentence:"A: Where are you? / B: I'm here.",answers:["来たよ","帰る","寝る","消える"],correct:0},
+
+{question:"I’m on my way.の意味は？",sentence:"A: Hurry up! / B: I'm on my way.",answers:["向かってる","帰る","寝る","止まる"],correct:0},
+
+{question:"Let me know.の意味は？",sentence:"A: If anything changes, tell me. / B: Sure, I'll let you know.",answers:["教えてね","黙って","走って","寝て"],correct:0},
+
+{question:"I'll text you.の意味は？",sentence:"A: Don't forget. / B: I'll text you later.",answers:["メッセージするね","無視する","消す","怒る"],correct:0},
+
+{question:"I’m confused.の意味は？",sentence:"A: This doesn't make sense. / B: I'm confused too.",answers:["混乱してる","わかる","簡単","楽しい"],correct:0},
+
+{question:"That’s fine.の意味は？",sentence:"A: Sorry I'm late. / B: That's fine.",answers:["大丈夫","ダメ","嫌","無理"],correct:0},
+
+{question:"No worries.の意味は？",sentence:"A: I forgot it. / B: No worries.",answers:["気にしないで","心配して","怒って","急いで"],correct:0},
+
+{question:"It’s okay.の意味は？",sentence:"A: I made a mistake. / B: It's okay.",answers:["大丈夫","最悪","危険","無理"],correct:0},
+
+{question:"I’m kidding.の意味は？",sentence:"A: You hate me? / B: I'm kidding!",answers:["冗談だよ","本気","怒る","逃げる"],correct:0},
+
+{question:"Just kidding.の意味は？",sentence:"A: I'm serious? / B: Just kidding!",answers:["冗談だよ","真面目","正しい","遅い"],correct:0},
+
+{question:"Stay here.の意味は？",sentence:"A: Don't move. / B: Stay here.",answers:["ここにいて","行って","逃げて","寝て"],correct:0},
+
+{question:"Come here.の意味は？",sentence:"A: I need you. / B: Come here.",answers:["こっち来て","帰って","走って","寝て"],correct:0},
+
+{question:"Get out.の意味は？",sentence:"A: This is my room. / B: Get out!",answers:["出ていけ","入って","座って","寝て"],correct:0},
+
+{question:"Shut up.の意味は？",sentence:"A: You're annoying. / B: Shut up!",answers:["黙れ","話して","行って","笑って"],correct:0},
+
+{question:"Be quiet.の意味は？",sentence:"A: The baby's sleeping. / B: Be quiet.",answers:["静かにして","騒いで","走って","食べて"],correct:0},
+
+{question:"Watch out.の意味は？",sentence:"A: Behind you! / B: Watch out!",answers:["気をつけて","見て","聞いて","行って"],correct:0},
+
+{question:"Look out.の意味は？",sentence:"A: Look out! It's coming! / B: Ahh!",answers:["危ない！","見ない","寝る","走る"],correct:0},
+
+{question:"Hang on.の意味は？",sentence:"A: Are you ready? / B: Hang on a sec.",answers:["ちょっと待って","行って","走って","寝て"],correct:0},
+
+{question:"I’ll call you.の意味は？",sentence:"A: Talk later. / B: I'll call you tonight.",answers:["電話するね","無視する","逃げる","寝る"],correct:0},
+
+{question:"Call me.の意味は？",sentence:"A: If anything happens, call me. / B: Okay.",answers:["電話して","来ないで","寝て","走って"],correct:0},
+
+{question:"I’m home.の意味は？",sentence:"A: You're back! / B: I'm home.",answers:["帰った","出かける","逃げる","働く"],correct:0},
+
+{question:"Make yourself at home.の意味は？",sentence:"A: Welcome! / B: Thanks! / A: Make yourself at home.",answers:["くつろいで","帰って","働いて","走って"],correct:0}
+];
+
+const expressions = 
+    // 表現20問
+    [
+{question:"gonnaの意味は？",ipa:"/ˈɡɒnə/",sentence:"I'm gonna go.",answers:["〜するつもり","〜した","〜しない","〜だった"],correct:0},
+
+{question:"wannaの意味は？",ipa:"/ˈwɒnə/",sentence:"I wanna eat.",answers:["〜したい","〜した","〜しない","〜だった"],correct:0},
+
+{question:"gottaの意味は？",ipa:"/ˈɡɒtə/",sentence:"I gotta go.",answers:["〜しなきゃ","〜した","〜できる","〜だった"],correct:0},
+
+{question:"kindaの意味は？",ipa:"/ˈkaɪndə/",sentence:"I'm kinda tired.",answers:["ちょっと","とても","全然","絶対"],correct:0},
+
+{question:"sortaの意味は？",ipa:"/ˈsɔːtə/",sentence:"I'm sorta busy.",answers:["まあまあ","完全に","全然","絶対"],correct:0},
+
+{question:"lemmeの意味は？",ipa:"/ˈlɛmi/",sentence:"Lemme see.",answers:["させて","行かせて","止めて","買って"],correct:0},
+
+{question:"gimmeの意味は？",ipa:"/ˈɡɪmi/",sentence:"Gimme that.",answers:["それちょうだい","逃げて","見て","止まって"],correct:0},
+
+{question:"dunnoの意味は？",ipa:"/dəˈnoʊ/",sentence:"I dunno.",answers:["知らない","わかる","行く","見る"],correct:0},
+
+{question:"wanna goの意味は？",ipa:"/ˈwɒnə ɡoʊ/",sentence:"Wanna go?",answers:["行きたい？","寝たい？","食べたい？","走る？"],correct:0},
+
+{question:"gotta goの意味は？",ipa:"/ˈɡɒtə ɡoʊ/",sentence:"I gotta go.",answers:["行かなきゃ","来た","寝た","食べた"],correct:0},
+
+{question:"outtaの意味は？",ipa:"/ˈaʊtə/",sentence:"I'm outta here.",answers:["ここから出る","ここにいる","戻る","食べる"],correct:0},
+
+{question:"lottaの意味は？",ipa:"/ˈlɒtə/",sentence:"A lotta people came.",answers:["たくさんの","少しの","全くの","一人の"],correct:0},
+
+{question:"sorta likeの意味は？",ipa:"/ˈsɔːtə laɪk/",sentence:"It's sorta like this.",answers:["まあこんな感じ","全然違う","完全に同じ","知らない"],correct:0},
+
+{question:"you gonnaの意味は？",ipa:"/ju ˈɡɒnə/",sentence:"You gonna do it?",answers:["やるつもり？","来た？","寝た？","見た？"],correct:0},
+
+{question:"I’m gonnaの意味は？",ipa:"/aɪm ˈɡɒnə/",sentence:"I'm gonna try.",answers:["やってみる","やめる","逃げる","買う"],correct:0},
+
+{question:"shouldaの意味は？",ipa:"/ˈʃʊdə/",sentence:"I shoulda called.",answers:["呼ぶべきだった","呼んだ","呼ばない","走った"],correct:0},
+
+{question:"wouldaの意味は？",ipa:"/ˈwʊdə/",sentence:"I woulda helped.",answers:["助けたはず","助けない","逃げる","寝る"],correct:0},
+
+{question:"couldaの意味は？",ipa:"/ˈkʊdə/",sentence:"I coulda done it.",answers:["できたはず","できない","壊した","忘れた"],correct:0},
+
+{question:"gimme a secの意味は？",ipa:"/ˈɡɪmi ə sɛk/",sentence:"Gimme a sec.",answers:["ちょっと待って","すぐ来て","走って","寝て"],correct:0},
+
+{question:"hang onの意味は？",ipa:"/hæŋ ɒn/",sentence:"Hang on a sec.",answers:["ちょっと待って","行け","走れ","食べろ"],correct:0},
+
+{question:"hold upの意味は？",ipa:"/hoʊld ʌp/",sentence:"Hold up!",answers:["待て！","行け！","逃げろ！","寝ろ！"],correct:0},
+
+{question:"whatchaの意味は？",ipa:"/ˈwɒtʃə/",sentence:"Whatcha doing?",answers:["何してる？","どこ？","誰？","いつ？"],correct:0},
+
+{question:"gonna be fineの意味は？",ipa:"/ˈɡɒnə bi faɪn/",sentence:"It's gonna be fine.",answers:["大丈夫","最悪","危険","無理"],correct:0},
+
+{question:"ain'tの意味は？",ipa:"/eɪnt/",sentence:"I ain't going.",answers:["行かない","行く","来る","寝る"],correct:0},
+
+{question:"lemme goの意味は？",ipa:"/ˈlɛmi ɡoʊ/",sentence:"Lemme go!",answers:["離して","止まって","来て","見て"],correct:0},
+
+{question:"lemme seeの意味は？",ipa:"/ˈlɛmi siː/",sentence:"Lemme see that.",answers:["見せて","隠して","捨てて","壊して"],correct:0},
+
+{question:"d'youの意味は？",ipa:"/dʒuː/",sentence:"D'you know?",answers:["知ってる？","行く？","寝る？","食べる？"],correct:0},
+
+{question:"whaddyaの意味は？",ipa:"/ˈwʌdʒə/",sentence:"Whaddya want?",answers:["何が欲しい？","どこ行く？","誰？","いつ？"],correct:0},
+
+{question:"gotchaの意味は？",ipa:"/ˈɡɒtʃə/",sentence:"Gotcha!",answers:["わかった！","逃げろ","来い","食べろ"],correct:0},
+
+{question:"y'allの意味は？",ipa:"/jɔːl/",sentence:"How are y'all?",answers:["あなたたち","一人","彼","それ"],correct:0},
+
+{question:"ain't got noの意味は？",ipa:"/eɪnt ɡɒt noʊ/",sentence:"I ain't got no time.",answers:["時間ない","時間ある","暇","寝る"],correct:0},
+
+{question:"kinda wannaの意味は？",ipa:"/ˈkaɪndə ˈwɒnə/",sentence:"I kinda wanna leave.",answers:["ちょっと帰りたい","行きたい","寝たい","食べたい"],correct:0},
+
+{question:"gonna have toの意味は？",ipa:"/ˈɡɒnə hæv tuː/",sentence:"You're gonna have to wait.",answers:["待たなきゃ","走る","食べる","寝る"],correct:0},
+
+{question:"wanna knowの意味は？",ipa:"/ˈwɒnə noʊ/",sentence:"I wanna know the truth.",answers:["知りたい","隠す","逃げる","壊す"],correct:0},
+
+{question:"gonna be lateの意味は？",ipa:"/ˈɡɒnə bi leɪt/",sentence:"I'm gonna be late.",answers:["遅れる","早い","正しい","暇"],correct:0},
+
+{question:"ain't sureの意味は？",ipa:"/eɪnt ʃʊr/",sentence:"I ain't sure.",answers:["よくわからない","確実","絶対","簡単"],correct:0},
+
+{question:"lemme outの意味は？",ipa:"/ˈlɛmi aʊt/",sentence:"Lemme out!",answers:["出して","入れて","止めて","見て"],correct:0},
+
+{question:"gonna do thatの意味は？",ipa:"/ˈɡɒnə duː ðæt/",sentence:"You gonna do that?",answers:["やるの？","寝るの？","食べるの？","見るの？"],correct:0},
+
+{question:"kinda weirdの意味は？",ipa:"/ˈkaɪndə wɪəd/",sentence:"That's kinda weird.",answers:["ちょっと変","すごくいい","完全に同じ","全然違う"],correct:0},
+
+{question:"outta hereの意味は？",ipa:"/ˈaʊtə hɪər/",sentence:"I'm outta here.",answers:["ここ出る","ここにいる","戻る","寝る"],correct:0}
+];
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -------------------------
+   シャッフル関数
+--------------------------*/
+function loadQuestion(){
+
+    if(quizData.length === 0){
+        return;
+    }
+
+    const q =
+    quizData[currentQuestion];
+
+    document.getElementById("question").textContent =
+        q.question;
+
+    document.getElementById("questionNumber")
+    .textContent =
+    `Question ${currentQuestion + 1} / ${quizData.length}`;
+
+    const answersEl =
+        document.getElementById("answers");
+
+    answersEl.innerHTML = "";
+
+    document.getElementById("result")
+    .textContent = "";
+
+    document.getElementById("nextBtn")
+    .style.display = "none";
+
+    q.answers.forEach((answer,index)=>{
+
+        const button =
+        document.createElement("button");
+
+        button.classList.add("answer-btn");
+
+        button.textContent = answer;
+
+        button.addEventListener("click",()=>{
+
+            const buttons =
+            document.querySelectorAll(".answer-btn");
+
+            buttons.forEach(btn =>
+                btn.disabled = true
+            );
+
+            if(index === q.correct){
+
+                button.classList.add("correct");
+
+                document.getElementById(
+                    "result"
+                ).textContent =
+                "⭕ 正解！";
+
+                score++;
+
+                document.getElementById(
+                    "score"
+                ).textContent = score;
+
+            }else{
+
+                button.classList.add("wrong");
+
+                buttons[q.correct]
+                .classList.add("correct");
+
+                document.getElementById(
+                    "result"
+                ).textContent =
+                "❌ 不正解";
+                 wrongQuestions.push(q);
+            }
+
+            document.getElementById(
+                "nextBtn"
+            ).style.display = "block";
+
+        });
+
+        answersEl.appendChild(button);
+    });
+}
+
+document.getElementById("nextBtn")
+.addEventListener("click",()=>{
+
+    currentQuestion++;
+
+    if(currentQuestion < quizData.length){
+
+        loadQuestion();
+
+    }else{
+
+        document.querySelector(
+            ".quiz-container"
+        ).innerHTML = `
+        <h1>🎉 Quiz Finished!</h1>
+
+<p style="text-align:center;
+margin-top:20px;
+font-size:1.3rem;">
+${quizData.length}問中
+<strong>${score}</strong>問正解！
+</p>
+
+<p style="text-align:center;
+margin-top:10px;">
+間違えた問題：${wrongQuestions.length}問
+</p>
+
+${
+wrongQuestions.length > 0
+? `
+<button
+class="next-btn"
+onclick="reviewWrongQuestions()"
+style="display:block;margin-top:15px;">
+❌ 間違えた問題を復習
+</button>
+`
+: ""
+}
+
+<button
+class="next-btn restart-btn"
+onclick="location.reload()"
+style="display:block;margin-top:15px;">
+もう一回挑戦
+</button>
+`;
+    }
+});
+
+function shuffleArray(array){
+    for(let i=array.length-1;i>0;i--){
+        const j =
+        Math.floor(Math.random()*(i+1));
+
+        [array[i],array[j]] =
+        [array[j],array[i]];
+    }
+}
+
+document.getElementById("question")
+.textContent =
+"カテゴリーを選んでください！";
+function reviewWrongQuestions(){
+
+    quizData = [...wrongQuestions];
+
+    shuffleArray(quizData);
+
+    currentQuestion = 0;
+    score = 0;
+    wrongQuestions = [];
+
+    document.querySelector(
+        ".quiz-container"
+    ).innerHTML = `
+    <h1>🌍 Language Quiz</h1>
+
+    <div class="score">
+        Score:
+        <span id="score">0</span>
+    </div>
+
+    <div class="question-number"
+    id="questionNumber"></div>
+
+    <div class="question"
+    id="question"></div>
+
+    <div class="answers"
+    id="answers"></div>
+
+    <div id="result"></div>
+
+    <button
+    class="next-btn"
+    id="nextBtn">
+    次の問題 →
+    </button>
+    `;
+
+    document.getElementById(
+        "nextBtn"
+    ).addEventListener("click",()=>{
+
+        currentQuestion++;
+
+        if(currentQuestion < quizData.length){
+
+            loadQuestion();
+
+        }else{
+
+            alert("復習終了！");
+            location.reload();
+        }
+    });
+
+    loadQuestion();
+}
+</script>
+
+</body>
+</html>

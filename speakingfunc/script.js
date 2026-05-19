@@ -96,31 +96,676 @@ let usedPhrases =
 // Restaurant Phrases
 // ======================
 
-const restaurantPhrases = {
+// ======================
+// Useful Phrases
+// ======================
 
-    "en-US": [
-        "can i have",
-        "i'd like to order",
-        "what do you recommend",
-        "can i get the bill",
-        "could i get",
-        "no onions please"
+const usefulPhrases = {
+
+    "en-US": {
+
+    restaurant: [
+
+        {
+            phrase: "can i have",
+            jp: "〜をもらえますか？"
+        },
+
+        {
+            phrase: "i'd like to order",
+            jp: "注文したいです"
+        },
+
+        {
+            phrase: "what do you recommend",
+            jp: "おすすめは何ですか？"
+        },
+
+        {
+            phrase: "can i get the bill",
+            jp: "お会計お願いします"
+        },
+
+        {
+            phrase: "could i get",
+            jp: "〜をいただけますか？"
+        },
+
+        {
+            phrase: "no onions please",
+            jp: "玉ねぎ抜きでお願いします"
+        }
     ],
 
-    "fr-FR": [
-        "je voudrais",
-        "je peux avoir",
-        "qu'est-ce que vous recommandez",
-        "l'addition s'il vous plaît"
+    airport: [
+
+        {
+            phrase: "here is my passport",
+            jp: "こちらがパスポートです"
+        },
+
+        {
+            phrase: "i am traveling to",
+            jp: "〜へ行きます"
+        },
+
+        {
+            phrase: "i have one suitcase",
+            jp: "スーツケースを1つ持っています"
+        },
+
+        {
+            phrase: "where is the gate",
+            jp: "ゲートはどこですか？"
+        },
+
+        {
+            phrase: "how long is the delay",
+            jp: "どれくらい遅れていますか？"
+        }
     ],
 
-    "id-ID": [
-        "saya mau pesan",
-        "bisa minta",
-        "apa rekomendasi anda",
-        "boleh minta tagihannya"
+    friend: [
+
+        {
+            phrase: "i hung out with",
+            jp: "〜と遊びました"
+        },
+
+        {
+            phrase: "my hobby is",
+            jp: "私の趣味は〜です"
+        },
+
+        {
+            phrase: "i really enjoy",
+            jp: "〜が本当に好きです"
+        },
+
+        {
+            phrase: "what about you",
+            jp: "あなたはどう？"
+        },
+
+        {
+            phrase: "that sounds fun",
+            jp: "楽しそう！"
+        }
+    ],
+
+    basicInterview: [
+
+        {
+            phrase: "i am from",
+            jp: "私は〜出身です"
+        },
+
+        {
+            phrase: "my hobby is",
+            jp: "私の趣味は〜です"
+        },
+
+        {
+            phrase: "i am learning this language because",
+            jp: "この言語を学んでいる理由は〜です"
+        },
+
+        {
+            phrase: "my strength is",
+            jp: "私の強みは〜です"
+        },
+
+        {
+            phrase: "my weakness is",
+            jp: "私の弱みは〜です"
+        }
+    ],
+
+    partTimeInterview: [
+
+        {
+            phrase: "i want to work here because",
+            jp: "ここで働きたい理由は〜です"
+        },
+
+        {
+            phrase: "i have experience in",
+            jp: "〜の経験があります"
+        },
+
+        {
+            phrase: "i can work weekends",
+            jp: "週末働けます"
+        },
+
+        {
+            phrase: "i would stay calm",
+            jp: "落ち着いて対応します"
+        },
+
+        {
+            phrase: "i learn from mistakes",
+            jp: "失敗から学びます"
+        }
+    ],
+
+    ieltsInterview: [
+
+        {
+            phrase: "in my opinion",
+            jp: "私の意見では"
+        },
+
+        {
+            phrase: "for example",
+            jp: "例えば"
+        },
+
+        {
+            phrase: "i prefer",
+            jp: "私は〜の方が好きです"
+        },
+
+        {
+            phrase: "i believe that",
+            jp: "私は〜だと思います"
+        },
+
+        {
+            phrase: "on weekends",
+            jp: "週末は"
+        }
+    ],
+
+    studyAbroadInterview: [
+
+        {
+            phrase: "i want to study abroad because",
+            jp: "留学したい理由は〜です"
+        },
+
+        {
+            phrase: "i chose this country because",
+            jp: "この国を選んだ理由は〜です"
+        },
+
+        {
+            phrase: "my future goal is",
+            jp: "将来の目標は〜です"
+        },
+
+        {
+            phrase: "i will adapt to",
+            jp: "〜に適応します"
+        },
+
+        {
+            phrase: "this experience will help me",
+            jp: "この経験は私の役に立ちます"
+        }
+    ],
+
+    pressureInterview: [
+
+        {
+            phrase: "i learned from failure",
+            jp: "失敗から学びました"
+        },
+
+        {
+            phrase: "under pressure",
+            jp: "プレッシャーの中で"
+        },
+
+        {
+            phrase: "i would communicate",
+            jp: "私は話し合います"
+        },
+
+        {
+            phrase: "my biggest weakness is",
+            jp: "私の最大の弱みは〜です"
+        },
+
+        {
+            phrase: "i would stay professional",
+            jp: "プロとして対応します"
+        }
     ]
-};
+},
+
+    "fr-FR": {
+
+    restaurant: [
+
+        {
+            phrase: "je voudrais",
+            jp: "〜が欲しいです"
+        },
+
+        {
+            phrase: "je peux avoir",
+            jp: "〜をいただけますか？"
+        },
+
+        {
+            phrase: "qu'est-ce que vous recommandez",
+            jp: "おすすめは何ですか？"
+        },
+
+        {
+            phrase: "l'addition s'il vous plaît",
+            jp: "お会計お願いします"
+        }
+    ],
+
+    airport: [
+
+        {
+            phrase: "voici mon passeport",
+            jp: "こちらがパスポートです"
+        },
+
+        {
+            phrase: "je voyage à",
+            jp: "〜へ行きます"
+        },
+
+        {
+            phrase: "j'ai une valise",
+            jp: "スーツケースを1つ持っています"
+        },
+
+        {
+            phrase: "où est la porte",
+            jp: "ゲートはどこですか？"
+        },
+
+        {
+            phrase: "y a-t-il un retard",
+            jp: "遅延はありますか？"
+        }
+    ],
+
+    friend: [
+
+        {
+            phrase: "mon passe-temps est",
+            jp: "私の趣味は〜です"
+        },
+
+        {
+            phrase: "j'aime beaucoup",
+            jp: "〜が大好きです"
+        },
+
+        {
+            phrase: "et toi",
+            jp: "あなたは？"
+        },
+
+        {
+            phrase: "ça a l'air amusant",
+            jp: "楽しそう！"
+        }
+    ],
+
+    basicInterview: [
+
+        {
+            phrase: "je viens de",
+            jp: "私は〜出身です"
+        },
+
+        {
+            phrase: "mon passe-temps est",
+            jp: "私の趣味は〜です"
+        },
+
+        {
+            phrase: "j'apprends cette langue parce que",
+            jp: "この言語を学んでいる理由は〜です"
+        },
+
+        {
+            phrase: "ma qualité est",
+            jp: "私の長所は〜です"
+        },
+
+        {
+            phrase: "mon défaut est",
+            jp: "私の短所は〜です"
+        }
+    ],
+
+    partTimeInterview: [
+
+        {
+            phrase: "je veux travailler ici parce que",
+            jp: "ここで働きたい理由は〜です"
+        },
+
+        {
+            phrase: "j'ai de l'expérience",
+            jp: "経験があります"
+        },
+
+        {
+            phrase: "je peux travailler le week-end",
+            jp: "週末働けます"
+        },
+
+        {
+            phrase: "je resterais calme",
+            jp: "落ち着いて対応します"
+        },
+
+        {
+            phrase: "j'apprends de mes erreurs",
+            jp: "失敗から学びます"
+        }
+    ],
+
+    ieltsInterview: [
+
+        {
+            phrase: "à mon avis",
+            jp: "私の意見では"
+        },
+
+        {
+            phrase: "par exemple",
+            jp: "例えば"
+        },
+
+        {
+            phrase: "je préfère",
+            jp: "私は〜の方が好きです"
+        },
+
+        {
+            phrase: "je pense que",
+            jp: "私は〜だと思います"
+        },
+
+        {
+            phrase: "le week-end",
+            jp: "週末は"
+        }
+    ],
+
+    studyAbroadInterview: [
+
+        {
+            phrase: "je veux étudier à l'étranger parce que",
+            jp: "留学したい理由は〜です"
+        },
+
+        {
+            phrase: "j'ai choisi ce pays parce que",
+            jp: "この国を選んだ理由は〜です"
+        },
+
+        {
+            phrase: "mon objectif est",
+            jp: "私の目標は〜です"
+        },
+
+        {
+            phrase: "je vais m'adapter",
+            jp: "適応します"
+        },
+
+        {
+            phrase: "cela aidera ma carrière",
+            jp: "キャリアに役立ちます"
+        }
+    ],
+
+    pressureInterview: [
+
+        {
+            phrase: "j'ai appris de l'échec",
+            jp: "失敗から学びました"
+        },
+
+        {
+            phrase: "sous pression",
+            jp: "プレッシャーの中で"
+        },
+
+        {
+            phrase: "je communiquerais",
+            jp: "話し合います"
+        },
+
+        {
+            phrase: "ma plus grande faiblesse est",
+            jp: "私の最大の弱みは〜です"
+        },
+
+        {
+            phrase: "je resterais professionnel",
+            jp: "プロとして対応します"
+        }
+    ]
+},
+    "id-ID": {
+
+    restaurant: [
+
+        {
+            phrase: "saya mau pesan",
+            jp: "注文したいです"
+        },
+
+        {
+            phrase: "bisa minta",
+            jp: "〜をいただけますか？"
+        },
+
+        {
+            phrase: "apa rekomendasi anda",
+            jp: "おすすめは何ですか？"
+        },
+
+        {
+            phrase: "boleh minta tagihannya",
+            jp: "お会計お願いします"
+        }
+    ],
+
+    airport: [
+
+        {
+            phrase: "ini paspor saya",
+            jp: "こちらがパスポートです"
+        },
+
+        {
+            phrase: "saya pergi ke",
+            jp: "〜へ行きます"
+        },
+
+        {
+            phrase: "saya membawa satu koper",
+            jp: "スーツケースを1つ持っています"
+        },
+
+        {
+            phrase: "di mana gerbangnya",
+            jp: "ゲートはどこですか？"
+        },
+
+        {
+            phrase: "berapa lama penundaannya",
+            jp: "どれくらい遅れていますか？"
+        }
+    ],
+
+    friend: [
+
+        {
+            phrase: "hobi saya adalah",
+            jp: "私の趣味は〜です"
+        },
+
+        {
+            phrase: "saya sangat suka",
+            jp: "〜が大好きです"
+        },
+
+        {
+            phrase: "bagaimana dengan kamu",
+            jp: "あなたはどう？"
+        },
+
+        {
+            phrase: "itu terdengar menyenangkan",
+            jp: "楽しそう！"
+        }
+    ],
+
+    basicInterview: [
+
+        {
+            phrase: "saya berasal dari",
+            jp: "私は〜出身です"
+        },
+
+        {
+            phrase: "hobi saya adalah",
+            jp: "私の趣味は〜です"
+        },
+
+        {
+            phrase: "saya belajar bahasa ini karena",
+            jp: "この言語を学んでいる理由は〜です"
+        },
+
+        {
+            phrase: "kelebihan saya adalah",
+            jp: "私の強みは〜です"
+        },
+
+        {
+            phrase: "kekurangan saya adalah",
+            jp: "私の弱みは〜です"
+        }
+    ],
+
+    partTimeInterview: [
+
+        {
+            phrase: "saya ingin bekerja di sini karena",
+            jp: "ここで働きたい理由は〜です"
+        },
+
+        {
+            phrase: "saya punya pengalaman",
+            jp: "経験があります"
+        },
+
+        {
+            phrase: "saya bisa bekerja akhir pekan",
+            jp: "週末働けます"
+        },
+
+        {
+            phrase: "saya akan tetap tenang",
+            jp: "落ち着いて対応します"
+        },
+
+        {
+            phrase: "saya belajar dari kesalahan",
+            jp: "失敗から学びます"
+        }
+    ],
+
+    ieltsInterview: [
+
+        {
+            phrase: "menurut saya",
+            jp: "私の意見では"
+        },
+
+        {
+            phrase: "contohnya",
+            jp: "例えば"
+        },
+
+        {
+            phrase: "saya lebih suka",
+            jp: "私は〜の方が好きです"
+        },
+
+        {
+            phrase: "saya percaya bahwa",
+            jp: "私は〜だと思います"
+        },
+
+        {
+            phrase: "di akhir pekan",
+            jp: "週末は"
+        }
+    ],
+
+    studyAbroadInterview: [
+
+        {
+            phrase: "saya ingin belajar di luar negeri karena",
+            jp: "留学したい理由は〜です"
+        },
+
+        {
+            phrase: "saya memilih negara ini karena",
+            jp: "この国を選んだ理由は〜です"
+        },
+
+        {
+            phrase: "tujuan masa depan saya adalah",
+            jp: "将来の目標は〜です"
+        },
+
+        {
+            phrase: "saya akan beradaptasi",
+            jp: "適応します"
+        },
+
+        {
+            phrase: "pengalaman ini membantu karier saya",
+            jp: "キャリアに役立ちます"
+        }
+    ],
+
+    pressureInterview: [
+
+        {
+            phrase: "saya belajar dari kegagalan",
+            jp: "失敗から学びました"
+        },
+
+        {
+            phrase: "di bawah tekanan",
+            jp: "プレッシャーの中で"
+        },
+
+        {
+            phrase: "saya akan berkomunikasi",
+            jp: "話し合います"
+        },
+
+        {
+            phrase: "kelemahan terbesar saya adalah",
+            jp: "私の最大の弱みは〜です"
+        },
+
+        {
+            phrase: "saya akan tetap profesional",
+            jp: "プロとして対応します"
+        }
+    ]
+}};
 
 // ======================
 // Initial Display
@@ -570,18 +1215,25 @@ data
 
     const ignoredRules = [
 
-        "UPPERCASE_SENTENCE_START",
+    // 大文字系
+    "UPPERCASE_SENTENCE_START",
 
-        "PUNCTUATION_PARAGRAPH_END",
+    // 文末句読点
+    "PUNCTUATION_PARAGRAPH_END",
+    "FINAL_PUNCTUATION",
 
-        "FINAL_PUNCTUATION",
+    // カンマ系（スピーキングなので無視）
+    "COMMA_PARENTHESIS_WHITESPACE",
+    "EN_COMPOUNDS",
+    "COMMA_RULE",
+    "MISSING_COMMA",
+    "PUNCTUATION",
 
-        "TYPOGRAPHY",
-
-        "CASING",
-
-        "APOSTROPHE"
-    ];
+    // タイポ系
+    "TYPOGRAPHY",
+    "CASING",
+    "APOSTROPHE"
+];
 
     let html =
     "<ul>";
@@ -601,21 +1253,24 @@ data
 
         if (
 
-            ignoredRules
-            .includes(
-                ruleId
-            ) ||
+    ignoredRules.includes(
+        ruleId
+    ) ||
 
-            category
-            ===
-            "TYPOGRAPHY" ||
+    category ===
+    "TYPOGRAPHY" ||
 
-            category
-            ===
-            "CASING"
-        ) {
-            return;
-        }
+    category ===
+    "CASING" ||
+
+    category ===
+    "PUNCTUATION" ||
+
+    category ===
+    "PUNCTUATION_STYLE"
+) {
+    return;
+}
 
         const wrong =
         transcriptText
@@ -687,11 +1342,18 @@ function updatePhraseList() {
     const scenario =
     scenarioSelect.value;
 
-    // Restaurant only
-    if (
-        scenario !==
-        "restaurant"
-    ) {
+    const language =
+    languageSelect.value;
+
+    const phrases =
+    usefulPhrases[
+        language
+    ]?.[
+        scenario
+    ];
+
+    // phraseが無い場合
+    if (!phrases) {
 
         phraseCard.style.display =
         "none";
@@ -699,80 +1361,72 @@ function updatePhraseList() {
         return;
     }
 
+    // phrase表示
     phraseCard.style.display =
     "block";
-
-    const language =
-    languageSelect.value;
-
-    const phrases =
-    restaurantPhrases[
-        language
-    ];
-
-    if (!phrases) {
-        return;
-    }
 
     phraseList.innerHTML =
     "";
 
     phrases.forEach(
-    (phrase) => {
+    (phraseObj) => {
 
         const used =
-        usedPhrases
-        .includes(
-            phrase
+        usedPhrases.includes(
+            phraseObj.phrase
         );
 
         phraseList.innerHTML +=
         `
         <div class="phrase-item">
+
             ${
                 used
                 ? "✅"
                 : "⬜"
             }
-            ${phrase}
+
+            <strong>
+                ${phraseObj.phrase}
+            </strong>
+
+            <br>
+
+            <small>
+                🇯🇵 ${phraseObj.jp}
+            </small>
+
         </div>
         `;
     });
 
-    phraseProgress
-    .textContent =
+    phraseProgress.textContent =
     `
     ${usedPhrases.length}
     /
     ${phrases.length}
     `;
 }
-
 // ======================
 // Detect Used Phrases
 // ======================
 
 function detectPhrases() {
 
-    if (
-        scenarioSelect.value
-        !==
-        "restaurant"
-    ) {
-        return;
-    }
+    const scenario =
+    scenarioSelect.value;
 
     const language =
     languageSelect.value;
 
     const phrases =
-    restaurantPhrases[
+    usefulPhrases[
         language
+    ]?.[
+        scenario
     ];
 
-    if (
-        !phrases
-    ) {
+    if (!phrases) {
         return;
     }
 
@@ -781,24 +1435,22 @@ function detectPhrases() {
     .toLowerCase();
 
     phrases.forEach(
-    (phrase) => {
+    (phraseObj) => {
 
+    const phrase =
+    phraseObj.phrase;
         if (
 
-            lowerText
-            .includes(
-                phrase
-                .toLowerCase()
+            lowerText.includes(
+                phrase.toLowerCase()
             ) &&
 
-            !usedPhrases
-            .includes(
+            !usedPhrases.includes(
                 phrase
             )
         ) {
 
-            usedPhrases
-            .push(
+            usedPhrases.push(
                 phrase
             );
         }
@@ -806,7 +1458,6 @@ function detectPhrases() {
 
     updatePhraseList();
 }
-
 // ======================
 // Summary
 // ======================
