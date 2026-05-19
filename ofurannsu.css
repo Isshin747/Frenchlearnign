@@ -1601,3 +1601,45 @@ html{
 
   color:white;
 }
+
+@media(max-width:768px){
+
+  .listening-promo{
+    margin:40px 15px;
+    padding:60px 20px;
+    border-radius:28px;
+  }
+
+  .listening-title{
+    font-size:1.9rem;
+    line-height:1.4;
+  }
+
+  .listening-text{
+    font-size:.98rem;
+    line-height:1.8;
+    margin-bottom:30px;
+  }
+
+  .language-tags{
+    gap:10px;
+    margin-bottom:30px;
+  }
+
+  .language-tags span{
+    width:100%;
+    max-width:260px;
+
+    text-align:center;
+    padding:14px;
+    font-size:.95rem;
+  }
+
+  .listening-btn{
+    width:100%;
+    max-width:320px;
+    padding:18px 20px;
+    font-size:1rem;
+  }
+
+}
