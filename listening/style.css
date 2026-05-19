@@ -1,36 +1,67 @@
 body {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   background: #f4f9ff;
   text-align: center;
   margin: 0;
+  font-size: 18px;
 }
 
 .container {
   max-width: 700px;
   margin: auto;
-  padding: 20px;
+  padding: 20px 15px;
 }
 
 h1 {
   color: #2b6cff;
+  font-size: 2rem;
 }
 
-#questionText, #scriptBox {
-  background: white;
-  padding: 15px;
+h2 {
+  font-size: 1.4rem;
+}
+
+select {
+  width: 90%;
+  max-width: 300px;
+  padding: 12px;
+  font-size: 18px;
   border-radius: 10px;
   border: 2px solid #dbe9ff;
-  width: 90%;
-  margin: 10px auto;
+}
+
+#questionText,
+#scriptBox,
+#translationBox {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  border: 2px solid #dbe9ff;
+  width: 92%;
+  margin: 12px auto;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  text-align: left;
+  word-break: break-word;
+}
+
+.btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
 }
 
 button {
   background: #2b6cff;
   color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 14px 18px;
   margin: 5px;
-  border-radius: 8px;
+  border-radius: 10px;
+  font-size: 1rem;
+  min-height: 50px;
+  cursor: pointer;
 }
 
 button:hover {
@@ -43,10 +74,51 @@ button:hover {
 
 #quiz button {
   display: block;
-  width: 80%;
-  margin: 8px auto;
+  width: 92%;
+  margin: 10px auto;
   background: white;
   color: #333;
   border: 2px solid #2b6cff;
+  font-size: 1rem;
+  padding: 14px;
 }
 
+#result,
+#scoreBox {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* ===== スマホ最適化 ===== */
+@media (max-width: 768px) {
+
+  body {
+    font-size: 20px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  button {
+    width: 45%;
+    font-size: 1rem;
+    padding: 15px;
+  }
+
+  #questionText,
+  #scriptBox,
+  #translationBox {
+    font-size: 1.15rem;
+    width: 95%;
+  }
+
+  select {
+    width: 95%;
+    font-size: 18px;
+  }
+}
