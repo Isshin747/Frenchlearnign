@@ -55,42 +55,61 @@ function loadQuestion() {
 }
 function loadQuiz() {
   const q =
-shuffledQuestions[current]
-.quiz[qIndex];
-  const quiz = document.getElementById("quiz");
-  quiz.innerHTML = "";
-  document.getElementById("result").innerText = "";
+    shuffledQuestions[current]
+    .quiz[qIndex];
 
-  const title = document.createElement("p");
+  const quiz =
+    document.getElementById("quiz");
+
+  quiz.innerHTML = "";
+
+  document.getElementById("result")
+    .innerText = "";
+
+  const title =
+    document.createElement("p");
+
   title.innerText = q.q;
   quiz.appendChild(title);
 
-  q.options.forEach(opt => {
-    const btn = document.createElement("button");
+  // ★選択肢をシャッフル
+  const shuffledOptions =
+    shuffleArray(q.options);
+
+  shuffledOptions.forEach(opt => {
+
+    const btn =
+      document.createElement("button");
 
     btn.innerText = opt.text;
 
     btn.onclick = () => {
+
       total++;
 
       if (opt.correct) {
         score++;
-        document.getElementById("result").innerText = "✅ Correct!";
+        document.getElementById("result")
+          .innerText = "✅ Correct!";
       } else {
-        document.getElementById("result").innerText = "❌ Wrong";
+        document.getElementById("result")
+          .innerText = "❌ Wrong";
       }
 
       updateScore();
 
       setTimeout(() => {
+
         qIndex++;
+
         if (
-  qIndex <
-  shuffledQuestions[current]
-  .quiz.length
-) {
+          qIndex <
+          shuffledQuestions[current]
+          .quiz.length
+        ) {
           loadQuiz();
         }
+
       }, 600);
     };
 
