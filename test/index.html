@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>English Story Hub</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -11,96 +12,16 @@
 <button id="loginBtn">Login with Google</button>
 <p id="user"></p>
 
-<hr>
+<div class="container">
 
-<input id="title" placeholder="title"><br>
-<textarea id="content" placeholder="write story"></textarea><br>
-<button onclick="postStory()">Post</button>
+  <input id="title" placeholder="Story title">
+  <textarea id="content" placeholder="Write your English story..."></textarea>
+  <button id="postBtn">Post</button>
 
-<hr>
+  <div id="stories"></div>
 
-<div id="stories"></div>
+</div>
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import {
-  getFirestore, collection, addDoc, getDocs, query, orderBy, serverTimestamp
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-import {
-  getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCExOr7lQwVscWeUpENofSeR6c0xo9kCXc",
-  authDomain: "gengolab-429d2.firebaseapp.com",
-  projectId: "gengolab-429d2",
-  storageBucket: "gengolab-429d2.firebasestorage.app",
-  messagingSenderId: "216590327793",
-  appId: "1:216590327793:web:fadb607c3567d9c7e6ee50"
-};
-
-// Initialize Firebase
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
-
-let currentUser = null;
-
-// ログイン
-document.getElementById("loginBtn").onclick = () => {
-  signInWithPopup(auth, provider);
-};
-
-// ユーザー監視
-onAuthStateChanged(auth, (user) => {
-  currentUser = user;
-  if (user) {
-    document.getElementById("user").innerText = "Hello " + user.displayName;
-  }
-});
-
-// 投稿
-window.postStory = async function () {
-  if (!currentUser) return alert("login first");
-
-  await addDoc(collection(db, "stories"), {
-    title: title.value,
-    content: content.value,
-    name: currentUser.displayName,
-    createdAt: serverTimestamp()
-  });
-
-  loadStories();
-};
-
-// 表示（新しい順）
-async function loadStories() {
-  const q = query(collection(db, "stories"), orderBy("createdAt", "desc"));
-  const snap = await getDocs(q);
-
-  stories.innerHTML = "";
-
-  snap.forEach(doc => {
-    const d = doc.data();
-    stories.innerHTML += `
-      <h3>${d.title}</h3>
-      <p>${d.content}</p>
-      <small>by ${d.name}</small>
-      <hr>
-    `;
-  });
-}
-
-loadStories();
-</script>
-
+<script type="module" src="app.js"></script>
 </body>
 </html>
