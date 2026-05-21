@@ -1,82 +1,82 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0f172a;
-  color: #e2e8f0;
+  font-family: Arial;
+  background: #f1f5f9;
+  color: #0f172a;
 }
 
 h1 {
   text-align: center;
-  padding: 20px;
-  color: #38bdf8;
+  color: #2563eb;
 }
 
 #loginBtn {
   display: block;
-  margin: 0 auto;
+  margin: 10px auto;
   padding: 10px 20px;
-  border: none;
   background: #2563eb;
   color: white;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-#user {
-  text-align: center;
-  margin-top: 10px;
-  color: #94a3b8;
-}
-
-.container {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-input, textarea {
-  width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border-radius: 8px;
   border: none;
-  background: #1e293b;
-  color: white;
-}
-
-textarea {
-  height: 120px;
-  resize: none;
-}
-
-#postBtn {
-  margin-top: 10px;
-  width: 100%;
-  padding: 12px;
-  border: none;
-  background: #22c55e;
-  color: white;
   border-radius: 8px;
-  cursor: pointer;
 }
 
-.story {
-  background: #1e293b;
-  padding: 15px;
-  margin-top: 15px;
+.layout {
+  display: flex;
+  height: 85vh;
+  gap: 10px;
+  padding: 10px;
+}
+
+/* 左 */
+.sidebar {
+  width: 20%;
+  background: white;
   border-radius: 10px;
+  padding: 10px;
+  overflow-y: auto;
 }
 
-.story h3 {
-  color: #38bdf8;
+/* 中央 */
+.viewer {
+  width: 50%;
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
 }
 
-.like-btn {
+/* 右 */
+.editor {
+  width: 30%;
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+input, textarea, select {
+  width: 100%;
   margin-top: 10px;
-  background: transparent;
-  border: 1px solid #38bdf8;
-  color: #38bdf8;
-  padding: 5px 10px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+}
+
+button {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  background: #22c55e;
+  border: none;
+  color: white;
   border-radius: 6px;
   cursor: pointer;
+}
+
+.toc-item {
+  padding: 8px;
+  border-bottom: 1px solid #e2e8f0;
+  cursor: pointer;
+}
+
+.toc-item:hover {
+  background: #e0f2fe;
 }

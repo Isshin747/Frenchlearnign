@@ -7,19 +7,46 @@
 </head>
 <body>
 
-<h1>English Story Hub</h1>
+<h1>Story Hub</h1>
 
 <button id="loginBtn">Login with Google</button>
 <p id="user"></p>
 
-<div class="container">
+<div style="text-align:center;">
+  <button onclick="showList()">List</button>
+  <button onclick="showWrite()">Write</button>
+</div>
 
-  <input id="title" placeholder="Story title">
-  <textarea id="content" placeholder="Write your English story..."></textarea>
+<div id="listView">
+  <div id="toc"></div>
+</div>
+
+<div id="readView" style="display:none;">
+  <h2 id="viewTitle"></h2>
+  <p id="viewMeta"></p>
+  <p id="viewContent"></p>
+</div>
+
+<div id="writeView" style="display:none;">
+  <h2>Write Story</h2>
+
+  <input id="title" placeholder="Title">
+
+  <select id="language">
+    <option>English</option>
+    <option>French</option>
+    <option>Indonesian</option>
+  </select>
+
+  <select id="genre">
+    <option>Novel</option>
+    <option>Diary</option>
+    <option>Essay</option>
+  </select>
+
+  <textarea id="content" placeholder="Write here..."></textarea>
+
   <button id="postBtn">Post</button>
-
-  <div id="stories"></div>
-
 </div>
 
 <script type="module" src="app.js"></script>

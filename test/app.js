@@ -192,3 +192,109 @@ function escapeHTML(str) {
 
 // 初回読み込み
 loadStories();
+
+language: "English / French / Indonesian"
+genre: "Novel / Diary / etc"
+
+let currentUser = null;
+let allStories = [];
+let selectedStory = null;
+
+await addDoc(collection(db, "stories"), {
+  title,
+  content,
+  name: currentUser.displayName,
+  email: currentUser.email,
+  likes: 0,
+  language: document.getElementById("language").value,
+  genre: document.getElementById("genre").value,
+  createdAt: serverTimestamp()
+});
+
+async function loadStories() {
+  const snap = await getDocs(
+    query(collection(db, "stories"), orderBy("createdAt", "desc"))
+  );
+
+  allStories = [];
+
+  const toc = document.getElementById("toc");
+  toc.innerHTML = "";
+
+  snap.forEach((docu) => {
+    const d = docu.data();
+    const id = docu.id;
+
+    const story = { id, ...d };
+    allStories.push(story);
+
+    toc.innerHTML += `
+      <div class="toc-item" onclick="openStory('${id}')">
+        ${escapeHTML(d.title)}
+      </div>
+    `;
+  });
+}
+
+window.openStory = (id) => {
+  const s = allStories.find(x => x.id === id);
+  if (!s) return;
+
+  selectedStory = s;
+
+  document.getElementById("viewTitle").innerText = s.title;
+
+  document.getElementById("viewMeta").innerText =
+    `${s.language} | ${s.genre} | by ${s.name}`;
+
+  document.getElementById("viewContent").innerText = s.content;
+};
+
+document.getElementById("postBtn").addEventListener("click", async () => {
+  if (!currentUser) return alert("ログインしてね");
+
+  const title = document.getElementById("title").value.trim();
+  const content = document.getElementById("content").value.trim();
+
+  if (!title || !content) return alert("書いてね");
+
+  await addDoc(collection(db, "stories"), {
+    title,
+    content,
+    name: currentUser.displayName,
+    email: currentUser.email,
+    likes: 0,
+    language: language.value,
+    genre: genre.value,
+    createdAt: serverTimestamp()
+  });
+
+  loadStories();
+});
+
+window.showList = () => {
+  document.getElementById("listView").style.display = "block";
+  document.getElementById("readView").style.display = "none";
+  document.getElementById("writeView").style.display = "none";
+};
+
+window.showWrite = () => {
+  document.getElementById("listView").style.display = "none";
+  document.getElementById("readView").style.display = "none";
+  document.getElementById("writeView").style.display = "block";
+};
+
+window.openStory = (id) => {
+  const s = allStories.find(x => x.id === id);
+  if (!s) return;
+
+  document.getElementById("listView").style.display = "none";
+  document.getElementById("writeView").style.display = "none";
+  document.getElementById("readView").style.display = "block";
+
+  document.getElementById("viewTitle").innerText = s.title;
+  document.getElementById("viewMeta").innerText =
+    `${s.language} | ${s.genre} | by ${s.name}`;
+
+  document.getElementById("viewContent").innerText = s.content;
+};
