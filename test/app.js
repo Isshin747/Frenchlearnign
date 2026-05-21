@@ -39,6 +39,7 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 let currentUser = null;
+let allStories = [];
 
 
 // =====================
@@ -55,7 +56,7 @@ document.getElementById("loginBtn").addEventListener("click", async () => {
 
 
 // =====================
-// ユーザー状態監視
+// ユーザー監視
 // =====================
 onAuthStateChanged(auth, (user) => {
   currentUser = user || null;
@@ -63,7 +64,7 @@ onAuthStateChanged(auth, (user) => {
   document.getElementById("user").innerText =
     user ? `Hello ${user.displayName}` : "Not logged in";
 
-  loadStories(); // 状態変化ごとに更新
+  loadStories();
 });
 
 
@@ -75,8 +76,10 @@ document.getElementById("postBtn").addEventListener("click", async () => {
 
   const title = document.getElementById("title").value.trim();
   const content = document.getElementById("content").value.trim();
+  const language = document.getElementById("language").value;
+  const genre = document.getElementById("genre").value;
 
-  if (!title || !content) return alert("タイトルと内容を書いてね");
+  if (!title || !content) return alert("書いてね");
 
   try {
     await addDoc(collection(db, "stories"), {
@@ -85,6 +88,8 @@ document.getElementById("postBtn").addEventListener("click", async () => {
       name: currentUser.displayName,
       email: currentUser.email,
       likes: 0,
+      language,
+      genre,
       createdAt: serverTimestamp()
     });
 
@@ -92,6 +97,7 @@ document.getElementById("postBtn").addEventListener("click", async () => {
     document.getElementById("content").value = "";
 
     loadStories();
+    showList();
   } catch (err) {
     console.error(err);
   }
@@ -115,30 +121,28 @@ window.likeStory = async (id) => {
 
 
 // =====================
-// 削除（自分の投稿だけ）
+// 削除
 // =====================
 window.deleteStory = async (id) => {
   if (!currentUser) return alert("ログインしてね");
-  if (!confirm("この投稿を削除する？")) return;
+  if (!confirm("削除する？")) return;
 
   try {
     await deleteDoc(doc(db, "stories", id));
     loadStories();
   } catch (err) {
     console.error(err);
-    alert("削除失敗");
   }
 };
 
 
 // =====================
-// 表示
-// =====================
+// 読み込み（目次）
+/* ===================== */
 async function loadStories() {
-  const storiesEl = document.getElementById("stories");
-  if (!storiesEl) return;
-
-  storiesEl.innerHTML = "";
+  const toc = document.getElementById("toc");
+  toc.innerHTML = "";
+  allStories = [];
 
   try {
     const q = query(
@@ -152,28 +156,54 @@ async function loadStories() {
       const d = docu.data();
       const id = docu.id;
 
-      const isOwner = currentUser && currentUser.email === d.email;
+      const story = { id, ...d };
+      allStories.push(story);
 
-      storiesEl.innerHTML += `
-        <div class="story">
-          <h3>${escapeHTML(d.title)}</h3>
-          <p>${escapeHTML(d.content)}</p>
-          <small>by ${escapeHTML(d.name || "unknown")}</small><br>
-
-          <button onclick="likeStory('${id}')">
-            ❤️ ${d.likes || 0}
-          </button>
-
-          ${isOwner ? `
-            <button onclick="deleteStory('${id}')">🗑 delete</button>
-          ` : ""}
+      toc.innerHTML += `
+        <div class="toc-item" onclick="openStory('${id}')">
+          ${escapeHTML(d.title)}
         </div>
       `;
     });
   } catch (err) {
-    console.error("Load error:", err);
+    console.error(err);
   }
 }
+
+
+// =====================
+// 作品表示
+// =====================
+window.openStory = (id) => {
+  const s = allStories.find(x => x.id === id);
+  if (!s) return;
+
+  document.getElementById("listView").style.display = "none";
+  document.getElementById("writeView").style.display = "none";
+  document.getElementById("readView").style.display = "block";
+
+  document.getElementById("viewTitle").innerText = s.title;
+  document.getElementById("viewMeta").innerText =
+    `${s.language} | ${s.genre} | by ${s.name}`;
+
+  document.getElementById("viewContent").innerText = s.content;
+};
+
+
+// =====================
+// 画面切り替え
+// =====================
+window.showList = () => {
+  document.getElementById("listView").style.display = "block";
+  document.getElementById("readView").style.display = "none";
+  document.getElementById("writeView").style.display = "none";
+};
+
+window.showWrite = () => {
+  document.getElementById("listView").style.display = "none";
+  document.getElementById("readView").style.display = "none";
+  document.getElementById("writeView").style.display = "block";
+};
 
 
 // =====================
@@ -190,111 +220,5 @@ function escapeHTML(str) {
 }
 
 
-// 初回読み込み
+// 初期読み込み
 loadStories();
-
-language: "English / French / Indonesian"
-genre: "Novel / Diary / etc"
-
-let currentUser = null;
-let allStories = [];
-let selectedStory = null;
-
-await addDoc(collection(db, "stories"), {
-  title,
-  content,
-  name: currentUser.displayName,
-  email: currentUser.email,
-  likes: 0,
-  language: document.getElementById("language").value,
-  genre: document.getElementById("genre").value,
-  createdAt: serverTimestamp()
-});
-
-async function loadStories() {
-  const snap = await getDocs(
-    query(collection(db, "stories"), orderBy("createdAt", "desc"))
-  );
-
-  allStories = [];
-
-  const toc = document.getElementById("toc");
-  toc.innerHTML = "";
-
-  snap.forEach((docu) => {
-    const d = docu.data();
-    const id = docu.id;
-
-    const story = { id, ...d };
-    allStories.push(story);
-
-    toc.innerHTML += `
-      <div class="toc-item" onclick="openStory('${id}')">
-        ${escapeHTML(d.title)}
-      </div>
-    `;
-  });
-}
-
-window.openStory = (id) => {
-  const s = allStories.find(x => x.id === id);
-  if (!s) return;
-
-  selectedStory = s;
-
-  document.getElementById("viewTitle").innerText = s.title;
-
-  document.getElementById("viewMeta").innerText =
-    `${s.language} | ${s.genre} | by ${s.name}`;
-
-  document.getElementById("viewContent").innerText = s.content;
-};
-
-document.getElementById("postBtn").addEventListener("click", async () => {
-  if (!currentUser) return alert("ログインしてね");
-
-  const title = document.getElementById("title").value.trim();
-  const content = document.getElementById("content").value.trim();
-
-  if (!title || !content) return alert("書いてね");
-
-  await addDoc(collection(db, "stories"), {
-    title,
-    content,
-    name: currentUser.displayName,
-    email: currentUser.email,
-    likes: 0,
-    language: language.value,
-    genre: genre.value,
-    createdAt: serverTimestamp()
-  });
-
-  loadStories();
-});
-
-window.showList = () => {
-  document.getElementById("listView").style.display = "block";
-  document.getElementById("readView").style.display = "none";
-  document.getElementById("writeView").style.display = "none";
-};
-
-window.showWrite = () => {
-  document.getElementById("listView").style.display = "none";
-  document.getElementById("readView").style.display = "none";
-  document.getElementById("writeView").style.display = "block";
-};
-
-window.openStory = (id) => {
-  const s = allStories.find(x => x.id === id);
-  if (!s) return;
-
-  document.getElementById("listView").style.display = "none";
-  document.getElementById("writeView").style.display = "none";
-  document.getElementById("readView").style.display = "block";
-
-  document.getElementById("viewTitle").innerText = s.title;
-  document.getElementById("viewMeta").innerText =
-    `${s.language} | ${s.genre} | by ${s.name}`;
-
-  document.getElementById("viewContent").innerText = s.content;
-};
