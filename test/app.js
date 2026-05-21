@@ -48,7 +48,7 @@ document.getElementById("loginBtn").addEventListener("click", async () => {
   try {
     await signInWithPopup(auth, provider);
   } catch (err) {
-    console.error("Login error:", err);
+    console.error(err);
     alert("ログイン失敗");
   }
 });
@@ -63,7 +63,7 @@ onAuthStateChanged(auth, (user) => {
   document.getElementById("user").innerText =
     user ? `Hello ${user.displayName}` : "Not logged in";
 
-  loadStories(); // ←状態変わったら再読み込み
+  loadStories(); // 状態変化ごとに更新
 });
 
 
@@ -76,7 +76,7 @@ document.getElementById("postBtn").addEventListener("click", async () => {
   const title = document.getElementById("title").value.trim();
   const content = document.getElementById("content").value.trim();
 
-  if (!title || !content) return alert("タイトルと本文を書いてね");
+  if (!title || !content) return alert("タイトルと内容を書いてね");
 
   try {
     await addDoc(collection(db, "stories"), {
@@ -115,16 +115,18 @@ window.likeStory = async (id) => {
 
 
 // =====================
-// 削除
+// 削除（自分の投稿だけ）
 // =====================
 window.deleteStory = async (id) => {
-  if (!confirm("削除する？")) return;
+  if (!currentUser) return alert("ログインしてね");
+  if (!confirm("この投稿を削除する？")) return;
 
   try {
     await deleteDoc(doc(db, "stories", id));
     loadStories();
   } catch (err) {
     console.error(err);
+    alert("削除失敗");
   }
 };
 
@@ -156,15 +158,14 @@ async function loadStories() {
         <div class="story">
           <h3>${escapeHTML(d.title)}</h3>
           <p>${escapeHTML(d.content)}</p>
-          <small>by ${escapeHTML(d.name || "unknown")}</small>
-          <br>
+          <small>by ${escapeHTML(d.name || "unknown")}</small><br>
 
           <button onclick="likeStory('${id}')">
             ❤️ ${d.likes || 0}
           </button>
 
           ${isOwner ? `
-            <button onclick="deleteStory('${id}')">🗑</button>
+            <button onclick="deleteStory('${id}')">🗑 delete</button>
           ` : ""}
         </div>
       `;
@@ -176,7 +177,7 @@ async function loadStories() {
 
 
 // =====================
-// HTMLエスケープ（軽いXSS対策）
+// XSS対策
 // =====================
 function escapeHTML(str) {
   if (!str) return "";
