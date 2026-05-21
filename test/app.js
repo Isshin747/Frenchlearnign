@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import {
-  getFirestore, collection, addDoc, getDocs, query, orderBy, serverTimestamp, doc, updateDoc, increment
+  getFirestore, collection, addDoc, getDocs, query, orderBy, serverTimestamp, doc, updateDoc, increment, deleteDoc
 } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 import {
@@ -9,14 +9,11 @@ import {
 
 // Firebase設定
 const firebaseConfig = {
-  apiKey: "AIzaSyCExOr7lQwVscWeUpENofSeR6c0xo9kCXc",
+  apiKey: "AIzaSy...",
   authDomain: "gengolab-429d2.firebaseapp.com",
   projectId: "gengolab-429d2",
-  storageBucket: "gengolab-429d2.firebasestorage.app",
-  messagingSenderId: "216590327793",
   appId: "1:216590327793:web:fadb607c3567d9c7e6ee50"
 };
-
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -30,12 +27,11 @@ document.getElementById("loginBtn").onclick = () => {
   signInWithPopup(auth, provider);
 };
 
-// ユーザー表示
+// ユーザー
 onAuthStateChanged(auth, (user) => {
   currentUser = user;
-  document.getElementById("user").innerText = user
-    ? "Hello " + user.displayName
-    : "";
+  document.getElementById("user").innerText =
+    user ? "Hello " + user.displayName : "";
 });
 
 // 投稿
@@ -49,6 +45,7 @@ document.getElementById("postBtn").onclick = async () => {
     title,
     content,
     name: currentUser.displayName,
+    email: currentUser.email,
     likes: 0,
     createdAt: serverTimestamp()
   });
@@ -57,11 +54,18 @@ document.getElementById("postBtn").onclick = async () => {
 };
 
 // いいね
-window.likeStory = async function (id) {
+window.likeStory = async function(id) {
   await updateDoc(doc(db, "stories", id), {
     likes: increment(1)
   });
+  loadStories();
+};
 
+// 削除
+window.deleteStory = async function(id) {
+  if (!confirm("Delete?")) return;
+
+  await deleteDoc(doc(db, "stories", id));
   loadStories();
 };
 
@@ -82,49 +86,15 @@ async function loadStories() {
         <h3>${d.title}</h3>
         <p>${d.content}</p>
         <small>by ${d.name}</small><br>
-        <button class="like-btn" onclick="likeStory('${id}')">
-          ❤️ ${d.likes}
-        </button>
+
+        <button onclick="likeStory('${id}')">❤️ ${d.likes}</button>
+
+        ${currentUser && currentUser.email === d.email ? `
+          <button onclick="deleteStory('${id}')">🗑</button>
+        ` : ""}
       </div>
     `;
   });
 }
 
 loadStories();
-
-await addDoc(collection(db, "stories"), {
-  title,
-  content,
-  name: currentUser.displayName,
-  email: currentUser.email,   // ←追加
-  likes: 0,
-  createdAt: serverTimestamp()
-});
-
-stories.innerHTML += `
-  <div class="story">
-    <h3>${d.title}</h3>
-    <p>${d.content}</p>
-    <small>by ${d.name}</small><br>
-
-    <button onclick="likeStory('${id}')">
-      ❤️ ${d.likes}
-    </button>
-
-    ${currentUser && currentUser.email === d.email ? `
-      <button onclick="deleteStory('${id}')" style="margin-left:10px;">
-        🗑 Delete
-      </button>
-    ` : ""}
-
-  </div>
-`;
-
-import { deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-
-window.deleteStory = async function(id) {
-  if (!confirm("Delete this story?")) return;
-
-  await deleteDoc(doc(db, "stories", id));
-  loadStories();
-};
