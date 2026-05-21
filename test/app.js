@@ -9,11 +9,14 @@ import {
 
 // Firebase設定
 const firebaseConfig = {
-  apiKey: "AIzaSy...",
+  apiKey: "AIzaSyCExOr7lQwVscWeUpENofSeR6c0xo9kCXc",
   authDomain: "gengolab-429d2.firebaseapp.com",
   projectId: "gengolab-429d2",
+  storageBucket: "gengolab-429d2.firebasestorage.app",
+  messagingSenderId: "216590327793",
   appId: "1:216590327793:web:fadb607c3567d9c7e6ee50"
 };
+
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
