@@ -1,0 +1,203 @@
+@charset"UTF-8";
+
+body{
+    background:#f5f7fb;
+    color:#333;
+    font-family:sans-serif;
+    line-height:1.9;
+}
+
+/* 全体レイアウト */
+.sabu{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+
+    max-width:1400px;
+    margin:0 auto;
+
+    padding:40px 20px;
+}
+
+/* メイン */
+.asa{
+    width:70%;
+}
+
+/* サイドバー */
+aside{
+    width:25%;
+
+    background:white;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    height:fit-content;
+
+    position:sticky;
+    top:20px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
+}
+
+/* ロゴ */
+.logo{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.logo img{
+    width:120px;
+    border-radius:50%;
+}
+
+/* サイドバー見出し */
+aside h3{
+    font-size:1.4rem;
+
+    margin-bottom:15px;
+
+    border-left:6px solid #3b82f6;
+
+    padding-left:10px;
+}
+
+/* サイドバーリンク */
+aside ul{
+    list-style:none;
+}
+
+aside li{
+    margin-bottom:12px;
+}
+
+aside a{
+    text-decoration:none;
+    color:#333;
+
+    transition:0.3s;
+}
+
+aside a:hover{
+    color:#3b82f6;
+    padding-left:5px;
+}
+
+/* 記事カード */
+.bonjour{
+    background:white;
+
+    padding:35px;
+
+    margin-bottom:35px;
+
+    border-radius:25px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,0.07);
+}
+
+/* タイトル */
+h1{
+    font-size:2.4rem;
+
+    line-height:1.4;
+
+    margin-bottom:25px;
+
+    color:#1e3a8a;
+}
+
+/* 小見出し */
+.note{
+    font-size:1.7rem;
+
+    margin-bottom:25px;
+
+    border-left:8px solid #2563eb;
+
+    padding-left:15px;
+
+    color:#1e40af;
+}
+
+/* 本文 */
+.iine{
+    font-size:1.05rem;
+}
+
+/* 文章ボックス */
+.phrase{
+    background:#f8fafc;
+
+    padding:25px;
+
+    border-radius:18px;
+
+    margin-bottom:20px;
+
+    border:1px solid #e2e8f0;
+}
+
+/* インドネシア語例文 */
+.sub{
+    background:#e0f2fe;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    margin-top:15px;
+
+    color:#0f172a;
+}
+
+/* strong */
+strong{
+    color:#1d4ed8;
+}
+
+/* 写真 */
+.article-image{
+    width:100%;
+
+    border-radius:20px;
+
+    margin:25px 0;
+
+    box-shadow:0 5px 20px rgba(0,0,0,0.12);
+}
+
+/* hover */
+.bonjour:hover{
+    transform:translateY(-3px);
+
+    transition:0.3s;
+}
+
+/* スマホ */
+@media(max-width:900px){
+
+    .sabu{
+        flex-direction:column;
+    }
+
+    .asa{
+        width:100%;
+    }
+
+    aside{
+        width:100%;
+
+        position:static;
+    }
+
+    h1{
+        font-size:1.8rem;
+    }
+
+    .note{
+        font-size:1.4rem;
+    }
+}
