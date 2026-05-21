@@ -91,3 +91,40 @@ async function loadStories() {
 }
 
 loadStories();
+
+await addDoc(collection(db, "stories"), {
+  title,
+  content,
+  name: currentUser.displayName,
+  email: currentUser.email,   // ←追加
+  likes: 0,
+  createdAt: serverTimestamp()
+});
+
+stories.innerHTML += `
+  <div class="story">
+    <h3>${d.title}</h3>
+    <p>${d.content}</p>
+    <small>by ${d.name}</small><br>
+
+    <button onclick="likeStory('${id}')">
+      ❤️ ${d.likes}
+    </button>
+
+    ${currentUser && currentUser.email === d.email ? `
+      <button onclick="deleteStory('${id}')" style="margin-left:10px;">
+        🗑 Delete
+      </button>
+    ` : ""}
+
+  </div>
+`;
+
+import { deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+window.deleteStory = async function(id) {
+  if (!confirm("Delete this story?")) return;
+
+  await deleteDoc(doc(db, "stories", id));
+  loadStories();
+};
