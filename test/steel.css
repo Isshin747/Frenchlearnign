@@ -107,13 +107,32 @@ h2 {
 }
 
 /* 投稿カード */
-.story-card {
-  background: #f9fbff;
-  border: 1px solid #e4ebff;
-  border-radius: 20px;
-  padding: 20px;
+/* Story一覧 */
+#toc {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* タイトルだけ表示 */
+.story-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
   cursor: pointer;
   transition: .2s;
+}
+
+.story-item:hover {
+  padding-left: 8px;
+}
+
+.story-title {
+  color: #2d3748;
+  font-size: 1.05rem;
+}
+
+.story-item:hover .story-title {
+  color: #4f7cff;
 }
 
 .story-card:hover {

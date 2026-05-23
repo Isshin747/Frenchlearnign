@@ -141,33 +141,46 @@ window.deleteStory = async (id) => {
 /* ===================== */
 async function loadStories() {
   const toc = document.getElementById("toc");
+
   toc.innerHTML = "";
-  allStories = [];
 
-  try {
-    const q = query(
-      collection(db, "stories"),
-      orderBy("createdAt", "desc")
-    );
+  // Firestoreから取得
+  const q = query(
+    collection(db, "stories"),
+    orderBy("createdAt", "desc")
+  );
 
-    const snap = await getDocs(q);
+  const snapshot = await getDocs(q);
 
-    snap.forEach((docu) => {
-      const d = docu.data();
-      const id = docu.id;
+  snapshot.forEach((doc) => {
+    const story = doc.data();
 
-      const story = { id, ...d };
-      allStories.push(story);
+    const item = document.createElement("div");
+    item.className = "story-item";
 
-      toc.innerHTML += `
-        <div class="toc-item" onclick="openStory('${id}')">
-          ${escapeHTML(d.title)}
-        </div>
-      `;
-    });
-  } catch (err) {
-    console.error(err);
-  }
+    item.innerHTML = `
+      <span class="story-title">
+        • ${story.title}
+      </span>
+    `;
+
+    // タイトルクリックで読む画面へ
+    item.onclick = () => {
+      document.getElementById("listView").style.display = "none";
+      document.getElementById("readView").style.display = "block";
+
+      document.getElementById("viewTitle").textContent =
+        story.title;
+
+      document.getElementById("viewMeta").textContent =
+        `${story.language} | ${story.genre}`;
+
+      document.getElementById("viewContent").textContent =
+        story.content;
+    };
+
+    toc.appendChild(item);
+  });
 }
 
 
