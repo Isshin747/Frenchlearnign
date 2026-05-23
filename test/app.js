@@ -83,15 +83,16 @@ document.getElementById("postBtn").addEventListener("click", async () => {
 
   try {
     await addDoc(collection(db, "stories"), {
-      title,
-      content,
-      name: currentUser.displayName,
-      email: currentUser.email,
-      likes: 0,
-      language,
-      genre,
-      createdAt: serverTimestamp()
-    });
+  title,
+  content,
+  name: currentUser.displayName,
+  email: currentUser.email,
+  uid: currentUser.uid, // ←追加
+  likes: 0,
+  language,
+  genre,
+  createdAt: serverTimestamp()
+});
 
     document.getElementById("title").value = "";
     document.getElementById("content").value = "";
@@ -141,10 +142,8 @@ window.deleteStory = async (id) => {
 /* ===================== */
 async function loadStories() {
   const toc = document.getElementById("toc");
-
   toc.innerHTML = "";
 
-  // Firestoreから取得
   const q = query(
     collection(db, "stories"),
     orderBy("createdAt", "desc")
@@ -152,55 +151,107 @@ async function loadStories() {
 
   const snapshot = await getDocs(q);
 
-  snapshot.forEach((doc) => {
-    const story = doc.data();
+  snapshot.forEach((storyDoc) => {
+    const story = storyDoc.data();
 
     const item = document.createElement("div");
     item.className = "story-item";
 
+    // タイトル一覧 + 自分だけ削除ボタン
     item.innerHTML = `
-      <span class="story-title">
-        • ${story.title}
-      </span>
+      <div class="story-row">
+        <span class="story-title">
+          • ${story.title}
+        </span>
+
+        ${
+          currentUser &&
+          currentUser.uid === story.uid
+            ? `<button class="delete-btn">
+                Delete
+              </button>`
+            : ""
+        }
+      </div>
     `;
 
-    // タイトルクリックで読む画面へ
-    item.onclick = () => {
-      document.getElementById("listView").style.display = "none";
-      document.getElementById("readView").style.display = "block";
+    // タイトルクリック → 読む
+    item.querySelector(".story-title")
+      .onclick = () => {
 
-      document.getElementById("viewTitle").textContent =
-        story.title;
+      document.getElementById(
+        "listView"
+      ).style.display = "none";
 
-      document.getElementById("viewMeta").textContent =
-        `${story.language} | ${story.genre}`;
+      document.getElementById(
+        "writeView"
+      ).style.display = "none";
 
-      document.getElementById("viewContent").textContent =
+      document.getElementById(
+        "readView"
+      ).style.display = "block";
+
+      document.getElementById(
+        "viewTitle"
+      ).textContent = story.title;
+
+      document.getElementById(
+        "viewMeta"
+      ).textContent =
+        `${story.language} | ${story.genre} | by ${story.name}`;
+
+      document.getElementById(
+        "viewContent"
+      ).textContent =
         story.content;
     };
+
+    // 削除ボタン
+    const deleteBtn =
+      item.querySelector(".delete-btn");
+
+    if (deleteBtn) {
+      deleteBtn.onclick = async (e) => {
+        e.stopPropagation();
+
+        // ログイン確認
+        if (!currentUser) {
+          alert("ログインしてね");
+          return;
+        }
+
+        // 自分の投稿だけ
+        if (story.uid !== currentUser.uid) {
+          alert("自分の投稿だけ削除できます");
+          return;
+        }
+
+        const ok = confirm(
+          "Delete this story?"
+        );
+
+        if (!ok) return;
+
+        try {
+          await deleteDoc(
+            doc(db, "stories", storyDoc.id)
+          );
+
+          loadStories();
+
+        } catch (err) {
+          console.error(err);
+          alert("削除失敗");
+        }
+      };
+    }
 
     toc.appendChild(item);
   });
 }
-
-
 // =====================
 // 作品表示
 // =====================
-window.openStory = (id) => {
-  const s = allStories.find(x => x.id === id);
-  if (!s) return;
-
-  document.getElementById("listView").style.display = "none";
-  document.getElementById("writeView").style.display = "none";
-  document.getElementById("readView").style.display = "block";
-
-  document.getElementById("viewTitle").innerText = s.title;
-  document.getElementById("viewMeta").innerText =
-    `${s.language} | ${s.genre} | by ${s.name}`;
-
-  document.getElementById("viewContent").innerText = s.content;
-};
 
 
 // =====================
