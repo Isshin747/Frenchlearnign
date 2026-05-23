@@ -141,7 +141,7 @@ h1{
 
 <div class="quiz-container">
 
-    <h1>🌍 Language Quiz</h1>
+    <h1> Language Quiz</h1>
     <p class="subtitle">
         フランス語検定準１級レベル単語
     </p>
@@ -149,39 +149,33 @@ h1{
     <div class="category-select">
 
     <button onclick="selectCategory('noun')">
-        📚 名詞
+         名詞
     </button>
 
-    <button onclick="selectCategory('nountwo')">
-        ⛅ 名詞 2
-    </button>
+    
 
     <button onclick="selectCategory('nounthree')">
-        ⌛ 名詞 3
+         名詞 2
     </button>
 
-    <button onclick="selectCategory('nounfour')">
-        ⌚ 名詞 4
-    </button>
+   
 
-    <button onclick="selectCategory('nounfive')">
-        ☀ 名詞 5 
-    </button>
+    
 
     <button onclick="selectCategory('verb')">
-        🏃 動詞
+         動詞
     </button>
 
     <button onclick="selectCategory('adjective')">
-        ⌛ 形容詞
+         形容詞
     </button>
 
     <button onclick="selectCategory('expression')">
-        💬 副詞・接続詞・慣用句
+         副詞・接続詞・慣用句
     </button>
 
     <button onclick="selectCategory('all')">
-        ✨ 全部
+         全部
     </button>
     <button onclick="location.href='../index.html'">
         トップページへ
@@ -223,18 +217,12 @@ function selectCategory(category){
     if(category === "noun"){
         quizData = [...nouns];
     }
-    else if(category ==="nountwo"){
-        quizData = [...nountwos];
-    }
+    
     else if(category ==="nounthree"){
         quizData = [...nounthrees];
     }
-    else if(category ==="nounfour"){
-        quizData = [...nounfours];
-    }
-    else if(category ==="nounfive"){
-        quizData = [...nounfives];
-    }
+    
+    
 
     else if(category === "verb"){
         quizData = [...verbs];
@@ -252,9 +240,9 @@ function selectCategory(category){
     else{
         quizData = [
             ...nouns,
-            ...nountwos,
+            
             ...nounthrees,
-            ...nounfours,
+        
             ...verbs,
             ...adjective,
             ...expressions
@@ -493,8 +481,7 @@ correct:0},
 {question:"『l’actionnaire』の意味は？",
 answers:["株主","労働者","客","学生"],
 correct:0},
-];
-const nountwos=[
+
 {question:"『le recours』の意味は？",
 answers:["救済・手段","拒否","終了","開始"],
 correct:0},
@@ -735,6 +722,117 @@ correct:0},
 answers:["会議・大会","授業","試験","旅行"],
 correct:0},
 
+{question:"『la marée』の意味は？",
+answers:["潮の満ち引き","風","雨","雪"],
+correct:0},
+
+{question:"『le saut』の意味は？",
+answers:["跳躍","走り","停止","転倒"],
+correct:0},
+
+{question:"『l’asile』の意味は？",
+answers:["避難所・精神病院","学校","病院","刑務所"],
+correct:0},
+
+{question:"『le remboursement』の意味は？",
+answers:["返金","借金","投資","寄付"],
+correct:0},
+
+{question:"『la statue』の意味は？",
+answers:["彫像","建物","橋","川"],
+correct:0},
+
+{question:"『le comptable』の意味は？",
+answers:["会計士","医者","教師","警察官"],
+correct:0},
+
+{question:"『le sou』の意味は？",
+answers:["（旧単位の）小銭・銭","紙幣","金塊","銀行"],
+correct:0},
+
+{question:"『le complément』の意味は？",
+answers:["補足・補完","削除","開始","命令"],
+correct:0},
+
+{question:"『le crâne』の意味は？",
+answers:["頭蓋骨","手","足","心臓"],
+correct:0},
+
+{question:"『l’instinct』の意味は？",
+answers:["本能","理性","知識","技術"],
+correct:0},
+
+{question:"『l’affection』の意味は？",
+answers:["愛情","病気","恐怖","怒り"],
+correct:0},
+
+{question:"『le péché』の意味は？",
+answers:["罪","善行","成功","運"],
+correct:0},
+
+{question:"『le reproche』の意味は？",
+answers:["非難","褒め言葉","質問","提案"],
+correct:0},
+
+{question:"『l’ironie』の意味は？",
+answers:["皮肉","喜び","怒り","説明"],
+correct:0},
+
+{question:"『l’altitude』の意味は？",
+answers:["高度","温度","速度","距離"],
+correct:0},
+
+{question:"『la gendarmerie』の意味は？",
+answers:["憲兵隊","消防署","市役所","病院"],
+correct:0},
+
+{question:"『la punition』の意味は？",
+answers:["罰","報酬","成功","休暇"],
+correct:0},
+
+{question:"『les mœurs』の意味は？",
+answers:["風習・習俗","法律","戦争","計画"],
+correct:0},
+
+{question:"『le chagrin』の意味は？",
+answers:["悲しみ","喜び","怒り","安心"],
+correct:0},
+
+{question:"『la documentation』の意味は？",
+answers:["資料・文書","旅行","命令","結果"],
+correct:0},
+
+{question:"『la merveille』の意味は？",
+answers:["驚異・素晴らしいもの","事故","問題","規則"],
+correct:0},
+
+{question:"『la nuance』の意味は？",
+answers:["微妙な違い・ニュアンス","決定","戦争","距離"],
+correct:0},
+
+{question:"『le câble』の意味は？",
+answers:["ケーブル","紙","木","石"],
+correct:0},
+
+{question:"『le poumon』の意味は？",
+answers:["肺","心臓","肝臓","腎臓"],
+correct:0},
+
+{question:"『le signataire』の意味は？",
+answers:["署名者","観客","学生","医者"],
+correct:0},
+
+{question:"『l’auditeur(trice)』の意味は？",
+answers:["聴衆・監査人","話し手","運転手","農民"],
+correct:0},
+
+{question:"『le douanier(ère)』の意味は？",
+answers:["税関職員","教師","警察","医者"],
+correct:0},
+
+{question:"『le fermier(ère)』の意味は？",
+answers:["農家","漁師","兵士","店員"],
+correct:0},
 ];
 
 const nounthrees=[
@@ -994,9 +1092,7 @@ correct:0},
 
 {question:"『le mépris』の意味は？",
 answers:["軽蔑","尊敬","友情","感謝"],
-correct:0},];
-
-const nounfours=[
+correct:0},
 
 {question:"『la poignée』の意味は？",
 answers:["握り・取っ手・一握り","橋","道","窓"],
@@ -1228,120 +1324,9 @@ correct:0},
 
 {question:"『le masque』の意味は？",
 answers:["仮面","帽子","靴","手袋"],
-correct:0},];
-const nounfives=[
-
-{question:"『la marée』の意味は？",
-answers:["潮の満ち引き","風","雨","雪"],
 correct:0},
 
-{question:"『le saut』の意味は？",
-answers:["跳躍","走り","停止","転倒"],
-correct:0},
 
-{question:"『l’asile』の意味は？",
-answers:["避難所・精神病院","学校","病院","刑務所"],
-correct:0},
-
-{question:"『le remboursement』の意味は？",
-answers:["返金","借金","投資","寄付"],
-correct:0},
-
-{question:"『la statue』の意味は？",
-answers:["彫像","建物","橋","川"],
-correct:0},
-
-{question:"『le comptable』の意味は？",
-answers:["会計士","医者","教師","警察官"],
-correct:0},
-
-{question:"『le sou』の意味は？",
-answers:["（旧単位の）小銭・銭","紙幣","金塊","銀行"],
-correct:0},
-
-{question:"『le complément』の意味は？",
-answers:["補足・補完","削除","開始","命令"],
-correct:0},
-
-{question:"『le crâne』の意味は？",
-answers:["頭蓋骨","手","足","心臓"],
-correct:0},
-
-{question:"『l’instinct』の意味は？",
-answers:["本能","理性","知識","技術"],
-correct:0},
-
-{question:"『l’affection』の意味は？",
-answers:["愛情","病気","恐怖","怒り"],
-correct:0},
-
-{question:"『le péché』の意味は？",
-answers:["罪","善行","成功","運"],
-correct:0},
-
-{question:"『le reproche』の意味は？",
-answers:["非難","褒め言葉","質問","提案"],
-correct:0},
-
-{question:"『l’ironie』の意味は？",
-answers:["皮肉","喜び","怒り","説明"],
-correct:0},
-
-{question:"『l’altitude』の意味は？",
-answers:["高度","温度","速度","距離"],
-correct:0},
-
-{question:"『la gendarmerie』の意味は？",
-answers:["憲兵隊","消防署","市役所","病院"],
-correct:0},
-
-{question:"『la punition』の意味は？",
-answers:["罰","報酬","成功","休暇"],
-correct:0},
-
-{question:"『les mœurs』の意味は？",
-answers:["風習・習俗","法律","戦争","計画"],
-correct:0},
-
-{question:"『le chagrin』の意味は？",
-answers:["悲しみ","喜び","怒り","安心"],
-correct:0},
-
-{question:"『la documentation』の意味は？",
-answers:["資料・文書","旅行","命令","結果"],
-correct:0},
-
-{question:"『la merveille』の意味は？",
-answers:["驚異・素晴らしいもの","事故","問題","規則"],
-correct:0},
-
-{question:"『la nuance』の意味は？",
-answers:["微妙な違い・ニュアンス","決定","戦争","距離"],
-correct:0},
-
-{question:"『le câble』の意味は？",
-answers:["ケーブル","紙","木","石"],
-correct:0},
-
-{question:"『le poumon』の意味は？",
-answers:["肺","心臓","肝臓","腎臓"],
-correct:0},
-
-{question:"『le signataire』の意味は？",
-answers:["署名者","観客","学生","医者"],
-correct:0},
-
-{question:"『l’auditeur(trice)』の意味は？",
-answers:["聴衆・監査人","話し手","運転手","農民"],
-correct:0},
-
-{question:"『le douanier(ère)』の意味は？",
-answers:["税関職員","教師","警察","医者"],
-correct:0},
-
-{question:"『le fermier(ère)』の意味は？",
-answers:["農家","漁師","兵士","店員"],
-correct:0},
 
 {question:"『le jean』の意味は？",
 answers:["ジーンズ","シャツ","靴","帽子"],

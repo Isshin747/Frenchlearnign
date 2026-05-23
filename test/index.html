@@ -1,54 +1,79 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>English Story Hub</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Story Hub</title>
+  <link rel="stylesheet" href="steel.css">
 </head>
+
 <body>
 
-<h1>Story Hub</h1>
+  <div class="container">
 
-<button id="loginBtn">Login with Google</button>
-<p id="user"></p>
+    <h1>Story Hub</h1>
+    <p class="subtitle">
+      Share your language stories with the world.
+    </p>
 
-<div style="text-align:center;">
-  <button onclick="showList()">List</button>
-  <button onclick="showWrite()">Write</button>
-</div>
+    <button id="loginBtn">Login with Google</button>
+    <p id="user"></p>
 
-<div id="listView">
-  <div id="toc"></div>
-</div>
+    <!-- タブ -->
+    <div class="tab-buttons">
+      <button class="tab-btn active" onclick="showList()">
+        📚 Stories
+      </button>
 
-<div id="readView" style="display:none;">
-  <h2 id="viewTitle"></h2>
-  <p id="viewMeta"></p>
-  <p id="viewContent"></p>
-</div>
+      <button class="tab-btn" onclick="showWrite()">
+        ✍️ Write
+      </button>
+    </div>
 
-<div id="writeView" style="display:none;">
-  <h2>Write Story</h2>
+    <!-- List -->
+    <div id="listView">
+      <h2>Latest Stories</h2>
+      <div id="toc"></div>
+    </div>
 
-  <input id="title" placeholder="Title">
+    <!-- Read -->
+    <div id="readView" style="display:none;">
+      <button class="back-btn" onclick="showList()">
+        ← Back
+      </button>
 
-  <select id="language">
-    <option>English</option>
-    <option>French</option>
-    <option>Indonesian</option>
-  </select>
+      <h2 id="viewTitle"></h2>
+      <p id="viewMeta"></p>
+      <p id="viewContent"></p>
+    </div>
 
-  <select id="genre">
-    <option>Novel</option>
-    <option>Diary</option>
-    <option>Essay</option>
-  </select>
+    <!-- Write -->
+    <div id="writeView" style="display:none;">
+      <h2>Write Your Story</h2>
 
-  <textarea id="content" placeholder="Write here..."></textarea>
+      <input id="title" placeholder="Story title">
 
-  <button id="postBtn">Post</button>
-</div>
+      <select id="language">
+        <option>English</option>
+        <option>French</option>
+        <option>Indonesian</option>
+      </select>
 
-<script type="module" src="app.js"></script>
+      <select id="genre">
+        <option>Novel</option>
+        <option>Diary</option>
+        <option>Essay</option>
+      </select>
+
+      <textarea id="content" placeholder="Write your story here..."></textarea>
+
+      <button id="postBtn">
+        Post Story
+      </button>
+    </div>
+
+  </div>
+
+  <script type="module" src="app.js"></script>
 </body>
 </html>
