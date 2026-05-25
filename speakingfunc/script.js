@@ -139,31 +139,55 @@ const usefulPhrases = {
 
     airport: [
 
-        {
-            phrase: "here is my passport",
-            jp: "こちらがパスポートです"
-        },
+    {
+        phrase: "I'm here for ",
+        jp: "〜で来ました（観光・仕事など）"
+    },
 
-        {
-            phrase: "i am traveling to",
-            jp: "〜へ行きます"
-        },
+    {
+        phrase: "I'm staying for about ",
+        jp: "だいたい〜日くらい滞在します"
+    },
 
-        {
-            phrase: "i have one suitcase",
-            jp: "スーツケースを1つ持っています"
-        },
+    {
+        phrase: "I'm staying at ",
+        jp: "〜に泊まります"
+    },
 
-        {
-            phrase: "where is the gate",
-            jp: "ゲートはどこですか？"
-        },
+    {
+        phrase: "I'm traveling to ",
+        jp: "〜に行きます"
+    },
 
-        {
-            phrase: "how long is the delay",
-            jp: "どれくらい遅れていますか？"
-        }
-    ],
+    {
+        phrase: "I'm here on business ",
+        jp: "仕事で／観光で／留学で来ました"
+    },
+
+    {
+        phrase: "my return flight is on ~.",
+        jp: "帰りの便は〜です"
+    },
+
+    {
+        phrase: "I’ve got a return ticket",
+        jp: "帰りの航空券持ってます"
+    },
+
+    {
+        phrase: "I packed everything myself",
+        jp: "荷物は全部自分で詰めました"
+    },
+
+    {
+        phrase: "no, I’m not carrying anything for anyone",
+        jp: "いいえ、誰の荷物も持ってません"
+    },
+
+   
+
+    
+],
 
     friend: [
 
@@ -361,31 +385,54 @@ const usefulPhrases = {
 
     airport: [
 
-        {
-            phrase: "voici mon passeport",
-            jp: "こちらがパスポートです"
-        },
+    {
+        phrase: "je suis ici pour ",
+        jp: "〜で来ました（観光・仕事など）"
+    },
 
-        {
-            phrase: "je voyage à",
-            jp: "〜へ行きます"
-        },
+    {
+        phrase: "je reste environ ",
+        jp: "だいたい〜日滞在します"
+    },
 
-        {
-            phrase: "j'ai une valise",
-            jp: "スーツケースを1つ持っています"
-        },
+    {
+        phrase: "je loge à ",
+        jp: "〜に泊まります"
+    },
 
-        {
-            phrase: "où est la porte",
-            jp: "ゲートはどこですか？"
-        },
+    {
+        phrase: "je voyage à ",
+        jp: "〜に行きます"
+    },
 
-        {
-            phrase: "y a-t-il un retard",
-            jp: "遅延はありますか？"
-        }
-    ],
+    {
+        phrase: "je suis ici pour le travail ",
+        jp: "仕事で／観光で／留学で来ました"
+    },
+
+    {
+        phrase: "mon vol retour est le ",
+        jp: "帰りの便は〜です"
+    },
+
+    {
+        phrase: "j’ai un billet retour",
+        jp: "帰りの航空券を持っています"
+    },
+
+    {
+        phrase: "j’ai préparé mes bagages moi-même",
+        jp: "荷物は自分で詰めました"
+    },
+
+    {
+        phrase: "non, je ne transporte rien pour quelqu’un d’autre",
+        jp: "いいえ、誰の荷物も持っていません"
+    },
+
+    
+    
+],
 
     friend: [
 
@@ -577,31 +624,55 @@ const usefulPhrases = {
 
     airport: [
 
-        {
-            phrase: "ini paspor saya",
-            jp: "こちらがパスポートです"
-        },
+    {
+        phrase: "saya di sini untuk ",
+        jp: "〜で来ました（観光・仕事など）"
+    },
 
-        {
-            phrase: "saya pergi ke",
-            jp: "〜へ行きます"
-        },
+    {
+        phrase: "saya akan tinggal sekitar ",
+        jp: "だいたい〜日くらい滞在します"
+    },
 
-        {
-            phrase: "saya membawa satu koper",
-            jp: "スーツケースを1つ持っています"
-        },
+    {
+        phrase: "saya menginap di ",
+        jp: "〜に泊まります"
+    },
 
-        {
-            phrase: "di mana gerbangnya",
-            jp: "ゲートはどこですか？"
-        },
+    {
+        phrase: "saya bepergian ke ",
+        jp: "〜に行きます"
+    },
 
-        {
-            phrase: "berapa lama penundaannya",
-            jp: "どれくらい遅れていますか？"
-        }
-    ],
+    {
+        phrase: "saya di sini untuk kerja ",
+        jp: "仕事で来ました"
+    },
+
+    {
+        phrase: "penerbangan pulang saya tanggal ",
+        jp: "帰りの便は〜です"
+    },
+
+    {
+        phrase: "saya punya tiket pulang",
+        jp: "帰りの航空券を持っています"
+    },
+
+    {
+        phrase: "saya mengemas semuanya sendiri",
+        jp: "荷物は全部自分で詰めました"
+    },
+
+    {
+        phrase: "tidak, saya tidak membawa barang untuk orang lain",
+        jp: "いいえ、他人の荷物は持っていません"
+    },
+
+    
+
+    
+],
 
     friend: [
 

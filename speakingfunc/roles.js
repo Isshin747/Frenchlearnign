@@ -7,10 +7,26 @@ const roleplays = {
         ],
 
         airport: [
-            "Welcome to the airport. May I see your passport?",
-            "Where are you traveling today?",
-            "How many bags do you have?"
-        ],
+    "What is the main purpose of your trip, and why are you choosing this destination at this time?",
+    "Can you explain in detail where you will be staying during your visit?",
+    "How long exactly do you plan to stay, and what will you do during that period?",
+    "Do you have any items in your luggage that someone else asked you to carry?",
+    "Have you packed everything yourself without accepting any items from others?",
+    "Can you describe your travel itinerary from arrival to departure?",
+    "What is your occupation, and how does it relate to your visit today?",
+    "Do you have sufficient funds to support your stay, and how will you access them?",
+    "Have you visited this country before, and if so, what was the purpose of your previous visit?",
+    "Can you confirm whether you are carrying any restricted or regulated items?",
+    "Which countries have you traveled to in the last few years?",
+    "Who will you be staying with, or are you staying at a hotel? Please specify.",
+    "What is your planned return date, and is your ticket already booked?",
+    "Can you explain any connections or layovers in your flight route today?",
+    "Is there any reason your travel plans might change unexpectedly during your stay?",
+    "Have you declared all goods that might require customs inspection?",
+    "What is your relationship with the person you are visiting, if applicable?",
+    "Can you provide a brief explanation of your daily schedule while you are here?",
+    "Are you carrying any gifts, documents, or packages for other people?"
+],
 
         job: [
             "Tell me about yourself.",
@@ -81,10 +97,26 @@ pressureInterview: [
         ],
 
         airport: [
-            "Bienvenue à l’aéroport. Puis-je voir votre passeport ?",
-            "Où voyagez-vous aujourd’hui ?",
-            "Combien de bagages avez-vous ?"
-        ],
+    "Quel est le but principal de votre voyage et pourquoi avez-vous choisi cette destination à ce moment précis ?",
+    "Pouvez-vous expliquer en détail où vous allez séjourner pendant votre visite ?",
+    "Combien de temps comptez-vous rester exactement et que prévoyez-vous de faire pendant cette période ?",
+    "Y a-t-il des objets dans vos bagages que quelqu’un d’autre vous a demandé de transporter ?",
+    "Avez-vous préparé vos bagages entièrement vous-même sans accepter d’objets de tiers ?",
+    "Pouvez-vous décrire votre itinéraire de voyage depuis votre arrivée jusqu’à votre départ ?",
+    "Quelle est votre profession et en quoi est-elle liée à votre visite aujourd’hui ?",
+    "Disposez-vous de fonds suffisants pour financer votre séjour et comment y aurez-vous accès ?",
+    "Avez-vous déjà visité ce pays auparavant, et si oui, dans quel but ?",
+    "Pouvez-vous confirmer que vous ne transportez aucun objet interdit ou réglementé ?",
+    "Dans quels pays avez-vous voyagé au cours des dernières années ?",
+    "Avec qui allez-vous séjourner, ou s’agit-il d’un hôtel ? Veuillez préciser.",
+    "Quelle est votre date de retour prévue et votre billet est-il déjà réservé ?",
+    "Pouvez-vous expliquer les correspondances ou escales de votre vol aujourd’hui ?",
+    "Y a-t-il une raison pour laquelle vos plans de voyage pourraient changer de manière imprévue ?",
+    "Avez-vous déclaré tous les biens susceptibles de nécessiter un contrôle douanier ?",
+    "Quelle est votre relation avec la personne que vous allez visiter, le cas échéant ?",
+    "Pouvez-vous donner une brève explication de votre emploi du temps quotidien pendant votre séjour ?",
+    "Transportez-vous des cadeaux, documents ou colis pour d’autres personnes ?"
+],
 
         job: [
             "Parlez-moi de vous.",
@@ -155,11 +187,28 @@ pressureInterview: [
             "Bagaimana makanan Anda hari ini?"
         ],
 
+        
         airport: [
-            "Selamat datang di bandara. Boleh saya lihat paspor Anda?",
-            "Ke mana Anda akan pergi hari ini?",
-            "Berapa banyak tas yang Anda bawa?"
-        ],
+    "Apa tujuan utama perjalanan Anda, dan mengapa Anda memilih destinasi ini pada waktu sekarang?",
+    "Bisakah Anda menjelaskan secara rinci di mana Anda akan menginap selama kunjungan Anda?",
+    "Berapa lama tepatnya Anda berencana tinggal, dan apa yang akan Anda lakukan selama periode tersebut?",
+    "Apakah ada barang di bagasi Anda yang diminta oleh orang lain untuk dibawa?",
+    "Apakah Anda mengemas semua barang Anda sendiri tanpa menerima titipan dari orang lain?",
+    "Bisakah Anda menjelaskan rencana perjalanan Anda dari kedatangan hingga keberangkatan?",
+    "Apa pekerjaan Anda, dan bagaimana hal itu berhubungan dengan kunjungan Anda hari ini?",
+    "Apakah Anda memiliki dana yang cukup untuk membiayai masa tinggal Anda, dan bagaimana Anda akan mengaksesnya?",
+    "Apakah Anda pernah mengunjungi negara ini sebelumnya, dan jika ya, apa tujuan kunjungan Anda sebelumnya?",
+    "Bisakah Anda memastikan bahwa Anda tidak membawa barang terlarang atau barang yang diatur khusus?",
+    "Negara mana saja yang telah Anda kunjungi dalam beberapa tahun terakhir?",
+    "Dengan siapa Anda akan tinggal, atau apakah Anda akan tinggal di hotel? Mohon dijelaskan.",
+    "Kapan tanggal kepulangan Anda, dan apakah tiket Anda sudah dipesan?",
+    "Bisakah Anda menjelaskan transit atau rute penerbangan Anda hari ini?",
+    "Apakah ada alasan yang membuat rencana perjalanan Anda dapat berubah secara tiba-tiba?",
+    "Apakah Anda telah melaporkan semua barang yang mungkin perlu diperiksa oleh bea cukai?",
+    "Apa hubungan Anda dengan orang yang akan Anda kunjungi, jika ada?",
+    "Bisakah Anda menjelaskan secara singkat jadwal harian Anda selama berada di sini?",
+    "Apakah Anda membawa hadiah, dokumen, atau paket untuk orang lain?"
+],
 
         job: [
             "Ceritakan tentang diri Anda.",
