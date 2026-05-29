@@ -177,6 +177,8 @@ h1{
         Score: <span id="score">0</span>
     </div>
 
+
+
     <div class="question-number" id="questionNumber">
         Question 1 / 80
     </div>
@@ -184,6 +186,14 @@ h1{
     <div class="question" id="question">
         問題が表示されます
     </div>
+
+    <div class="question-area">
+    <h2 id="question"></h2>
+
+    <button id="speakBtn">
+        🔊 発音を聞く
+    </button>
+</div>
 
     <div class="answers" id="answers"></div>
 
@@ -3272,52 +3282,91 @@ shuffleArray(quizData);
 
 function loadQuestion(){
 
-    if(quizData.length === 0){
-        return;
-    }
-
     const q =
     quizData[currentQuestion];
 
-    document.getElementById("question").textContent =
-        q.question;
+    // 問題文
+    document.getElementById(
+        "question"
+    ).textContent =
+    q.question;
 
-    document.getElementById("questionNumber")
-    .textContent =
-    `Question ${currentQuestion + 1} / ${quizData.length}`;
+    // 音声
+    speakWord(q.question);
+
+    document.getElementById(
+        "questionNumber"
+    ).textContent =
+    `Question ${
+        currentQuestion + 1
+    } / ${quizData.length}`;
 
     const answersEl =
-        document.getElementById("answers");
+    document.getElementById(
+        "answers"
+    );
 
     answersEl.innerHTML = "";
 
-    document.getElementById("result")
-    .textContent = "";
+    document.getElementById(
+        "result"
+    ).textContent = "";
 
-    document.getElementById("nextBtn")
-    .style.display = "none";
+    document.getElementById(
+        "nextBtn"
+    ).style.display = "none";
 
-    q.answers.forEach((answer,index)=>{
+    // ----------------------
+    // 選択肢シャッフル
+    // ----------------------
+
+    const shuffledAnswers =
+    q.answers.map(
+        (answer,index)=>({
+            text: answer,
+            isCorrect:
+            index === q.correct
+        })
+    );
+
+    shuffleArray(
+        shuffledAnswers
+    );
+
+    shuffledAnswers.forEach(
+        (answerObj)=>{
 
         const button =
-        document.createElement("button");
+        document.createElement(
+            "button"
+        );
 
-        button.classList.add("answer-btn");
+        button.classList.add(
+            "answer-btn"
+        );
 
-        button.textContent = answer;
+        button.textContent =
+        answerObj.text;
 
-        button.addEventListener("click",()=>{
+        button.addEventListener(
+            "click",
+            ()=>{
 
             const buttons =
-            document.querySelectorAll(".answer-btn");
+            document.querySelectorAll(
+                ".answer-btn"
+            );
 
-            buttons.forEach(btn =>
+            buttons.forEach(
+                btn =>
                 btn.disabled = true
             );
 
-            if(index === q.correct){
+            if(answerObj.isCorrect){
 
-                button.classList.add("correct");
+                button.classList.add(
+                    "correct"
+                );
 
                 document.getElementById(
                     "result"
@@ -3328,30 +3377,60 @@ function loadQuestion(){
 
                 document.getElementById(
                     "score"
-                ).textContent = score;
+                ).textContent =
+                score;
 
             }else{
 
-                button.classList.add("wrong");
+                button.classList.add(
+                    "wrong"
+                );
 
-                buttons[q.correct]
-                .classList.add("correct");
+                // 正解ボタン表示
+                buttons.forEach(
+                    (btn,index)=>{
+
+                    if(
+                        shuffledAnswers[
+                            index
+                        ].isCorrect
+                    ){
+                        btn.classList.add(
+                            "correct"
+                        );
+                    }
+                });
 
                 document.getElementById(
                     "result"
                 ).textContent =
                 "❌ 不正解";
-                 wrongQuestions.push(q);
+
+                wrongQuestions.push(
+                    q
+                );
             }
 
             document.getElementById(
                 "nextBtn"
-            ).style.display = "block";
-
+            ).style.display =
+            "block";
         });
 
-        answersEl.appendChild(button);
+        answersEl.appendChild(
+            button
+        );
     });
+
+    // speakボタン
+    document.getElementById(
+        "speakBtn"
+    ).onclick = ()=>{
+
+        speakWord(
+            q.question
+        );
+    };
 }
 
 document.getElementById("nextBtn")
@@ -3474,6 +3553,31 @@ function reviewWrongQuestions(){
     });
 
     loadQuestion();
+}
+
+/* --------------------
+   音声読み上げ
+-------------------- */
+
+function speakWord(word){
+
+    const utterance =
+    new SpeechSynthesisUtterance(
+        word
+    );
+
+    // 言語設定
+    utterance.lang = "fr-FR";
+    // 英語なら "en-US"
+    // フランス語なら "fr-FR"
+
+    utterance.rate = 0.9;
+    utterance.pitch = 1;
+
+    speechSynthesis.cancel();
+    speechSynthesis.speak(
+        utterance
+    );
 }
 </script>
 

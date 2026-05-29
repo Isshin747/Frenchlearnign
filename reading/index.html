@@ -1,96 +1,134 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Global Reading</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>Language Reading Lab</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-    <h1>🌍 Global Reading</h1>
-    <p>Real Articles for Language Learning</p>
-</header>
+    <div class="container">
 
-<main class="container">
+        <header>
+            <h1>📖 Language Reading Lab</h1>
+            <p>
+                英語・フランス語・インドネシア語の
+                リーディング学習
+            </p>
+        </header>
 
-    <section class="selection-box">
+        <!-- Language Select -->
+        <section class="selectors">
 
-        <h2>Choose a Language</h2>
+            <div class="select-box">
+                <label>言語</label>
 
-        <div class="language-buttons">
-            <button class="lang-btn active" data-language="english">
-                🇬🇧 English
+                <select id="languageSelect">
+
+                    <option value="english">
+                        🇬🇧 English
+                    </option>
+
+                    <option value="french">
+                        🇫🇷 Français
+                    </option>
+
+                    <option value="indonesian">
+                        🇮🇩 Bahasa Indonesia
+                    </option>
+
+                </select>
+            </div>
+
+            <div class="select-box">
+                <label>レベル</label>
+
+                <select id="levelSelect">
+
+                    <option value="A1">A1</option>
+                    <option value="A2">A2</option>
+                    <option value="B1" selected>B1</option>
+                    <option value="B2">B2</option>
+                    <option value="C1">C1</option>
+
+                </select>
+            </div>
+
+        </section>
+
+        <button id="loadBtn">
+            問題を読み込む
+        </button>
+
+        <div id="readingList"
+     class="reading-list">
+</div>
+<button
+    id="translationBtn"
+    class="secondary-btn"
+>
+    日本語訳を見る
+</button>
+
+<div
+    id="translationBox"
+    class="translation-box hidden"
+></div>
+        <!-- Reading -->
+        <section
+            class="reading-card hidden"
+            id="readingCard"
+        >
+
+            <h2 id="title"></h2>
+
+            <div id="readingText"
+                 class="reading-text">
+            </div>
+
+            <!-- Vocabulary -->
+            <button
+                id="vocabBtn"
+                class="secondary-btn"
+            >
+                難しい単語を見る
             </button>
 
-            <button class="lang-btn" data-language="french">
-                🇫🇷 Français
+            <div
+                id="vocabBox"
+                class="vocab-box hidden"
+            ></div>
+
+            <!-- Questions -->
+            <div
+                id="questionsContainer"
+                class="questions"
+            ></div>
+
+            <button
+                id="submitBtn"
+                class="submit-btn"
+            >
+                答えを確認
             </button>
 
-            <button class="lang-btn" data-language="indonesian">
-                🇮🇩 Bahasa Indonesia
-            </button>
-        </div>
+            <!-- Result -->
+            <div
+                id="resultContainer"
+                class="result"
+            ></div>
 
-        <h2>Choose Level</h2>
+        </section>
 
-        <div class="level-buttons">
-            <button class="level-btn active" data-level="beginner">
-                Beginner
-            </button>
+    </div>
 
-            <button class="level-btn" data-level="intermediate">
-                Intermediate
-            </button>
-
-            <button class="level-btn" data-level="advanced">
-                Advanced
-            </button>
-        </div>
-
-        <h2>Choose Category</h2>
-
-        <div class="category-buttons">
-            <button class="category-btn active" data-category="news">
-                📰 News
-            </button>
-
-            <button class="category-btn" data-category="culture">
-                🎭 Culture
-            </button>
-
-            <button class="category-btn" data-category="travel">
-                ✈ Travel
-            </button>
-
-            <button class="category-btn" data-category="science">
-                🔬 Science
-            </button>
-
-            <button class="category-btn" data-category="lifestyle">
-                ☕ Lifestyle
-            </button>
-        </div>
-
-    </section>
-
-    <section class="articles-section">
-        <div class="article-header">
-            <h2>Recommended Articles</h2>
-            <button id="refresh-btn">
-                Refresh
-            </button>
-        </div>
-
-        <div id="articles-container">
-        </div>
-    </section>
-
-</main>
-
-<script src="articles.js"></script>
-<script src="script.js"></script>
+    <script src="readings.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
