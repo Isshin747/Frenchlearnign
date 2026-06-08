@@ -1,44 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja">
-    <head>
-  <meta charset="UTF-8">
-  <title>Gengo Lab</title>
-  <link rel="icon" type="images/gengolab.jpg" href="images/gengo_favicon_icon_only.png">
-
-  <meta name="description" content="言語学習をサポートします">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7032470395981540"
-    crossorigin="anonymous"></script>
-
-       <meta name="google-site-verification" content="XFcm0GCrafETcXvwGDKDZo6no9XM6-zomGcqOKi4lMA" />
-
-    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css?family=philosopher&display=swap" rel="stylesheet">
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Hub</title>
     <link rel="stylesheet" href="style.css">
-    
-
-  <!-- ① Supabase本体を読み込む -->
-  
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-
-
-
-</script>
-    <body class="desain">
-
-      
+</head>
+<body>
 
     <!-- ヘッダー -->
     <header>
-        <div class="logo">
-    <img src="images/gengolab.jpg" alt="logo">
-    <span>Gengo Lab</span>
-</div>
-
+        <div class="logo"> Gengo Lab</div>
 
         <nav>
             <a href="#">ホーム</a>
@@ -64,19 +36,19 @@
 
         <div class="language-grid">
 
-            <a class="card english"  href="english/index.html">
+            <a class="card"  href="english/index.html">
                 <span>🇺🇸</span>
                 <h3>English</h3>
                 <p>英語を学ぶ</p>
             </a>
 
-            <a class="card french" href="french/index.html">
+            <a class="card" href="french/index.html">
                 <span>🇫🇷</span>
                 <h3>Français</h3>
                 <p>フランス語を学ぶ</p>
             </a>
 
-            <a class="card indonesia" href="indonesia/index.html">
+            <a class="card" href="indonesia/index.html">
                 <span>🇮🇩</span>
                 <h3>Bahasa Indonesia</h3>
                 <p>インドネシア語を学ぶ</p>
@@ -105,12 +77,45 @@
     </section>
 
     <!-- サイト紹介 -->
-    
-    
+    <section class="features">
+
+        <h2>このサイトでできること</h2>
+
+        <div class="feature-box">
+
+            <div class="feature">
+                📖
+                <h3>単語学習</h3>
+            </div>
+
+            <div class="feature">
+                📝
+                <h3>文法学習</h3>
+            </div>
+
+            <div class="feature">
+                🎧
+                <h3>リスニング</h3>
+            </div>
+
+            <div class="feature">
+                🎤
+                <h3>スピーキング</h3>
+            </div>
+
+        </div>
+
+    </section>
 
     <!-- 運営者 -->
     <article class="mokuji saiden">
-      
+      <section>
+      <h2>運営者について</h2>
+      <p>
+      Gengo Labは、語学学習経験をもとに「効率よく実用的な語学力を身につける」ことを目的として運営しています。
+      学習者の目線に立ち、分かりやすく実践的なコンテンツを提供し続けます。
+      </p>
+      </section>
       <section class="contact">
   <h2>お問い合わせ</h2>
   <form action="https://formspree.io/f/xdabnvog" method="POST">
@@ -133,27 +138,11 @@
 </article>
     
 
-        <footer class="site-footer">
-
-    <div class="footer-content">
-
-        <h3>Gengo Lab</h3>
-
-        <p>
-            世界の言語をもっと身近に。
-        </p>
-
-        
-
-        <small>
-            © 2026 Gengo Lab. All Rights Reserved.
-        </small>
-
-    </div>
-
-</footer>
-
-<script src="script.js"></script>
+        <div class="copyright">
+            <small>&copy; 2026 Gengo Lab</small>
+        </div>
+        <h3 class="miru"><span id="count">0</span></h3>
+       
 
 
 
@@ -166,4 +155,3 @@
 
 </body>
 </html>
-

@@ -1,0 +1,168 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#f4f6fa;
+}
+
+header{
+    background:white;
+    padding:20px 10%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
+
+.logo{
+    font-size:24px;
+    font-weight:bold;
+}
+
+nav a{
+    text-decoration:none;
+    color:#333;
+}
+
+.hero{
+    text-align:center;
+    padding:80px 20px;
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #4f46e5
+    );
+    color:white;
+}
+
+.hero h1{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.learning-section{
+    padding:70px 10%;
+}
+
+.learning-section h2{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.card-container{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.icon{
+    font-size:50px;
+    margin-bottom:15px;
+}
+
+.articles{
+    padding:70px 10%;
+    background:white;
+}
+
+.articles h2{
+    margin-bottom:20px;
+}
+
+.articles ul{
+    list-style:none;
+}
+
+.articles li{
+    margin-bottom:15px;
+}
+
+.articles a{
+    text-decoration:none;
+    color:#2563eb;
+}
+
+.progress{
+    padding:70px 10%;
+}
+
+.progress h2{
+    margin-bottom:30px;
+}
+
+.progress-item{
+    margin-bottom:25px;
+}
+
+.bar{
+    height:15px;
+    background:#ddd;
+    border-radius:20px;
+    margin-top:5px;
+}
+
+.fill{
+    height:100%;
+    background:#2563eb;
+    border-radius:20px;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    background:#1f2937;
+    color:white;
+}
+
+.card-container{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    border-radius:16px;
+    padding:35px;
+    cursor:pointer;
+
+    box-shadow:
+    0 5px 20px rgba(0,0,0,0.05);
+
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h3{
+    font-size:24px;
+    margin-bottom:15px;
+    color:#2563eb;
+}
+
+.card p{
+    color:#666;
+    line-height:1.6;
+}

@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>English Speaking Practice</title>
+
+<link rel="stylesheet" href="speaking.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🎤 English Speaking Practice</h1>
+
+    <div class="top-bar">
+
+        <div class="category-title">
+    初級日常会話
+</div>
+
+        <button id="reviewBtn">
+            間違えた問題だけ復習
+        </button>
+
+    </div>
+<div class="card">
+
+    <div class="question-info">
+    問題 <span id="currentQuestion">1</span>
+    /
+    <span id="totalQuestions">0</span>
+</div>
+
+    
+        <h2>日本語</h2>
+
+        <p id="jpSentence"></p>
+
+        <div class="vocab-box">
+
+            <h3>重要単語</h3>
+
+            <ul id="vocabulary"></ul>
+
+        </div>
+
+        <div class="button-area">
+
+            <button id="startBtn">
+                🎤 録音開始
+            </button>
+
+            <button id="stopBtn">
+                ⏹ 録音停止
+            </button>
+
+        </div>
+
+        <h3>あなたの回答</h3>
+
+        <div id="resultText">
+            まだ録音していません
+        </div>
+
+        <h3>判定</h3>
+
+        <div id="score">
+            -
+        </div>
+        <button id="playAnswerBtn">
+🔊 正解音声
+</button>
+        <h3>正解文</h3>
+
+        <div id="correctAnswer">
+            -
+        </div>
+
+    </div>
+
+    <div class="navigation">
+
+        <button id="prevBtn">
+            ← 前の問題
+        </button>
+
+        <button id="nextBtn">
+            次の問題 →
+        </button>
+
+    </div>
+
+    <div class="progress">
+
+    <h3>学習状況</h3>
+
+    <p>問題数: <span id="totalQuestionsStat">0</span></p>
+
+    <p>解答数: <span id="answeredCount">0</span></p>
+
+    <p>正解数: <span id="correctCount">0</span></p>
+
+    <p>正答率: <span id="accuracy">0%</span></p>
+
+    <p>復習対象: <span id="reviewCount">0</span></p>
+
+</div>
+
+</div>
+
+<script src="speakingquestion.js"></script>
+<script src="speaking.js"></script>
+
+</body>
+</html>
+```
