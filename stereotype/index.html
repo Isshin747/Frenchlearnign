@@ -1,157 +1,86 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Language Hub</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7032470395981540"
+crossorigin="anonymous"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Indonsian Listening Practice</title>
+
+<link rel="stylesheet" href="listening.css">
 </head>
 <body>
 
-    <!-- ヘッダー -->
-    <header>
-        <div class="logo"> Gengo Lab</div>
+<div class="container">
 
-        <nav>
-            <a href="#">ホーム</a>
-            <a href="#languages">言語一覧</a>
-            <a href="#contact">お問い合わせ</a>
-        </nav>
-    </header>
+<h1>Indonesian Listening Practice</h1>
 
-    <!-- ヒーロー -->
-    <section class="hero">
-        <h1>世界の言語を無料で学ぼう</h1>
-        <p>単語・文法・リスニング・スピーキングをまとめて学習</p>
+<select id="level">
+  <option value="ALL">All Levels</option>
+  <option value="A1">A1</option>
+  <option value="A2">A2</option>
+  <option value="B1">B1</option>
+  <option value="B2">B2</option>
+  <option value="C1">C1</option>
+</select>
 
-        <a href="#languages" class="btn">
-            学習を始める
-        </a>
-    </section>
+<hr>
 
-    <!-- 言語一覧 -->
-    <section id="languages" class="languages">
 
-        <h2>学習したい言語を選択</h2>
 
-        <div class="language-grid">
+<div class="main-layout">
 
-            <a class="card"  href="english/index.html">
-                <span>🇺🇸</span>
-                <h3>English</h3>
-                <p>英語を学ぶ</p>
-            </a>
+    <main class="content">
 
-            <a class="card" href="french/index.html">
-                <span>🇫🇷</span>
-                <h3>Français</h3>
-                <p>フランス語を学ぶ</p>
-            </a>
+        <h2>Question</h2>
 
-            <a class="card" href="indonesia/index.html">
-                <span>🇮🇩</span>
-                <h3>Bahasa Indonesia</h3>
-                <p>インドネシア語を学ぶ</p>
-            </a>
+        <div id="questionNumber"></div>
+        <div id="questionText"></div>
 
-            <div class="card" onclick="goToLanguage('kyrgyz')">
-                <span>🇰🇬</span>
-                <h3>Кыргызча</h3>
-                <p>キルギス語を学ぶ</p>
-            </div>
+        <div class="btns">
 
-            <div class="card" onclick="goToLanguage('korean')">
-                <span>🇰🇷</span>
-                <h3>한국어</h3>
-                <p>韓国語を学ぶ</p>
-            </div>
-
-            <div class="card" onclick="goToLanguage('chinese')">
-                <span>🇨🇳</span>
-                <h3>中文</h3>
-                <p>中国語を学ぶ</p>
-            </div>
+            <button onclick="playAudio()">Play</button>
+            <button onclick="shadowing()">Shadowing</button>
+            <button onclick="stopAudio()">Stop</button>
+            <button onclick="toggleScript()">Script</button>
+            <button onclick="toggleTranslation()">Translation</button>
+            <button onclick="nextQuestion()">Next</button>
 
         </div>
 
-    </section>
+        <h2>Script</h2>
+        <div id="scriptBox" class="hidden"></div>
 
-    <!-- サイト紹介 -->
-    <section class="features">
+        <h2>Translation</h2>
+        <div id="translationBox" class="hidden"></div>
 
-        <h2>このサイトでできること</h2>
+        <hr>
 
-        <div class="feature-box">
+        <h2>Quiz</h2>
 
-            <div class="feature">
-                📖
-                <h3>単語学習</h3>
-            </div>
+        <div id="quiz"></div>
 
-            <div class="feature">
-                📝
-                <h3>文法学習</h3>
-            </div>
+        <p id="result"></p>
 
-            <div class="feature">
-                🎧
-                <h3>リスニング</h3>
-            </div>
+        <p id="scoreBox"></p>
 
-            <div class="feature">
-                🎤
-                <h3>スピーキング</h3>
-            </div>
+    </main>
 
-        </div>
+    <aside class="sidebar">
 
-    </section>
+        <h2>Questions</h2>
 
-    <!-- 運営者 -->
-    <article class="mokuji saiden">
-      <section>
-      <h2>運営者について</h2>
-      <p>
-      Gengo Labは、語学学習経験をもとに「効率よく実用的な語学力を身につける」ことを目的として運営しています。
-      学習者の目線に立ち、分かりやすく実践的なコンテンツを提供し続けます。
-      </p>
-      </section>
-      <section class="contact">
-  <h2>お問い合わせ</h2>
-  <form action="https://formspree.io/f/xdabnvog" method="POST">
-    
-    <label>名前</label><br>
-    <input type="text" name="name" required><br><br>
+        <div id="questionList"></div>
 
-    <label>メールアドレス</label><br>
-    <input type="email" name="email" required><br><br>
+    </aside>
 
-    <label>お問い合わせ内容</label><br>
-    <textarea name="message" rows="5" required></textarea><br><br>
-
-    <button type="submit">送信</button>
-  </form>
-</section>
-<section>
-            <a href="privacy.html" style="color:black;">プライバシーポリシー</a>
-        </section>
-</article>
-    
-
-        <div class="copyright">
-            <small>&copy; 2026 Gengo Lab</small>
-        </div>
-        <h3 class="miru"><span id="count">0</span></h3>
-       
+</div>
 
 
-
-
-
-
-    
-
-    <script src="script.js"></script>
-
+<script src="listeningquestion.js"></script>
+<script src="listening.js"></script>
 </body>
 </html>

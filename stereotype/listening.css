@@ -12,7 +12,7 @@ body {
 }
 
 h1 {
-  color: #079754;
+  color: #2b6cff;
   font-size: 2rem;
 }
 
@@ -52,7 +52,7 @@ select {
 }
 
 button {
-  background: #46f182;
+  background: #2b6cff;
   color: white;
   border: none;
   padding: 14px 18px;
@@ -64,7 +64,7 @@ button {
 }
 
 button:hover {
-  background: #5de066;
+  background: #1f4fcc;
 }
 
 .hidden {
@@ -77,7 +77,7 @@ button:hover {
   margin: 10px auto;
   background: white;
   color: #333;
-  border: 2px solid #25db98;
+  border: 2px solid #2b6cff;
   font-size: 1rem;
   padding: 14px;
 }
@@ -161,7 +161,7 @@ button:hover {
 }
 
 .question-card:hover{
-  border-color:#17f317;
+  border-color:#2563eb;
   transform:translateY(-3px);
 }
 
@@ -229,7 +229,7 @@ button:hover {
 
 .question-card:hover{
 
-    border-color:#14eea2;
+    border-color:#2563eb;
 
     background:#f8fbff;
 }
