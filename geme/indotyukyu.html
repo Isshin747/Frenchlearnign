@@ -1,0 +1,2572 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7032470395981540"
+     crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>尼語単語中級</title>
+<link rel="stylesheet" href="gaga.css">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#eef4ff,#dfe9ff);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.quiz-container{
+    background:white;
+    width:100%;
+    max-width:700px;
+    border-radius:25px;
+    padding:40px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.12);
+}
+
+h1{
+    text-align:center;
+    color:#2c3e50;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:30px;
+}
+
+.score{
+    text-align:right;
+    font-weight:bold;
+    margin-bottom:20px;
+    color:#444;
+}
+
+.question-number{
+    color:#4b6fff;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.question{
+    font-size:1.5rem;
+    font-weight:bold;
+    margin-bottom:30px;
+    color:#222;
+}
+
+.answers{
+    display:grid;
+    gap:15px;
+}
+
+.answer-btn{
+    border:none;
+    background:#f3f6ff;
+    padding:18px;
+    border-radius:15px;
+    cursor:pointer;
+    font-size:1rem;
+    transition:0.2s;
+    text-align:left;
+}
+
+.answer-btn:hover{
+    background:#dfe8ff;
+    transform:translateY(-2px);
+}
+
+.correct{
+    background:#8ee4af !important;
+    color:#14532d;
+}
+
+.wrong{
+    background:#ffb3b3 !important;
+    color:#7f1d1d;
+}
+
+#result{
+    text-align:center;
+    margin-top:20px;
+    font-size:1.2rem;
+    font-weight:bold;
+}
+
+.next-btn{
+    display:none;
+    width:100%;
+    margin-top:25px;
+    border:none;
+    background:#4b6fff;
+    color:white;
+    padding:18px;
+    border-radius:15px;
+    cursor:pointer;
+    font-size:1rem;
+    transition:0.2s;
+}
+
+.next-btn:hover{
+    background:#3457d5;
+}
+
+.restart-btn{
+    background:#16a34a;
+}
+
+@media(max-width:600px){
+    .quiz-container{
+        padding:25px;
+    }
+
+    .question{
+        font-size:1.2rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+
+    <h1> Language Quiz</h1>
+    <p class="subtitle">
+        インドネシア語中級単語
+    </p>
+
+    <div class="category-select">
+
+    <button onclick="selectCategory('noun')">
+         名詞
+    </button>
+
+    <button onclick="selectCategory('verb')">
+         動詞
+    </button>
+
+    <button onclick="selectCategory('adjective')">
+         形容詞
+    </button>
+
+    <button onclick="selectCategory('expression')">
+         表現
+    </button>
+
+    <button onclick="selectCategory('all')">
+         全部
+    </button>
+    <button onclick="location.href='../index.html'">
+        トップページへ
+</button>
+
+</div>
+
+    <div class="score">
+        Score: <span id="score">0</span>
+    </div>
+
+    <div class="question-area">
+    <h2 id="question"></h2>
+
+    <button id="speakBtn">
+        🔊 発音を聞く
+    </button>
+</div>
+
+    <div class="question-number" id="questionNumber">
+        Question 1 / 
+    </div>
+
+    <div class="question" id="question">
+        問題が表示されます
+    </div>
+
+    <div class="answers" id="answers"></div>
+
+    <div id="result"></div>
+
+    <button class="next-btn" id="nextBtn">
+        次の問題 →
+    </button>
+
+</div>
+
+<script>
+
+let quizData = [];
+let currentQuestion = 0;
+let score = 0;
+let wrongQuestions = [];
+function selectCategory(category){
+
+   
+    if(category === "noun"){
+        quizData = [...nouns];
+    }
+
+    else if(category === "verb"){
+        quizData = [...verbs];
+    }
+
+    else if(category === "adjective"){
+        quizData = [...adjective];
+    }
+
+    else if(category === "expression"){
+        quizData = [...expressions];
+    }
+
+    else{
+        quizData = [
+            ...nouns,
+            ...verbs,
+            ...adjective,
+            ...expressions
+        ];
+    }
+    shuffleArray(quizData);
+    
+    currentQuestion = 0;
+    score = 0;
+    wrongQuestions = [];
+
+    document.getElementById("score")
+    .textContent = score;
+
+    // ←超重要
+    loadQuestion();
+}
+const nouns=[
+
+{
+question:"『masyarakat』の意味は？",
+answers:["社会","政府","教育","文化"],
+correct:0
+},
+{
+question:"『lingkungan』の意味は？",
+answers:["環境","経済","技術","歴史"],
+correct:0
+},
+{
+question:"『pemerintah』の意味は？",
+answers:["政府","住民","会社","組織"],
+correct:0
+},
+{
+question:"『pendidikan』の意味は？",
+answers:["教育","研究","試験","大学"],
+correct:0
+},
+{
+question:"『kebudayaan』の意味は？",
+answers:["文化","言語","文学","伝統"],
+correct:0
+},
+{
+question:"『ekonomi』の意味は？",
+answers:["経済","産業","貿易","市場"],
+correct:0
+},
+{
+question:"『teknologi』の意味は？",
+answers:["技術","資源","エネルギー","交通"],
+correct:0
+},
+{
+question:"『informasi』の意味は？",
+answers:["情報","知識","意見","決定"],
+correct:0
+},
+{
+question:"『komunikasi』の意味は？",
+answers:["コミュニケーション","競争","活動","旅行"],
+correct:0
+},
+{
+question:"『pengalaman』の意味は？",
+answers:["経験","機会","責任","成功"],
+correct:0
+},
+{
+question:"『kesempatan』の意味は？",
+answers:["機会","課題","問題","解決策"],
+correct:0
+},
+{
+question:"『tanggung jawab』の意味は？",
+answers:["責任","権利","義務","安全"],
+correct:0
+},
+{
+question:"『keuntungan』の意味は？",
+answers:["利点","欠点","損失","危険"],
+correct:0
+},
+{
+question:"『kerugian』の意味は？",
+answers:["欠点・損失","利点","成功","利益"],
+correct:0
+},
+{
+question:"『perkembangan』の意味は？",
+answers:["発展","変化","研究","改善"],
+correct:0
+},
+{
+question:"『perubahan』の意味は？",
+answers:["変化","発展","伝統","歴史"],
+correct:0
+},
+{
+question:"『penelitian』の意味は？",
+answers:["研究","教育","経験","発見"],
+correct:0
+},
+{
+question:"『pengetahuan』の意味は？",
+answers:["知識","能力","経験","意見"],
+correct:0
+},
+{
+question:"『kemampuan』の意味は？",
+answers:["能力","責任","機会","課題"],
+correct:0
+},
+{
+question:"『keterampilan』の意味は？",
+answers:["技能","能力","知識","経験"],
+correct:0
+},
+{
+question:"『hubungan』の意味は？",
+answers:["関係","社会","組織","会議"],
+correct:0
+},
+{
+question:"『pendapat』の意味は？",
+answers:["意見","事実","情報","知識"],
+correct:0
+},
+{
+question:"『keputusan』の意味は？",
+answers:["決定","挑戦","機会","目標"],
+correct:0
+},
+{
+question:"『perbedaan』の意味は？",
+answers:["違い","共通点","変化","伝統"],
+correct:0
+},
+{
+question:"『persamaan』の意味は？",
+answers:["共通点","違い","特徴","個性"],
+correct:0
+},
+{
+question:"『masalah』の意味は？",
+answers:["問題","解決策","成功","結果"],
+correct:0
+},
+{
+question:"『solusi』の意味は？",
+answers:["解決策","問題","意見","方法"],
+correct:0
+},
+{
+question:"『tantangan』の意味は？",
+answers:["課題","成功","経験","能力"],
+correct:0
+},
+{
+question:"『keberhasilan』の意味は？",
+answers:["成功","失敗","経験","結果"],
+correct:0
+},
+{
+question:"『kegagalan』の意味は？",
+answers:["失敗","成功","挑戦","成果"],
+correct:0
+},
+{
+question:"『kesehatan』の意味は？",
+answers:["健康","病気","治療","運動"],
+correct:0
+},
+{
+question:"『penyakit』の意味は？",
+answers:["病気","健康","薬","治療"],
+correct:0
+},
+{
+question:"『pengobatan』の意味は？",
+answers:["治療","病気","健康","診断"],
+correct:0
+},
+{
+question:"『kebiasaan』の意味は？",
+answers:["習慣","文化","伝統","活動"],
+correct:0
+},
+{
+question:"『gaya hidup』の意味は？",
+answers:["ライフスタイル","生活費","住宅","仕事"],
+correct:0
+},
+{
+question:"『olahraga』の意味は？",
+answers:["スポーツ","健康","旅行","趣味"],
+correct:0
+},
+{
+question:"『perjalanan』の意味は？",
+answers:["旅行","目的","観光","交通"],
+correct:0
+},
+{
+question:"『tujuan』の意味は？",
+answers:["目的","結果","原因","方法"],
+correct:0
+},
+{
+question:"『wisatawan』の意味は？",
+answers:["観光客","住民","学生","会社員"],
+correct:0
+},
+{
+question:"『transportasi』の意味は？",
+answers:["交通","旅行","道路","車"],
+correct:0
+},
+
+{
+question:"『kendaraan』の意味は？",
+answers:["乗り物","道路","交通","運転手"],
+correct:0
+},
+{
+question:"『lalu lintas』の意味は？",
+answers:["交通状況","鉄道","航空","港"],
+correct:0
+},
+{
+question:"『kemacetan』の意味は？",
+answers:["渋滞","事故","交通機関","道路"],
+correct:0
+},
+{
+question:"『pekerjaan』の意味は？",
+answers:["仕事","会社","給料","職場"],
+correct:0
+},
+{
+question:"『karier』の意味は？",
+answers:["キャリア","経験","能力","職業訓練"],
+correct:0
+},
+{
+question:"『perusahaan』の意味は？",
+answers:["会社","工場","組織","団体"],
+correct:0
+},
+{
+question:"『karyawan』の意味は？",
+answers:["従業員","社長","顧客","投資家"],
+correct:0
+},
+{
+question:"『pengusaha』の意味は？",
+answers:["起業家","従業員","教師","公務員"],
+correct:0
+},
+{
+question:"『industri』の意味は？",
+answers:["産業","市場","製品","工場"],
+correct:0
+},
+{
+question:"『perdagangan』の意味は？",
+answers:["貿易","産業","観光","投資"],
+correct:0
+},
+{
+question:"『pelanggan』の意味は？",
+answers:["顧客","従業員","上司","取引先"],
+correct:0
+},
+{
+question:"『produk』の意味は？",
+answers:["製品","サービス","会社","工場"],
+correct:0
+},
+{
+question:"『layanan』の意味は？",
+answers:["サービス","商品","会社","店舗"],
+correct:0
+},
+{
+question:"『kualitas』の意味は？",
+answers:["品質","価格","数量","種類"],
+correct:0
+},
+{
+question:"『harga』の意味は？",
+answers:["価格","品質","価値","利益"],
+correct:0
+},
+{
+question:"『persaingan』の意味は？",
+answers:["競争","協力","交流","取引"],
+correct:0
+},
+{
+question:"『organisasi』の意味は？",
+answers:["組織","企業","学校","政府"],
+correct:0
+},
+{
+question:"『anggota』の意味は？",
+answers:["メンバー","代表","議長","参加者"],
+correct:0
+},
+{
+question:"『pemimpin』の意味は？",
+answers:["リーダー","従業員","顧客","住民"],
+correct:0
+},
+{
+question:"『kegiatan』の意味は？",
+answers:["活動","仕事","勉強","趣味"],
+correct:0
+},
+{
+question:"『acara』の意味は？",
+answers:["イベント","組織","活動","会議"],
+correct:0
+},
+{
+question:"『tradisi』の意味は？",
+answers:["伝統","文化","芸術","歴史"],
+correct:0
+},
+{
+question:"『sejarah』の意味は？",
+answers:["歴史","文化","伝統","遺産"],
+correct:0
+},
+{
+question:"『generasi』の意味は？",
+answers:["世代","家族","住民","民族"],
+correct:0
+},
+{
+question:"『penduduk』の意味は？",
+answers:["住民","観光客","移民","旅行者"],
+correct:0
+},
+{
+question:"『wilayah』の意味は？",
+answers:["地域","国","都市","村"],
+correct:0
+},
+{
+question:"『negara』の意味は？",
+answers:["国家","都市","地域","社会"],
+correct:0
+},
+{
+question:"『kota』の意味は？",
+answers:["都市","国家","地域","村"],
+correct:0
+},
+{
+question:"『desa』の意味は？",
+answers:["村","都市","州","地域"],
+correct:0
+},
+{
+question:"『hukum』の意味は？",
+answers:["法律","権利","義務","規則"],
+correct:0
+},
+{
+question:"『hak』の意味は？",
+answers:["権利","義務","責任","法律"],
+correct:0
+},
+{
+question:"『kewajiban』の意味は？",
+answers:["義務","権利","責任","法律"],
+correct:0
+},
+{
+question:"『keamanan』の意味は？",
+answers:["安全","危険","事故","警察"],
+correct:0
+},
+{
+question:"『perdamaian』の意味は？",
+answers:["平和","戦争","対立","協定"],
+correct:0
+},
+{
+question:"『konflik』の意味は？",
+answers:["対立","平和","協力","友情"],
+correct:0
+},
+{
+question:"『bencana』の意味は？",
+answers:["災害","事故","病気","危険"],
+correct:0
+},
+{
+question:"『gempa bumi』の意味は？",
+answers:["地震","洪水","台風","火山"],
+correct:0
+},
+{
+question:"『banjir』の意味は？",
+answers:["洪水","地震","干ばつ","火災"],
+correct:0
+},
+{
+question:"『cuaca』の意味は？",
+answers:["天気","気候","季節","温度"],
+correct:0
+},
+{
+question:"『iklim』の意味は？",
+answers:["気候","天気","温度","環境"],
+correct:0
+},
+{
+question:"『energi』の意味は？",
+answers:["エネルギー","資源","電気","燃料"],
+correct:0
+},
+{
+question:"『sumber daya』の意味は？",
+answers:["資源","エネルギー","環境","技術"],
+correct:0
+},
+{
+question:"『sampah』の意味は？",
+answers:["ごみ","資源","汚染","廃水"],
+correct:0
+},
+{
+question:"『polusi』の意味は？",
+answers:["汚染","環境","資源","災害"],
+correct:0
+},
+{
+question:"『universitas』の意味は？",
+answers:["大学","高校","研究所","図書館"],
+correct:0
+},
+{
+question:"『mahasiswa』の意味は？",
+answers:["大学生","高校生","教師","研究者"],
+correct:0
+},
+{
+question:"『dosen』の意味は？",
+answers:["大学教員","学生","研究者","校長"],
+correct:0
+},
+{
+question:"『beasiswa』の意味は？",
+answers:["奨学金","授業料","学位","試験"],
+correct:0
+},
+{
+question:"『ujian』の意味は？",
+answers:["試験","授業","課題","成績"],
+correct:0
+},
+{
+question:"『nilai』の意味は？",
+answers:["成績","試験","授業","学位"],
+correct:0
+},
+{
+question:"『bahasa』の意味は？",
+answers:["言語","文学","文化","歴史"],
+correct:0
+},
+{
+question:"『sastra』の意味は？",
+answers:["文学","言語","歴史","文化"],
+correct:0
+},
+{
+question:"『media』の意味は？",
+answers:["メディア","新聞","雑誌","放送"],
+correct:0
+},
+{
+question:"『berita』の意味は？",
+answers:["ニュース","記事","報告書","雑誌"],
+correct:0
+},
+{
+question:"『artikel』の意味は？",
+answers:["記事","小説","新聞","報告"],
+correct:0
+},
+{
+question:"『film』の意味は？",
+answers:["映画","音楽","演劇","小説"],
+correct:0
+},
+{
+question:"『musik』の意味は？",
+answers:["音楽","映画","芸術","文学"],
+correct:0
+},
+{
+question:"『investasi』の意味は？",
+answers:["投資","貯金","借金","利益"],
+correct:0
+},
+{
+question:"『penghasilan』の意味は？",
+answers:["収入","支出","利益","投資"],
+correct:0
+},
+{
+question:"『pengangguran』の意味は？",
+answers:["失業","就職","昇進","退職"],
+correct:0
+},
+{
+question:"『kemiskinan』の意味は？",
+answers:["貧困","富裕","発展","成長"],
+correct:0
+}
+]
+
+const verbs=[
+    {
+question:"『menganggap』の意味は？",
+answers:["～と考える","説明する","選ぶ","守る"],
+correct:0
+},
+{
+question:"『menyatakan』の意味は？",
+answers:["述べる","拒否する","参加する","訪問する"],
+correct:0
+},
+{
+question:"『menjelaskan』の意味は？",
+answers:["説明する","計画する","投資する","証明する"],
+correct:0
+},
+{
+question:"『menerangkan』の意味は？",
+answers:["説明する","購入する","管理する","改善する"],
+correct:0
+},
+{
+question:"『mengungkapkan』の意味は？",
+answers:["明らかにする","比較する","保護する","移動する"],
+correct:0
+},
+{
+question:"『menyampaikan』の意味は？",
+answers:["伝える","節約する","借りる","定住する"],
+correct:0
+},
+{
+question:"『membahas』の意味は？",
+answers:["議論する","売る","建設する","卒業する"],
+correct:0
+},
+{
+question:"『mendiskusikan』の意味は？",
+answers:["話し合う","生産する","破壊する","楽しむ"],
+correct:0
+},
+{
+question:"『membandingkan』の意味は？",
+answers:["比較する","達成する","投資する","経験する"],
+correct:0
+},
+{
+question:"『membedakan』の意味は？",
+answers:["区別する","計画する","管理する","尊敬する"],
+correct:0
+},
+{
+question:"『memilih』の意味は？",
+answers:["選ぶ","説明する","参加する","節約する"],
+correct:0
+},
+{
+question:"『menentukan』の意味は？",
+answers:["決定する","訪問する","借りる","売る"],
+correct:0
+},
+{
+question:"『memutuskan』の意味は？",
+answers:["決める","保護する","建設する","購入する"],
+correct:0
+},
+{
+question:"『menyelesaikan』の意味は？",
+answers:["解決する","失う","研究する","教える"],
+correct:0
+},
+{
+question:"『mengatasi』の意味は？",
+answers:["克服する","管理する","投資する","尊敬する"],
+correct:0
+},
+{
+question:"『menghadapi』の意味は？",
+answers:["直面する","借りる","売る","感じる"],
+correct:0
+},
+{
+question:"『mengembangkan』の意味は？",
+answers:["発展させる","移動する","説明する","購入する"],
+correct:0
+},
+{
+question:"『meningkatkan』の意味は？",
+answers:["向上させる","訪問する","達成する","楽しむ"],
+correct:0
+},
+{
+question:"『memperbaiki』の意味は？",
+answers:["改善する","投資する","借りる","比較する"],
+correct:0
+},
+{
+question:"『mengubah』の意味は？",
+answers:["変える","売る","定住する","研究する"],
+correct:0
+},
+{
+question:"『berubah』の意味は？",
+answers:["変化する","参加する","教える","購入する"],
+correct:0
+},
+{
+question:"『bertambah』の意味は？",
+answers:["増える","減らす","守る","移動する"],
+correct:0
+},
+{
+question:"『berkurang』の意味は？",
+answers:["減る","増える","建設する","達成する"],
+correct:0
+},
+{
+question:"『mencapai』の意味は？",
+answers:["達成する","比較する","借りる","経験する"],
+correct:0
+},
+{
+question:"『menghasilkan』の意味は？",
+answers:["生み出す","節約する","売る","参加する"],
+correct:0
+},
+{
+question:"『menyebabkan』の意味は？",
+answers:["引き起こす","購入する","訪問する","定住する"],
+correct:0
+},
+{
+question:"『mempengaruhi』の意味は？",
+answers:["影響を与える","借りる","建設する","尊敬する"],
+correct:0
+},
+{
+question:"『mendukung』の意味は？",
+answers:["支援する","失う","説明する","研究する"],
+correct:0
+},
+{
+question:"『menolak』の意味は？",
+answers:["拒否する","受け入れる","購入する","教える"],
+correct:0
+},
+{
+question:"『menerima』の意味は？",
+answers:["受け入れる","拒否する","売る","移動する"],
+correct:0
+},
+{
+question:"『melibatkan』の意味は？",
+answers:["関与させる","借りる","建設する","達成する"],
+correct:0
+},
+{
+question:"『berpartisipasi』の意味は？",
+answers:["参加する","比較する","守る","感じる"],
+correct:0
+},
+{
+question:"『bekerja sama』の意味は？",
+answers:["協力する","投資する","訪問する","購入する"],
+correct:0
+},
+{
+question:"『berkomunikasi』の意味は？",
+answers:["コミュニケーションする","移動する","失う","研究する"],
+correct:0
+},
+{
+question:"『berhubungan』の意味は？",
+answers:["関係する","売る","借りる","達成する"],
+correct:0
+},
+{
+question:"『melindungi』の意味は？",
+answers:["保護する","破壊する","購入する","参加する"],
+correct:0
+},
+{
+question:"『menjaga』の意味は？",
+answers:["守る","比較する","訪問する","説明する"],
+correct:0
+},
+{
+question:"『mengurangi』の意味は？",
+answers:["減らす","増やす","借りる","教える"],
+correct:0
+},
+{
+question:"『menghemat』の意味は？",
+answers:["節約する","投資する","建設する","達成する"],
+correct:0
+},
+{
+question:"『menggunakan』の意味は？",
+answers:["使用する","売る","失う","研究する"],
+correct:0
+},
+
+{
+question:"『memanfaatkan』の意味は？",
+answers:["活用する","節約する","売る","借りる"],
+correct:0
+},
+{
+question:"『menyediakan』の意味は？",
+answers:["提供する","購入する","研究する","移動する"],
+correct:0
+},
+{
+question:"『menciptakan』の意味は？",
+answers:["創造する","破壊する","達成する","比較する"],
+correct:0
+},
+{
+question:"『menemukan』の意味は？",
+answers:["発見する","失う","借りる","投資する"],
+correct:0
+},
+{
+question:"『meneliti』の意味は？",
+answers:["研究する","教える","参加する","購入する"],
+correct:0
+},
+{
+question:"『mempelajari』の意味は？",
+answers:["学ぶ","教える","管理する","売る"],
+correct:0
+},
+{
+question:"『mengajar』の意味は？",
+answers:["教える","学ぶ","借りる","訪問する"],
+correct:0
+},
+{
+question:"『mendidik』の意味は？",
+answers:["教育する","参加する","移動する","比較する"],
+correct:0
+},
+{
+question:"『lulus』の意味は？",
+answers:["卒業する・合格する","失敗する","退学する","入学する"],
+correct:0
+},
+{
+question:"『mendaftar』の意味は？",
+answers:["登録する","退会する","訪問する","説明する"],
+correct:0
+},
+{
+question:"『mengunjungi』の意味は？",
+answers:["訪問する","移動する","借りる","教える"],
+correct:0
+},
+{
+question:"『bepergian』の意味は？",
+answers:["旅行する","定住する","売る","研究する"],
+correct:0
+},
+{
+question:"『berpindah』の意味は？",
+answers:["移動する","旅行する","購入する","参加する"],
+correct:0
+},
+{
+question:"『tinggal』の意味は？",
+answers:["住む","働く","学ぶ","旅行する"],
+correct:0
+},
+{
+question:"『menetap』の意味は？",
+answers:["定住する","移動する","訪問する","登録する"],
+correct:0
+},
+{
+question:"『membangun』の意味は？",
+answers:["建設する","破壊する","売る","借りる"],
+correct:0
+},
+{
+question:"『menghancurkan』の意味は？",
+answers:["破壊する","建設する","管理する","投資する"],
+correct:0
+},
+{
+question:"『memproduksi』の意味は？",
+answers:["生産する","消費する","販売する","購入する"],
+correct:0
+},
+{
+question:"『menjual』の意味は？",
+answers:["売る","買う","借りる","貸す"],
+correct:0
+},
+{
+question:"『membeli』の意味は？",
+answers:["買う","売る","投資する","節約する"],
+correct:0
+},
+{
+question:"『mengonsumsi』の意味は？",
+answers:["消費する","生産する","販売する","輸出する"],
+correct:0
+},
+{
+question:"『menginvestasikan』の意味は？",
+answers:["投資する","節約する","借金する","消費する"],
+correct:0
+},
+{
+question:"『memperoleh』の意味は？",
+answers:["獲得する","失う","借りる","売る"],
+correct:0
+},
+{
+question:"『mendapatkan』の意味は？",
+answers:["得る","失う","貸す","移動する"],
+correct:0
+},
+{
+question:"『kehilangan』の意味は？",
+answers:["失う","得る","借りる","投資する"],
+correct:0
+},
+{
+question:"『meminjam』の意味は？",
+answers:["借りる","貸す","売る","買う"],
+correct:0
+},
+{
+question:"『meminjamkan』の意味は？",
+answers:["貸す","借りる","購入する","販売する"],
+correct:0
+},
+{
+question:"『membayar』の意味は？",
+answers:["支払う","受け取る","借りる","投資する"],
+correct:0
+},
+{
+question:"『memperoleh keuntungan』の意味は？",
+answers:["利益を得る","損失を出す","借金する","節約する"],
+correct:0
+},
+{
+question:"『mengelola』の意味は？",
+answers:["管理する","建設する","購入する","移動する"],
+correct:0
+},
+{
+question:"『mengatur』の意味は？",
+answers:["調整する","破壊する","借りる","売る"],
+correct:0
+},
+{
+question:"『memimpin』の意味は？",
+answers:["指導する","従う","参加する","訪問する"],
+correct:0
+},
+{
+question:"『mengawasi』の意味は？",
+answers:["監督する","管理される","移動する","購入する"],
+correct:0
+},
+{
+question:"『mematuhi』の意味は？",
+answers:["従う","違反する","管理する","借りる"],
+correct:0
+},
+{
+question:"『melanggar』の意味は？",
+answers:["違反する","従う","支援する","保護する"],
+correct:0
+},
+{
+question:"『menuntut』の意味は？",
+answers:["要求する","提案する","説明する","参加する"],
+correct:0
+},
+{
+question:"『menyetujui』の意味は？",
+answers:["同意する","拒否する","比較する","訪問する"],
+correct:0
+},
+{
+question:"『mempertimbangkan』の意味は？",
+answers:["検討する","決定する","支援する","移動する"],
+correct:0
+},
+{
+question:"『memperkirakan』の意味は？",
+answers:["予測する","計画する","研究する","建設する"],
+correct:0
+},
+{
+question:"『merencanakan』の意味は？",
+answers:["計画する","実行する","比較する","参加する"],
+correct:0
+},
+{
+question:"『mempersiapkan』の意味は？",
+answers:["準備する","開始する","終了する","借りる"],
+correct:0
+},
+{
+question:"『mengusulkan』の意味は？",
+answers:["提案する","拒否する","支払う","訪問する"],
+correct:0
+},
+{
+question:"『menyarankan』の意味は？",
+answers:["勧める","禁止する","支援する","建設する"],
+correct:0
+},
+{
+question:"『berharap』の意味は？",
+answers:["期待する","諦める","拒否する","移動する"],
+correct:0
+},
+{
+question:"『berusaha』の意味は？",
+answers:["努力する","失敗する","休む","諦める"],
+correct:0
+},
+{
+question:"『mencoba』の意味は？",
+answers:["試みる","成功する","購入する","借りる"],
+correct:0
+},
+{
+question:"『berhasil』の意味は？",
+answers:["成功する","失敗する","参加する","移動する"],
+correct:0
+},
+{
+question:"『gagal』の意味は？",
+answers:["失敗する","成功する","努力する","挑戦する"],
+correct:0
+},
+{
+question:"『mengalami』の意味は？",
+answers:["経験する","研究する","比較する","訪問する"],
+correct:0
+},
+{
+question:"『merasakan』の意味は？",
+answers:["感じる","考える","説明する","借りる"],
+correct:0
+},
+{
+question:"『menikmati』の意味は？",
+answers:["楽しむ","嫌う","失う","移動する"],
+correct:0
+},
+{
+question:"『menghindari』の意味は？",
+answers:["避ける","近づく","参加する","支援する"],
+correct:0
+},
+{
+question:"『memperhatikan』の意味は？",
+answers:["注意する","無視する","訪問する","購入する"],
+correct:0
+},
+{
+question:"『menghormati』の意味は？",
+answers:["尊敬する","批判する","拒否する","比較する"],
+correct:0
+},
+{
+question:"『mempercayai』の意味は？",
+answers:["信頼する","疑う","拒否する","説明する"],
+correct:0
+},
+{
+question:"『membuktikan』の意味は？",
+answers:["証明する","推測する","提案する","計画する"],
+correct:0
+},
+{
+question:"『menyadari』の意味は？",
+answers:["気づく","忘れる","移動する","借りる"],
+correct:0
+},
+{
+question:"『mengenang』の意味は？",
+answers:["思い出す","忘れる","研究する","比較する"],
+correct:0
+},
+{
+question:"『mewujudkan』の意味は？",
+answers:["実現する","計画する","提案する","予測する"],
+correct:0
+},
+]
+
+const adjective=[
+    {
+question:"『aktif』の意味は？",
+answers:["活動的な","危険な","有名な","怠惰な"],
+correct:0
+},
+{
+question:"『pasif』の意味は？",
+answers:["積極的な","消極的な","責任感のある","快適な"],
+correct:1
+},
+{
+question:"『mandiri』の意味は？",
+answers:["自立した","伝統的な","有名な","外国の"],
+correct:0
+},
+{
+question:"『bertanggung jawab』の意味は？",
+answers:["責任感のある","創造的な","危険な","浪費的な"],
+correct:0
+},
+{
+question:"『percaya diri』の意味は？",
+answers:["悲観的な","自信のある","消極的な","複雑な"],
+correct:1
+},
+{
+question:"『jujur』の意味は？",
+answers:["正直な","怠惰な","柔軟な","科学的な"],
+correct:0
+},
+{
+question:"『adil』の意味は？",
+answers:["感情的な","公平な","国際的な","一時的な"],
+correct:1
+},
+{
+question:"『bijaksana』の意味は？",
+answers:["賢明な","外国の","狭い","珍しい"],
+correct:0
+},
+{
+question:"『kreatif』の意味は？",
+answers:["創造的な","浪費的な","閉鎖的な","危険な"],
+correct:0
+},
+{
+question:"『inovatif』の意味は？",
+answers:["現実的な","革新的な","伝統的な","客観的な"],
+correct:1
+},
+{
+question:"『produktif』の意味は？",
+answers:["生産的な","非公式な","狭い","臨時の"],
+correct:0
+},
+{
+question:"『efektif』の意味は？",
+answers:["効率的な","効果的な","複雑な","浅い"],
+correct:1
+},
+{
+question:"『efisien』の意味は？",
+answers:["効率的な","創造的な","危険な","有名な"],
+correct:0
+},
+{
+question:"『praktis』の意味は？",
+answers:["理性的な","実用的な","持続可能な","一般的な"],
+correct:1
+},
+{
+question:"『realistis』の意味は？",
+answers:["現実的な","悲観的な","国際的な","快適な"],
+correct:0
+},
+{
+question:"『optimistis』の意味は？",
+answers:["悲観的な","楽観的な","閉鎖的な","狭い"],
+correct:1
+},
+{
+question:"『pesimistis』の意味は？",
+answers:["楽観的な","科学的な","悲観的な","生産的な"],
+correct:2
+},
+{
+question:"『sensitif』の意味は？",
+answers:["敏感な","柔軟な","客観的な","価値のある"],
+correct:0
+},
+{
+question:"『emosional』の意味は？",
+answers:["論理的な","感情的な","国際的な","快適な"],
+correct:1
+},
+{
+question:"『rasional』の意味は？",
+answers:["理性的な","感情的な","怠惰な","外国の"],
+correct:0
+},
+{
+question:"『fleksibel』の意味は？",
+answers:["柔軟な","頑固な","浪費的な","浅い"],
+correct:0
+},
+{
+question:"『stabil』の意味は？",
+answers:["不安定な","安定した","珍しい","特別な"],
+correct:1
+},
+{
+question:"『kompleks』の意味は？",
+answers:["単純な","複雑な","広い","親切な"],
+correct:1
+},
+{
+question:"『sederhana』の意味は？",
+answers:["革新的な","単純な","複雑な","有益な"],
+correct:1
+},
+{
+question:"『rumit』の意味は？",
+answers:["簡単な","複雑な","安全な","理性的な"],
+correct:1
+},
+
+{
+question:"『penting』の意味は？",
+answers:["重要な","危険な","怠惰な","狭い"],
+correct:0
+},
+{
+question:"『berguna』の意味は？",
+answers:["有益な","役立つ","複雑な","外国の"],
+correct:1
+},
+{
+question:"『bermanfaat』の意味は？",
+answers:["安全な","有益な","感情的な","浪費的な"],
+correct:1
+},
+{
+question:"『berbahaya』の意味は？",
+answers:["危険な","安全な","快適な","一般的な"],
+correct:0
+},
+{
+question:"『aman』の意味は？",
+answers:["危険な","快適な","安全な","特別な"],
+correct:2
+},
+{
+question:"『nyaman』の意味は？",
+answers:["快適な","不安定な","有名な","深い"],
+correct:0
+},
+{
+question:"『canggih』の意味は？",
+answers:["先進的な","伝統的な","消極的な","高価な"],
+correct:0
+},
+{
+question:"『modern』の意味は？",
+answers:["古典的な","現代的な","珍しい","客観的な"],
+correct:1
+},
+{
+question:"『tradisional』の意味は？",
+answers:["伝統的な","現代的な","効率的な","国際的な"],
+correct:0
+},
+{
+question:"『resmi』の意味は？",
+answers:["非公式な","公式な","柔軟な","広い"],
+correct:1
+},
+{
+question:"『informal』の意味は？",
+answers:["非公式な","公式な","理性的な","安定した"],
+correct:0
+},
+{
+question:"『serius』の意味は？",
+answers:["気楽な","真面目な","単純な","安全な"],
+correct:1
+},
+{
+question:"『santai』の意味は？",
+answers:["気楽な","深い","特別な","有名な"],
+correct:0
+},
+{
+question:"『unik』の意味は？",
+answers:["一般的な","独特な","国際的な","論理的な"],
+correct:1
+},
+{
+question:"『umum』の意味は？",
+answers:["一般的な","独特な","高品質な","環境に優しい"],
+correct:0
+},
+{
+question:"『khusus』の意味は？",
+answers:["一般的な","特別な","安定した","複雑な"],
+correct:1
+},
+{
+question:"『populer』の意味は？",
+answers:["人気のある","珍しい","狭い","怠惰な"],
+correct:0
+},
+{
+question:"『terkenal』の意味は？",
+answers:["有名な","外国の","客観的な","閉鎖的な"],
+correct:0
+},
+{
+question:"『asing』の意味は？",
+answers:["地元の","外国の","特別な","生産的な"],
+correct:1
+},
+{
+question:"『lokal』の意味は？",
+answers:["世界的な","地元の","伝統的な","感情的な"],
+correct:1
+},
+{
+question:"『global』の意味は？",
+answers:["地域的な","世界的な","理性的な","快適な"],
+correct:1
+},
+{
+question:"『internasional』の意味は？",
+answers:["国際的な","地元の","単純な","柔軟な"],
+correct:0
+},
+{
+question:"『beragam』の意味は？",
+answers:["均一な","多様な","珍しい","狭い"],
+correct:1
+},
+{
+question:"『setara』の意味は？",
+answers:["平等な","複雑な","危険な","深い"],
+correct:0
+},
+{
+question:"『berbeda』の意味は？",
+answers:["同じ","異なる","有名な","安全な"],
+correct:1
+},
+{
+question:"『mirip』の意味は？",
+answers:["似ている","異なる","浪費的な","怠惰な"],
+correct:0
+},
+{
+question:"『lengkap』の意味は？",
+answers:["不完全な","完全な","国際的な","柔軟な"],
+correct:1
+},
+{
+question:"『sempurna』の意味は？",
+answers:["完璧な","欠陥のある","狭い","消極的な"],
+correct:0
+},
+{
+question:"『cacat』の意味は？",
+answers:["完全な","欠陥のある","快適な","有名な"],
+correct:1
+},
+{
+question:"『kuat』の意味は？",
+answers:["弱い","強い","深い","効率的な"],
+correct:1
+},
+{
+question:"『lemah』の意味は？",
+answers:["強い","弱い","安全な","論理的な"],
+correct:1
+},
+{
+question:"『cepat』の意味は？",
+answers:["速い","遅い","狭い","伝統的な"],
+correct:0
+},
+{
+question:"『lambat』の意味は？",
+answers:["速い","遅い","国際的な","客観的な"],
+correct:1
+},
+{
+question:"『tepat』の意味は？",
+answers:["曖昧な","正確な","複雑な","地元の"],
+correct:1
+},
+{
+question:"『akurat』の意味は？",
+answers:["正確な","不正確な","浪費的な","感情的な"],
+correct:0
+},
+{
+question:"『sulit』の意味は？",
+answers:["簡単な","難しい","深い","有益な"],
+correct:1
+},
+{
+question:"『mudah』の意味は？",
+answers:["簡単な","難しい","危険な","高価な"],
+correct:0
+},
+{
+question:"『mahal』の意味は？",
+answers:["安い","高価な","柔軟な","独特な"],
+correct:1
+},
+{
+question:"『murah』の意味は？",
+answers:["安い","高価な","快適な","論理的な"],
+correct:0
+},
+{
+question:"『hemat』の意味は？",
+answers:["節約的な","浪費的な","伝統的な","複雑な"],
+correct:0
+},
+{
+question:"『boros』の意味は？",
+answers:["節約的な","浪費的な","有名な","一般的な"],
+correct:1
+},
+{
+question:"『ramah』の意味は？",
+answers:["親切な","失礼な","狭い","珍しい"],
+correct:0
+},
+{
+question:"『kasar』の意味は？",
+answers:["礼儀正しい","失礼な","安全な","快適な"],
+correct:1
+},
+{
+question:"『sopan』の意味は？",
+answers:["礼儀正しい","失礼な","国際的な","生産的な"],
+correct:0
+},
+{
+question:"『egois』の意味は？",
+answers:["自己中心的な","親切な","理性的な","持続可能な"],
+correct:0
+},
+{
+question:"『dermawan』の意味は？",
+answers:["気前の良い","怠惰な","消極的な","複雑な"],
+correct:0
+},
+{
+question:"『sabar』の意味は？",
+answers:["忍耐強い","短気な","有名な","危険な"],
+correct:0
+},
+{
+question:"『keras kepala』の意味は？",
+answers:["柔軟な","頑固な","快適な","特別な"],
+correct:1
+},
+{
+question:"『ambisius』の意味は？",
+answers:["野心的な","怠惰な","一般的な","環境に優しい"],
+correct:0
+},
+{
+question:"『malas』の意味は？",
+answers:["勤勉な","怠惰な","効率的な","地元の"],
+correct:1
+},
+{
+question:"『rajin』の意味は？",
+answers:["勤勉な","怠惰な","危険な","狭い"],
+correct:0
+},
+{
+question:"『terampil』の意味は？",
+answers:["熟練した","未熟な","感情的な","外国の"],
+correct:0
+},
+{
+question:"『berpengalaman』の意味は？",
+answers:["経験豊富な","初心者の","独特な","広い"],
+correct:0
+},
+{
+question:"『berpendidikan』の意味は？",
+answers:["教育を受けた","未教育の","珍しい","安全な"],
+correct:0
+},
+{
+question:"『profesional』の意味は？",
+answers:["専門的な","非公式な","狭い","浪費的な"],
+correct:0
+},
+{
+question:"『ilmiah』の意味は？",
+answers:["科学的な","伝統的な","快適な","一般的な"],
+correct:0
+},
+{
+question:"『logis』の意味は？",
+answers:["論理的な","感情的な","特別な","深い"],
+correct:0
+},
+{
+question:"『kritis』の意味は？",
+answers:["批判的な","安全な","柔軟な","外国の"],
+correct:0
+},
+{
+question:"『objektif』の意味は？",
+answers:["客観的な","主観的な","有名な","浪費的な"],
+correct:0
+},
+{
+question:"『subjektif』の意味は？",
+answers:["客観的な","主観的な","環境に優しい","珍しい"],
+correct:1
+},
+{
+question:"『transparan』の意味は？",
+answers:["透明性のある","閉鎖的な","狭い","高価な"],
+correct:0
+},
+{
+question:"『terbuka』の意味は？",
+answers:["オープンな","閉鎖的な","複雑な","危険な"],
+correct:0
+},
+{
+question:"『tertutup』の意味は？",
+answers:["オープンな","閉鎖的な","理性的な","一般的な"],
+correct:1
+},
+{
+question:"『berkelanjutan』の意味は？",
+answers:["持続可能な","一時的な","有名な","怠惰な"],
+correct:0
+},
+{
+question:"『ramah lingkungan』の意味は？",
+answers:["環境に優しい","危険な","伝統的な","狭い"],
+correct:0
+},
+{
+question:"『langka』の意味は？",
+answers:["珍しい","一般的な","快適な","柔軟な"],
+correct:0
+},
+{
+question:"『sering』の意味は？",
+answers:["頻繁な","珍しい","安定した","客観的な"],
+correct:0
+},
+{
+question:"『sementara』の意味は？",
+answers:["一時的な","永続的な","有益な","広い"],
+correct:0
+},
+{
+question:"『tetap』の意味は？",
+answers:["固定された","一時的な","外国の","危険な"],
+correct:0
+},
+{
+question:"『mendalam』の意味は？",
+answers:["深い","浅い","高価な","国際的な"],
+correct:0
+},
+{
+question:"『dangkal』の意味は？",
+answers:["深い","浅い","持続可能な","有名な"],
+correct:1
+},
+{
+question:"『luas』の意味は？",
+answers:["広い","狭い","快適な","理性的な"],
+correct:0
+},
+{
+question:"『sempit』の意味は？",
+answers:["広い","狭い","生産的な","一般的な"],
+correct:1
+},
+{
+question:"『bernilai』の意味は？",
+answers:["価値のある","無価値な","柔軟な","珍しい"],
+correct:0
+},
+{
+question:"『berkualitas』の意味は？",
+answers:["高品質な","低品質な","感情的な","地元の"],
+correct:0
+},
+]
+
+const expressions=[
+
+{
+question:"『sering』の意味は？",
+answers:["頻繁に","めったに〜ない","以前に","現在"],
+correct:0
+},
+{
+question:"『jarang』の意味は？",
+answers:["通常","めったに〜ない","徐々に","最近"],
+correct:1
+},
+{
+question:"『biasanya』の意味は？",
+answers:["通常","特に","完全に","時々"],
+correct:0
+},
+{
+question:"『umumnya』の意味は？",
+answers:["一般的に","最終的に","現在","部分的に"],
+correct:0
+},
+{
+question:"『khususnya』の意味は？",
+answers:["例えば","特に","その後","著しく"],
+correct:1
+},
+{
+question:"『terutama』の意味は？",
+answers:["主に","完全に","一般的に","時々"],
+correct:0
+},
+{
+question:"『sangat』の意味は？",
+answers:["少し","とても","ほとんど","十分に"],
+correct:1
+},
+{
+question:"『cukup』の意味は？",
+answers:["十分に","とても","やや","著しく"],
+correct:0
+},
+{
+question:"『terlalu』の意味は？",
+answers:["ほとんど","〜すぎる","通常","最近"],
+correct:1
+},
+{
+question:"『hampir』の意味は？",
+answers:["ほとんど","完全に","特に","以前に"],
+correct:0
+},
+{
+question:"『benar-benar』の意味は？",
+answers:["本当に","少し","一般的に","主に"],
+correct:0
+},
+{
+question:"『sedikit』の意味は？",
+answers:["十分に","少し","完全に","最近"],
+correct:1
+},
+{
+question:"『agak』の意味は？",
+answers:["やや","ますます","完全に","頻繁に"],
+correct:0
+},
+{
+question:"『semakin』の意味は？",
+answers:["ますます","少し","部分的に","ほとんど"],
+correct:0
+},
+{
+question:"『lebih』の意味は？",
+answers:["最も","より","最近","以前に"],
+correct:1
+},
+{
+question:"『paling』の意味は？",
+answers:["最も","より","その後","通常"],
+correct:0
+},
+{
+question:"『kurang』の意味は？",
+answers:["不足して","十分に","著しく","特に"],
+correct:0
+},
+{
+question:"『sepenuhnya』の意味は？",
+answers:["完全に","部分的に","通常","現在"],
+correct:0
+},
+{
+question:"『sebagian』の意味は？",
+answers:["完全に","部分的に","一般的に","最近"],
+correct:1
+},
+{
+question:"『secara signifikan』の意味は？",
+answers:["著しく","徐々に","時々","主に"],
+correct:0
+},
+{
+question:"『sebelumnya』の意味は？",
+answers:["以前に","その後","現在","最近"],
+correct:0
+},
+{
+question:"『sesudahnya』の意味は？",
+answers:["以前に","その後","主に","完全に"],
+correct:1
+},
+{
+question:"『kemudian』の意味は？",
+answers:["その後","現在","時々","一般的に"],
+correct:0
+},
+{
+question:"『akhirnya』の意味は？",
+answers:["最終的に","以前に","最近","完全に"],
+correct:0
+},
+{
+question:"『sementara itu』の意味は？",
+answers:["その間","したがって","例えば","最近"],
+correct:0
+},
+{
+question:"『saat ini』の意味は？",
+answers:["現在","以前に","徐々に","最終的に"],
+correct:0
+},
+{
+question:"『hingga kini』の意味は？",
+answers:["今まで","その後","部分的に","主に"],
+correct:0
+},
+{
+question:"『baru-baru ini』の意味は？",
+answers:["最近","以前に","完全に","時々"],
+correct:0
+},
+{
+question:"『sejak saat itu』の意味は？",
+answers:["その時以来","その後","一般的に","最終的に"],
+correct:0
+},
+{
+question:"『dalam waktu dekat』の意味は？",
+answers:["近いうちに","長期的に","以前に","著しく"],
+correct:0
+},
+{
+question:"『lambat laun』の意味は？",
+answers:["徐々に","最近","完全に","部分的に"],
+correct:0
+},
+{
+question:"『sewaktu-waktu』の意味は？",
+answers:["いつでも","ほとんど","主に","現在"],
+correct:0
+},
+{
+question:"『sesekali』の意味は？",
+answers:["時々","頻繁に","一般的に","最近"],
+correct:0
+},
+{
+question:"『pada awalnya』の意味は？",
+answers:["当初は","結局","現在","主に"],
+correct:0
+},
+{
+question:"『pada akhirnya』の意味は？",
+answers:["結局","当初は","最近","徐々に"],
+correct:0
+},
+{
+question:"『untuk sementara』の意味は？",
+answers:["当面","完全に","時々","現在"],
+correct:0
+},
+{
+question:"『sepanjang waktu』の意味は？",
+answers:["常に","時々","最近","部分的に"],
+correct:0
+},
+{
+question:"『dalam jangka panjang』の意味は？",
+answers:["長期的に","短期的に","その後","現在"],
+correct:0
+},
+{
+question:"『dalam jangka pendek』の意味は？",
+answers:["長期的に","短期的に","徐々に","一般的に"],
+correct:1
+},
+{
+question:"『dari waktu ke waktu』の意味は？",
+answers:["時々","常に","完全に","主に"],
+correct:0
+},
+
+{
+question:"『selain itu』の意味は？",
+answers:["その上","例えば","したがって","現在"],
+correct:0
+},
+{
+question:"『di samping itu』の意味は？",
+answers:["最近","さらに","以前に","部分的に"],
+correct:1
+},
+{
+question:"『oleh karena itu』の意味は？",
+answers:["例えば","したがって","しかし","主に"],
+correct:1
+},
+{
+question:"『karena itu』の意味は？",
+answers:["そのため","一方で","以前に","最近"],
+correct:0
+},
+{
+question:"『meskipun demikian』の意味は？",
+answers:["例えば","それにもかかわらず","したがって","主に"],
+correct:1
+},
+{
+question:"『namun』の意味は？",
+answers:["しかし","したがって","現在","例えば"],
+correct:0
+},
+{
+question:"『akan tetapi』の意味は？",
+answers:["その上","しかしながら","最近","完全に"],
+correct:1
+},
+{
+question:"『sebaliknya』の意味は？",
+answers:["反対に","したがって","主に","一般的に"],
+correct:0
+},
+{
+question:"『bahkan』の意味は？",
+answers:["〜さえ","その後","現在","通常"],
+correct:0
+},
+{
+question:"『misalnya』の意味は？",
+answers:["例えば","そのため","反対に","最近"],
+correct:0
+},
+{
+question:"『contohnya』の意味は？",
+answers:["例えば","したがって","結局","徐々に"],
+correct:0
+},
+{
+question:"『dengan demikian』の意味は？",
+answers:["このように","その後","最近","部分的に"],
+correct:0
+},
+{
+question:"『akibatnya』の意味は？",
+answers:["その結果","例えば","現在","完全に"],
+correct:0
+},
+{
+question:"『sementara』の意味は？",
+answers:["一方で","したがって","一般的に","主に"],
+correct:0
+},
+{
+question:"『terlebih lagi』の意味は？",
+answers:["さらに","例えば","徐々に","時々"],
+correct:0
+},
+{
+question:"『walaupun begitu』の意味は？",
+answers:["それでも","したがって","最近","以前に"],
+correct:0
+},
+{
+question:"『singkatnya』の意味は？",
+answers:["要するに","例えば","反対に","主に"],
+correct:0
+},
+{
+question:"『pada kenyataannya』の意味は？",
+answers:["実際には","一般的に","完全に","現在"],
+correct:0
+},
+{
+question:"『sebenarnya』の意味は？",
+answers:["実際は","以前に","その後","部分的に"],
+correct:0
+},
+{
+question:"『dengan kata lain』の意味は？",
+answers:["言い換えれば","例えば","したがって","主に"],
+correct:0
+},
+{
+question:"『terhadap』の意味は？",
+answers:["〜に対して","〜から","〜なしで","〜以外"],
+correct:0
+},
+{
+question:"『mengenai』の意味は？",
+answers:["〜について","〜から","〜まで","〜のために"],
+correct:0
+},
+{
+question:"『tentang』の意味は？",
+answers:["〜について","〜によって","〜なしで","〜以外"],
+correct:0
+},
+{
+question:"『berdasarkan』の意味は？",
+answers:["〜に基づいて","〜を通じて","〜から","〜なしで"],
+correct:0
+},
+{
+question:"『menurut』の意味は？",
+answers:["〜によれば","〜に対して","〜のために","〜まで"],
+correct:0
+},
+{
+question:"『melalui』の意味は？",
+answers:["〜を通じて","〜に基づいて","〜以外","〜によれば"],
+correct:0
+},
+{
+question:"『demi』の意味は？",
+answers:["〜のために","〜から","〜について","〜なしで"],
+correct:0
+},
+{
+question:"『tanpa』の意味は？",
+answers:["〜なしで","〜のために","〜について","〜から"],
+correct:0
+},
+{
+question:"『selain』の意味は？",
+answers:["〜以外","〜に対して","〜まで","〜なしで"],
+correct:0
+},
+{
+question:"『dibandingkan dengan』の意味は？",
+answers:["〜と比べて","〜に基づいて","〜について","〜なしで"],
+correct:0
+},
+{
+question:"『berkat』の意味は？",
+answers:["〜のおかげで","〜の結果","〜に対して","〜から"],
+correct:0
+},
+{
+question:"『akibat』の意味は？",
+answers:["〜の結果","〜のおかげで","〜まで","〜について"],
+correct:0
+},
+{
+question:"『sehubungan dengan』の意味は？",
+answers:["〜に関連して","〜を通じて","〜なしで","〜まで"],
+correct:0
+},
+{
+question:"『terkait dengan』の意味は？",
+answers:["〜に関係して","〜から","〜に対して","〜のために"],
+correct:0
+},
+{
+question:"『sesuai dengan』の意味は？",
+answers:["〜に従って","〜のおかげで","〜を通じて","〜以外"],
+correct:0
+},
+{
+question:"『tergantung pada』の意味は？",
+answers:["〜次第で","〜によれば","〜から","〜について"],
+correct:0
+},
+{
+question:"『terdiri dari』の意味は？",
+answers:["〜から成る","〜に対して","〜を通じて","〜のために"],
+correct:0
+},
+{
+question:"『berasal dari』の意味は？",
+answers:["〜に由来する","〜について","〜に基づいて","〜なしで"],
+correct:0
+},
+{
+question:"『berbeda dengan』の意味は？",
+answers:["〜と異なる","〜と似ている","〜のおかげで","〜まで"],
+correct:0
+},
+{
+question:"『mirip dengan』の意味は？",
+answers:["〜と似ている","〜と異なる","〜のために","〜から"],
+correct:0
+},
+{
+question:"『mengambil keputusan』の意味は？",
+answers:["決定する","参加する","研究する","説明する"],
+correct:0
+},
+{
+question:"『menarik perhatian』の意味は？",
+answers:["注目を集める","問題を解決する","健康を保つ","合意する"],
+correct:0
+},
+{
+question:"『mencapai tujuan』の意味は？",
+answers:["目標を達成する","経験を得る","協力する","説明する"],
+correct:0
+},
+{
+question:"『meningkatkan kualitas』の意味は？",
+answers:["品質を向上させる","参加する","研究する","購入する"],
+correct:0
+},
+{
+question:"『mengatasi masalah』の意味は？",
+answers:["問題を解決する","決定する","合意する","説明する"],
+correct:0
+},
+{
+question:"『menjaga kesehatan』の意味は？",
+answers:["健康を維持する","目標を達成する","注目を集める","研究する"],
+correct:0
+},
+{
+question:"『memperoleh pengalaman』の意味は？",
+answers:["経験を得る","能力を伸ばす","参加する","説明する"],
+correct:0
+},
+{
+question:"『memiliki pengaruh』の意味は？",
+answers:["影響を持つ","研究する","健康を維持する","購入する"],
+correct:0
+},
+{
+question:"『memberikan manfaat』の意味は？",
+answers:["利益を与える","問題を解決する","参加する","説明する"],
+correct:0
+},
+{
+question:"『menimbulkan dampak』の意味は？",
+answers:["影響を引き起こす","決定する","研究する","購入する"],
+correct:0
+},
+{
+question:"『melakukan penelitian』の意味は？",
+answers:["研究を行う","合意する","参加する","説明する"],
+correct:0
+},
+{
+question:"『mengembangkan kemampuan』の意味は？",
+answers:["能力を伸ばす","研究する","購入する","決定する"],
+correct:0
+},
+{
+question:"『mengambil bagian』の意味は？",
+answers:["参加する","能力を伸ばす","合意する","研究する"],
+correct:0
+},
+{
+question:"『bekerja sama』の意味は？",
+answers:["協力する","購入する","説明する","研究する"],
+correct:0
+},
+{
+question:"『bertanggung jawab atas』の意味は？",
+answers:["〜に責任がある","〜に由来する","〜について","〜に従う"],
+correct:0
+},
+{
+question:"『berperan penting』の意味は？",
+answers:["重要な役割を果たす","研究を行う","参加する","比較する"],
+correct:0
+},
+{
+question:"『memiliki kesempatan』の意味は？",
+answers:["機会を持つ","経験を得る","説明する","決定する"],
+correct:0
+},
+{
+question:"『mencapai kesepakatan』の意味は？",
+answers:["合意に達する","研究する","能力を伸ばす","購入する"],
+correct:0
+},
+{
+question:"『membuat perbedaan』の意味は？",
+answers:["変化をもたらす","参加する","比較する","研究する"],
+correct:0
+},
+{
+question:"『menjadi semakin penting』の意味は？",
+answers:["ますます重要になる","徐々に減少する","研究を行う","合意する"],
+correct:0
+},
+]
+
+shuffleArray(quizData);
+
+function loadQuestion(){
+
+    const q =
+    quizData[currentQuestion];
+
+    // 問題文
+    document.getElementById(
+        "question"
+    ).textContent =
+    q.question;
+
+    // 音声
+    speakWord(q.question);
+
+    document.getElementById(
+        "questionNumber"
+    ).textContent =
+    `Question ${
+        currentQuestion + 1
+    } / ${quizData.length}`;
+
+    const answersEl =
+    document.getElementById(
+        "answers"
+    );
+
+    answersEl.innerHTML = "";
+
+    document.getElementById(
+        "result"
+    ).textContent = "";
+
+    document.getElementById(
+        "nextBtn"
+    ).style.display = "none";
+
+    // ----------------------
+    // 選択肢シャッフル
+    // ----------------------
+
+    const shuffledAnswers =
+    q.answers.map(
+        (answer,index)=>({
+            text: answer,
+            isCorrect:
+            index === q.correct
+        })
+    );
+
+    shuffleArray(
+        shuffledAnswers
+    );
+
+    shuffledAnswers.forEach(
+        (answerObj)=>{
+
+        const button =
+        document.createElement(
+            "button"
+        );
+
+        button.classList.add(
+            "answer-btn"
+        );
+
+        button.textContent =
+        answerObj.text;
+
+        button.addEventListener(
+            "click",
+            ()=>{
+
+            const buttons =
+            document.querySelectorAll(
+                ".answer-btn"
+            );
+
+            buttons.forEach(
+                btn =>
+                btn.disabled = true
+            );
+
+            if(answerObj.isCorrect){
+
+                button.classList.add(
+                    "correct"
+                );
+
+                document.getElementById(
+                    "result"
+                ).textContent =
+                "⭕ 正解！";
+
+                score++;
+
+                document.getElementById(
+                    "score"
+                ).textContent =
+                score;
+
+            }else{
+
+                button.classList.add(
+                    "wrong"
+                );
+
+                // 正解ボタン表示
+                buttons.forEach(
+                    (btn,index)=>{
+
+                    if(
+                        shuffledAnswers[
+                            index
+                        ].isCorrect
+                    ){
+                        btn.classList.add(
+                            "correct"
+                        );
+                    }
+                });
+
+                document.getElementById(
+                    "result"
+                ).textContent =
+                "❌ 不正解";
+
+                wrongQuestions.push(
+                    q
+                );
+            }
+
+            document.getElementById(
+                "nextBtn"
+            ).style.display =
+            "block";
+        });
+
+        answersEl.appendChild(
+            button
+        );
+    });
+
+    // speakボタン
+    document.getElementById(
+        "speakBtn"
+    ).onclick = ()=>{
+
+        speakWord(
+            q.question
+        );
+    };
+}
+
+
+document.getElementById("nextBtn")
+.addEventListener("click",()=>{
+
+    currentQuestion++;
+
+    if(currentQuestion < quizData.length){
+
+        loadQuestion();
+
+    }else{
+
+        document.querySelector(
+            ".quiz-container"
+        ).innerHTML = ` <h1>🎉 Quiz Finished!</h1>
+
+<p style="text-align:center;
+margin-top:20px;
+font-size:1.3rem;">
+${quizData.length}問中
+<strong>${score}</strong>問正解！
+</p>
+
+<p style="text-align:center;
+margin-top:10px;">
+間違えた問題：${wrongQuestions.length}問
+</p>
+
+${
+wrongQuestions.length > 0
+? `
+<button
+class="next-btn"
+onclick="reviewWrongQuestions()"
+style="display:block;margin-top:15px;">
+❌ 間違えた問題を復習
+</button>
+`
+: ""
+}
+
+<button
+class="next-btn restart-btn"
+onclick="location.reload()"
+style="display:block;margin-top:15px;">
+もう一回挑戦
+</button>
+`;
+    }
+});
+
+function shuffleArray(array){
+    for(let i=array.length-1;i>0;i--){
+        const j =
+        Math.floor(Math.random()*(i+1));
+
+        [array[i],array[j]] =
+        [array[j],array[i]];
+    }
+}
+
+document.getElementById("question")
+.textContent =
+"カテゴリーを選んでください！";
+function reviewWrongQuestions(){
+
+    quizData = [...wrongQuestions];
+
+    shuffleArray(quizData);
+
+    currentQuestion = 0;
+    score = 0;
+    wrongQuestions = [];
+
+    document.querySelector(
+        ".quiz-container"
+    ).innerHTML = `
+    <h1>🌍 Language Quiz</h1>
+
+    <div class="score">
+        Score:
+        <span id="score">0</span>
+    </div>
+
+    <div class="question-number"
+    id="questionNumber"></div>
+
+    <div class="question"
+    id="question"></div>
+
+    <div class="answers"
+    id="answers"></div>
+
+    <div id="result"></div>
+
+    <button
+    class="next-btn"
+    id="nextBtn">
+    次の問題 →
+    </button>
+    `;
+
+    document.getElementById(
+        "nextBtn"
+    ).addEventListener("click",()=>{
+
+        currentQuestion++;
+
+        if(currentQuestion < quizData.length){
+
+            loadQuestion();
+
+        }else{
+
+            alert("復習終了！");
+            location.reload();
+        }
+    });
+
+    loadQuestion();
+}
+/* --------------------
+   音声読み上げ
+-------------------- */
+
+function speakWord(word){
+
+    const utterance =
+    new SpeechSynthesisUtterance(
+        word
+    );
+
+    // 言語設定
+    utterance.lang = "id-ID";
+    // 英語なら "en-US"
+    // フランス語なら "fr-FR"
+
+    utterance.rate = 0.9;
+    utterance.pitch = 1;
+
+    speechSynthesis.cancel();
+    speechSynthesis.speak(
+        utterance
+    );
+}
+</script>
+
+</body>
+</html>

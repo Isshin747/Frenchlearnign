@@ -3831,18 +3831,101 @@ correct:0},
    音声読み上げ
 -------------------- */
 
+function selectCategory(category){
+
+    if(category === "noun"){
+        quizData = [...nouns];
+    }
+
+    else if(category === "verb"){
+        quizData = [...verbs];
+    }
+
+    else if(category === "adjective"){
+        quizData = [...adjective];
+    }
+
+    else if(category === "expression"){
+        quizData = [...expressions];
+    }
+
+    else{
+        quizData = [
+            ...nouns,
+            ...verbs,
+            ...adjective,
+            ...expressions
+        ];
+    }
+
+    if(quizData.length === 0){
+        document.getElementById(
+            "question"
+        ).textContent =
+        "問題がまだありません";
+        return;
+    }
+
+    quizData = quizData.map(
+        shuffleQuestion
+    );
+
+    shuffleArray(quizData);
+
+    currentQuestion = 0;
+    score = 0;
+    wrongQuestions = [];
+
+    document.getElementById(
+        "score"
+    ).textContent = score;
+
+    loadQuestion();
+}
+
+/* --------------------
+   問題シャッフル
+-------------------- */
+
+function shuffleQuestion(q){
+
+    const correctAnswer =
+    q.answers[q.correct];
+
+    const shuffled =
+    [...q.answers]
+    .sort(() => Math.random() - 0.5);
+
+    return {
+        question: q.question,
+        answers: shuffled,
+        correct:
+        shuffled.indexOf(correctAnswer)
+    };
+}
+
+/* --------------------
+   問題表示
+-------------------- */
+
 function loadQuestion(){
+
+    document.getElementById(
+    "speakBtn"
+).onclick = () => {
+    speakWord(
+        q.question
+    );
+};
 
     const q =
     quizData[currentQuestion];
 
-    // 問題文
     document.getElementById(
         "question"
     ).textContent =
     q.question;
 
-    // 音声
     speakWord(q.question);
 
     document.getElementById(
@@ -3867,25 +3950,8 @@ function loadQuestion(){
         "nextBtn"
     ).style.display = "none";
 
-    // ----------------------
-    // 選択肢シャッフル
-    // ----------------------
-
-    const shuffledAnswers =
-    q.answers.map(
-        (answer,index)=>({
-            text: answer,
-            isCorrect:
-            index === q.correct
-        })
-    );
-
-    shuffleArray(
-        shuffledAnswers
-    );
-
-    shuffledAnswers.forEach(
-        (answerObj)=>{
+    q.answers.forEach(
+        (answer, index)=>{
 
         const button =
         document.createElement(
@@ -3897,7 +3963,7 @@ function loadQuestion(){
         );
 
         button.textContent =
-        answerObj.text;
+        answer;
 
         button.addEventListener(
             "click",
@@ -3913,7 +3979,7 @@ function loadQuestion(){
                 btn.disabled = true
             );
 
-            if(answerObj.isCorrect){
+            if(index === q.correct){
 
                 button.classList.add(
                     "correct"
@@ -3937,29 +4003,17 @@ function loadQuestion(){
                     "wrong"
                 );
 
-                // 正解ボタン表示
-                buttons.forEach(
-                    (btn,index)=>{
-
-                    if(
-                        shuffledAnswers[
-                            index
-                        ].isCorrect
-                    ){
-                        btn.classList.add(
-                            "correct"
-                        );
-                    }
-                });
+                buttons[q.correct]
+                .classList.add(
+                    "correct"
+                );
 
                 document.getElementById(
                     "result"
                 ).textContent =
                 "❌ 不正解";
 
-                wrongQuestions.push(
-                    q
-                );
+                wrongQuestions.push(q);
             }
 
             document.getElementById(
@@ -3972,24 +4026,24 @@ function loadQuestion(){
             button
         );
     });
-
-    // speakボタン
-    document.getElementById(
-        "speakBtn"
-    ).onclick = ()=>{
-
-        speakWord(
-            q.question
-        );
-    };
 }
-document.getElementById("nextBtn")
-.addEventListener("click",()=>{
+
+/* --------------------
+   次の問題
+-------------------- */
+
+document.getElementById(
+    "nextBtn"
+).addEventListener(
+    "click",
+    ()=>{
 
     currentQuestion++;
 
-    if(currentQuestion < quizData.length){
-
+    if(
+        currentQuestion <
+        quizData.length
+    ){
         loadQuestion();
 
     }else{
@@ -3997,117 +4051,72 @@ document.getElementById("nextBtn")
         document.querySelector(
             ".quiz-container"
         ).innerHTML = `
-        <h1>🎉 Quiz Finished!</h1>
+        <h1>
+        🎉 Quiz Finished!
+        </h1>
 
-<p style="text-align:center;
-margin-top:20px;
-font-size:1.3rem;">
-${quizData.length}問中
-<strong>${score}</strong>問正解！
-</p>
+        <p style="
+        text-align:center;
+        margin-top:20px;
+        font-size:1.3rem;">
 
-<p style="text-align:center;
-margin-top:10px;">
-間違えた問題：${wrongQuestions.length}問
-</p>
+        ${quizData.length}問中
+        <strong>${score}</strong>
+        問正解！
 
-${
-wrongQuestions.length > 0
-? `
-<button
-class="next-btn"
-onclick="reviewWrongQuestions()"
-style="display:block;margin-top:15px;">
-❌ 間違えた問題を復習
-</button>
-`
-: ""
-}
+        </p>
 
-<button
-class="next-btn restart-btn"
-onclick="location.reload()"
-style="display:block;margin-top:15px;">
-もう一回挑戦
-</button>
-`;
+        <p style="
+        text-align:center;
+        margin-top:10px;">
+
+        間違えた問題：
+        ${wrongQuestions.length}問
+
+        </p>
+
+        <button
+        class="next-btn restart-btn"
+        onclick="location.reload()"
+        style="display:block;
+        margin-top:15px;">
+
+        もう一回挑戦
+
+        </button>
+        `;
     }
 });
 
-function shuffleArray(array){
-    for(let i=array.length-1;i>0;i--){
-        const j =
-        Math.floor(Math.random()*(i+1));
+/* --------------------
+   配列シャッフル
+-------------------- */
 
-        [array[i],array[j]] =
-        [array[j],array[i]];
+function shuffleArray(array){
+
+    for(
+        let i =
+        array.length - 1;
+        i > 0;
+        i--
+    ){
+
+        const j =
+        Math.floor(
+            Math.random()
+            * (i + 1)
+        );
+
+        [
+            array[i],
+            array[j]
+        ] =
+        [
+            array[j],
+            array[i]
+        ];
     }
 }
-
-document.getElementById("question")
-.textContent =
-"カテゴリーを選んでください！";
-function reviewWrongQuestions(){
-
-    quizData = [...wrongQuestions];
-
-    shuffleArray(quizData);
-
-    currentQuestion = 0;
-    score = 0;
-    wrongQuestions = [];
-
-    document.querySelector(
-        ".quiz-container"
-    ).innerHTML = `
-    <h1>🌍 Language Quiz</h1>
-
-    <div class="score">
-        Score:
-        <span id="score">0</span>
-    </div>
-
-    <div class="question-number"
-    id="questionNumber"></div>
-
-    <div class="question"
-    id="question"></div>
-
-    <div class="answers"
-    id="answers"></div>
-
-    <div id="result"></div>
-
-    <button
-    class="next-btn"
-    id="nextBtn">
-    次の問題 →
-    </button>
-    `;
-
-    document.getElementById(
-        "nextBtn"
-    ).addEventListener("click",()=>{
-
-        currentQuestion++;
-
-        if(currentQuestion < quizData.length){
-
-            loadQuestion();
-
-        }else{
-
-            alert("復習終了！");
-            location.reload();
-        }
-    });
-
-    loadQuestion();
-}
-
-/* --------------------
-   音声読み上げ
--------------------- */
 
 function speakWord(word){
 
@@ -4129,6 +4138,7 @@ function speakWord(word){
         utterance
     );
 }
+
 
 </script>
 

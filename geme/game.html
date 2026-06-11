@@ -2717,7 +2717,9 @@ function loadQuestion(){
     q.question;
 
     // 音声
-    speakWord(q.question);
+    speakWord(
+    getFrenchWord(q.question)
+);
 
     document.getElementById(
         "questionNumber"
@@ -2853,8 +2855,8 @@ function loadQuestion(){
     ).onclick = ()=>{
 
         speakWord(
-            q.question
-        );
+    getFrenchWord(q.question)
+);
     };
 }
 
@@ -3005,6 +3007,16 @@ function speakWord(word){
     speechSynthesis.speak(
         utterance
     );
+}
+
+function getFrenchWord(question){
+
+    const match =
+    question.match(/『(.+?)』/);
+
+    return match
+        ? match[1]
+        : question;
 }
 </script>
 
