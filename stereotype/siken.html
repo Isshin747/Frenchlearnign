@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ビルマ語音声テスト</title>
+<style>
+body{
+    font-family:sans-serif;
+    text-align:center;
+    padding:40px;
+}
+button{
+    font-size:20px;
+    padding:12px 24px;
+    cursor:pointer;
+}
+#voices{
+    margin-top:20px;
+    text-align:left;
+    max-width:700px;
+    margin-left:auto;
+    margin-right:auto;
+}
+</style>
+</head>
+<body>
+
+<h1>ビルマ語音声テスト</h1>
+
+<p>
+မင်္ဂလာပါ။ ကျွန်ုပ်သည် မြန်မာဘာသာစကားကို ပြောနေပါသည်။
+</p>
+
+<button onclick="speakMyanmar()">
+音声再生
+</button>
+
+<div id="voices"></div>
+
+<script>
+
+function speakMyanmar(){
+
+    const text =
+    "မင်္ဂလာပါ။ ကျွန်ုပ်သည် မြန်မာဘာသာစကားကို ပြောနေပါသည်။";
+
+    const utter =
+    new SpeechSynthesisUtterance(text);
+
+    utter.lang = "my-MM";
+
+    const voices =
+    speechSynthesis.getVoices();
+
+    const myanmarVoice =
+    voices.find(v =>
+        v.lang.toLowerCase().includes("my")
+    );
+
+    if(myanmarVoice){
+        utter.voice = myanmarVoice;
+        console.log(
+            "使用音声:",
+            myanmarVoice.name,
+            myanmarVoice.lang
+        );
+    }
+
+    speechSynthesis.speak(utter);
+}
+
+function showVoices(){
+
+    const voices =
+    speechSynthesis.getVoices();
+
+    document.getElementById("voices").innerHTML =
+        "<h3>利用可能な音声</h3>" +
+        voices.map(v =>
+            `${v.name} (${v.lang})`
+        ).join("<br>");
+}
+
+speechSynthesis.onvoiceschanged =
+showVoices;
+
+showVoices();
+
+</script>
+
+</body>
+</html>
