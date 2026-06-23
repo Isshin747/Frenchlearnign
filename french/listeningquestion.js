@@ -2992,44 +2992,63 @@ const questions=[
     }
   ]
 },
+
 {
   lang: "fr-FR",
   level: "B2",
 
-  question: "La fatigue numérique",
+  question: "L'influence des réseaux sociaux sur la société moderne",
 
-  audio: `Claire avait tendance à passer plusieurs heures par jour sur les réseaux sociaux. Au début, cela lui semblait simplement amusant, mais elle a progressivement remarqué qu’elle avait du mal à se concentrer sur ses études. De plus, elle comparait souvent sa vie à celle des autres, ce qui la rendait parfois frustrée. Après avoir lu un article sur les effets des écrans, elle a décidé de mettre en place quelques règles : ne plus utiliser son téléphone pendant les repas et limiter son temps en ligne le soir. Bien que ce changement ait été difficile au début, Claire s’est rapidement sentie plus calme et plus productive.`,
+  audio: `Les réseaux sociaux ont profondément transformé la manière dont les individus communiquent et s'informent. Aujourd'hui, il est possible de partager des opinions, des photos ou des vidéos avec des milliers de personnes en quelques secondes. Cette évolution a permis à de nombreuses voix de se faire entendre, notamment lors de mouvements sociaux ou de débats publics. Cependant, cette liberté d'expression s'accompagne également de certains risques. La diffusion rapide de fausses informations peut influencer l'opinion publique et créer des tensions au sein de la société. De plus, plusieurs études montrent que l'utilisation excessive des réseaux sociaux peut avoir un impact négatif sur la santé mentale, en particulier chez les adolescents qui ont tendance à comparer leur vie à celle des autres. Malgré ces inconvénients, les réseaux sociaux restent des outils précieux lorsqu'ils sont utilisés de manière responsable. Ils permettent de développer des réseaux professionnels, de découvrir de nouvelles cultures et d'accéder à une grande quantité d'informations. La question n'est donc pas de savoir s'il faut les supprimer, mais plutôt comment apprendre à les utiliser de façon critique et équilibrée.`,
 
-  script: `Claire avait tendance à passer plusieurs heures par jour sur les réseaux sociaux. Au début, cela lui semblait simplement amusant, mais elle a progressivement remarqué qu’elle avait du mal à se concentrer sur ses études. De plus, elle comparait souvent sa vie à celle des autres, ce qui la rendait parfois frustrée. Après avoir lu un article sur les effets des écrans, elle a décidé de mettre en place quelques règles : ne plus utiliser son téléphone pendant les repas et limiter son temps en ligne le soir. Bien que ce changement ait été difficile au début, Claire s’est rapidement sentie plus calme et plus productive.`,
+  script: `Les réseaux sociaux ont profondément transformé la manière dont les individus communiquent et s'informent. Aujourd'hui, il est possible de partager des opinions, des photos ou des vidéos avec des milliers de personnes en quelques secondes. Cette évolution a permis à de nombreuses voix de se faire entendre, notamment lors de mouvements sociaux ou de débats publics. Cependant, cette liberté d'expression s'accompagne également de certains risques. La diffusion rapide de fausses informations peut influencer l'opinion publique et créer des tensions au sein de la société. De plus, plusieurs études montrent que l'utilisation excessive des réseaux sociaux peut avoir un impact négatif sur la santé mentale, en particulier chez les adolescents qui ont tendance à comparer leur vie à celle des autres. Malgré ces inconvénients, les réseaux sociaux restent des outils précieux lorsqu'ils sont utilisés de manière responsable. Ils permettent de développer des réseaux professionnels, de découvrir de nouvelles cultures et d'accéder à une grande quantité d'informations. La question n'est donc pas de savoir s'il faut les supprimer, mais plutôt comment apprendre à les utiliser de façon critique et équilibrée.`,
 
-  translation: `クレールは毎日何時間もSNSを使う傾向がありました。最初はただ楽しいだけだと思っていましたが、次第に勉強に集中しにくくなっていることに気づきました。また、他人の生活と自分を比べてしまい、時々不満を感じていました。画面の影響についての記事を読んだ後、彼女はルールを作ることにしました。食事中はスマホを使わないこと、夜の利用時間を減らすことです。最初は難しかったですが、すぐにより落ち着き、生産的になったと感じました。`,
+  translation: `SNSは、人々のコミュニケーションや情報収集の方法を大きく変化させました。現在では、意見や写真、動画を数秒で何千人もの人々と共有することができます。この変化によって、社会運動や公共の議論において、多くの人々が自分の声を発信できるようになりました。しかし、この表現の自由にはリスクも伴います。誤情報が急速に拡散されることで世論に影響を与えたり、社会的な対立を生んだりする可能性があります。また、多くの研究では、SNSの過度な利用が特に若者の精神的健康に悪影響を及ぼすことが示されています。それでも、責任を持って利用する限り、SNSは非常に有益なツールです。仕事上の人脈を広げたり、新しい文化を知ったり、多くの情報にアクセスしたりすることができます。重要なのはSNSを排除することではなく、批判的かつバランスよく利用する方法を学ぶことです。`,
 
   quiz: [
     {
-      q: "Quel problème Claire avait-elle ?",
+      q: "Quelle transformation les réseaux sociaux ont-ils apportée ?",
       options: [
-        { text: "Elle passait trop de temps sur les réseaux sociaux", correct: true },
-        { text: "Elle dormait trop", correct: false },
-        { text: "Elle ne mangeait pas assez", correct: false },
-        { text: "Elle n’aimait plus ses amis", correct: false }
+        { text: "Ils ont changé la manière de communiquer et de s'informer", correct: true },
+        { text: "Ils ont remplacé les écoles", correct: false },
+        { text: "Ils ont supprimé Internet", correct: false },
+        { text: "Ils ont réduit les échanges internationaux", correct: false }
       ]
     },
     {
-      q: "Pourquoi Claire se sentait-elle parfois frustrée ?",
+      q: "Quel risque est mentionné dans le texte ?",
       options: [
-        { text: "Elle comparait sa vie à celle des autres", correct: true },
-        { text: "Elle travaillait trop", correct: false },
-        { text: "Elle avait peu d’amis", correct: false },
-        { text: "Elle voyageait rarement", correct: false }
+        { text: "La diffusion de fausses informations", correct: true },
+        { text: "Le manque d'électricité", correct: false },
+        { text: "La disparition des téléphones", correct: false },
+        { text: "L'augmentation des impôts", correct: false }
       ]
     },
     {
-      q: "Quel résultat a eu son changement d’habitudes ?",
+      q: "Quel groupe est particulièrement concerné par les effets négatifs ?",
       options: [
-        { text: "Elle s’est sentie plus calme et productive", correct: true },
-        { text: "Elle a arrêté ses études", correct: false },
-        { text: "Elle s’est sentie plus stressée", correct: false },
-        { text: "Elle a supprimé tous ses comptes", correct: false }
+        { text: "Les adolescents", correct: true },
+        { text: "Les retraités uniquement", correct: false },
+        { text: "Les touristes", correct: false },
+        { text: "Les sportifs professionnels", correct: false }
+      ]
+    },
+    {
+      q: "Quel avantage professionnel est cité ?",
+      options: [
+        { text: "Développer son réseau professionnel", correct: true },
+        { text: "Obtenir automatiquement un emploi", correct: false },
+        { text: "Remplacer les études", correct: false },
+        { text: "Créer une entreprise sans effort", correct: false }
+      ]
+    },
+    {
+      q: "Quelle conclusion est présentée dans le texte ?",
+      options: [
+        { text: "Il faut apprendre à utiliser les réseaux sociaux de façon critique", correct: true },
+        { text: "Il faut interdire les réseaux sociaux", correct: false },
+        { text: "Ils sont totalement inutiles", correct: false },
+        { text: "Ils doivent être réservés aux adultes", correct: false }
       ]
     }
   ]
@@ -3038,44 +3057,65 @@ const questions=[
   lang: "fr-FR",
   level: "B2",
 
-  question: "Une expérience à l’étranger",
+  question: "La coopération dans un projet universitaire international",
 
-  audio: `Quand Sarah est partie étudier au Canada, elle pensait qu’il serait facile de s’adapter à une nouvelle culture. Cependant, pendant les premières semaines, elle s’est souvent sentie seule et avait du mal à comprendre certaines expressions locales. Malgré ces difficultés, elle a continué à participer à des activités organisées par son université. Au fur et à mesure, elle s’est habituée à son nouvel environnement et a même commencé à apprécier certaines différences culturelles. À la fin de son séjour, elle avait gagné beaucoup plus de confiance en elle et estimait que cette expérience l’avait aidée à grandir.`,
+  audio: `Dans le cadre d'un programme d'échange universitaire, un groupe d'étudiants provenant de différents pays a été chargé de réaliser un projet sur le développement durable. Au début, les membres de l'équipe ont rencontré plusieurs difficultés. Les différences culturelles, les méthodes de travail variées ainsi que les problèmes de communication rendaient la collaboration compliquée. Certains étudiants préféraient planifier chaque étape en détail, tandis que d'autres privilégiaient une approche plus flexible. Afin d'améliorer leur efficacité, ils ont décidé d'organiser des réunions hebdomadaires et d'utiliser des outils numériques pour partager leurs documents. Progressivement, ils ont appris à mieux comprendre les points de vue de chacun et à tirer parti de leurs compétences complémentaires. Cette expérience leur a permis non seulement d'acquérir des connaissances académiques, mais aussi de développer des qualités essentielles telles que l'adaptation, la coopération et la résolution de problèmes. À la fin du semestre, leur projet a été sélectionné parmi les meilleurs de l'université et présenté lors d'une conférence destinée aux étudiants et aux chercheurs. Plusieurs membres du jury ont souligné la qualité de leur analyse ainsi que leur capacité à travailler efficacement dans un contexte multiculturel.`,
 
-  script: `Quand Sarah est partie étudier au Canada, elle pensait qu’il serait facile de s’adapter à une nouvelle culture. Cependant, pendant les premières semaines, elle s’est souvent sentie seule et avait du mal à comprendre certaines expressions locales. Malgré ces difficultés, elle a continué à participer à des activités organisées par son université. Au fur et à mesure, elle s’est habituée à son nouvel environnement et a même commencé à apprécier certaines différences culturelles. À la fin de son séjour, elle avait gagné beaucoup plus de confiance en elle et estimait que cette expérience l’avait aidée à grandir.`,
+  script: `Dans le cadre d'un programme d'échange universitaire, un groupe d'étudiants provenant de différents pays a été chargé de réaliser un projet sur le développement durable. Au début, les membres de l'équipe ont rencontré plusieurs difficultés. Les différences culturelles, les méthodes de travail variées ainsi que les problèmes de communication rendaient la collaboration compliquée. Certains étudiants préféraient planifier chaque étape en détail, tandis que d'autres privilégiaient une approche plus flexible. Afin d'améliorer leur efficacité, ils ont décidé d'organiser des réunions hebdomadaires et d'utiliser des outils numériques pour partager leurs documents. Progressivement, ils ont appris à mieux comprendre les points de vue de chacun et à tirer parti de leurs compétences complémentaires. Cette expérience leur a permis non seulement d'acquérir des connaissances académiques, mais aussi de développer des qualités essentielles telles que l'adaptation, la coopération et la résolution de problèmes. À la fin du semestre, leur projet a été sélectionné parmi les meilleurs de l'université et présenté lors d'une conférence destinée aux étudiants et aux chercheurs. Plusieurs membres du jury ont souligné la qualité de leur analyse ainsi que leur capacité à travailler efficacement dans un contexte multiculturel.`,
 
-  translation: `サラはカナダへ留学した時、新しい文化に適応するのは簡単だと思っていました。しかし最初の数週間は孤独を感じ、現地の表現を理解するのに苦労しました。それでも大学の活動に参加し続けました。次第に新しい環境に慣れ、文化の違いも楽しめるようになりました。滞在の終わりには自信がつき、この経験が自分を成長させたと感じました。`,
+  translation: `大学の交換留学プログラムの一環として、さまざまな国から集まった学生たちが持続可能な開発に関するプロジェクトを担当しました。最初は文化の違いや異なる仕事の進め方、コミュニケーションの問題によって協力が難しい状況でした。ある学生は細かい計画を好み、別の学生は柔軟な方法を好んでいました。そこで、毎週会議を開き、デジタルツールを活用して資料を共有することにしました。次第にお互いの考え方を理解し、それぞれの強みを活かせるようになりました。この経験を通じて、学術的な知識だけでなく、適応力や協調性、問題解決能力も身につけました。学期末には、彼らのプロジェクトは大学内で最も優れたものの一つとして選ばれ、学生や研究者向けの会議で発表されました。審査員たちは分析の質と多文化環境での協働能力を高く評価しました。`,
 
   quiz: [
     {
-      q: "Quelle difficulté Sarah a-t-elle rencontrée au début ?",
+      q: "Quel était le thème du projet ?",
       options: [
-        { text: "Elle avait du mal à comprendre certaines expressions", correct: true },
-        { text: "Elle n’aimait pas le Canada", correct: false },
-        { text: "Elle ne trouvait pas d’université", correct: false },
-        { text: "Elle voulait rentrer immédiatement", correct: false }
+        { text: "Le développement durable", correct: true },
+        { text: "L'histoire médiévale", correct: false },
+        { text: "La médecine", correct: false },
+        { text: "Le sport", correct: false }
       ]
     },
     {
-      q: "Comment Sarah a-t-elle géré la situation ?",
+      q: "Pourquoi la collaboration était-elle difficile au début ?",
       options: [
-        { text: "Elle a continué à participer aux activités", correct: true },
-        { text: "Elle est rentrée chez elle", correct: false },
-        { text: "Elle a arrêté de parler aux autres", correct: false },
-        { text: "Elle a changé de pays", correct: false }
+        { text: "À cause des différences culturelles et des méthodes de travail", correct: true },
+        { text: "Parce qu'il n'y avait pas de professeur", correct: false },
+        { text: "Parce que le projet était trop court", correct: false },
+        { text: "Parce que les étudiants étaient absents", correct: false }
       ]
     },
     {
-      q: "Que pense Sarah de cette expérience à la fin ?",
+      q: "Quelle solution a été mise en place ?",
       options: [
-        { text: "Elle l’a aidée à grandir", correct: true },
-        { text: "C’était une erreur", correct: false },
-        { text: "Elle était inutile", correct: false },
-        { text: "Elle était trop facile", correct: false }
+        { text: "Des réunions hebdomadaires et des outils numériques", correct: true },
+        { text: "L'abandon du projet", correct: false },
+        { text: "Le changement de sujet", correct: false },
+        { text: "Des examens supplémentaires", correct: false }
+      ]
+    },
+    {
+      q: "Quelles compétences ont-ils développées ?",
+      options: [
+        { text: "L'adaptation, la coopération et la résolution de problèmes", correct: true },
+        { text: "La cuisine et le dessin", correct: false },
+        { text: "La conduite automobile", correct: false },
+        { text: "Le commerce international uniquement", correct: false }
+      ]
+    },
+    {
+      q: "Comment le projet a-t-il été reconnu ?",
+      options: [
+        { text: "Il a été sélectionné parmi les meilleurs de l'université", correct: true },
+        { text: "Il a été annulé", correct: false },
+        { text: "Il a reçu une mauvaise note", correct: false },
+        { text: "Il n'a jamais été présenté", correct: false }
       ]
     }
   ]
 },
+
+
+
 
 {
   lang: "fr-FR",
@@ -3371,4 +3411,619 @@ const questions=[
       ]
     }
   ]
-},]
+},
+
+{
+  lang: "fr-FR",
+  level: "B2",
+
+  question: "Le télétravail",
+
+  audio: `Depuis quelques années, le télétravail connaît un développement important dans de nombreux pays. Grâce aux progrès des technologies numériques, de nombreux employés peuvent désormais effectuer leurs tâches depuis leur domicile ou depuis d'autres lieux en dehors du bureau traditionnel. Cette évolution présente plusieurs avantages. Tout d'abord, elle permet de réduire le temps passé dans les transports, ce qui contribue à diminuer le stress quotidien et à améliorer la qualité de vie. De plus, les travailleurs bénéficient souvent d'une plus grande flexibilité dans l'organisation de leur emploi du temps. Cependant, le télétravail comporte également certaines limites. Certaines personnes éprouvent un sentiment d'isolement lorsqu'elles travaillent seules pendant de longues périodes. D'autres rencontrent des difficultés à séparer leur vie professionnelle de leur vie privée. Afin de maintenir une bonne communication entre les membres d'une équipe, de nombreuses entreprises organisent régulièrement des réunions virtuelles et encouragent les échanges en ligne. Même si le télétravail ne convient pas à toutes les professions, il est devenu une solution durable qui transforme progressivement les habitudes de travail dans le monde entier.`,
+
+  script: `Depuis quelques années, le télétravail connaît un développement important dans de nombreux pays. Grâce aux progrès des technologies numériques, de nombreux employés peuvent désormais effectuer leurs tâches depuis leur domicile ou depuis d'autres lieux en dehors du bureau traditionnel. Cette évolution présente plusieurs avantages. Tout d'abord, elle permet de réduire le temps passé dans les transports, ce qui contribue à diminuer le stress quotidien et à améliorer la qualité de vie. De plus, les travailleurs bénéficient souvent d'une plus grande flexibilité dans l'organisation de leur emploi du temps. Cependant, le télétravail comporte également certaines limites. Certaines personnes éprouvent un sentiment d'isolement lorsqu'elles travaillent seules pendant de longues périodes. D'autres rencontrent des difficultés à séparer leur vie professionnelle de leur vie privée. Afin de maintenir une bonne communication entre les membres d'une équipe, de nombreuses entreprises organisent régulièrement des réunions virtuelles et encouragent les échanges en ligne. Même si le télétravail ne convient pas à toutes les professions, il est devenu une solution durable qui transforme progressivement les habitudes de travail dans le monde entier.`,
+
+  translation: `ここ数年で、テレワークは多くの国で大きく発展してきました。デジタル技術の進歩により、多くの従業員が自宅や従来のオフィス以外の場所から仕事を行えるようになっています。この変化にはいくつかの利点があります。まず、通勤に費やす時間を減らすことができるため、日常のストレスを軽減し、生活の質を向上させることができます。また、労働者はスケジュールをより柔軟に管理できるようになります。しかし、テレワークにはいくつかの欠点もあります。長期間一人で働くことで孤独感を覚える人もいますし、仕事と私生活を分けることが難しいと感じる人もいます。チーム内の良好なコミュニケーションを維持するために、多くの企業は定期的にオンライン会議を開催し、オンラインでの交流を促進しています。すべての職業に適しているわけではありませんが、テレワークは世界中の働き方を徐々に変えている持続可能な解決策となっています。`,
+
+  quiz: [
+    {
+      q: "Pourquoi le télétravail s'est-il développé ?",
+      options: [
+        { text: "Grâce aux technologies numériques", correct: true },
+        { text: "À cause de la disparition des bureaux", correct: false },
+        { text: "Grâce aux transports publics", correct: false },
+        { text: "À cause du tourisme", correct: false }
+      ]
+    },
+    {
+      q: "Quel avantage est mentionné ?",
+      options: [
+        { text: "La réduction du temps de transport", correct: true },
+        { text: "Une augmentation automatique du salaire", correct: false },
+        { text: "Des vacances plus longues", correct: false },
+        { text: "Moins de travail", correct: false }
+      ]
+    },
+    {
+      q: "Quel problème certaines personnes rencontrent-elles ?",
+      options: [
+        { text: "Le sentiment d'isolement", correct: true },
+        { text: "Le manque d'électricité", correct: false },
+        { text: "La pollution de l'air", correct: false },
+        { text: "Les embouteillages", correct: false }
+      ]
+    },
+    {
+      q: "Que font les entreprises pour améliorer la communication ?",
+      options: [
+        { text: "Elles organisent des réunions virtuelles", correct: true },
+        { text: "Elles ferment les bureaux", correct: false },
+        { text: "Elles réduisent les salaires", correct: false },
+        { text: "Elles changent les employés", correct: false }
+      ]
+    },
+    {
+      q: "Quelle conclusion est présentée ?",
+      options: [
+        { text: "Le télétravail transforme les habitudes de travail", correct: true },
+        { text: "Le télétravail va disparaître", correct: false },
+        { text: "Le télétravail est interdit", correct: false },
+        { text: "Le télétravail est réservé aux étudiants", correct: false }
+      ]
+    }
+  ]
+},
+
+{
+  lang: "fr-FR",
+  level: "B2",
+
+  question: "Le tourisme durable",
+
+  audio: `Le tourisme représente aujourd'hui une activité économique essentielle pour de nombreux pays. Chaque année, des millions de voyageurs visitent différentes régions du monde afin de découvrir de nouvelles cultures, des paysages remarquables et des traditions locales. Cependant, cette augmentation du nombre de touristes peut également avoir des conséquences négatives sur l'environnement. Dans certaines destinations, la pollution, la production excessive de déchets et la surfréquentation menacent les ressources naturelles et la qualité de vie des habitants. C'est pourquoi le concept de tourisme durable s'est développé au cours des dernières années. Il encourage les voyageurs à adopter des comportements responsables, par exemple en utilisant les transports publics, en respectant les coutumes locales et en limitant leur consommation de ressources. Les entreprises du secteur touristique sont également invitées à mettre en place des pratiques plus respectueuses de l'environnement. Le principal objectif du tourisme durable est de trouver un équilibre entre le développement économique, la protection de la nature et le bien-être des populations locales.`,
+
+  script: `Le tourisme représente aujourd'hui une activité économique essentielle pour de nombreux pays. Chaque année, des millions de voyageurs visitent différentes régions du monde afin de découvrir de nouvelles cultures, des paysages remarquables et des traditions locales. Cependant, cette augmentation du nombre de touristes peut également avoir des conséquences négatives sur l'environnement. Dans certaines destinations, la pollution, la production excessive de déchets et la surfréquentation menacent les ressources naturelles et la qualité de vie des habitants. C'est pourquoi le concept de tourisme durable s'est développé au cours des dernières années. Il encourage les voyageurs à adopter des comportements responsables, par exemple en utilisant les transports publics, en respectant les coutumes locales et en limitant leur consommation de ressources. Les entreprises du secteur touristique sont également invitées à mettre en place des pratiques plus respectueuses de l'environnement. Le principal objectif du tourisme durable est de trouver un équilibre entre le développement économique, la protection de la nature et le bien-être des populations locales.`,
+
+  translation: `観光は現在、多くの国にとって重要な経済活動となっています。毎年、何百万人もの旅行者が新しい文化や美しい景色、地域の伝統を発見するために世界各地を訪れています。しかし、観光客の増加は環境に悪影響を与えることもあります。ある地域では、汚染やごみの増加、観光客の集中によって自然資源や住民の生活の質が脅かされています。そのため、近年「持続可能な観光」という考え方が発展してきました。これは、公共交通機関の利用や地域文化の尊重、資源消費の削減など、旅行者に責任ある行動を促すものです。また、観光業界の企業も環境に配慮した取り組みを行うことが求められています。持続可能な観光の主な目的は、経済発展、自然保護、そして地域住民の幸福の間でバランスを取ることです。`,
+
+  quiz: [
+    {
+      q: "Pourquoi les gens voyagent-ils ?",
+      options: [
+        { text: "Pour découvrir de nouvelles cultures", correct: true },
+        { text: "Pour éviter de travailler", correct: false },
+        { text: "Pour acheter des voitures", correct: false },
+        { text: "Pour apprendre à conduire", correct: false }
+      ]
+    },
+    {
+      q: "Quel problème est mentionné ?",
+      options: [
+        { text: "La pollution", correct: true },
+        { text: "Le manque d'écoles", correct: false },
+        { text: "Les examens", correct: false },
+        { text: "La neige", correct: false }
+      ]
+    },
+    {
+      q: "Que doivent faire les voyageurs ?",
+      options: [
+        { text: "Adopter des comportements responsables", correct: true },
+        { text: "Dépenser plus d'argent", correct: false },
+        { text: "Voyager plus souvent", correct: false },
+        { text: "Éviter les habitants", correct: false }
+      ]
+    },
+    {
+      q: "Quel moyen de transport est cité ?",
+      options: [
+        { text: "Les transports publics", correct: true },
+        { text: "Les avions privés", correct: false },
+        { text: "Les hélicoptères", correct: false },
+        { text: "Les bateaux de luxe", correct: false }
+      ]
+    },
+    {
+      q: "Quel est l'objectif du tourisme durable ?",
+      options: [
+        { text: "Trouver un équilibre entre économie, nature et population", correct: true },
+        { text: "Supprimer le tourisme", correct: false },
+        { text: "Augmenter les prix", correct: false },
+        { text: "Construire davantage d'hôtels", correct: false }
+      ]
+    }
+  ]
+},
+
+{
+  lang: "fr-FR",
+  level: "B2",
+
+  question: "L'intelligence artificielle",
+
+  audio: `L'intelligence artificielle occupe aujourd'hui une place de plus en plus importante dans notre société. Cette technologie est utilisée dans de nombreux domaines, notamment la médecine, l'éducation, les transports et les services en ligne. Grâce à sa capacité à analyser rapidement d'importantes quantités de données, elle permet d'effectuer certaines tâches avec une efficacité remarquable. Par exemple, dans le domaine médical, l'intelligence artificielle peut aider les médecins à détecter certaines maladies plus rapidement. Cependant, cette évolution soulève également plusieurs questions. Certains spécialistes craignent que l'automatisation de nombreuses activités ne réduise le nombre d'emplois disponibles dans certains secteurs. D'autres s'inquiètent de la protection des données personnelles et du respect de la vie privée. Afin de profiter des avantages de cette technologie tout en limitant ses risques, de nombreux gouvernements et organisations travaillent à l'élaboration de règles éthiques. Malgré les débats qu'elle suscite, l'intelligence artificielle devrait continuer à jouer un rôle majeur dans notre avenir.`,
+
+  script: `L'intelligence artificielle occupe aujourd'hui une place de plus en plus importante dans notre société. Cette technologie est utilisée dans de nombreux domaines, notamment la médecine, l'éducation, les transports et les services en ligne. Grâce à sa capacité à analyser rapidement d'importantes quantités de données, elle permet d'effectuer certaines tâches avec une efficacité remarquable. Par exemple, dans le domaine médical, l'intelligence artificielle peut aider les médecins à détecter certaines maladies plus rapidement. Cependant, cette évolution soulève également plusieurs questions. Certains spécialistes craignent que l'automatisation de nombreuses activités ne réduise le nombre d'emplois disponibles dans certains secteurs. D'autres s'inquiètent de la protection des données personnelles et du respect de la vie privée. Afin de profiter des avantages de cette technologie tout en limitant ses risques, de nombreux gouvernements et organisations travaillent à l'élaboration de règles éthiques. Malgré les débats qu'elle suscite, l'intelligence artificielle devrait continuer à jouer un rôle majeur dans notre avenir.`,
+
+  translation: `人工知能は現在、私たちの社会でますます重要な役割を果たしています。この技術は医療、教育、交通、オンラインサービスなど多くの分野で利用されています。大量のデータを素早く分析する能力により、さまざまな作業を非常に効率的に行うことができます。例えば医療分野では、医師が病気をより早く発見する手助けをすることができます。しかし、この発展はさまざまな疑問も引き起こしています。多くの専門家は、自動化によって一部の業界で雇用が減少する可能性を懸念しています。また、個人情報の保護やプライバシーの尊重について心配する人もいます。この技術の利点を活かしながらリスクを抑えるために、多くの政府や組織が倫理的なルール作りに取り組んでいます。議論はあるものの、人工知能は今後も私たちの未来において重要な役割を果たし続けると考えられています。`,
+
+  quiz: [
+    {
+      q: "Dans quels domaines l'intelligence artificielle est-elle utilisée ?",
+      options: [
+        { text: "La médecine, l'éducation et les transports", correct: true },
+        { text: "Uniquement la médecine", correct: false },
+        { text: "Uniquement les jeux vidéo", correct: false },
+        { text: "Uniquement l'agriculture", correct: false }
+      ]
+    },
+    {
+      q: "Quel avantage est mentionné ?",
+      options: [
+        { text: "L'analyse rapide de grandes quantités de données", correct: true },
+        { text: "La réduction du prix de l'électricité", correct: false },
+        { text: "La suppression d'Internet", correct: false },
+        { text: "L'augmentation du tourisme", correct: false }
+      ]
+    },
+    {
+      q: "Quel exemple est donné dans le domaine médical ?",
+      options: [
+        { text: "La détection plus rapide des maladies", correct: true },
+        { text: "La construction d'hôpitaux", correct: false },
+        { text: "La formation des enseignants", correct: false },
+        { text: "La vente de médicaments", correct: false }
+      ]
+    },
+    {
+      q: "Quelle inquiétude est mentionnée ?",
+      options: [
+        { text: "La diminution de certains emplois", correct: true },
+        { text: "Le manque de touristes", correct: false },
+        { text: "Les catastrophes naturelles", correct: false },
+        { text: "La baisse de la population", correct: false }
+      ]
+    },
+    {
+      q: "Pourquoi crée-t-on des règles éthiques ?",
+      options: [
+        { text: "Pour limiter les risques de l'IA", correct: true },
+        { text: "Pour arrêter le progrès", correct: false },
+        { text: "Pour supprimer les ordinateurs", correct: false },
+        { text: "Pour réduire les études", correct: false }
+      ]
+    }
+  ]
+},
+
+{
+  lang: "fr-FR",
+  level: "B2",
+
+  question: "L'apprentissage des langues étrangères",
+
+  audio: `L'apprentissage des langues étrangères est devenu de plus en plus important dans un monde où les échanges internationaux sont fréquents. Maîtriser une langue étrangère permet non seulement de communiquer avec des personnes de différentes cultures, mais aussi d'accéder à davantage d'opportunités professionnelles et académiques. Cependant, apprendre une langue demande du temps, de la patience et une pratique régulière. De nombreux spécialistes affirment qu'il est préférable d'étudier un peu chaque jour plutôt que de travailler pendant plusieurs heures de manière occasionnelle. Aujourd'hui, les apprenants disposent d'une grande variété d'outils, comme les applications mobiles, les plateformes de vidéos ou les échanges linguistiques en ligne. Malgré ces ressources, la clé du succès reste l'utilisation active de la langue. Il est important d'oser parler, même lorsque l'on fait des erreurs. En effet, les erreurs constituent une étape naturelle du processus d'apprentissage et permettent souvent de progresser plus rapidement. Avec de la motivation et de la persévérance, chacun peut améliorer ses compétences linguistiques au fil du temps.`,
+
+  script: `L'apprentissage des langues étrangères est devenu de plus en plus important dans un monde où les échanges internationaux sont fréquents. Maîtriser une langue étrangère permet non seulement de communiquer avec des personnes de différentes cultures, mais aussi d'accéder à davantage d'opportunités professionnelles et académiques. Cependant, apprendre une langue demande du temps, de la patience et une pratique régulière. De nombreux spécialistes affirment qu'il est préférable d'étudier un peu chaque jour plutôt que de travailler pendant plusieurs heures de manière occasionnelle. Aujourd'hui, les apprenants disposent d'une grande variété d'outils, comme les applications mobiles, les plateformes de vidéos ou les échanges linguistiques en ligne. Malgré ces ressources, la clé du succès reste l'utilisation active de la langue. Il est important d'oser parler, même lorsque l'on fait des erreurs. En effet, les erreurs constituent une étape naturelle du processus d'apprentissage et permettent souvent de progresser plus rapidement. Avec de la motivation et de la persévérance, chacun peut améliorer ses compétences linguistiques au fil du temps.`,
+
+  translation: `国際交流が盛んな現代において、外国語学習はますます重要になっています。外国語を習得することで、異なる文化を持つ人々と交流できるだけでなく、仕事や学業においてもより多くの機会を得ることができます。しかし、語学を学ぶには時間と忍耐、そして継続的な練習が必要です。多くの専門家は、たまに何時間も勉強するよりも、毎日少しずつ学習する方が効果的だと考えています。現在では、アプリや動画サイト、オンライン言語交換など、学習者が利用できる多くのツールがあります。それでも成功の鍵は、実際に言語を使うことです。間違いを恐れずに話すことが重要です。なぜなら、間違いは学習過程の自然な一部であり、上達を促してくれるからです。やる気と継続力があれば、誰でも時間をかけて語学力を向上させることができます。`,
+
+  quiz: [
+    {
+      q: "Pourquoi l'apprentissage des langues est-il important ?",
+      options: [
+        { text: "Parce que les échanges internationaux sont fréquents", correct: true },
+        { text: "Parce que les écoles l'imposent", correct: false },
+        { text: "Parce que les livres disparaissent", correct: false },
+        { text: "Parce que les voyages sont interdits", correct: false }
+      ]
+    },
+    {
+      q: "Quel avantage est mentionné ?",
+      options: [
+        { text: "Accéder à davantage d'opportunités", correct: true },
+        { text: "Gagner automatiquement plus d'argent", correct: false },
+        { text: "Voyager gratuitement", correct: false },
+        { text: "Éviter les études", correct: false }
+      ]
+    },
+    {
+      q: "Quelle méthode est recommandée ?",
+      options: [
+        { text: "Étudier un peu chaque jour", correct: true },
+        { text: "Étudier une fois par mois", correct: false },
+        { text: "Ne faire que de la grammaire", correct: false },
+        { text: "Éviter de pratiquer", correct: false }
+      ]
+    },
+    {
+      q: "Quels outils sont mentionnés ?",
+      options: [
+        { text: "Les applications mobiles et les échanges en ligne", correct: true },
+        { text: "Les journaux uniquement", correct: false },
+        { text: "Les dictionnaires papier uniquement", correct: false },
+        { text: "Les jeux sportifs", correct: false }
+      ]
+    },
+    {
+      q: "Comment faut-il considérer les erreurs ?",
+      options: [
+        { text: "Comme une étape naturelle de l'apprentissage", correct: true },
+        { text: "Comme un échec", correct: false },
+        { text: "Comme une punition", correct: false },
+        { text: "Comme une perte de temps", correct: false }
+      ]
+    }
+  ]
+},
+
+{
+  lang: "fr-FR",
+  level: "B2",
+
+  question: "Les énergies renouvelables",
+
+  audio: `Face aux défis posés par le changement climatique, de nombreux pays investissent de plus en plus dans les énergies renouvelables. Ces sources d'énergie, comme l'énergie solaire, l'énergie éolienne ou l'énergie hydraulique, permettent de produire de l'électricité tout en limitant les émissions de gaz à effet de serre. Contrairement aux énergies fossiles, elles reposent sur des ressources naturelles qui se renouvellent continuellement. Cependant, la transition énergétique présente également plusieurs difficultés. La construction d'infrastructures adaptées nécessite des investissements importants et une planification à long terme. De plus, certaines sources d'énergie renouvelable dépendent des conditions météorologiques, ce qui peut compliquer leur utilisation. Malgré ces obstacles, de nombreux experts considèrent que les énergies renouvelables joueront un rôle essentiel dans la lutte contre le réchauffement climatique. Les progrès technologiques réalisés ces dernières années ont déjà permis de réduire les coûts de production et d'améliorer l'efficacité de ces technologies. Ainsi, la transition vers des énergies plus propres apparaît comme une priorité pour de nombreux gouvernements.`,
+
+  script: `Face aux défis posés par le changement climatique, de nombreux pays investissent de plus en plus dans les énergies renouvelables. Ces sources d'énergie, comme l'énergie solaire, l'énergie éolienne ou l'énergie hydraulique, permettent de produire de l'électricité tout en limitant les émissions de gaz à effet de serre. Contrairement aux énergies fossiles, elles reposent sur des ressources naturelles qui se renouvellent continuellement. Cependant, la transition énergétique présente également plusieurs difficultés. La construction d'infrastructures adaptées nécessite des investissements importants et une planification à long terme. De plus, certaines sources d'énergie renouvelable dépendent des conditions météorologiques, ce qui peut compliquer leur utilisation. Malgré ces obstacles, de nombreux experts considèrent que les énergies renouvelables joueront un rôle essentiel dans la lutte contre le réchauffement climatique. Les progrès technologiques réalisés ces dernières années ont déjà permis de réduire les coûts de production et d'améliorer l'efficacité de ces technologies. Ainsi, la transition vers des énergies plus propres apparaît comme une priorité pour de nombreux gouvernements.`,
+
+  translation: `気候変動による課題に直面する中、多くの国々が再生可能エネルギーへの投資を増やしています。太陽光発電、風力発電、水力発電などのエネルギー源は、温室効果ガスの排出を抑えながら電力を生み出すことができます。化石燃料とは異なり、これらは継続的に再生される自然資源に依存しています。しかし、エネルギー転換にはいくつかの困難も伴います。適切なインフラの建設には多額の投資と長期的な計画が必要です。また、一部の再生可能エネルギーは天候条件に左右されるため、利用が難しくなることもあります。それでも、多くの専門家は再生可能エネルギーが地球温暖化対策において重要な役割を果たすと考えています。近年の技術進歩によって、生産コストは下がり、効率も向上しています。そのため、よりクリーンなエネルギーへの移行は多くの政府にとって優先課題となっています。`,
+
+  quiz: [
+    {
+      q: "Pourquoi les pays investissent-ils dans les énergies renouvelables ?",
+      options: [
+        { text: "Pour lutter contre le changement climatique", correct: true },
+        { text: "Pour augmenter la pollution", correct: false },
+        { text: "Pour réduire les écoles", correct: false },
+        { text: "Pour développer le tourisme", correct: false }
+      ]
+    },
+    {
+      q: "Quelle énergie est mentionnée dans le texte ?",
+      options: [
+        { text: "L'énergie solaire", correct: true },
+        { text: "L'énergie nucléaire uniquement", correct: false },
+        { text: "L'énergie du charbon", correct: false },
+        { text: "L'énergie du pétrole", correct: false }
+      ]
+    },
+    {
+      q: "Quelle difficulté est évoquée ?",
+      options: [
+        { text: "Les investissements importants", correct: true },
+        { text: "Le manque de chercheurs", correct: false },
+        { text: "La disparition de l'électricité", correct: false },
+        { text: "Le manque d'eau potable", correct: false }
+      ]
+    },
+    {
+      q: "Pourquoi certaines énergies renouvelables sont-elles difficiles à utiliser ?",
+      options: [
+        { text: "Elles dépendent de la météo", correct: true },
+        { text: "Elles sont interdites", correct: false },
+        { text: "Elles nécessitent Internet", correct: false },
+        { text: "Elles produisent trop d'énergie", correct: false }
+      ]
+    },
+    {
+      q: "Quel effet ont eu les progrès technologiques ?",
+      options: [
+        { text: "Ils ont réduit les coûts de production", correct: true },
+        { text: "Ils ont augmenté la pollution", correct: false },
+        { text: "Ils ont supprimé les infrastructures", correct: false },
+        { text: "Ils ont arrêté la recherche", correct: false }
+      ]
+    }
+  ]
+},
+
+{
+  lang: "fr-FR",
+  level: "B2",
+
+  question: "La lecture à l'ère numérique",
+
+  audio: `L'arrivée des technologies numériques a profondément modifié les habitudes de lecture. Aujourd'hui, de nombreuses personnes lisent des articles, des journaux ou des livres directement sur leur téléphone, leur tablette ou leur ordinateur. Cette évolution présente plusieurs avantages. Les lecteurs peuvent accéder rapidement à une grande quantité d'informations et transporter des centaines d'ouvrages dans un seul appareil. De plus, les livres numériques sont souvent moins coûteux et plus faciles à obtenir. Cependant, certains spécialistes estiment que la lecture sur écran peut parfois réduire la concentration, notamment lorsque les utilisateurs sont constamment interrompus par des notifications ou d'autres contenus numériques. D'autres personnes continuent à préférer les livres imprimés, qu'elles trouvent plus agréables à lire et plus confortables pour les yeux. Malgré ces différences, la plupart des experts considèrent que l'essentiel n'est pas le support utilisé, mais la capacité à lire de manière attentive, critique et régulière. Dans une société où l'information circule rapidement, développer de solides compétences en lecture demeure plus important que jamais.`,
+
+  script: `L'arrivée des technologies numériques a profondément modifié les habitudes de lecture. Aujourd'hui, de nombreuses personnes lisent des articles, des journaux ou des livres directement sur leur téléphone, leur tablette ou leur ordinateur. Cette évolution présente plusieurs avantages. Les lecteurs peuvent accéder rapidement à une grande quantité d'informations et transporter des centaines d'ouvrages dans un seul appareil. De plus, les livres numériques sont souvent moins coûteux et plus faciles à obtenir. Cependant, certains spécialistes estiment que la lecture sur écran peut parfois réduire la concentration, notamment lorsque les utilisateurs sont constamment interrompus par des notifications ou d'autres contenus numériques. D'autres personnes continuent à préférer les livres imprimés, qu'elles trouvent plus agréables à lire et plus confortables pour les yeux. Malgré ces différences, la plupart des experts considèrent que l'essentiel n'est pas le support utilisé, mais la capacité à lire de manière attentive, critique et régulière. Dans une société où l'information circule rapidement, développer de solides compétences en lecture demeure plus important que jamais.`,
+
+  translation: `デジタル技術の登場によって、読書習慣は大きく変化しました。現在では、多くの人がスマートフォンやタブレット、パソコンで記事や新聞、本を読んでいます。この変化にはさまざまな利点があります。読者は大量の情報に素早くアクセスでき、何百冊もの本を1台の端末に保存できます。また、電子書籍は紙の本より安価で入手しやすい場合もあります。しかし、一部の専門家は、画面での読書は集中力を低下させる可能性があると考えています。特に通知や他のデジタルコンテンツによって頻繁に中断される場合です。一方で、紙の本の方が読みやすく目にも優しいと感じる人もいます。それでも、多くの専門家は重要なのは媒体ではなく、注意深く批判的に、そして継続的に読む能力だと考えています。情報が急速に流通する社会において、優れた読解力を身につけることはこれまで以上に重要です。`,
+
+  quiz: [
+    {
+      q: "Quels appareils sont mentionnés dans le texte ?",
+      options: [
+        { text: "Le téléphone, la tablette et l'ordinateur", correct: true },
+        { text: "La télévision uniquement", correct: false },
+        { text: "La radio uniquement", correct: false },
+        { text: "La console de jeux uniquement", correct: false }
+      ]
+    },
+    {
+      q: "Quel avantage des livres numériques est cité ?",
+      options: [
+        { text: "Ils sont souvent moins coûteux", correct: true },
+        { text: "Ils sont plus lourds", correct: false },
+        { text: "Ils n'ont pas besoin d'électricité", correct: false },
+        { text: "Ils sont toujours gratuits", correct: false }
+      ]
+    },
+    {
+      q: "Quel problème peut apparaître lors de la lecture sur écran ?",
+      options: [
+        { text: "Une baisse de concentration", correct: true },
+        { text: "Une perte de mémoire immédiate", correct: false },
+        { text: "Une diminution de la vitesse d'Internet", correct: false },
+        { text: "Une augmentation des coûts", correct: false }
+      ]
+    },
+    {
+      q: "Pourquoi certaines personnes préfèrent-elles les livres imprimés ?",
+      options: [
+        { text: "Ils sont plus agréables à lire", correct: true },
+        { text: "Ils contiennent plus d'informations", correct: false },
+        { text: "Ils sont toujours gratuits", correct: false },
+        { text: "Ils sont obligatoires à l'université", correct: false }
+      ]
+    },
+    {
+      q: "Selon les experts, qu'est-ce qui est le plus important ?",
+      options: [
+        { text: "Lire de manière attentive et critique", correct: true },
+        { text: "Utiliser uniquement le papier", correct: false },
+        { text: "Lire le plus vite possible", correct: false },
+        { text: "Posséder beaucoup de livres", correct: false }
+      ]
+    }
+  ]
+},
+
+{
+  lang: "fr-FR",
+  level: "B2",
+
+  question: "Le bénévolat",
+
+  audio: `Le bénévolat joue un rôle essentiel dans de nombreuses sociétés à travers le monde. Chaque année, des millions de personnes consacrent une partie de leur temps à des activités non rémunérées afin d'aider les autres ou de soutenir une cause qui leur tient à cœur. Les bénévoles interviennent dans des domaines très variés, tels que l'éducation, la protection de l'environnement, l'aide humanitaire ou encore l'accompagnement des personnes âgées. Bien que ces activités ne procurent pas de rémunération financière, elles apportent souvent une grande satisfaction personnelle. De plus, le bénévolat permet de développer des compétences utiles dans la vie professionnelle, notamment la communication, le travail en équipe et l'organisation de projets. Plusieurs études montrent également que les personnes engagées dans des actions bénévoles ont tendance à se sentir davantage intégrées dans leur communauté. Malgré les défis que peuvent représenter le manque de temps ou de ressources, de nombreuses associations continuent d'attirer de nouveaux volontaires chaque année. Le bénévolat apparaît ainsi comme un moyen efficace de contribuer au bien-être collectif tout en développant ses propres compétences.`,
+
+  script: `Le bénévolat joue un rôle essentiel dans de nombreuses sociétés à travers le monde. Chaque année, des millions de personnes consacrent une partie de leur temps à des activités non rémunérées afin d'aider les autres ou de soutenir une cause qui leur tient à cœur. Les bénévoles interviennent dans des domaines très variés, tels que l'éducation, la protection de l'environnement, l'aide humanitaire ou encore l'accompagnement des personnes âgées. Bien que ces activités ne procurent pas de rémunération financière, elles apportent souvent une grande satisfaction personnelle. De plus, le bénévolat permet de développer des compétences utiles dans la vie professionnelle, notamment la communication, le travail en équipe et l'organisation de projets. Plusieurs études montrent également que les personnes engagées dans des actions bénévoles ont tendance à se sentir davantage intégrées dans leur communauté. Malgré les défis que peuvent représenter le manque de temps ou de ressources, de nombreuses associations continuent d'attirer de nouveaux volontaires chaque année. Le bénévolat apparaît ainsi comme un moyen efficace de contribuer au bien-être collectif tout en développant ses propres compétences.`,
+
+  translation: `ボランティア活動は世界中の多くの社会において重要な役割を果たしています。毎年、何百万人もの人々が自分の時間の一部を無償活動に充て、他者を助けたり、自分が大切だと考える活動を支援したりしています。ボランティアは教育、環境保護、人道支援、高齢者支援など、さまざまな分野で活動しています。これらの活動は金銭的な報酬をもたらしませんが、大きな達成感や満足感を与えてくれます。また、ボランティア活動を通じて、コミュニケーション能力やチームワーク、プロジェクト運営能力など、仕事にも役立つスキルを身につけることができます。さらに、多くの研究によると、ボランティア活動に参加している人々は地域社会とのつながりをより強く感じる傾向があります。時間や資源の不足といった課題はありますが、多くの団体は毎年新しいボランティアを集め続けています。このように、ボランティア活動は社会全体の幸福に貢献しながら、自分自身の能力も高める効果的な方法と言えます。`,
+
+  quiz: [
+    {
+      q: "Pourquoi les bénévoles participent-ils à ces activités ?",
+      options: [
+        { text: "Pour aider les autres ou soutenir une cause", correct: true },
+        { text: "Pour obtenir un salaire élevé", correct: false },
+        { text: "Pour voyager gratuitement", correct: false },
+        { text: "Pour éviter les études", correct: false }
+      ]
+    },
+    {
+      q: "Dans quel domaine les bénévoles peuvent-ils intervenir ?",
+      options: [
+        { text: "La protection de l'environnement", correct: true },
+        { text: "Uniquement la finance", correct: false },
+        { text: "Uniquement le sport professionnel", correct: false },
+        { text: "Uniquement le commerce international", correct: false }
+      ]
+    },
+    {
+      q: "Quel avantage personnel est mentionné ?",
+      options: [
+        { text: "Une grande satisfaction personnelle", correct: true },
+        { text: "Une augmentation de salaire", correct: false },
+        { text: "Des vacances gratuites", correct: false },
+        { text: "Un diplôme automatique", correct: false }
+      ]
+    },
+    {
+      q: "Quelles compétences peut-on développer grâce au bénévolat ?",
+      options: [
+        { text: "La communication et le travail en équipe", correct: true },
+        { text: "La conduite automobile uniquement", correct: false },
+        { text: "La programmation uniquement", correct: false },
+        { text: "Le dessin uniquement", correct: false }
+      ]
+    },
+    {
+      q: "Quel effet le bénévolat peut-il avoir sur les participants ?",
+      options: [
+        { text: "Ils se sentent davantage intégrés dans leur communauté", correct: true },
+        { text: "Ils deviennent plus isolés", correct: false },
+        { text: "Ils changent automatiquement de métier", correct: false },
+        { text: "Ils déménagent à l'étranger", correct: false }
+      ]
+    }
+  ]
+},
+
+{
+  lang: "fr-FR",
+  level: "B2",
+
+  question: "Les transports publics",
+
+  audio: `Dans les grandes villes, les transports publics jouent un rôle fondamental dans la vie quotidienne de millions de personnes. Les métros, les bus, les tramways et les trains permettent aux habitants de se déplacer efficacement tout en réduisant la dépendance à la voiture individuelle. Cette solution présente plusieurs avantages. Elle contribue à diminuer les embouteillages, à réduire les émissions de gaz polluants et à améliorer la qualité de l'air dans les zones urbaines. De plus, les transports publics offrent souvent une solution plus économique que l'utilisation d'une voiture personnelle. Cependant, les réseaux de transport doivent faire face à plusieurs défis. L'augmentation constante de la population urbaine entraîne une hausse du nombre d'usagers, ce qui peut provoquer une surcharge des infrastructures existantes. Afin de répondre à ces besoins croissants, les autorités investissent dans la modernisation des réseaux, l'amélioration de la fréquence des services et le développement de nouvelles technologies. De nombreux experts considèrent que des transports publics performants sont indispensables pour construire des villes plus durables et plus agréables à vivre.`,
+
+  script: `Dans les grandes villes, les transports publics jouent un rôle fondamental dans la vie quotidienne de millions de personnes. Les métros, les bus, les tramways et les trains permettent aux habitants de se déplacer efficacement tout en réduisant la dépendance à la voiture individuelle. Cette solution présente plusieurs avantages. Elle contribue à diminuer les embouteillages, à réduire les émissions de gaz polluants et à améliorer la qualité de l'air dans les zones urbaines. De plus, les transports publics offrent souvent une solution plus économique que l'utilisation d'une voiture personnelle. Cependant, les réseaux de transport doivent faire face à plusieurs défis. L'augmentation constante de la population urbaine entraîne une hausse du nombre d'usagers, ce qui peut provoquer une surcharge des infrastructures existantes. Afin de répondre à ces besoins croissants, les autorités investissent dans la modernisation des réseaux, l'amélioration de la fréquence des services et le développement de nouvelles technologies. De nombreux experts considèrent que des transports publics performants sont indispensables pour construire des villes plus durables et plus agréables à vivre.`,
+
+  translation: `大都市では、公共交通機関は何百万人もの人々の日常生活において重要な役割を果たしています。地下鉄、バス、路面電車、列車は、人々が効率的に移動することを可能にし、自家用車への依存を減らしています。この仕組みには多くの利点があります。渋滞を減らし、大気汚染物質の排出を抑え、都市部の空気の質を改善することに貢献しています。また、公共交通機関は自家用車を利用するよりも経済的な手段であることが多いです。しかし、交通網はいくつかの課題にも直面しています。都市人口の増加によって利用者数が増え、既存のインフラが過密状態になることがあります。こうした需要に対応するため、行政は交通網の近代化、運行本数の増加、新技術の導入に投資しています。多くの専門家は、効率的な公共交通機関が持続可能で住みやすい都市を作るために不可欠であると考えています。`,
+
+  quiz: [
+    {
+      q: "Quels moyens de transport sont mentionnés ?",
+      options: [
+        { text: "Les métros, les bus, les tramways et les trains", correct: true },
+        { text: "Les avions uniquement", correct: false },
+        { text: "Les bateaux uniquement", correct: false },
+        { text: "Les vélos uniquement", correct: false }
+      ]
+    },
+    {
+      q: "Quel avantage environnemental est cité ?",
+      options: [
+        { text: "La réduction des émissions polluantes", correct: true },
+        { text: "L'augmentation du trafic", correct: false },
+        { text: "La hausse du bruit", correct: false },
+        { text: "La construction de routes", correct: false }
+      ]
+    },
+    {
+      q: "Pourquoi les transports publics sont-ils souvent économiques ?",
+      options: [
+        { text: "Ils coûtent souvent moins cher qu'une voiture personnelle", correct: true },
+        { text: "Ils sont toujours gratuits", correct: false },
+        { text: "Ils consomment plus d'essence", correct: false },
+        { text: "Ils sont financés par les touristes", correct: false }
+      ]
+    },
+    {
+      q: "Quel problème peut être causé par la croissance de la population urbaine ?",
+      options: [
+        { text: "La surcharge des infrastructures", correct: true },
+        { text: "La diminution du nombre d'usagers", correct: false },
+        { text: "La fermeture des stations", correct: false },
+        { text: "La baisse des investissements", correct: false }
+      ]
+    },
+    {
+      q: "Pourquoi les autorités investissent-elles dans les réseaux ?",
+      options: [
+        { text: "Pour répondre à la hausse des besoins", correct: true },
+        { text: "Pour réduire les transports", correct: false },
+        { text: "Pour supprimer les bus", correct: false },
+        { text: "Pour augmenter les embouteillages", correct: false }
+      ]
+    }
+  ]
+},
+
+{
+  lang: "fr-FR",
+  level: "B2",
+
+  question: "Le changement climatique",
+
+  audio: `Le changement climatique est aujourd'hui considéré comme l'un des plus grands défis auxquels l'humanité doit faire face. Depuis plusieurs décennies, les scientifiques observent une augmentation progressive de la température moyenne de la planète. Ce phénomène est principalement lié aux activités humaines, notamment à l'utilisation massive des énergies fossiles et à la déforestation. Les conséquences du réchauffement climatique sont déjà visibles dans de nombreuses régions du monde. On observe une augmentation de la fréquence des phénomènes météorologiques extrêmes, comme les sécheresses, les inondations ou les vagues de chaleur. Ces événements peuvent avoir des effets importants sur l'agriculture, l'économie et la santé des populations. Afin de limiter ces impacts, de nombreux pays se sont engagés à réduire leurs émissions de gaz à effet de serre et à développer des sources d'énergie plus respectueuses de l'environnement. Cependant, les experts soulignent que des efforts supplémentaires seront nécessaires dans les années à venir. La lutte contre le changement climatique nécessite une coopération internationale ainsi que la participation active des citoyens, des entreprises et des gouvernements.`,
+
+  script: `Le changement climatique est aujourd'hui considéré comme l'un des plus grands défis auxquels l'humanité doit faire face. Depuis plusieurs décennies, les scientifiques observent une augmentation progressive de la température moyenne de la planète. Ce phénomène est principalement lié aux activités humaines, notamment à l'utilisation massive des énergies fossiles et à la déforestation. Les conséquences du réchauffement climatique sont déjà visibles dans de nombreuses régions du monde. On observe une augmentation de la fréquence des phénomènes météorologiques extrêmes, comme les sécheresses, les inondations ou les vagues de chaleur. Ces événements peuvent avoir des effets importants sur l'agriculture, l'économie et la santé des populations. Afin de limiter ces impacts, de nombreux pays se sont engagés à réduire leurs émissions de gaz à effet de serre et à développer des sources d'énergie plus respectueuses de l'environnement. Cependant, les experts soulignent que des efforts supplémentaires seront nécessaires dans les années à venir. La lutte contre le changement climatique nécessite une coopération internationale ainsi que la participation active des citoyens, des entreprises et des gouvernements.`,
+
+  translation: `気候変動は現在、人類が直面している最大の課題の一つと考えられています。数十年にわたり、科学者たちは地球の平均気温が徐々に上昇していることを観測してきました。この現象は主に人間活動、とりわけ化石燃料の大量使用や森林伐採に関連しています。地球温暖化の影響はすでに世界各地で見られています。干ばつ、洪水、熱波などの異常気象がより頻繁に発生しており、農業、経済、人々の健康に大きな影響を与える可能性があります。こうした影響を抑えるため、多くの国が温室効果ガスの排出削減や環境に優しいエネルギーの開発に取り組んでいます。しかし専門家は、今後さらに多くの努力が必要だと指摘しています。気候変動との戦いには、国際的な協力と、市民・企業・政府の積極的な参加が不可欠です。`,
+
+  quiz: [
+    {
+      q: "Quel est l'un des plus grands défis de l'humanité ?",
+      options: [
+        { text: "Le changement climatique", correct: true },
+        { text: "Le tourisme", correct: false },
+        { text: "Le sport", correct: false },
+        { text: "La lecture", correct: false }
+      ]
+    },
+    {
+      q: "Quelle est une cause importante du réchauffement climatique ?",
+      options: [
+        { text: "L'utilisation des énergies fossiles", correct: true },
+        { text: "La lecture numérique", correct: false },
+        { text: "Les transports publics", correct: false },
+        { text: "Les bibliothèques", correct: false }
+      ]
+    },
+    {
+      q: "Quel phénomène extrême est cité ?",
+      options: [
+        { text: "Les inondations", correct: true },
+        { text: "Les tremblements de terre", correct: false },
+        { text: "Les éruptions volcaniques", correct: false },
+        { text: "Les tsunamis", correct: false }
+      ]
+    },
+    {
+      q: "Que font de nombreux pays ?",
+      options: [
+        { text: "Ils réduisent leurs émissions de gaz à effet de serre", correct: true },
+        { text: "Ils augmentent leur consommation de charbon", correct: false },
+        { text: "Ils ferment les écoles", correct: false },
+        { text: "Ils limitent Internet", correct: false }
+      ]
+    },
+    {
+      q: "Que nécessite la lutte contre le changement climatique ?",
+      options: [
+        { text: "Une coopération internationale", correct: true },
+        { text: "Seulement l'action des scientifiques", correct: false },
+        { text: "Uniquement l'action des gouvernements", correct: false },
+        { text: "La suppression des transports", correct: false }
+      ]
+    }
+  ]
+},
+
+{
+  lang: "fr-FR",
+  level: "B2",
+
+  question: "Les études à l'étranger",
+
+  audio: `De plus en plus d'étudiants choisissent aujourd'hui de poursuivre une partie de leurs études à l'étranger. Cette expérience leur permet de découvrir une nouvelle culture, d'améliorer leurs compétences linguistiques et de développer leur autonomie. Vivre dans un autre pays oblige souvent les étudiants à s'adapter à des habitudes différentes, à rencontrer de nouvelles personnes et à résoudre des problèmes de manière indépendante. Bien que cette expérience soit généralement enrichissante, elle comporte aussi certaines difficultés. Les étudiants peuvent ressentir de la nostalgie, rencontrer des obstacles administratifs ou éprouver des difficultés à communiquer dans une langue étrangère. Cependant, ces défis contribuent souvent à renforcer leur confiance en eux et leur capacité d'adaptation. De nombreuses universités encouragent aujourd'hui la mobilité internationale grâce à des programmes d'échange et à des partenariats avec des établissements étrangers. Les employeurs apprécient souvent les candidats ayant vécu une expérience internationale, car elle témoigne de leur ouverture d'esprit et de leur aptitude à évoluer dans un environnement multiculturel. Ainsi, les études à l'étranger représentent une opportunité précieuse tant sur le plan personnel que professionnel.`,
+
+  script: `De plus en plus d'étudiants choisissent aujourd'hui de poursuivre une partie de leurs études à l'étranger. Cette expérience leur permet de découvrir une nouvelle culture, d'améliorer leurs compétences linguistiques et de développer leur autonomie. Vivre dans un autre pays oblige souvent les étudiants à s'adapter à des habitudes différentes, à rencontrer de nouvelles personnes et à résoudre des problèmes de manière indépendante. Bien que cette expérience soit généralement enrichissante, elle comporte aussi certaines difficultés. Les étudiants peuvent ressentir de la nostalgie, rencontrer des obstacles administratifs ou éprouver des difficultés à communiquer dans une langue étrangère. Cependant, ces défis contribuent souvent à renforcer leur confiance en eux et leur capacité d'adaptation. De nombreuses universités encouragent aujourd'hui la mobilité internationale grâce à des programmes d'échange et à des partenariats avec des établissements étrangers. Les employeurs apprécient souvent les candidats ayant vécu une expérience internationale, car elle témoigne de leur ouverture d'esprit et de leur aptitude à évoluer dans un environnement multiculturel. Ainsi, les études à l'étranger représentent une opportunité précieuse tant sur le plan personnel que professionnel.`,
+
+  translation: `近年、ますます多くの学生が海外で学ぶことを選んでいます。この経験によって、新しい文化を発見し、語学力を向上させ、自立心を養うことができます。他国で生活することは、異なる習慣に適応し、新しい人々と出会い、自分で問題を解決する力を身につけることにつながります。この経験は一般的に非常に有益ですが、いくつかの困難も伴います。学生はホームシックになったり、行政手続きで苦労したり、外国語でのコミュニケーションに苦戦したりすることがあります。しかし、こうした課題は自信や適応力を高めることにもつながります。現在、多くの大学は交換留学プログラムや海外大学との提携を通じて国際交流を推進しています。企業も国際経験のある人材を高く評価することが多く、それは広い視野や多文化環境で働く能力を示すからです。このように、海外留学は個人的にも職業的にも貴重な機会となっています。`,
+
+  quiz: [
+    {
+      q: "Pourquoi les étudiants partent-ils étudier à l'étranger ?",
+      options: [
+        { text: "Pour découvrir une nouvelle culture et améliorer leurs langues", correct: true },
+        { text: "Pour éviter les examens", correct: false },
+        { text: "Pour gagner plus d'argent", correct: false },
+        { text: "Pour voyager gratuitement", correct: false }
+      ]
+    },
+    {
+      q: "Quelle qualité peut être développée grâce à cette expérience ?",
+      options: [
+        { text: "L'autonomie", correct: true },
+        { text: "La paresse", correct: false },
+        { text: "L'impatience", correct: false },
+        { text: "La dépendance", correct: false }
+      ]
+    },
+    {
+      q: "Quelle difficulté est mentionnée ?",
+      options: [
+        { text: "La nostalgie", correct: true },
+        { text: "Le manque de transports", correct: false },
+        { text: "Le manque d'écoles", correct: false },
+        { text: "Les catastrophes naturelles", correct: false }
+      ]
+    },
+    {
+      q: "Comment les universités encouragent-elles la mobilité internationale ?",
+      options: [
+        { text: "Grâce aux programmes d'échange", correct: true },
+        { text: "En supprimant les cours", correct: false },
+        { text: "En fermant les campus", correct: false },
+        { text: "En réduisant les bibliothèques", correct: false }
+      ]
+    },
+    {
+      q: "Pourquoi les employeurs apprécient-ils cette expérience ?",
+      options: [
+        { text: "Parce qu'elle montre une ouverture d'esprit et une capacité d'adaptation", correct: true },
+        { text: "Parce qu'elle garantit un diplôme supérieur", correct: false },
+        { text: "Parce qu'elle réduit les salaires", correct: false },
+        { text: "Parce qu'elle évite toute formation", correct: false }
+      ]
+    }
+  ]
+},
+
+
+
+
+]
