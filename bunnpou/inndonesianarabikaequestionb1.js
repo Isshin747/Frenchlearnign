@@ -78,14 +78,14 @@ const questions=[{
 {
     question:"私の意見では、この政策は改善されるべきだ。",
     words:["menurut","saya",",","kebijakan","ini","harus","diperbaiki"],
-    answer:"Menurut saya, kebijakan ini harus diperbaiki.",
+    answer:"Menurut saya , kebijakan ini harus diperbaiki.",
     translation:"私の意見では、この政策は改善されるべきだ。",
     explanation:"kebijakan＝政策、diperbaiki＝改善される"
 },
 {
     question:"十分な準備をしたので、彼女は自信を持っていた。",
     words:["karena","telah","melakukan","persiapan","yang","cukup",",","dia","percaya","diri"],
-    answer:"Karena telah melakukan persiapan yang cukup, dia percaya diri.",
+    answer:"Karena telah melakukan persiapan yang cukup , dia percaya diri.",
     translation:"十分な準備をしたので、彼女は自信を持っていた。",
     explanation:"persiapan＝準備、percaya diri＝自信がある"
 },
