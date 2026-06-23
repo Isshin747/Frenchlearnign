@@ -71,7 +71,7 @@ const questions=[{
 {
     question:"多くの困難に直面したにもかかわらず、彼は努力し続けた。",
     words:["meskipun","menghadapi","berbagai","kesulitan",",","dia","tetap","berusaha"],
-    answer:"Meskipun menghadapi berbagai kesulitan, dia tetap berusaha.",
+    answer:"Meskipun menghadapi berbagai kesulitan , dia tetap berusaha.",
     translation:"多くの困難に直面したにもかかわらず、彼は努力し続けた。",
     explanation:"meskipun＝〜にもかかわらず、berbagai＝様々な"
 },
@@ -92,7 +92,7 @@ const questions=[{
 {
     question:"試験が終わった後、私たちは結果について話し合った。",
     words:["setelah","ujian","selesai",",","kami","mendiskusikan","hasilnya"],
-    answer:"Setelah ujian selesai, kami mendiskusikan hasilnya.",
+    answer:"Setelah ujian selesai , kami mendiskusikan hasilnya.",
     translation:"試験が終わった後、私たちは結果について話し合った。",
     explanation:"mendiskusikan＝議論する"
 },
@@ -134,7 +134,7 @@ const questions=[{
 {
     question:"もし機会があれば、私は留学したい。",
     words:["jika","ada","kesempatan",",","saya","ingin","belajar","di","luar","negeri"],
-    answer:"Jika ada kesempatan, saya ingin belajar di luar negeri.",
+    answer:"Jika ada kesempatan , saya ingin belajar di luar negeri.",
     translation:"もし機会があれば、私は留学したい。",
     explanation:"kesempatan＝機会"
 },
