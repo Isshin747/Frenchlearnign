@@ -173,6 +173,29 @@ function saveWrongQuestion(q){
     }
 }
 
+function removeWrongQuestion(questionText){
+
+    let wrongQuestions =
+        JSON.parse(
+            localStorage.getItem(
+                "wrongQuestions"
+            )
+        ) || [];
+
+    wrongQuestions =
+        wrongQuestions.filter(
+            q =>
+            q.question !== questionText
+        );
+
+    localStorage.setItem(
+        "wrongQuestions",
+        JSON.stringify(
+            wrongQuestions
+        )
+    );
+}
+
 function checkAnswer(selected){
 
     const q = quizData[current];
@@ -190,11 +213,15 @@ function checkAnswer(selected){
 
     if(selected === q.answer){
 
-        score++;
+    score++;
 
-        html += "<h3>⭕ 正解</h3>";
+    html += "<h3>⭕ 正解</h3>";
 
-    }else{
+    removeWrongQuestion(
+        q.question
+    );
+
+}else{
 
         buttons[selected]
     .classList.add("wrong");
