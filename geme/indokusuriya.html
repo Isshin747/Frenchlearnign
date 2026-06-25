@@ -1,0 +1,1460 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7032470395981540"
+     crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>尼語単語中級</title>
+<link rel="stylesheet" href="gaga.css">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#eef4ff,#dfe9ff);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.quiz-container{
+    background:white;
+    width:100%;
+    max-width:700px;
+    border-radius:25px;
+    padding:40px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.12);
+}
+
+h1{
+    text-align:center;
+    color:#2c3e50;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:30px;
+}
+
+.score{
+    text-align:right;
+    font-weight:bold;
+    margin-bottom:20px;
+    color:#444;
+}
+
+.question-number{
+    color:#4b6fff;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.question{
+    font-size:1.5rem;
+    font-weight:bold;
+    margin-bottom:30px;
+    color:#222;
+}
+
+.answers{
+    display:grid;
+    gap:15px;
+}
+
+.answer-btn{
+    border:none;
+    background:#f3f6ff;
+    padding:18px;
+    border-radius:15px;
+    cursor:pointer;
+    font-size:1rem;
+    transition:0.2s;
+    text-align:left;
+}
+
+.answer-btn:hover{
+    background:#dfe8ff;
+    transform:translateY(-2px);
+}
+
+.correct{
+    background:#8ee4af !important;
+    color:#14532d;
+}
+
+.wrong{
+    background:#ffb3b3 !important;
+    color:#7f1d1d;
+}
+
+#result{
+    text-align:center;
+    margin-top:20px;
+    font-size:1.2rem;
+    font-weight:bold;
+}
+
+.next-btn{
+    display:none;
+    width:100%;
+    margin-top:25px;
+    border:none;
+    background:#4b6fff;
+    color:white;
+    padding:18px;
+    border-radius:15px;
+    cursor:pointer;
+    font-size:1rem;
+    transition:0.2s;
+}
+
+.next-btn:hover{
+    background:#3457d5;
+}
+
+.restart-btn{
+    background:#16a34a;
+}
+
+@media(max-width:600px){
+    .quiz-container{
+        padding:25px;
+    }
+
+    .question{
+        font-size:1.2rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+
+    <h1> Language Quiz</h1>
+    <p class="subtitle">
+        インドネシア語中級単語
+    </p>
+
+    <div class="category-select">
+
+    <button onclick="selectCategory('noun')">
+         名詞
+    </button>
+
+    <button onclick="selectCategory('verb')">
+         動詞
+    </button>
+
+    <button onclick="selectCategory('adjective')">
+         形容詞
+    </button>
+
+    <button onclick="selectCategory('expression')">
+         表現
+    </button>
+
+    <button onclick="selectCategory('all')">
+         全部
+    </button>
+    <button onclick="location.href='../index.html'">
+        トップページへ
+</button>
+
+</div>
+
+    <div class="score">
+        Score: <span id="score">0</span>
+    </div>
+
+    <div class="question-area">
+    <h2 id="question"></h2>
+
+    <button id="speakBtn">
+        🔊 発音を聞く
+    </button>
+</div>
+
+    <div class="question-number" id="questionNumber">
+        Question 1 / 
+    </div>
+
+    <div class="question" id="question">
+        問題が表示されます
+    </div>
+
+    <div class="answers" id="answers"></div>
+
+    <div id="result"></div>
+
+    <button class="next-btn" id="nextBtn">
+        次の問題 →
+    </button>
+
+</div>
+
+<script>
+
+let quizData = [];
+let currentQuestion = 0;
+let score = 0;
+let wrongQuestions = [];
+function selectCategory(category){
+
+   
+    if(category === "noun"){
+        quizData = [...nouns];
+    }
+
+    else if(category === "verb"){
+        quizData = [...verbs];
+    }
+
+    else if(category === "adjective"){
+        quizData = [...adjective];
+    }
+
+    else if(category === "expression"){
+        quizData = [...expressions];
+    }
+
+    else{
+        quizData = [
+            ...nouns,
+            ...verbs,
+            ...adjective,
+            ...expressions
+        ];
+    }
+    shuffleArray(quizData);
+    
+    currentQuestion = 0;
+    score = 0;
+    wrongQuestions = [];
+
+    document.getElementById("score")
+    .textContent = score;
+
+    // ←超重要
+    loadQuestion();
+}
+
+const nouns=[
+
+{
+question:"『kunjungan』の意味は？",
+answers:["訪問","旅行","出発","到着"],
+correct:0
+},
+{
+question:"『tempur』の意味は？",
+answers:["戦闘","平和","会議","訓練"],
+correct:0
+},
+{
+question:"『pasukan』の意味は？",
+answers:["部隊・軍隊","武器","兵士一人","将軍"],
+correct:0
+},
+{
+question:"『musuh』の意味は？",
+answers:["敵","味方","仲間","友人"],
+correct:0
+},
+
+{
+question:"『bintik』の意味は？",
+answers:["斑点・点","線","傷","模様"],
+correct:0
+},
+{
+question:"『rayuan』の意味は？",
+answers:["誘惑・口説き文句","命令","質問","説明"],
+correct:0
+},
+{
+question:"『lengan』の意味は？",
+answers:["腕","脚","肩","指"],
+correct:0
+},
+{
+question:"『bekas』の意味は？",
+answers:["跡・痕跡","未来","計画","方法"],
+correct:0
+},
+{
+question:"『mata-mata』の意味は？",
+answers:["スパイ","兵士","警察","王"],
+correct:0
+},
+{
+question:"『pencicip』の意味は？",
+answers:["試食係・テイスター","料理人","農家","店員"],
+correct:0
+},
+{
+question:"『ilmuwan』の意味は？",
+answers:["科学者","教師","医者","技術者"],
+correct:0
+},
+{
+question:"『keramik』の意味は？",
+answers:["陶器・セラミック","木材","金属","ガラス"],
+correct:0
+},
+{
+question:"『benda』の意味は？",
+answers:["物・物体","生物","植物","場所"],
+correct:0
+},
+{
+question:"『pendekatan』の意味は？",
+answers:["アプローチ・接近","離脱","競争","失敗"],
+correct:0
+},
+{
+question:"『kali』の意味は？",
+answers:["回・倍","日","年","時間"],
+correct:0
+},
+{
+question:"『mangkuk』の意味は？",
+answers:["茶碗・ボウル","皿","コップ","鍋"],
+correct:0
+},
+{
+question:"『daun』の意味は？",
+answers:["葉","花","根","枝"],
+correct:0
+},
+{
+question:"『permira』の意味は？",
+answers:["宝石","砂","石","金属"],
+correct:0
+},
+{
+question:"『ramuan』の意味は？",
+answers:["薬草の調合物・秘薬","毒","飲み物","料理"],
+correct:0
+},
+{
+question:"『efek』の意味は？",
+answers:["効果・影響","原因","結果","方法"],
+correct:0
+},
+{
+question:"『dukun』の意味は？",
+answers:["呪術師・祈祷師","医者","教師","兵士"],
+correct:0
+},
+{
+question:"『ajudan』の意味は？",
+answers:["副官・補佐官","王","大臣","兵士"],
+correct:0
+},
+{
+question:"『madu』の意味は？",
+answers:["はちみつ","砂糖","塩","牛乳"],
+correct:0
+},
+{
+question:"『tanaman』の意味は？",
+answers:["植物","動物","果物","種"],
+correct:0
+},
+{
+question:"『tonik』の意味は？",
+answers:["トニック・栄養剤","薬局","注射","病気"],
+correct:0
+},
+{
+question:"『korban』の意味は？",
+answers:["犠牲者","犯人","警察","証人"],
+correct:0
+},
+{
+question:"『pasir』の意味は？",
+answers:["砂","石","土","泥"],
+correct:0
+},
+{
+question:"『hantu』の意味は？",
+answers:["幽霊","天使","悪魔","妖精"],
+correct:0
+},
+{
+question:"『tembok』の意味は？",
+answers:["壁","屋根","床","窓"],
+correct:0
+},
+{
+question:"『sisa-sisa』の意味は？",
+answers:["残り・残骸","始まり","未来","計画"],
+correct:0
+},
+{
+question:"『rumor』の意味は？",
+answers:["うわさ","ニュース","新聞","報告書"],
+correct:0
+},
+{
+question:"『selir』の意味は？",
+answers:["側室","王妃","侍女","王女"],
+correct:0
+},
+{
+question:"『tanda』の意味は？",
+answers:["印・しるし","地図","手紙","記号"],
+correct:0
+},
+{
+question:"『gaji』の意味は？",
+answers:["給料","税金","借金","賞金"],
+correct:0
+},
+{
+question:"『kasim』の意味は？",
+answers:["宦官","王","兵士","商人"],
+correct:0
+},
+{
+question:"『kutukan』の意味は？",
+answers:["呪い","祝福","魔法","予言"],
+correct:0
+},
+{
+question:"『mual』の意味は？",
+answers:["吐き気","頭痛","発熱","せき"],
+correct:0
+},
+{
+question:"『ambang』の意味は？",
+answers:["敷居・境界","壁","床","窓"],
+correct:0
+},
+{
+question:"『bedah』の意味は？",
+answers:["手術","診察","治療","薬"],
+correct:0
+},
+{
+question:"『apoteker』の意味は？",
+answers:["薬剤師","医者","看護師","研究者"],
+correct:0
+},
+{
+question:"『catatan』の意味は？",
+answers:["メモ・記録","本","新聞","雑誌"],
+correct:0
+},
+{
+question:"『promosi』の意味は？",
+answers:["昇進・宣伝","解雇","退職","契約"],
+correct:0
+},
+{
+question:"『pujian』の意味は？",
+answers:["賞賛・褒め言葉","批判","質問","命令"],
+correct:0
+},
+{
+question:"『obrolan』の意味は？",
+answers:["おしゃべり・会話","議論","試験","講義"],
+correct:0
+},
+{
+question:"『minat』の意味は？",
+answers:["興味・関心","能力","仕事","経験"],
+correct:0
+},
+{
+question:"『kasim』の意味は？",
+answers:["宦官・去勢された男性","王","兵士","商人"],
+correct:0
+},
+{
+question:"『gadis』の意味は？",
+answers:["少女・若い女性","母親","祖母","先生"],
+correct:0
+},
+{
+question:"『racun』の意味は？",
+answers:["毒","薬","食べ物","飲み物"],
+correct:0
+},
+{
+question:"『layanan』の意味は？",
+answers:["サービス","商品","設備","建物"],
+correct:0
+},
+{
+question:"『kepadatan penumpang』の意味は？",
+answers:["乗客の混雑","乗客の予約","乗客の荷物","乗客の料金"],
+correct:0
+},
+{
+question:"『keterlambatan』の意味は？",
+answers:["遅延・遅れ","出発","到着","事故"],
+correct:0
+},
+{
+question:"『tekanan』の意味は？",
+answers:["圧力・プレッシャー","温度","速度","距離"],
+correct:0
+},
+{
+question:"『peralatan rumah tangga』の意味は？",
+answers:["家庭用品・家電","家具店","住宅地","家事"],
+correct:0
+},
+{
+question:"『kepadatan』の意味は？",
+answers:["密度・混雑","静けさ","広さ","距離"],
+correct:0
+},
+{
+question:"『penumpang』の意味は？",
+answers:["乗客","運転手","駅員","整備士"],
+correct:0
+},
+{
+question:"『lemari』の意味は？",
+answers:["たんす・戸棚","机","椅子","ベッド"],
+correct:0
+},
+{
+question:"『dayang』の意味は？",
+answers:["侍女・女官","王女","王","兵士"],
+correct:0
+},
+{
+question:"『nyawa』の意味は？",
+answers:["命","体","心","魂"],
+correct:0
+},
+
+{
+question:"『benturan』の意味は？",
+answers:["衝突","橋","縫い目","予感"],
+correct:0
+},
+
+{
+question:"『kacang』の意味は？",
+answers:["豆","橋","宮殿","誘拐犯"],
+correct:0
+},
+
+{
+question:"『firasat』の意味は？",
+answers:["予感","誕生","手術","理解"],
+correct:0
+},
+
+{
+question:"『jembatan』の意味は？",
+answers:["橋","衝突","豆","縫い目"],
+correct:0
+},
+{
+question:"『penari』の意味は？",
+answers:["ダンサー","歌手","俳優","画家"],
+correct:0
+},
+{
+question:"『bunga』の意味は？",
+answers:["花","葉","実","根"],
+correct:0
+},
+{
+question:"『kapas』の意味は？",
+answers:["綿","絹","羊毛","麻"],
+correct:0
+},
+{
+question:"『dugaan』の意味は？",
+answers:["推測","事実","証拠","結論"],
+correct:0
+},
+{
+question:"『pasien』の意味は？",
+answers:["患者","医者","看護師","薬剤師"],
+correct:0
+},
+{
+question:"『pelacur』の意味は？",
+answers:["売春婦","看護師","教師","秘書"],
+correct:0
+},
+{
+question:"『penawaran』の意味は？",
+answers:["提案・オファー","拒否","命令","契約"],
+correct:0
+},
+{
+question:"『keberangkatan』の意味は？",
+answers:["出発","到着","旅行","帰宅"],
+correct:0
+},
+
+{
+question:"『jahitan』の意味は？",
+answers:["縫い目・縫製","予感","宮殿","理解"],
+correct:0
+},
+
+{
+question:"『pelacur』の意味は？",
+answers:["売春婦","誘拐犯","王族","患者"],
+correct:0
+},
+
+{
+question:"『penculik』の意味は？",
+answers:["誘拐犯","売春婦","教師","警察官"],
+correct:0
+},
+
+{
+question:"『istana』の意味は？",
+answers:["宮殿","橋","縫い目","豆"],
+correct:0
+},
+
+{
+question:"『kasir』の意味は？",
+answers:["レジ係","警備員","店長","運転手"],
+correct:0
+},
+
+{
+question:"『keripik』の意味は？",
+answers:["チップス・スナック","パン","ご飯","スープ"],
+correct:0
+},
+
+{
+question:"『suap』の意味は？",
+answers:["賄賂","法律","判決","税金"],
+correct:0
+},
+
+{
+question:"『chip』の意味は？",
+answers:["チップ・半導体","橋","鍵","薬"],
+correct:0
+},
+
+{
+question:"『sesosok』の意味は？",
+answers:["一人の人物・ある人物","建物","乗り物","動物"],
+correct:0
+},
+
+{
+question:"『perak』の意味は？",
+answers:["銀","金","銅","鉄"],
+correct:0
+},
+{
+question:"『penipuan』の意味は？",
+answers:["詐欺","契約","約束","取引"],
+correct:0
+},
+{
+question:"『militer』の意味は？",
+answers:["軍隊・軍事","警察","政府","学校"],
+correct:0
+},
+{
+question:"『tanah』の意味は？",
+answers:["土地・土","海","空","森"],
+correct:0
+},
+{
+question:"『sebab』の意味は？",
+answers:["原因・理由","結果","方法","目的"],
+correct:0
+},
+{
+question:"『tuan』の意味は？",
+answers:["主人・旦那様","友人","兄弟","子供"],
+correct:0
+},
+{
+question:"『jenis』の意味は？",
+answers:["種類","色","形","大きさ"],
+correct:0
+},
+{
+question:"『apoteker』の意味は？",
+answers:["薬剤師","医者","看護師","患者"],
+correct:0
+},
+{
+question:"『hidangan』の意味は？",
+answers:["料理・食事","飲み物","薬","果物"],
+correct:0
+},
+{
+question:"『firasat』の意味は？",
+answers:["予感","夢","記憶","希望"],
+correct:0
+},
+{
+question:"『penggal』の意味は？",
+answers:["断片・区切り","本","机","部屋"],
+correct:0
+},
+{
+question:"『bedak』の意味は？",
+answers:["おしろい・パウダー","口紅","香水","石鹸"],
+correct:0
+},
+];
+
+const verbs=[
+{
+question:"『ditegakkan』の意味は？",
+answers:["施行される・確立される","破壊される","延期される","隠される"],
+correct:0
+},
+
+{
+question:"『mengira』の意味は？",
+answers:["推測する","確認する","記録する","修理する"],
+correct:0
+},
+
+{
+question:"『berlanjut』の意味は？",
+answers:["続く","止まる","始まる","消える"],
+correct:0
+},
+
+    {
+question:"『dicintai』の意味は？",
+answers:["愛される","愛する","嫌われる","助ける"],
+correct:0
+},
+{
+question:"『menjelang』の意味は？",
+answers:["～を迎える頃になる","終える","始める","待つ"],
+correct:0
+},
+{
+question:"『terkandung』の意味は？",
+answers:["含まれている","失われる","作られる","壊される"],
+correct:0
+},
+{
+question:"『mulai』の意味は？",
+answers:["始める・始まる","終わる","続ける","止める"],
+correct:0
+},
+{
+question:"『mengurangi』の意味は？",
+answers:["減らす","増やす","集める","壊す"],
+correct:0
+},
+{
+question:"『cium』の意味は？",
+answers:["キスする・においをかぐ","見る","聞く","触る"],
+correct:0
+},
+{
+question:"『obati』の意味は？",
+answers:["治療する","攻撃する","探す","守る"],
+correct:0
+},
+{
+question:"『beredar』の意味は？",
+answers:["流通する・出回る","止まる","消える","壊れる"],
+correct:0
+},
+{
+question:"『melamar』の意味は？",
+answers:["応募する・プロポーズする","退職する","拒否する","契約する"],
+correct:0
+},
+{
+question:"『berdoa』の意味は？",
+answers:["祈る","歌う","話す","待つ"],
+correct:0
+},
+{
+question:"『mengunjungi』の意味は？",
+answers:["訪問する","出発する","到着する","滞在する"],
+correct:0
+},
+{
+question:"『pamit』の意味は？",
+answers:["別れの挨拶をする","招待する","紹介する","感謝する"],
+correct:0
+},
+{
+question:"『sembuhkan』の意味は？",
+answers:["治す","傷つける","隠す","忘れる"],
+correct:0
+},
+
+{
+question:"『memanggil』の意味は？",
+answers:["呼ぶ","押す","運ぶ","隠す"],
+correct:0
+},
+{
+question:"『diracuni』の意味は？",
+answers:["毒を盛られる","助けられる","治療される","守られる"],
+correct:0
+},
+{
+question:"『berkemah』の意味は？",
+answers:["キャンプする","泳ぐ","登る","走る"],
+correct:0
+},
+{
+question:"『menyadari』の意味は？",
+answers:["気づく","忘れる","考える","探す"],
+correct:0
+},
+{
+question:"『mengukur』の意味は？",
+answers:["測る","切る","数える","描く"],
+correct:0
+},
+{
+question:"『menggoda』の意味は？",
+answers:["誘惑する・からかう","助ける","教える","叱る"],
+correct:0
+},
+{
+question:"『tergoda』の意味は？",
+answers:["誘惑される","驚かされる","守られる","愛される"],
+correct:0
+},
+
+{
+question:"『panggil』の意味は？",
+answers:["呼ぶ","待つ","探す","送る"],
+correct:0
+},
+{
+question:"『menyesal』の意味は？",
+answers:["後悔する","感謝する","期待する","我慢する"],
+correct:0
+},
+{
+question:"『diusir』の意味は？",
+answers:["追い出される","招待される","助けられる","雇われる"],
+correct:0
+},
+{
+question:"『dibandingkan』の意味は？",
+answers:["比較される","説明される","忘れられる","与えられる"],
+correct:0
+},
+{
+question:"『berpendapat』の意味は？",
+answers:["意見を述べる","質問する","説明する","反対する"],
+correct:0
+},
+{
+question:"『berkeliaran』の意味は？",
+answers:["うろつく","走る","隠れる","登る"],
+correct:0
+},
+{
+question:"『duga』の意味は？",
+answers:["推測する","確認する","証明する","記録する"],
+correct:0
+},
+{
+question:"『mulai』の意味は？",
+answers:["始める・始まる","終わる","止める","続ける"],
+correct:0
+},
+{
+question:"『pingsan』の意味は？",
+answers:["失神する","眠る","起きる","笑う"],
+correct:0
+},
+{
+question:"『mengatur』の意味は？",
+answers:["整理する・管理する","壊す","隠す","借りる"],
+correct:0
+},
+{
+question:"『mencicipi』の意味は？",
+answers:["味見する","料理する","飲み込む","捨てる"],
+correct:0
+},
+
+{
+question:"『mengeras』の意味は？",
+answers:["硬くなる・固くなる","柔らかくなる","溶ける","壊れる"],
+correct:0
+}
+,
+
+{
+question:"『dipecat』の意味は？",
+answers:["解雇される","雇われる","昇進する","採用する"],
+correct:0
+},
+
+{
+question:"『alami』の意味は？",
+answers:["経験する","忘れる","拒否する","説明する"],
+correct:0
+},
+
+{
+question:"『bedah』の意味は？",
+answers:["手術する","建設する","移動する","修理する"],
+correct:0
+},
+
+{
+question:"『paham』の意味は？",
+answers:["理解する","探す","数える","描く"],
+correct:0
+},
+
+{
+question:"『lahir』の意味は？",
+answers:["生まれる","結婚する","成長する","働く"],
+correct:0
+},
+
+{
+question:"『dicabut』の意味は？",
+answers:["引き抜かれる・撤回される","追加される","修理される","建てられる"],
+correct:0
+},
+
+
+];
+
+const adjective=[
+{
+question:"『terbebani』の意味は？",
+answers:["負担を感じている","自由な","元気な","安全な"],
+correct:0
+},
+{
+question:"『menjijikkan』の意味は？",
+answers:["気持ち悪い・不快な","美しい","楽しい","面白い"],
+correct:0
+},
+{
+question:"『elit』の意味は？",
+answers:["エリートの","普通の","貧しい","弱い"],
+correct:0
+},
+{
+question:"『bosan』の意味は？",
+answers:["退屈した","興奮した","驚いた","緊張した"],
+correct:0
+},
+{
+question:"『rata』の意味は？",
+answers:["平らな・均一な","高い","狭い","硬い"],
+correct:0
+},
+{
+question:"『drastis』の意味は？",
+answers:["劇的な・急激な","穏やかな","静かな","普通の"],
+correct:0
+},
+{
+question:"『sekarat』の意味は？",
+answers:["瀕死の","健康な","元気な","若い"],
+correct:0
+},
+{
+question:"『wajar』の意味は？",
+answers:["当然の・自然な","異常な","危険な","複雑な"],
+correct:0
+},
+{
+question:"『mewah』の意味は？",
+answers:["豪華な","質素な","安い","古い"],
+correct:0
+},
+{
+question:"『menyebalkan』の意味は？",
+answers:["うっとうしい・腹立たしい","面白い","楽しい","静かな"],
+correct:0
+},
+{
+question:"『gelap』の意味は？",
+answers:["暗い","明るい","広い","狭い"],
+correct:0
+},
+{
+question:"『marah』の意味は？",
+answers:["怒った","悲しい","楽しい","驚いた"],
+correct:0
+},
+{
+question:"『tampan』の意味は？",
+answers:["ハンサムな","背が高い","強い","親切な"],
+correct:0
+},
+{
+question:"『hamil』の意味は？",
+answers:["妊娠している","病気の","健康な","疲れた"],
+correct:0
+},
+{
+question:"『awas』の意味は？",
+answers:["用心した・警戒した","退屈した","安心した","悲しい"],
+correct:0
+},
+{
+question:"『privat』の意味は？",
+answers:["私的な・個人の","公的な","大きい","重要な"],
+correct:0
+},
+{
+question:"『cerdas』の意味は？",
+answers:["賢い","遅い","弱い","静かな"],
+correct:0
+},
+{
+question:"『lengah』の意味は？",
+answers:["不注意な・油断した","慎重な","正直な","勇敢な"],
+correct:0
+},
+{
+question:"『bingung』の意味は？",
+answers:["混乱した・困惑した","安心した","怒った","退屈した"],
+correct:0
+},
+{
+question:"『gembira』の意味は？",
+answers:["うれしい・楽しい","悲しい","心配な","眠い"],
+correct:0
+},
+{
+question:"『telat』の意味は？",
+answers:["遅れた","速い","静かな","危険な"],
+correct:0
+},
+
+{
+question:"『bertele-tele』の意味は？",
+answers:["くどい・回りくどい","簡潔な","面白い","有名な"],
+correct:0
+},
+
+{
+question:"『cakap』の意味は？",
+answers:["有能な・話し上手な","怠惰な","不親切な","弱い"],
+correct:0
+},
+
+{
+question:"『mulia』の意味は？",
+answers:["高貴な","貧しい","小さい","古い"],
+correct:0
+},
+
+{
+question:"『deras』の意味は？",
+answers:["激しい・勢いの強い","静かな","遅い","柔らかい"],
+correct:0
+},
+
+
+];
+
+const expressions=[
+{
+question:"『segera』の意味は？",
+answers:["すぐに・ただちに","ゆっくりと","昨日","たぶん"],
+correct:0
+},
+{
+question:"『permisi』の意味は？",
+answers:["すみません・失礼します","ありがとう","おはよう","さようなら"],
+correct:0
+},
+{
+question:"『lepuh』の意味は？",
+answers:["水ぶくれ","頭痛","発熱","咳"],
+correct:0
+},
+{
+question:"『empat』の意味は？",
+answers:["4","3","5","6"],
+correct:0
+},
+{
+question:"『utara』の意味は？",
+answers:["北","南","東","西"],
+correct:0
+},
+{
+question:"『timur』の意味は？",
+answers:["東","西","北","南"],
+correct:0
+},
+{
+question:"『semoga』の意味は？",
+answers:["〜でありますように","たぶん","しかし","だから"],
+correct:0
+},
+{
+question:"『lobok』の意味は？",
+answers:["穴・くぼみ","山","川","橋"],
+correct:0
+},
+{
+question:"『astaga』の意味は？",
+answers:["なんてことだ！","おはよう","ありがとう","さようなら"],
+correct:0
+},
+{
+question:"『semenit』の意味は？",
+answers:["1分間","1時間","1日","1週間"],
+correct:0
+},
+{
+question:"『dilarang』の意味は？",
+answers:["禁止されている","許可されている","必要である","推奨される"],
+correct:0
+},
+];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+shuffleArray(quizData);
+
+function loadQuestion(){
+
+    const q =
+    quizData[currentQuestion];
+
+    // 問題文
+    document.getElementById(
+        "question"
+    ).textContent =
+    q.question;
+
+    // 音声
+    speakWord(q.question);
+
+    document.getElementById(
+        "questionNumber"
+    ).textContent =
+    `Question ${
+        currentQuestion + 1
+    } / ${quizData.length}`;
+
+    const answersEl =
+    document.getElementById(
+        "answers"
+    );
+
+    answersEl.innerHTML = "";
+
+    document.getElementById(
+        "result"
+    ).textContent = "";
+
+    document.getElementById(
+        "nextBtn"
+    ).style.display = "none";
+
+    // ----------------------
+    // 選択肢シャッフル
+    // ----------------------
+
+    const shuffledAnswers =
+    q.answers.map(
+        (answer,index)=>({
+            text: answer,
+            isCorrect:
+            index === q.correct
+        })
+    );
+
+    shuffleArray(
+        shuffledAnswers
+    );
+
+    shuffledAnswers.forEach(
+        (answerObj)=>{
+
+        const button =
+        document.createElement(
+            "button"
+        );
+
+        button.classList.add(
+            "answer-btn"
+        );
+
+        button.textContent =
+        answerObj.text;
+
+        button.addEventListener(
+            "click",
+            ()=>{
+
+            const buttons =
+            document.querySelectorAll(
+                ".answer-btn"
+            );
+
+            buttons.forEach(
+                btn =>
+                btn.disabled = true
+            );
+
+            if(answerObj.isCorrect){
+
+                button.classList.add(
+                    "correct"
+                );
+
+                document.getElementById(
+                    "result"
+                ).textContent =
+                "⭕ 正解！";
+
+                score++;
+
+                document.getElementById(
+                    "score"
+                ).textContent =
+                score;
+
+            }else{
+
+                button.classList.add(
+                    "wrong"
+                );
+
+                // 正解ボタン表示
+                buttons.forEach(
+                    (btn,index)=>{
+
+                    if(
+                        shuffledAnswers[
+                            index
+                        ].isCorrect
+                    ){
+                        btn.classList.add(
+                            "correct"
+                        );
+                    }
+                });
+
+                document.getElementById(
+                    "result"
+                ).textContent =
+                "❌ 不正解";
+
+                wrongQuestions.push(
+                    q
+                );
+            }
+
+            document.getElementById(
+                "nextBtn"
+            ).style.display =
+            "block";
+        });
+
+        answersEl.appendChild(
+            button
+        );
+    });
+
+    // speakボタン
+    document.getElementById(
+        "speakBtn"
+    ).onclick = ()=>{
+
+        speakWord(
+            q.question
+        );
+    };
+}
+
+
+document.getElementById("nextBtn")
+.addEventListener("click",()=>{
+
+    currentQuestion++;
+
+    if(currentQuestion < quizData.length){
+
+        loadQuestion();
+
+    }else{
+
+        document.querySelector(
+            ".quiz-container"
+        ).innerHTML = ` <h1>🎉 Quiz Finished!</h1>
+
+<p style="text-align:center;
+margin-top:20px;
+font-size:1.3rem;">
+${quizData.length}問中
+<strong>${score}</strong>問正解！
+</p>
+
+<p style="text-align:center;
+margin-top:10px;">
+間違えた問題：${wrongQuestions.length}問
+</p>
+
+${
+wrongQuestions.length > 0
+? `
+<button
+class="next-btn"
+onclick="reviewWrongQuestions()"
+style="display:block;margin-top:15px;">
+❌ 間違えた問題を復習
+</button>
+`
+: ""
+}
+
+<button
+class="next-btn restart-btn"
+onclick="location.reload()"
+style="display:block;margin-top:15px;">
+もう一回挑戦
+</button>
+`;
+    }
+});
+
+function shuffleArray(array){
+    for(let i=array.length-1;i>0;i--){
+        const j =
+        Math.floor(Math.random()*(i+1));
+
+        [array[i],array[j]] =
+        [array[j],array[i]];
+    }
+}
+
+document.getElementById("question")
+.textContent =
+"カテゴリーを選んでください！";
+function reviewWrongQuestions(){
+
+    quizData = [...wrongQuestions];
+
+    shuffleArray(quizData);
+
+    currentQuestion = 0;
+    score = 0;
+    wrongQuestions = [];
+
+    document.querySelector(
+        ".quiz-container"
+    ).innerHTML = `
+    <h1>🌍 Language Quiz</h1>
+
+    <div class="score">
+        Score:
+        <span id="score">0</span>
+    </div>
+
+    <div class="question-number"
+    id="questionNumber"></div>
+
+    <div class="question"
+    id="question"></div>
+
+    <div class="answers"
+    id="answers"></div>
+
+    <div id="result"></div>
+
+    <button
+    class="next-btn"
+    id="nextBtn">
+    次の問題 →
+    </button>
+    `;
+
+    document.getElementById(
+        "nextBtn"
+    ).addEventListener("click",()=>{
+
+        currentQuestion++;
+
+        if(currentQuestion < quizData.length){
+
+            loadQuestion();
+
+        }else{
+
+            alert("復習終了！");
+            location.reload();
+        }
+    });
+
+    loadQuestion();
+}
+/* --------------------
+   音声読み上げ
+-------------------- */
+
+function speakWord(word){
+
+    const utterance =
+    new SpeechSynthesisUtterance(
+        word
+    );
+
+    // 言語設定
+    utterance.lang = "id-ID";
+    // 英語なら "en-US"
+    // フランス語なら "fr-FR"
+
+    utterance.rate = 0.9;
+    utterance.pitch = 1;
+
+    speechSynthesis.cancel();
+    speechSynthesis.speak(
+        utterance
+    );
+}
+</script>
+
+</body>
+</html>
