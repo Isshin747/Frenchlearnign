@@ -1,0 +1,2090 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7032470395981540"
+     crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>尼語単語中級</title>
+<link rel="stylesheet" href="gaga.css">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#eef4ff,#dfe9ff);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.quiz-container{
+    background:white;
+    width:100%;
+    max-width:700px;
+    border-radius:25px;
+    padding:40px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.12);
+}
+
+h1{
+    text-align:center;
+    color:#2c3e50;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#666;
+    margin-bottom:30px;
+}
+
+.score{
+    text-align:right;
+    font-weight:bold;
+    margin-bottom:20px;
+    color:#444;
+}
+
+.question-number{
+    color:#4b6fff;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.question{
+    font-size:1.5rem;
+    font-weight:bold;
+    margin-bottom:30px;
+    color:#222;
+}
+
+.answers{
+    display:grid;
+    gap:15px;
+}
+
+.answer-btn{
+    border:none;
+    background:#f3f6ff;
+    padding:18px;
+    border-radius:15px;
+    cursor:pointer;
+    font-size:1rem;
+    transition:0.2s;
+    text-align:left;
+}
+
+.answer-btn:hover{
+    background:#dfe8ff;
+    transform:translateY(-2px);
+}
+
+.correct{
+    background:#8ee4af !important;
+    color:#14532d;
+}
+
+.wrong{
+    background:#ffb3b3 !important;
+    color:#7f1d1d;
+}
+
+#result{
+    text-align:center;
+    margin-top:20px;
+    font-size:1.2rem;
+    font-weight:bold;
+}
+
+.next-btn{
+    display:none;
+    width:100%;
+    margin-top:25px;
+    border:none;
+    background:#4b6fff;
+    color:white;
+    padding:18px;
+    border-radius:15px;
+    cursor:pointer;
+    font-size:1rem;
+    transition:0.2s;
+}
+
+.next-btn:hover{
+    background:#3457d5;
+}
+
+.restart-btn{
+    background:#16a34a;
+}
+
+@media(max-width:600px){
+    .quiz-container{
+        padding:25px;
+    }
+
+    .question{
+        font-size:1.2rem;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+
+    <h1> Language Quiz</h1>
+    <p class="subtitle">
+        インドネシア語中級単語
+    </p>
+
+    <div class="category-select">
+
+    <button onclick="selectCategory('noun')">
+         名詞
+    </button>
+
+    <button onclick="selectCategory('verb')">
+         動詞
+    </button>
+
+    <button onclick="selectCategory('adjective')">
+         形容詞
+    </button>
+
+    <button onclick="selectCategory('expression')">
+         表現
+    </button>
+
+    <button onclick="selectCategory('all')">
+         全部
+    </button>
+    <button onclick="location.href='../index.html'">
+        トップページへ
+</button>
+
+</div>
+
+    <div class="score">
+        Score: <span id="score">0</span>
+    </div>
+
+    <div class="question-area">
+    <h2 id="question"></h2>
+
+    <button id="speakBtn">
+        🔊 発音を聞く
+    </button>
+</div>
+
+    <div class="question-number" id="questionNumber">
+        Question 1 / 
+    </div>
+
+    <div class="question" id="question">
+        問題が表示されます
+    </div>
+
+    <div class="answers" id="answers"></div>
+
+    <div id="result"></div>
+
+    <button class="next-btn" id="nextBtn">
+        次の問題 →
+    </button>
+
+</div>
+
+<script>
+
+let quizData = [];
+let currentQuestion = 0;
+let score = 0;
+let wrongQuestions = [];
+function selectCategory(category){
+
+   
+    if(category === "noun"){
+        quizData = [...nouns];
+    }
+
+    else if(category === "verb"){
+        quizData = [...verbs];
+    }
+
+    else if(category === "adjective"){
+        quizData = [...adjective];
+    }
+
+    else if(category === "expression"){
+        quizData = [...expressions];
+    }
+
+    else{
+        quizData = [
+            ...nouns,
+            ...verbs,
+            ...adjective,
+            ...expressions
+        ];
+    }
+    shuffleArray(quizData);
+    
+    currentQuestion = 0;
+    score = 0;
+    wrongQuestions = [];
+
+    document.getElementById("score")
+    .textContent = score;
+
+    // ←超重要
+    loadQuestion();
+}
+
+const nouns=[
+{
+question:"『anjing』の意味は？",
+answers:["猫","犬","鳥","魚"],
+correct:1
+},
+{
+question:"『kucing』の意味は？",
+answers:["犬","猫","馬","牛"],
+correct:1
+},
+{
+question:"『burung』の意味は？",
+answers:["魚","鳥","羊","犬"],
+correct:1
+},
+{
+question:"『ikan』の意味は？",
+answers:["魚","猫","鳥","猿"],
+correct:0
+},
+{
+question:"『kuda』の意味は？",
+answers:["牛","馬","羊","犬"],
+correct:1
+},
+{
+question:"『sapi』の意味は？",
+answers:["羊","豚","牛","馬"],
+correct:2
+},
+{
+question:"『kerbau』の意味は？",
+answers:["水牛","牛","鹿","ヤギ"],
+correct:0
+},
+{
+question:"『babi』の意味は？",
+answers:["羊","豚","牛","犬"],
+correct:1
+},
+{
+question:"『kambing』の意味は？",
+answers:["ヤギ","羊","牛","馬"],
+correct:0
+},
+{
+question:"『domba』の意味は？",
+answers:["ヤギ","羊","犬","豚"],
+correct:1
+},
+{
+question:"『ayam』の意味は？",
+answers:["鶏","アヒル","ガチョウ","七面鳥"],
+correct:0
+},
+{
+question:"『bebek』の意味は？",
+answers:["ガチョウ","アヒル","鶏","ハト"],
+correct:1
+},
+{
+question:"『angsa』の意味は？",
+answers:["ハト","アヒル","ガチョウ","白鳥"],
+correct:2
+},
+{
+question:"『kalkun』の意味は？",
+answers:["七面鳥","アヒル","ガチョウ","鶏"],
+correct:0
+},
+{
+question:"『merpati』の意味は？",
+answers:["カラス","ハト","ワシ","スズメ"],
+correct:1
+},
+{
+question:"『burung beo』の意味は？",
+answers:["フクロウ","オウム","カラス","ワシ"],
+correct:1
+},
+{
+question:"『elang』の意味は？",
+answers:["ワシ","ハト","カラス","フクロウ"],
+correct:0
+},
+{
+question:"『burung hantu』の意味は？",
+answers:["スズメ","フクロウ","ワシ","ハト"],
+correct:1
+},
+{
+question:"『gagak』の意味は？",
+answers:["ハト","カラス","ワシ","オウム"],
+correct:1
+},
+{
+question:"『burung pipit』の意味は？",
+answers:["スズメ","ハト","カラス","フクロウ"],
+correct:0
+},
+{
+question:"『pinguin』の意味は？",
+answers:["アザラシ","ペンギン","イルカ","カモメ"],
+correct:1
+},
+{
+question:"『burung unta』の意味は？",
+answers:["ダチョウ","ペンギン","ワシ","ハト"],
+correct:0
+},
+{
+question:"『kelelawar』の意味は？",
+answers:["リス","コウモリ","ネズミ","モグラ"],
+correct:1
+},
+{
+question:"『tikus』の意味は？",
+answers:["ネズミ","ウサギ","リス","ハムスター"],
+correct:0
+},
+{
+question:"『kelinci』の意味は？",
+answers:["ハムスター","ウサギ","リス","ネズミ"],
+correct:1
+},
+
+{
+question:"『tupai』の意味は？",
+answers:["リス","ウサギ","ネズミ","モグラ"],
+correct:0
+},
+{
+question:"『hamster』の意味は？",
+answers:["モルモット","ハムスター","リス","ネズミ"],
+correct:1
+},
+{
+question:"『marmut』の意味は？",
+answers:["ウサギ","モルモット","ハムスター","リス"],
+correct:1
+},
+{
+question:"『monyet』の意味は？",
+answers:["ゴリラ","猿","チンパンジー","オランウータン"],
+correct:1
+},
+{
+question:"『gorila』の意味は？",
+answers:["ゴリラ","猿","チンパンジー","クマ"],
+correct:0
+},
+{
+question:"『simpanse』の意味は？",
+answers:["ゴリラ","チンパンジー","猿","オランウータン"],
+correct:1
+},
+{
+question:"『orangutan』の意味は？",
+answers:["ゴリラ","オランウータン","チンパンジー","猿"],
+correct:1
+},
+{
+question:"『harimau』の意味は？",
+answers:["ライオン","ヒョウ","虎","チーター"],
+correct:2
+},
+{
+question:"『singa』の意味は？",
+answers:["虎","ライオン","ヒョウ","オオカミ"],
+correct:1
+},
+{
+question:"『macan tutul』の意味は？",
+answers:["チーター","ヒョウ","虎","ライオン"],
+correct:1
+},
+{
+question:"『citah』の意味は？",
+answers:["ヒョウ","チーター","虎","ライオン"],
+correct:1
+},
+{
+question:"『beruang』の意味は？",
+answers:["パンダ","クマ","オオカミ","キツネ"],
+correct:1
+},
+{
+question:"『panda』の意味は？",
+answers:["クマ","パンダ","コアラ","ナマケモノ"],
+correct:1
+},
+{
+question:"『gajah』の意味は？",
+answers:["サイ","象","カバ","キリン"],
+correct:1
+},
+{
+question:"『jerapah』の意味は？",
+answers:["シマウマ","キリン","ラクダ","鹿"],
+correct:1
+},
+{
+question:"『zebra』の意味は？",
+answers:["鹿","馬","シマウマ","ロバ"],
+correct:2
+},
+{
+question:"『badak』の意味は？",
+answers:["カバ","サイ","象","ラクダ"],
+correct:1
+},
+{
+question:"『kuda nil』の意味は？",
+answers:["象","サイ","カバ","ラクダ"],
+correct:2
+},
+{
+question:"『unta』の意味は？",
+answers:["ラクダ","馬","ロバ","鹿"],
+correct:0
+},
+{
+question:"『serigala』の意味は？",
+answers:["オオカミ","キツネ","犬","ハイエナ"],
+correct:0
+},
+{
+question:"『rubah』の意味は？",
+answers:["タヌキ","キツネ","オオカミ","犬"],
+correct:1
+},
+{
+question:"『tanuki』の意味は？",
+answers:["キツネ","タヌキ","アライグマ","イタチ"],
+correct:1
+},
+{
+question:"『babi hutan』の意味は？",
+answers:["豚","イノシシ","水牛","ヤギ"],
+correct:1
+},
+{
+question:"『rusa』の意味は？",
+answers:["ヘラジカ","鹿","トナカイ","馬"],
+correct:1
+},
+{
+question:"『moose』の意味は？",
+answers:["トナカイ","ヘラジカ","鹿","水牛"],
+correct:1
+},
+
+{
+question:"『rusa kutub』の意味は？",
+answers:["ヘラジカ","トナカイ","鹿","ラクダ"],
+correct:1
+},
+{
+question:"『kanguru』の意味は？",
+answers:["コアラ","カンガルー","ウォンバット","ナマケモノ"],
+correct:1
+},
+{
+question:"『koala』の意味は？",
+answers:["コアラ","カンガルー","パンダ","ウォンバット"],
+correct:0
+},
+{
+question:"『wombat』の意味は？",
+answers:["ウォンバット","コアラ","カンガルー","ナマケモノ"],
+correct:0
+},
+{
+question:"『kungkang』の意味は？",
+answers:["アルマジロ","ナマケモノ","ウォンバット","コアラ"],
+correct:1
+},
+{
+question:"『armadilo』の意味は？",
+answers:["アルマジロ","ヤマアラシ","ハリネズミ","アリクイ"],
+correct:0
+},
+{
+question:"『trenggiling semut』の意味は？",
+answers:["アリクイ","アルマジロ","センザンコウ","ハリネズミ"],
+correct:0
+},
+{
+question:"『landak mini』の意味は？",
+answers:["ヤマアラシ","ハリネズミ","モグラ","リス"],
+correct:1
+},
+{
+question:"『landak』の意味は？",
+answers:["ハリネズミ","ヤマアラシ","リス","モルモット"],
+correct:1
+},
+{
+question:"『berang-berang』の意味は？",
+answers:["ビーバー","カワウソ","アザラシ","ラッコ"],
+correct:1
+},
+{
+question:"『anjing laut』の意味は？",
+answers:["アシカ","アザラシ","セイウチ","イルカ"],
+correct:1
+},
+{
+question:"『singa laut』の意味は？",
+answers:["アザラシ","アシカ","セイウチ","ラッコ"],
+correct:1
+},
+{
+question:"『walrus』の意味は？",
+answers:["セイウチ","アザラシ","アシカ","イルカ"],
+correct:0
+},
+{
+question:"『lumba-lumba』の意味は？",
+answers:["クジラ","イルカ","サメ","シャチ"],
+correct:1
+},
+{
+question:"『paus』の意味は？",
+answers:["シャチ","クジラ","イルカ","サメ"],
+correct:1
+},
+{
+question:"『hiu』の意味は？",
+answers:["サメ","エイ","クジラ","イルカ"],
+correct:0
+},
+{
+question:"『pari』の意味は？",
+answers:["サメ","エイ","タコ","イカ"],
+correct:1
+},
+{
+question:"『gurita』の意味は？",
+answers:["イカ","タコ","クラゲ","エビ"],
+correct:1
+},
+{
+question:"『cumi-cumi』の意味は？",
+answers:["タコ","イカ","クラゲ","カニ"],
+correct:1
+},
+{
+question:"『ubur-ubur』の意味は？",
+answers:["クラゲ","ヒトデ","カニ","エビ"],
+correct:0
+},
+{
+question:"『bintang laut』の意味は？",
+answers:["クラゲ","ヒトデ","貝","タコ"],
+correct:1
+},
+{
+question:"『kepiting』の意味は？",
+answers:["ロブスター","カニ","エビ","貝"],
+correct:1
+},
+{
+question:"『udang』の意味は？",
+answers:["カニ","エビ","ロブスター","貝"],
+correct:1
+},
+{
+question:"『lobster』の意味は？",
+answers:["エビ","ロブスター","カニ","貝"],
+correct:1
+},
+{
+question:"『kerang』の意味は？",
+answers:["カニ","エビ","貝","タコ"],
+correct:2
+},
+
+{
+question:"『siput』の意味は？",
+answers:["カタツムリ","貝","ミミズ","ヒル"],
+correct:0
+},
+{
+question:"『ular』の意味は？",
+answers:["ワニ","ヘビ","トカゲ","カメ"],
+correct:1
+},
+{
+question:"『ular kobra』の意味は？",
+answers:["ニシキヘビ","コブラ","マムシ","ウミヘビ"],
+correct:1
+},
+{
+question:"『buaya』の意味は？",
+answers:["カメ","ワニ","トカゲ","ヘビ"],
+correct:1
+},
+{
+question:"『kadal』の意味は？",
+answers:["トカゲ","ヤモリ","カメ","ヘビ"],
+correct:0
+},
+{
+question:"『cicak』の意味は？",
+answers:["トカゲ","ヤモリ","イモリ","カメレオン"],
+correct:1
+},
+{
+question:"『kura-kura』の意味は？",
+answers:["ウミガメ","カメ","カエル","ワニ"],
+correct:1
+},
+{
+question:"『penyu』の意味は？",
+answers:["カメ","ウミガメ","ワニ","トカゲ"],
+correct:1
+},
+{
+question:"『katak』の意味は？",
+answers:["ヒキガエル","カエル","イモリ","サンショウウオ"],
+correct:1
+},
+{
+question:"『kodok』の意味は？",
+answers:["カエル","ヒキガエル","イモリ","ヤモリ"],
+correct:1
+},
+{
+question:"『salamander』の意味は？",
+answers:["イモリ","サンショウウオ","カエル","ヤモリ"],
+correct:1
+},
+{
+question:"『serangga』の意味は？",
+answers:["昆虫","クモ","ムカデ","甲殻類"],
+correct:0
+},
+{
+question:"『semut』の意味は？",
+answers:["ハチ","アリ","シロアリ","クモ"],
+correct:1
+},
+{
+question:"『lebah』の意味は？",
+answers:["アリ","ハチ","ハエ","蚊"],
+correct:1
+},
+{
+question:"『kupu-kupu』の意味は？",
+answers:["蛾","蝶","トンボ","ハチ"],
+correct:1
+},
+{
+question:"『ngengat』の意味は？",
+answers:["蝶","蛾","ハエ","蚊"],
+correct:1
+},
+{
+question:"『capung』の意味は？",
+answers:["バッタ","トンボ","カマキリ","ハチ"],
+correct:1
+},
+{
+question:"『nyamuk』の意味は？",
+answers:["ハエ","蚊","アリ","ハチ"],
+correct:1
+},
+{
+question:"『lalat』の意味は？",
+answers:["蚊","ハエ","ゴキブリ","ガ"],
+correct:1
+},
+{
+question:"『kecoa』の意味は？",
+answers:["ゴキブリ","ハエ","バッタ","クモ"],
+correct:0
+},
+{
+question:"『belalang』の意味は？",
+answers:["コオロギ","バッタ","カマキリ","トンボ"],
+correct:1
+},
+{
+question:"『jangkrik』の意味は？",
+answers:["コオロギ","バッタ","セミ","ハチ"],
+correct:0
+},
+{
+question:"『belalang sembah』の意味は？",
+answers:["トンボ","カマキリ","バッタ","クモ"],
+correct:1
+},
+{
+question:"『laba-laba』の意味は？",
+answers:["サソリ","クモ","ムカデ","アリ"],
+correct:1
+},
+{
+question:"『kalajengking』の意味は？",
+answers:["クモ","サソリ","ムカデ","ヒル"],
+correct:1
+},
+
+];
+
+const verbs=[
+{
+question:"『nasi』の意味は？",
+answers:["ご飯","パン","麺","水"],
+correct:0
+},
+{
+question:"『roti』の意味は？",
+answers:["ケーキ","パン","ご飯","肉"],
+correct:1
+},
+{
+question:"『mi』の意味は？",
+answers:["麺","米","スープ","パン"],
+correct:0
+},
+{
+question:"『daging』の意味は？",
+answers:["魚","野菜","肉","卵"],
+correct:2
+},
+{
+question:"『ayam』の意味は？",
+answers:["牛肉","鶏肉","豚肉","羊肉"],
+correct:1
+},
+{
+question:"『ikan』の意味は？",
+answers:["魚","肉","エビ","カニ"],
+correct:0
+},
+{
+question:"『telur』の意味は？",
+answers:["牛乳","卵","チーズ","豆腐"],
+correct:1
+},
+{
+question:"『susu』の意味は？",
+answers:["牛乳","水","ジュース","お茶"],
+correct:0
+},
+{
+question:"『keju』の意味は？",
+answers:["ヨーグルト","バター","チーズ","牛乳"],
+correct:2
+},
+{
+question:"『mentega』の意味は？",
+answers:["マーガリン","バター","油","塩"],
+correct:1
+},
+{
+question:"『garam』の意味は？",
+answers:["砂糖","塩","酢","こしょう"],
+correct:1
+},
+{
+question:"『gula』の意味は？",
+answers:["塩","砂糖","はちみつ","シロップ"],
+correct:1
+},
+{
+question:"『lada』の意味は？",
+answers:["唐辛子","こしょう","塩","しょうが"],
+correct:1
+},
+{
+question:"『cabai』の意味は？",
+answers:["トマト","唐辛子","玉ねぎ","にんにく"],
+correct:1
+},
+{
+question:"『bawang』の意味は？",
+answers:["玉ねぎ","じゃがいも","キャベツ","ねぎ"],
+correct:0
+},
+{
+question:"『bawang putih』の意味は？",
+answers:["しょうが","にんにく","玉ねぎ","ねぎ"],
+correct:1
+},
+{
+question:"『tomat』の意味は？",
+answers:["きゅうり","トマト","なす","ピーマン"],
+correct:1
+},
+{
+question:"『wortel』の意味は？",
+answers:["大根","にんじん","じゃがいも","かぼちゃ"],
+correct:1
+},
+{
+question:"『kentang』の意味は？",
+answers:["さつまいも","じゃがいも","にんじん","里芋"],
+correct:1
+},
+{
+question:"『timun』の意味は？",
+answers:["きゅうり","トマト","キャベツ","レタス"],
+correct:0
+},
+{
+question:"『kol』の意味は？",
+answers:["レタス","キャベツ","白菜","ほうれん草"],
+correct:1
+},
+{
+question:"『bayam』の意味は？",
+answers:["ほうれん草","小松菜","レタス","キャベツ"],
+correct:0
+},
+{
+question:"『selada』の意味は？",
+answers:["レタス","キャベツ","白菜","きゅうり"],
+correct:0
+},
+{
+question:"『jamur』の意味は？",
+answers:["たけのこ","きのこ","豆","海藻"],
+correct:1
+},
+{
+question:"『kacang』の意味は？",
+answers:["豆","米","麦","ごま"],
+correct:0
+},
+
+{
+question:"『apel』の意味は？",
+answers:["りんご","オレンジ","ぶどう","梨"],
+correct:0
+},
+{
+question:"『pisang』の意味は？",
+answers:["バナナ","マンゴー","パイナップル","メロン"],
+correct:0
+},
+{
+question:"『jeruk』の意味は？",
+answers:["レモン","みかん・オレンジ","ライム","ぶどう"],
+correct:1
+},
+{
+question:"『mangga』の意味は？",
+answers:["パパイヤ","マンゴー","桃","柿"],
+correct:1
+},
+{
+question:"『anggur』の意味は？",
+answers:["さくらんぼ","ぶどう","いちご","ブルーベリー"],
+correct:1
+},
+{
+question:"『semangka』の意味は？",
+answers:["メロン","スイカ","パイナップル","ココナッツ"],
+correct:1
+},
+{
+question:"『melon』の意味は？",
+answers:["スイカ","メロン","梨","桃"],
+correct:1
+},
+{
+question:"『nanas』の意味は？",
+answers:["マンゴー","パイナップル","ココナッツ","バナナ"],
+correct:1
+},
+{
+question:"『pepaya』の意味は？",
+answers:["パパイヤ","マンゴー","メロン","桃"],
+correct:0
+},
+{
+question:"『kelapa』の意味は？",
+answers:["アボカド","ココナッツ","ライチ","梨"],
+correct:1
+},
+{
+question:"『alpukat』の意味は？",
+answers:["アボカド","キウイ","レモン","梨"],
+correct:0
+},
+{
+question:"『stroberi』の意味は？",
+answers:["ラズベリー","いちご","ぶどう","さくらんぼ"],
+correct:1
+},
+{
+question:"『air』の意味は？",
+answers:["ジュース","水","牛乳","お茶"],
+correct:1
+},
+{
+question:"『teh』の意味は？",
+answers:["コーヒー","お茶","牛乳","水"],
+correct:1
+},
+{
+question:"『kopi』の意味は？",
+answers:["紅茶","コーヒー","ジュース","炭酸水"],
+correct:1
+},
+{
+question:"『jus』の意味は？",
+answers:["ジュース","水","牛乳","コーヒー"],
+correct:0
+},
+{
+question:"『es』の意味は？",
+answers:["氷","水","アイスクリーム","冷茶"],
+correct:0
+},
+{
+question:"『es krim』の意味は？",
+answers:["ヨーグルト","アイスクリーム","プリン","ゼリー"],
+correct:1
+},
+{
+question:"『kue』の意味は？",
+answers:["パン","ケーキ・お菓子","クッキー","パイ"],
+correct:1
+},
+{
+question:"『cokelat』の意味は？",
+answers:["キャラメル","チョコレート","ココア","ケーキ"],
+correct:1
+},
+{
+question:"『nasi goreng』の意味は？",
+answers:["チャーハン","焼きそば","カレー","雑炊"],
+correct:0
+},
+{
+question:"『mi goreng』の意味は？",
+answers:["ラーメン","焼きそば","うどん","パスタ"],
+correct:1
+},
+{
+question:"『sate』の意味は？",
+answers:["焼き鳥・串焼き","ハンバーグ","ステーキ","ソーセージ"],
+correct:0
+},
+{
+question:"『rendang』の意味は？",
+answers:["牛肉のスパイス煮込み","カレー","シチュー","ローストビーフ"],
+correct:0
+},
+{
+question:"『bakso』の意味は？",
+answers:["餃子","肉団子スープ","ラーメン","春巻き"],
+correct:1
+},
+{
+question:"『soto』の意味は？",
+answers:["スープ料理","焼き魚","チャーハン","サラダ"],
+correct:0
+},
+{
+question:"『gado-gado』の意味は？",
+answers:["野菜のピーナッツソース和え","焼きそば","カレー","串焼き"],
+correct:0
+},
+{
+question:"『lontong』の意味は？",
+answers:["もち米のかたまり","パン","うどん","豆腐"],
+correct:0
+},
+{
+question:"『ketupat』の意味は？",
+answers:["ヤシの葉で包んだご飯","焼き飯","おにぎり","もち"],
+correct:0
+},
+{
+question:"『bubur』の意味は？",
+answers:["おかゆ","スープ","雑炊","チャーハン"],
+correct:0
+},
+{
+question:"『kerupuk』の意味は？",
+answers:["えびせんべい","クッキー","チョコレート","パン"],
+correct:0
+},
+{
+question:"『pempek』の意味は？",
+answers:["魚のすり身料理","餃子","春巻き","コロッケ"],
+correct:0
+},
+{
+question:"『martabak』の意味は？",
+answers:["具入りパンケーキ","ドーナツ","クレープ","プリン"],
+correct:0
+},
+{
+question:"『tempe』の意味は？",
+answers:["テンペ（発酵大豆）","豆腐","納豆","枝豆"],
+correct:0
+},
+{
+question:"『tahu』の意味は？",
+answers:["豆腐","納豆","テンペ","チーズ"],
+correct:0
+},
+{
+question:"『kecap』の意味は？",
+answers:["しょうゆ","酢","みそ","ソース"],
+correct:0
+},
+{
+question:"『saus』の意味は？",
+answers:["ソース","しょうゆ","ケチャップ","マヨネーズ"],
+correct:0
+},
+{
+question:"『cuka』の意味は？",
+answers:["酢","塩","砂糖","油"],
+correct:0
+},
+{
+question:"『minyak』の意味は？",
+answers:["油","バター","牛乳","しょうゆ"],
+correct:0
+},
+{
+question:"『madu』の意味は？",
+answers:["はちみつ","ジャム","砂糖","シロップ"],
+correct:0
+},
+{
+question:"『tepung』の意味は？",
+answers:["小麦粉","砂糖","米","塩"],
+correct:0
+},
+{
+question:"『beras』の意味は？",
+answers:["生米","ご飯","麦","もち米"],
+correct:0
+},
+{
+question:"『jagung』の意味は？",
+answers:["とうもろこし","豆","小麦","米"],
+correct:0
+},
+{
+question:"『gandum』の意味は？",
+answers:["小麦","米","大麦","とうもろこし"],
+correct:0
+},
+{
+question:"『kedelai』の意味は？",
+answers:["大豆","小豆","えんどう豆","ピーナッツ"],
+correct:0
+},
+{
+question:"『kacang tanah』の意味は？",
+answers:["ピーナッツ","アーモンド","くるみ","カシューナッツ"],
+correct:0
+},
+{
+question:"『biskuit』の意味は？",
+answers:["ビスケット","ケーキ","パン","チョコレート"],
+correct:0
+},
+{
+question:"『permen』の意味は？",
+answers:["キャンディ","ガム","クッキー","ゼリー"],
+correct:0
+},
+{
+question:"『agar-agar』の意味は？",
+answers:["ゼリー","プリン","ヨーグルト","アイス"],
+correct:0
+},
+{
+question:"『puding』の意味は？",
+answers:["プリン","ゼリー","ケーキ","アイスクリーム"],
+correct:0
+},
+{
+question:"『yoghurt』の意味は？",
+answers:["牛乳","ヨーグルト","チーズ","バター"],
+correct:1
+},
+{
+question:"『sosis』の意味は？",
+answers:["ハム","ベーコン","ソーセージ","肉団子"],
+correct:2
+},
+{
+question:"『ham』の意味は？",
+answers:["ベーコン","ハム","ソーセージ","サラミ"],
+correct:1
+},
+{
+question:"『bakon』の意味は？",
+answers:["ハム","ベーコン","ソーセージ","チーズ"],
+correct:1
+},
+{
+question:"『udang』の意味は？",
+answers:["カニ","エビ","イカ","魚"],
+correct:1
+},
+{
+question:"『kepiting』の意味は？",
+answers:["ロブスター","エビ","カニ","貝"],
+correct:2
+},
+{
+question:"『cumi-cumi』の意味は？",
+answers:["タコ","イカ","エビ","魚"],
+correct:1
+},
+{
+question:"『gurita』の意味は？",
+answers:["タコ","イカ","クラゲ","貝"],
+correct:0
+},
+{
+question:"『kerang』の意味は？",
+answers:["貝","エビ","カニ","イカ"],
+correct:0
+},
+{
+question:"『salmon』の意味は？",
+answers:["マグロ","サケ","サバ","タイ"],
+correct:1
+},
+{
+question:"『tuna』の意味は？",
+answers:["マグロ","サケ","カツオ","サバ"],
+correct:0
+},
+{
+question:"『sarden』の意味は？",
+answers:["イワシ","サバ","マグロ","アジ"],
+correct:0
+},
+{
+question:"『mie instan』の意味は？",
+answers:["焼きそば","インスタント麺","パスタ","うどん"],
+correct:1
+},
+{
+question:"『spageti』の意味は？",
+answers:["ラーメン","スパゲッティ","うどん","そば"],
+correct:1
+},
+{
+question:"『pizza』の意味は？",
+answers:["ハンバーガー","ピザ","サンドイッチ","ホットドッグ"],
+correct:1
+},
+{
+question:"『hamburger』の意味は？",
+answers:["サンドイッチ","ホットドッグ","ハンバーガー","ピザ"],
+correct:2
+},
+{
+question:"『sandwich』の意味は？",
+answers:["ハンバーガー","サンドイッチ","トースト","ピザ"],
+correct:1
+},
+{
+question:"『donat』の意味は？",
+answers:["ドーナツ","ケーキ","クッキー","パン"],
+correct:0
+},
+{
+question:"『mi rebus』の意味は？",
+answers:["焼きそば","汁麺","チャーハン","パスタ"],
+correct:1
+},
+{
+question:"『es teh』の意味は？",
+answers:["アイスコーヒー","アイスティー","ジュース","炭酸水"],
+correct:1
+},
+{
+question:"『es kopi』の意味は？",
+answers:["アイスティー","アイスコーヒー","ミルク","ココア"],
+correct:1
+},
+{
+question:"『teh manis』の意味は？",
+answers:["甘いお茶","苦いお茶","緑茶","紅茶"],
+correct:0
+},
+{
+question:"『air mineral』の意味は？",
+answers:["炭酸水","ミネラルウォーター","牛乳","ジュース"],
+correct:1
+},
+{
+question:"『sirup』の意味は？",
+answers:["シロップ","はちみつ","砂糖","ジュース"],
+correct:0
+},
+{
+question:"『es jeruk』の意味は？",
+answers:["レモンティー","オレンジジュース","リンゴジュース","アイスティー"],
+correct:1
+},
+
+];
+
+const adjective=[
+{
+question:"『orang』の意味は？",
+answers:["人","子ども","先生","友達"],
+correct:0
+},
+{
+question:"『anak』の意味は？",
+answers:["親","子ども","赤ちゃん","兄"],
+correct:1
+},
+{
+question:"『bayi』の意味は？",
+answers:["赤ちゃん","子ども","学生","大人"],
+correct:0
+},
+{
+question:"『pria』の意味は？",
+answers:["女性","男性","少年","夫"],
+correct:1
+},
+{
+question:"『wanita』の意味は？",
+answers:["女性","男性","少女","母"],
+correct:0
+},
+{
+question:"『laki-laki』の意味は？",
+answers:["女性","男性","子ども","赤ちゃん"],
+correct:1
+},
+{
+question:"『perempuan』の意味は？",
+answers:["少女","女性","母","姉"],
+correct:1
+},
+{
+question:"『teman』の意味は？",
+answers:["友達","家族","先生","隣人"],
+correct:0
+},
+{
+question:"『keluarga』の意味は？",
+answers:["親戚","家族","夫婦","兄弟"],
+correct:1
+},
+{
+question:"『ayah』の意味は？",
+answers:["祖父","父","叔父","兄"],
+correct:1
+},
+{
+question:"『ibu』の意味は？",
+answers:["母","祖母","叔母","姉"],
+correct:0
+},
+{
+question:"『kakak』の意味は？",
+answers:["弟・妹","兄・姉","父","友達"],
+correct:1
+},
+{
+question:"『adik』の意味は？",
+answers:["兄・姉","弟・妹","子ども","孫"],
+correct:1
+},
+{
+question:"『kakek』の意味は？",
+answers:["祖母","祖父","父","叔父"],
+correct:1
+},
+{
+question:"『nenek』の意味は？",
+answers:["祖母","母","叔母","姉"],
+correct:0
+},
+{
+question:"『guru』の意味は？",
+answers:["学生","先生","医者","社長"],
+correct:1
+},
+{
+question:"『murid』の意味は？",
+answers:["先生","生徒","学生","研究者"],
+correct:1
+},
+{
+question:"『mahasiswa』の意味は？",
+answers:["高校生","大学生","先生","会社員"],
+correct:1
+},
+{
+question:"『dokter』の意味は？",
+answers:["看護師","医者","薬剤師","歯医者"],
+correct:1
+},
+{
+question:"『perawat』の意味は？",
+answers:["医者","看護師","教師","警察官"],
+correct:1
+},
+{
+question:"『apoteker』の意味は？",
+answers:["歯医者","薬剤師","医者","看護師"],
+correct:1
+},
+{
+question:"『polisi』の意味は？",
+answers:["消防士","警察官","兵士","警備員"],
+correct:1
+},
+{
+question:"『tentara』の意味は？",
+answers:["警察官","兵士","消防士","医者"],
+correct:1
+},
+{
+question:"『pemadam kebakaran』の意味は？",
+answers:["消防士","警察官","兵士","救急隊員"],
+correct:0
+},
+{
+question:"『petani』の意味は？",
+answers:["漁師","農家","大工","運転手"],
+correct:1
+},
+{
+question:"『nelayan』の意味は？",
+answers:["農家","漁師","大工","運転手"],
+correct:1
+},
+{
+question:"『koki』の意味は？",
+answers:["料理人","ウェイター","店員","パン職人"],
+correct:0
+},
+{
+question:"『juru masak』の意味は？",
+answers:["ウェイター","料理人","警備員","運転手"],
+correct:1
+},
+{
+question:"『pelayan』の意味は？",
+answers:["店員・接客係","料理人","医者","教師"],
+correct:0
+},
+{
+question:"『kasir』の意味は？",
+answers:["警備員","レジ係","店長","配達員"],
+correct:1
+},
+{
+question:"『supir』の意味は？",
+answers:["整備士","運転手","パイロット","船長"],
+correct:1
+},
+{
+question:"『pilot』の意味は？",
+answers:["船長","運転手","パイロット","車掌"],
+correct:2
+},
+{
+question:"『masinis』の意味は？",
+answers:["バス運転手","電車の運転士","タクシー運転手","パイロット"],
+correct:1
+},
+{
+question:"『insinyur』の意味は？",
+answers:["建築家","エンジニア","科学者","研究者"],
+correct:1
+},
+{
+question:"『programmer』の意味は？",
+answers:["デザイナー","プログラマー","会社員","研究者"],
+correct:1
+},
+{
+question:"『desainer』の意味は？",
+answers:["画家","デザイナー","写真家","建築家"],
+correct:1
+},
+{
+question:"『arsitek』の意味は？",
+answers:["建築家","大工","エンジニア","職人"],
+correct:0
+},
+{
+question:"『ilmuwan』の意味は？",
+answers:["研究者","科学者","医者","教師"],
+correct:1
+},
+{
+question:"『peneliti』の意味は？",
+answers:["教師","研究者","学生","秘書"],
+correct:1
+},
+{
+question:"『pegawai』の意味は？",
+answers:["会社員","社長","公務員","警察官"],
+correct:0
+},
+{
+question:"『pegawai negeri』の意味は？",
+answers:["会社員","公務員","社長","弁護士"],
+correct:1
+},
+{
+question:"『direktur』の意味は？",
+answers:["部長","社長・取締役","秘書","店長"],
+correct:1
+},
+{
+question:"『manajer』の意味は？",
+answers:["店員","マネージャー","社長","会計士"],
+correct:1
+},
+{
+question:"『sekretaris』の意味は？",
+answers:["秘書","受付","教師","医者"],
+correct:0
+},
+{
+question:"『akuntan』の意味は？",
+answers:["銀行員","会計士","弁護士","秘書"],
+correct:1
+},
+{
+question:"『pengacara』の意味は？",
+answers:["裁判官","弁護士","検察官","警察官"],
+correct:1
+},
+{
+question:"『hakim』の意味は？",
+answers:["弁護士","裁判官","警察官","医者"],
+correct:1
+},
+{
+question:"『wartawan』の意味は？",
+answers:["カメラマン","記者","作家","編集者"],
+correct:1
+},
+{
+question:"『fotografer』の意味は？",
+answers:["画家","写真家","デザイナー","歌手"],
+correct:1
+},
+{
+question:"『penyanyi』の意味は？",
+answers:["俳優","歌手","ダンサー","音楽家"],
+correct:1
+},
+{
+question:"『aktor』の意味は？",
+answers:["歌手","俳優","ダンサー","画家"],
+correct:1
+},
+{
+question:"『aktris』の意味は？",
+answers:["女優","歌手","モデル","司会者"],
+correct:0
+},
+{
+question:"『penari』の意味は？",
+answers:["ダンサー","歌手","俳優","音楽家"],
+correct:0
+},
+{
+question:"『musisi』の意味は？",
+answers:["作曲家","音楽家","歌手","指揮者"],
+correct:1
+},
+{
+question:"『pelukis』の意味は？",
+answers:["画家","写真家","彫刻家","デザイナー"],
+correct:0
+},
+{
+question:"『penulis』の意味は？",
+answers:["編集者","作家","記者","翻訳家"],
+correct:1
+},
+{
+question:"『penerjemah』の意味は？",
+answers:["通訳・翻訳者","教師","ガイド","秘書"],
+correct:0
+},
+{
+question:"『pemandu wisata』の意味は？",
+answers:["ツアーガイド","運転手","添乗員","受付"],
+correct:0
+},
+{
+question:"『tukang cukur』の意味は？",
+answers:["美容師","理容師","メイクアップアーティスト","写真家"],
+correct:1
+},
+{
+question:"『penata rambut』の意味は？",
+answers:["理容師","美容師","ネイリスト","エステティシャン"],
+correct:1
+},
+{
+question:"『tukang kayu』の意味は？",
+answers:["大工","家具職人","左官","建築家"],
+correct:0
+},
+{
+question:"『tukang listrik』の意味は？",
+answers:["配管工","電気技師","整備士","機械工"],
+correct:1
+},
+{
+question:"『montir』の意味は？",
+answers:["整備士","運転手","機械工","電気技師"],
+correct:0
+},
+{
+question:"『kurir』の意味は？",
+answers:["郵便配達員","配達員","運転手","店員"],
+correct:1
+},
+{
+question:"『pengantar pos』の意味は？",
+answers:["配達員","郵便配達員","宅配員","警備員"],
+correct:1
+},
+{
+question:"『satpam』の意味は？",
+answers:["消防士","警備員","警察官","兵士"],
+correct:1
+},
+{
+question:"『petugas kebersihan』の意味は？",
+answers:["清掃員","警備員","受付","店員"],
+correct:0
+},
+{
+question:"『resepsionis』の意味は？",
+answers:["秘書","受付係","店員","ガイド"],
+correct:1
+},
+{
+question:"『pramuniaga』の意味は？",
+answers:["営業","販売員","会計士","受付"],
+correct:1
+},
+{
+question:"『sales』の意味は？",
+answers:["販売員・営業","店長","会社員","配達員"],
+correct:0
+},
+{
+question:"『pengusaha』の意味は？",
+answers:["会社員","実業家","社長","弁護士"],
+correct:1
+},
+{
+question:"『wirausahawan』の意味は？",
+answers:["起業家","会社員","投資家","銀行員"],
+correct:0
+},
+{
+question:"『bankir』の意味は？",
+answers:["銀行員","会計士","証券会社員","公務員"],
+correct:0
+},
+{
+question:"『dokter gigi』の意味は？",
+answers:["外科医","歯医者","薬剤師","看護師"],
+correct:1
+},
+{
+question:"『dokter hewan』の意味は？",
+answers:["医者","獣医","看護師","薬剤師"],
+correct:1
+},
+{
+question:"『psikolog』の意味は？",
+answers:["精神科医","心理学者","カウンセラー","教師"],
+correct:1
+},
+{
+question:"『profesor』の意味は？",
+answers:["校長","教授","先生","講師"],
+correct:1
+},
+{
+question:"『kepala sekolah』の意味は？",
+answers:["校長","担任","教育委員","教授"],
+correct:0
+},
+{
+question:"『ahli biologi』の意味は？",
+answers:["化学者","生物学者","物理学者","地質学者"],
+correct:1
+},
+{
+question:"『ahli kimia』の意味は？",
+answers:["物理学者","化学者","薬剤師","研究者"],
+correct:1
+},
+{
+question:"『ahli fisika』の意味は？",
+answers:["数学者","物理学者","化学者","天文学者"],
+correct:1
+},
+{
+question:"『pramugari』の意味は？",
+answers:["客室乗務員","受付","秘書","ガイド"],
+correct:0
+},
+{
+question:"『kapten』の意味は？",
+answers:["操縦士","船長・キャプテン","機関士","運転手"],
+correct:1
+},
+{
+question:"『pekebun』の意味は？",
+answers:["農園作業員","庭師","農家","花屋"],
+correct:0
+},
+{
+question:"『tukang kebun』の意味は？",
+answers:["花屋","庭師","農家","植木職人"],
+correct:1
+},
+{
+question:"『tukang roti』の意味は？",
+answers:["パン職人","料理人","菓子職人","店員"],
+correct:0
+},
+{
+question:"『pembuat kue』の意味は？",
+answers:["パン職人","菓子職人","料理人","販売員"],
+correct:1
+},
+{
+question:"『tukang daging』の意味は？",
+answers:["肉屋","魚屋","八百屋","料理人"],
+correct:0
+},
+{
+question:"『penjual sayur』の意味は？",
+answers:["果物屋","八百屋","肉屋","花屋"],
+correct:1
+},
+{
+question:"『penjual bunga』の意味は？",
+answers:["園芸家","花屋","庭師","農家"],
+correct:1
+},
+{
+question:"『pustakawan』の意味は？",
+answers:["教師","司書","編集者","研究者"],
+correct:1
+},
+{
+question:"『penjahit』の意味は？",
+answers:["裁縫師","デザイナー","靴職人","大工"],
+correct:0
+},
+{
+question:"『tukang emas』の意味は？",
+answers:["宝石職人","時計職人","鍛冶屋","銀細工師"],
+correct:0
+},
+{
+question:"『tukang jam』の意味は？",
+answers:["機械工","時計職人","電気技師","整備士"],
+correct:1
+},
+{
+question:"『perajin keramik』の意味は？",
+answers:["ガラス職人","陶芸家","木工職人","彫刻家"],
+correct:1
+},
+{
+question:"『komikus』の意味は？",
+answers:["漫画家","イラストレーター","作家","編集者"],
+correct:0
+},
+{
+question:"『YouTuber』の意味は？",
+answers:["配信者","YouTuber","俳優","歌手"],
+correct:1
+},
+{
+question:"『influencer』の意味は？",
+answers:["モデル","インフルエンサー","俳優","司会者"],
+correct:1
+},
+{
+question:"『pengusaha muda』の意味は？",
+answers:["若い起業家","大学生","新入社員","店長"],
+correct:0
+},
+{
+question:"『relawan』の意味は？",
+answers:["消防士","ボランティア","警備員","医療従事者"],
+correct:1
+},
+
+];
+
+
+const expressions=[];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+shuffleArray(quizData);
+
+function loadQuestion(){
+
+    const q =
+    quizData[currentQuestion];
+
+    // 問題文
+    document.getElementById(
+        "question"
+    ).textContent =
+    q.question;
+
+    // 音声
+    speakWord(q.question);
+
+    document.getElementById(
+        "questionNumber"
+    ).textContent =
+    `Question ${
+        currentQuestion + 1
+    } / ${quizData.length}`;
+
+    const answersEl =
+    document.getElementById(
+        "answers"
+    );
+
+    answersEl.innerHTML = "";
+
+    document.getElementById(
+        "result"
+    ).textContent = "";
+
+    document.getElementById(
+        "nextBtn"
+    ).style.display = "none";
+
+    // ----------------------
+    // 選択肢シャッフル
+    // ----------------------
+
+    const shuffledAnswers =
+    q.answers.map(
+        (answer,index)=>({
+            text: answer,
+            isCorrect:
+            index === q.correct
+        })
+    );
+
+    shuffleArray(
+        shuffledAnswers
+    );
+
+    shuffledAnswers.forEach(
+        (answerObj)=>{
+
+        const button =
+        document.createElement(
+            "button"
+        );
+
+        button.classList.add(
+            "answer-btn"
+        );
+
+        button.textContent =
+        answerObj.text;
+
+        button.addEventListener(
+            "click",
+            ()=>{
+
+            const buttons =
+            document.querySelectorAll(
+                ".answer-btn"
+            );
+
+            buttons.forEach(
+                btn =>
+                btn.disabled = true
+            );
+
+            if(answerObj.isCorrect){
+
+                button.classList.add(
+                    "correct"
+                );
+
+                document.getElementById(
+                    "result"
+                ).textContent =
+                "⭕ 正解！";
+
+                score++;
+
+                document.getElementById(
+                    "score"
+                ).textContent =
+                score;
+
+            }else{
+
+                button.classList.add(
+                    "wrong"
+                );
+
+                // 正解ボタン表示
+                buttons.forEach(
+                    (btn,index)=>{
+
+                    if(
+                        shuffledAnswers[
+                            index
+                        ].isCorrect
+                    ){
+                        btn.classList.add(
+                            "correct"
+                        );
+                    }
+                });
+
+                document.getElementById(
+                    "result"
+                ).textContent =
+                "❌ 不正解";
+
+                wrongQuestions.push(
+                    q
+                );
+            }
+
+            document.getElementById(
+                "nextBtn"
+            ).style.display =
+            "block";
+        });
+
+        answersEl.appendChild(
+            button
+        );
+    });
+
+    // speakボタン
+    document.getElementById(
+        "speakBtn"
+    ).onclick = ()=>{
+
+        speakWord(
+            q.question
+        );
+    };
+}
+
+
+document.getElementById("nextBtn")
+.addEventListener("click",()=>{
+
+    currentQuestion++;
+
+    if(currentQuestion < quizData.length){
+
+        loadQuestion();
+
+    }else{
+
+        document.querySelector(
+            ".quiz-container"
+        ).innerHTML = ` <h1>🎉 Quiz Finished!</h1>
+
+<p style="text-align:center;
+margin-top:20px;
+font-size:1.3rem;">
+${quizData.length}問中
+<strong>${score}</strong>問正解！
+</p>
+
+<p style="text-align:center;
+margin-top:10px;">
+間違えた問題：${wrongQuestions.length}問
+</p>
+
+${
+wrongQuestions.length > 0
+? `
+<button
+class="next-btn"
+onclick="reviewWrongQuestions()"
+style="display:block;margin-top:15px;">
+❌ 間違えた問題を復習
+</button>
+`
+: ""
+}
+
+<button
+class="next-btn restart-btn"
+onclick="location.reload()"
+style="display:block;margin-top:15px;">
+もう一回挑戦
+</button>
+`;
+    }
+});
+
+function shuffleArray(array){
+    for(let i=array.length-1;i>0;i--){
+        const j =
+        Math.floor(Math.random()*(i+1));
+
+        [array[i],array[j]] =
+        [array[j],array[i]];
+    }
+}
+
+document.getElementById("question")
+.textContent =
+"カテゴリーを選んでください！";
+function reviewWrongQuestions(){
+
+    quizData = [...wrongQuestions];
+
+    shuffleArray(quizData);
+
+    currentQuestion = 0;
+    score = 0;
+    wrongQuestions = [];
+
+    document.querySelector(
+        ".quiz-container"
+    ).innerHTML = `
+    <h1>🌍 Language Quiz</h1>
+
+    <div class="score">
+        Score:
+        <span id="score">0</span>
+    </div>
+
+    <div class="question-number"
+    id="questionNumber"></div>
+
+    <div class="question"
+    id="question"></div>
+
+    <div class="answers"
+    id="answers"></div>
+
+    <div id="result"></div>
+
+    <button
+    class="next-btn"
+    id="nextBtn">
+    次の問題 →
+    </button>
+    `;
+
+    document.getElementById(
+        "nextBtn"
+    ).addEventListener("click",()=>{
+
+        currentQuestion++;
+
+        if(currentQuestion < quizData.length){
+
+            loadQuestion();
+
+        }else{
+
+            alert("復習終了！");
+            location.reload();
+        }
+    });
+
+    loadQuestion();
+}
+/* --------------------
+   音声読み上げ
+-------------------- */
+
+function speakWord(word){
+
+    const utterance =
+    new SpeechSynthesisUtterance(
+        word
+    );
+
+    // 言語設定
+    utterance.lang = "id-ID";
+    // 英語なら "en-US"
+    // フランス語なら "fr-FR"
+
+    utterance.rate = 0.9;
+    utterance.pitch = 1;
+
+    speechSynthesis.cancel();
+    speechSynthesis.speak(
+        utterance
+    );
+}
+</script>
+
+</body>
+</html>
