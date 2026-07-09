@@ -3175,6 +3175,8 @@ At school, Tom told his friends, but nobody believed him. Then, through the wind
     }
   ]
 }
+,
 
+// Tambahkan 5 cerita lagi dengan format yang s
 
 ];

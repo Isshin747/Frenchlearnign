@@ -2540,6 +2540,240 @@ const questions=[
     }
   ]
 },
+{
+  lang: "id-ID",
+  level: "B1",
+
+  question: "Liburan Pertama ke Yogyakarta",
+
+  audio: `Tahun lalu, Rina pergi ke Yogyakarta bersama dua temannya selama tiga hari. Mereka mengunjungi Candi Prambanan, mencoba makanan tradisional, dan membeli oleh-oleh untuk keluarga. Walaupun cuacanya sangat panas, mereka tetap menikmati perjalanan karena banyak tempat menarik yang bisa dikunjungi. Sebelum pulang, mereka berjanji akan kembali lagi tahun depan.`,
+
+  script: `Tahun lalu, Rina pergi ke Yogyakarta bersama dua temannya selama tiga hari. Mereka mengunjungi Candi Prambanan, mencoba makanan tradisional, dan membeli oleh-oleh untuk keluarga. Walaupun cuacanya sangat panas, mereka tetap menikmati perjalanan karena banyak tempat menarik yang bisa dikunjungi. Sebelum pulang, mereka berjanji akan kembali lagi tahun depan.`,
+
+  translation: `昨年、リナは友達2人と3日間ジョグジャカルタへ旅行しました。プランバナン寺院を訪れ、伝統料理を食べ、家族へのお土産を買いました。とても暑かったですが、多くの観光地を楽しみました。帰る前に、来年また来ることを約束しました。`,
+
+  quiz:[
+    {
+      q:"Ke mana Rina pergi?",
+      options:[
+        {text:"Yogyakarta",correct:true},
+        {text:"Jakarta",correct:false},
+        {text:"Bandung",correct:false},
+        {text:"Surabaya",correct:false}
+      ]
+    },
+    {
+      q:"Berapa lama mereka berlibur?",
+      options:[
+        {text:"Tiga hari",correct:true},
+        {text:"Satu minggu",correct:false},
+        {text:"Dua hari",correct:false},
+        {text:"Lima hari",correct:false}
+      ]
+    },
+    {
+      q:"Apa yang mereka lakukan sebelum pulang?",
+      options:[
+        {text:"Berjanji akan kembali",correct:true},
+        {text:"Menjual oleh-oleh",correct:false},
+        {text:"Pindah rumah",correct:false},
+        {text:"Mencari hotel baru",correct:false}
+      ]
+    }
+  ]
+},
+
+{
+  lang:"id-ID",
+  level:"B1",
+
+  question:"Hari Pertama Bekerja",
+
+  audio:`Andi baru mulai bekerja di sebuah kafe dekat kampusnya. Pada hari pertama, ia merasa gugup karena harus melayani banyak pelanggan. Untungnya, rekan-rekan kerjanya sangat ramah dan selalu membantu ketika ia melakukan kesalahan. Setelah selesai bekerja, Andi merasa lebih percaya diri dan ingin belajar lebih banyak.`,
+
+  script:`Andi baru mulai bekerja di sebuah kafe dekat kampusnya. Pada hari pertama, ia merasa gugup karena harus melayani banyak pelanggan. Untungnya, rekan-rekan kerjanya sangat ramah dan selalu membantu ketika ia melakukan kesalahan. Setelah selesai bekerja, Andi merasa lebih percaya diri dan ingin belajar lebih banyak.`,
+
+  translation:`アンディは大学近くのカフェで働き始めました。初日は多くのお客さんを接客するので緊張しました。しかし同僚はとても親切で、失敗したときも助けてくれました。仕事が終わる頃には自信がつき、もっと学びたいと思いました。`,
+
+  quiz:[
+    {
+      q:"Di mana Andi bekerja?",
+      options:[
+        {text:"Di sebuah kafe",correct:true},
+        {text:"Di sekolah",correct:false},
+        {text:"Di rumah sakit",correct:false},
+        {text:"Di hotel",correct:false}
+      ]
+    },
+    {
+      q:"Mengapa Andi gugup?",
+      options:[
+        {text:"Karena hari pertama bekerja",correct:true},
+        {text:"Karena terlambat",correct:false},
+        {text:"Karena sakit",correct:false},
+        {text:"Karena hujan",correct:false}
+      ]
+    },
+    {
+      q:"Bagaimana sikap rekan kerjanya?",
+      options:[
+        {text:"Ramah dan suka membantu",correct:true},
+        {text:"Marah",correct:false},
+        {text:"Pendiam",correct:false},
+        {text:"Tidak peduli",correct:false}
+      ]
+    }
+  ]
+},
+
+{
+  lang:"id-ID",
+  level:"B1",
+
+  question:"Belajar Bahasa Baru",
+
+  audio:`Sinta mulai belajar bahasa Jepang enam bulan yang lalu. Pada awalnya ia kesulitan menghafal huruf dan kosakata, tetapi ia tidak menyerah. Setiap hari ia mendengarkan podcast dan berbicara dengan teman Jepang melalui internet. Sekarang ia sudah bisa melakukan percakapan sederhana dengan lebih percaya diri.`,
+
+  script:`Sinta mulai belajar bahasa Jepang enam bulan yang lalu. Pada awalnya ia kesulitan menghafal huruf dan kosakata, tetapi ia tidak menyerah. Setiap hari ia mendengarkan podcast dan berbicara dengan teman Jepang melalui internet. Sekarang ia sudah bisa melakukan percakapan sederhana dengan lebih percaya diri.`,
+
+  translation:`シンタは半年前に日本語学習を始めました。最初は文字や単語を覚えるのが大変でしたが、諦めませんでした。毎日ポッドキャストを聞き、日本人の友達とオンラインで話しました。今では簡単な会話が自信を持ってできるようになりました。`,
+
+  quiz:[
+    {
+      q:"Sudah berapa lama Sinta belajar bahasa Jepang?",
+      options:[
+        {text:"Enam bulan",correct:true},
+        {text:"Satu bulan",correct:false},
+        {text:"Satu tahun",correct:false},
+        {text:"Dua minggu",correct:false}
+      ]
+    },
+    {
+      q:"Apa yang dilakukan setiap hari?",
+      options:[
+        {text:"Mendengarkan podcast",correct:true},
+        {text:"Bermain sepak bola",correct:false},
+        {text:"Tidur sepanjang hari",correct:false},
+        {text:"Memasak",correct:false}
+      ]
+    },
+    {
+      q:"Bagaimana kemampuan Sinta sekarang?",
+      options:[
+        {text:"Bisa percakapan sederhana",correct:true},
+        {text:"Belum bisa berbicara",correct:false},
+        {text:"Sudah menjadi guru",correct:false},
+        {text:"Berhenti belajar",correct:false}
+      ]
+    }
+  ]
+},
+
+{
+  lang:"id-ID",
+  level:"B1",
+
+  question:"Kehilangan Dompet",
+
+  audio:`Suatu sore, Budi menyadari bahwa dompetnya hilang setelah turun dari bus. Ia segera kembali ke halte dan bertanya kepada petugas. Untungnya, ada seseorang yang menemukan dompet itu dan menyerahkannya ke kantor informasi. Semua uang dan kartu masih lengkap sehingga Budi merasa sangat lega.`,
+
+  script:`Suatu sore, Budi menyadari bahwa dompetnya hilang setelah turun dari bus. Ia segera kembali ke halte dan bertanya kepada petugas. Untungnya, ada seseorang yang menemukan dompet itu dan menyerahkannya ke kantor informasi. Semua uang dan kartu masih lengkap sehingga Budi merasa sangat lega.`,
+
+  translation:`ある夕方、ブディはバスを降りた後に財布をなくしたことに気づきました。すぐに停留所へ戻って係員に尋ねました。幸運にも誰かが財布を見つけ、案内所へ届けていました。お金もカードもそのままで、ブディはとても安心しました。`,
+
+  quiz:[
+    {
+      q:"Di mana Budi kehilangan dompetnya?",
+      options:[
+        {text:"Setelah turun dari bus",correct:true},
+        {text:"Di rumah",correct:false},
+        {text:"Di sekolah",correct:false},
+        {text:"Di restoran",correct:false}
+      ]
+    },
+    {
+      q:"Siapa yang menemukan dompet?",
+      options:[
+        {text:"Seseorang",correct:true},
+        {text:"Ibunya",correct:false},
+        {text:"Temannya",correct:false},
+        {text:"Supir bus",correct:false}
+      ]
+    },
+    {
+      q:"Bagaimana perasaan Budi?",
+      options:[
+        {text:"Lega",correct:true},
+        {text:"Marah",correct:false},
+        {text:"Sedih",correct:false},
+        {text:"Bingung",correct:false}
+      ]
+    }
+  ]
+},
+
+{
+  lang:"id-ID",
+  level:"B1",
+
+  question:"Menanam Sayuran",
+
+  audio:`Keluarga Dika mulai menanam sayuran di halaman rumah mereka. Setiap pagi, Dika membantu ayahnya menyiram tanaman sebelum berangkat sekolah. Setelah beberapa minggu, tomat dan cabai mulai tumbuh dengan baik. Mereka merasa senang karena bisa memasak menggunakan sayuran hasil kebun sendiri.`,
+
+  script:`Keluarga Dika mulai menanam sayuran di halaman rumah mereka. Setiap pagi, Dika membantu ayahnya menyiram tanaman sebelum berangkat sekolah. Setelah beberapa minggu, tomat dan cabai mulai tumbuh dengan baik. Mereka merasa senang karena bisa memasak menggunakan sayuran hasil kebun sendiri.`,
+
+  translation:`ディカの家族は庭で野菜を育て始めました。毎朝、学校へ行く前に父親と一緒に水やりをしました。数週間後、トマトと唐辛子がよく育ちました。自分たちの野菜で料理ができることを喜びました。`,
+
+  quiz:[
+    {
+      q:"Apa yang ditanam keluarga Dika?",
+      options:[
+        {text:"Sayuran",correct:true},
+        {text:"Bunga",correct:false},
+        {text:"Pohon besar",correct:false},
+        {text:"Rumput",correct:false}
+      ]
+    },
+    {
+      q:"Kapan Dika menyiram tanaman?",
+      options:[
+        {text:"Setiap pagi",correct:true},
+        {text:"Malam hari",correct:false},
+        {text:"Seminggu sekali",correct:false},
+        {text:"Siang hari",correct:false}
+      ]
+    },
+    {
+      q:"Mengapa mereka senang?",
+      options:[
+        {text:"Bisa memasak dengan hasil kebun",correct:true},
+        {text:"Menjual rumah",correct:false},
+        {text:"Pergi liburan",correct:false},
+        {text:"Membeli mobil",correct:false}
+      ]
+    }
+  ]
+}
+,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //B2レベル問題
 {
