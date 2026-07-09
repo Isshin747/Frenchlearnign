@@ -2757,6 +2757,223 @@ const questions=[
 ,
 
 
+{
+  lang:"id-ID",
+  level:"B1",
+
+  question:"Proyek Kelompok di Sekolah",
+
+  audio:`Minggu ini, kelas Rina mendapat tugas membuat proyek kelompok tentang lingkungan. Mereka membagi pekerjaan agar semua anggota memiliki tanggung jawab. Setelah sekolah, mereka berkumpul di perpustakaan untuk menyelesaikan presentasi. Guru mereka memuji kerja sama kelompok karena semua anggota aktif berpartisipasi.`,
+
+  script:`Minggu ini, kelas Rina mendapat tugas membuat proyek kelompok tentang lingkungan. Mereka membagi pekerjaan agar semua anggota memiliki tanggung jawab. Setelah sekolah, mereka berkumpul di perpustakaan untuk menyelesaikan presentasi. Guru mereka memuji kerja sama kelompok karena semua anggota aktif berpartisipasi.`,
+
+  translation:`今週、リナのクラスは環境についてのグループプロジェクトをすることになりました。全員が役割を持てるように仕事を分担しました。放課後、図書館に集まってプレゼンテーションを完成させました。先生は全員が積極的に参加したことを褒めました。`,
+
+  quiz:[
+    {
+      q:"Apa tugas kelas Rina?",
+      options:[
+        {text:"Membuat proyek kelompok",correct:true},
+        {text:"Mengikuti lomba olahraga",correct:false},
+        {text:"Membersihkan taman",correct:false},
+        {text:"Belajar musik",correct:false}
+      ]
+    },
+    {
+      q:"Di mana mereka berkumpul setelah sekolah?",
+      options:[
+        {text:"Perpustakaan",correct:true},
+        {text:"Kantin",correct:false},
+        {text:"Lapangan",correct:false},
+        {text:"Rumah guru",correct:false}
+      ]
+    },
+    {
+      q:"Mengapa guru memuji mereka?",
+      options:[
+        {text:"Karena semua anggota aktif",correct:true},
+        {text:"Karena datang terlambat",correct:false},
+        {text:"Karena menang lomba",correct:false},
+        {text:"Karena membeli buku baru",correct:false}
+      ]
+    }
+  ]
+},
+
+{
+  lang:"id-ID",
+  level:"B1",
+
+  question:"Belajar untuk Ujian",
+
+  audio:`Besok, siswa kelas sebelas akan mengikuti ujian matematika. Setelah pelajaran selesai, Andi belajar bersama teman-temannya di ruang belajar sekolah. Mereka saling menjelaskan soal yang sulit dan berlatih mengerjakan latihan. Andi merasa lebih percaya diri setelah belajar bersama.`,
+
+  script:`Besok, siswa kelas sebelas akan mengikuti ujian matematika. Setelah pelajaran selesai, Andi belajar bersama teman-temannya di ruang belajar sekolah. Mereka saling menjelaskan soal yang sulit dan berlatih mengerjakan latihan. Andi merasa lebih percaya diri setelah belajar bersama.`,
+
+  translation:`明日、高校2年生は数学の試験を受けます。授業が終わった後、アンディは学校の自習室で友達と勉強しました。難しい問題を教え合い、問題演習をしました。一緒に勉強したことで自信がつきました。`,
+
+  quiz:[
+    {
+      q:"Ujian apa yang akan diikuti siswa?",
+      options:[
+        {text:"Matematika",correct:true},
+        {text:"Bahasa Indonesia",correct:false},
+        {text:"Sejarah",correct:false},
+        {text:"Fisika",correct:false}
+      ]
+    },
+    {
+      q:"Di mana Andi belajar?",
+      options:[
+        {text:"Ruang belajar sekolah",correct:true},
+        {text:"Rumah temannya",correct:false},
+        {text:"Kantin",correct:false},
+        {text:"Perpustakaan kota",correct:false}
+      ]
+    },
+    {
+      q:"Bagaimana perasaan Andi setelah belajar bersama?",
+      options:[
+        {text:"Lebih percaya diri",correct:true},
+        {text:"Lebih takut",correct:false},
+        {text:"Lebih lelah",correct:false},
+        {text:"Lebih bosan",correct:false}
+      ]
+    }
+  ]
+},
+
+{
+  lang:"id-ID",
+  level:"B1",
+
+  question:"Kegiatan Ekstrakurikuler",
+
+  audio:`Setelah pelajaran selesai, Sinta mengikuti kegiatan ekstrakurikuler basket setiap hari Selasa. Pelatih mengajarkan teknik baru dan meminta semua anggota bekerja sama saat latihan. Walaupun lelah, Sinta senang karena kemampuan bermainnya terus meningkat.`,
+
+  script:`Setelah pelajaran selesai, Sinta mengikuti kegiatan ekstrakurikuler basket setiap hari Selasa. Pelatih mengajarkan teknik baru dan meminta semua anggota bekerja sama saat latihan. Walaupun lelah, Sinta senang karena kemampuan bermainnya terus meningkat.`,
+
+  translation:`授業の後、シンタは毎週火曜日にバスケットボール部の活動に参加しています。コーチは新しい技術を教え、練習では協力するよう求めました。疲れましたが、上達しているので嬉しく思っています。`,
+
+  quiz:[
+    {
+      q:"Ekstrakurikuler apa yang diikuti Sinta?",
+      options:[
+        {text:"Basket",correct:true},
+        {text:"Musik",correct:false},
+        {text:"Renang",correct:false},
+        {text:"Teater",correct:false}
+      ]
+    },
+    {
+      q:"Kapan kegiatan itu diadakan?",
+      options:[
+        {text:"Setiap hari Selasa",correct:true},
+        {text:"Setiap hari Senin",correct:false},
+        {text:"Hari Sabtu",correct:false},
+        {text:"Setiap pagi",correct:false}
+      ]
+    },
+    {
+      q:"Mengapa Sinta senang?",
+      options:[
+        {text:"Karena kemampuan bermainnya meningkat",correct:true},
+        {text:"Karena libur sekolah",correct:false},
+        {text:"Karena mendapat hadiah",correct:false},
+        {text:"Karena tidak ada latihan",correct:false}
+      ]
+    }
+  ]
+},
+
+{
+  lang:"id-ID",
+  level:"B1",
+
+  question:"Presentasi di Kelas",
+
+  audio:`Hari ini, Budi harus mempresentasikan hasil penelitiannya di depan kelas. Sebelum presentasi dimulai, ia merasa sedikit gugup. Namun, setelah menjawab beberapa pertanyaan dari guru dan teman-temannya, ia menjadi lebih tenang. Presentasinya berjalan dengan lancar.`,
+
+  script:`Hari ini, Budi harus mempresentasikan hasil penelitiannya di depan kelas. Sebelum presentasi dimulai, ia merasa sedikit gugup. Namun, setelah menjawab beberapa pertanyaan dari guru dan teman-temannya, ia menjadi lebih tenang. Presentasinya berjalan dengan lancar.`,
+
+  translation:`今日、ブディはクラスの前で研究発表をしなければなりませんでした。始まる前は少し緊張していましたが、先生や友達の質問に答えた後は落ち着きました。発表は順調に進みました。`,
+
+  quiz:[
+    {
+      q:"Apa yang dilakukan Budi hari ini?",
+      options:[
+        {text:"Mempresentasikan hasil penelitian",correct:true},
+        {text:"Mengikuti pertandingan",correct:false},
+        {text:"Membersihkan kelas",correct:false},
+        {text:"Mengajar teman",correct:false}
+      ]
+    },
+    {
+      q:"Bagaimana perasaan Budi sebelum presentasi?",
+      options:[
+        {text:"Sedikit gugup",correct:true},
+        {text:"Marah",correct:false},
+        {text:"Sangat bosan",correct:false},
+        {text:"Mengantuk",correct:false}
+      ]
+    },
+    {
+      q:"Bagaimana hasil presentasinya?",
+      options:[
+        {text:"Berjalan dengan lancar",correct:true},
+        {text:"Dibatalkan",correct:false},
+        {text:"Tidak selesai",correct:false},
+        {text:"Sangat buruk",correct:false}
+      ]
+    }
+  ]
+},
+
+{
+  lang:"id-ID",
+  level:"B1",
+
+  question:"Festival Sekolah",
+
+  audio:`Sekolah Riko mengadakan festival sekolah setiap tahun. Tahun ini, kelasnya membuka stan makanan tradisional. Semua siswa bekerja sama menyiapkan makanan dan menghias stan mereka. Banyak pengunjung datang sehingga mereka berhasil mengumpulkan dana untuk kegiatan sekolah berikutnya.`,
+
+  script:`Sekolah Riko mengadakan festival sekolah setiap tahun. Tahun ini, kelasnya membuka stan makanan tradisional. Semua siswa bekerja sama menyiapkan makanan dan menghias stan mereka. Banyak pengunjung datang sehingga mereka berhasil mengumpulkan dana untuk kegiatan sekolah berikutnya.`,
+
+  translation:`リコの学校では毎年学校祭が開かれます。今年はクラスで伝統料理の屋台を出しました。全員で料理を準備し、屋台を飾りました。多くの来場者が訪れ、次の学校行事のための資金を集めることができました。`,
+
+  quiz:[
+    {
+      q:"Acara apa yang diadakan sekolah Riko?",
+      options:[
+        {text:"Festival sekolah",correct:true},
+        {text:"Lomba renang",correct:false},
+        {text:"Kemah",correct:false},
+        {text:"Wisata",correct:false}
+      ]
+    },
+    {
+      q:"Apa yang dijual kelas Riko?",
+      options:[
+        {text:"Makanan tradisional",correct:true},
+        {text:"Pakaian",correct:false},
+        {text:"Buku",correct:false},
+        {text:"Mainan",correct:false}
+      ]
+    },
+    {
+      q:"Mengapa mereka berhasil mengumpulkan dana?",
+      options:[
+        {text:"Karena banyak pengunjung datang",correct:true},
+        {text:"Karena mendapat hadiah",correct:false},
+        {text:"Karena sekolah memberi uang",correct:false},
+        {text:"Karena festival dibatalkan",correct:false}
+      ]
+    }
+  ]
+}
+,
+
+
 
 
 
